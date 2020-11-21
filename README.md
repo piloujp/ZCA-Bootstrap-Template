@@ -16,8 +16,8 @@ This Zen Cart template uses a [Bootstrap](https://getbootstrap.com/docs/4.5/gett
 
 ## Features:
 
-- Supports Zen Cart versions **1.5.7** and later.
-  - For Zen Cart 1.5.7 (no suffix), be sure to apply all the [Known Bugs and Fixes](https://www.zen-cart.com/showthread.php?226872-Known-bugs-(and-fixes)-for-v1-5-7-series) for the template's proper operation.
+- Supports Zen Cart versions **1.5.7** and later, best when run on a zc157**b** (or later) installation.
+  - For Zen Cart 1.5.7 (no suffix) and 1.5.7a, be sure to apply all the [Known Bugs and Fixes](https://www.zen-cart.com/showthread.php?226872-Known-bugs-(and-fixes)-for-v1-5-7-series) for the template's proper operation.
 - Bootstrap 4 Framework.
 - Responsive.
 - 3 Column Layout (removes right column on product info, shopping cart & checkout pages).
