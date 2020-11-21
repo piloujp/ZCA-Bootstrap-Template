@@ -9,11 +9,9 @@
 a, a:active, 
 a:visited { 
     color: #006666; 
-    text-decoration: none; 
 }
 a:hover { 
     color:#00CC99; 
-    text-decoration: underline; 
 }
 body, 
 p, 
@@ -75,10 +73,11 @@ img {
     <h1>Bootstrap-4 Template for Zen Cart v1.5.7 and later</h1>
     <h3>Version 3.0.0, by lat9 and drbyte</h3>
     <p>Current Support Thread at Zen Cart Forums: <a href="https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread" target="_blank">https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread</a></p>
-    <p>GitHub repository: <a href="https://github.com/zcadditions/ZCA-Bootstrap-Template-for-1.5.6-v2.0.0c" target="_blank">https://github.com/zcadditions/ZCA-Bootstrap-Template-for-1.5.6-v2.0.0c</a>.</p>
+    <p>Zen Cart Download Link: <a href="https://www.zen-cart.com/downloads.php?do=file&id=2191" target="_blank">https://www.zen-cart.com/downloads.php?do=file&id=2191</a></p>
+    <p>GitHub repository: <a href="https://github.com/lat9/ZCA-Bootstrap-Template" target="_blank">https://github.com/lat9/ZCA-Bootstrap-Template</a>.</p>
 
     <h2>What it does</h2>
-    <p>This template uses <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank">Bootstrap-4</a> to provide its styling.  It builds on the base that Raymond Barbour provided over the past few years and provides integration with Zen Cart versions 1.5.7 and later.</p>
+    <p>This template uses <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank">Bootstrap-4</a> to provide its styling and builds on the base that Raymond Barbour provided over the past few years, supporting Zen Cart versions 1.5.7 and later &mdash; <em>best supported</em> by zc157<b>b</b> and later.  If your store is based on either zc157 or zc157a, be sure that you have applied all the <a href="https://www.zen-cart.com/showthread.php?226872-Known-bugs-(and-fixes)-for-v1-5-7-series" target="_blank">patches</a>!</p>
     
     <h2>Bootstrap Template, Files List</h2>
     <p>The following files are provided in the current template distribution:</p>
@@ -123,9 +122,9 @@ img {
     
     <h3>Files Removed</h3>
     <ol>
-        <li><span class="corefile">/includes/classes/order.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157a version of the file.)</span></li>
-        <li><span class="corefile">/includes/classes/site_map.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157a version of the file.)</span></li>
-        <li><span class="corefile">/includes/classes/ajax/zcAjaxPayment.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157a version of the file.)</span></li>
+        <li><span class="corefile">/includes/classes/order.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157b version of the file.)</span></li>
+        <li><span class="corefile">/includes/classes/site_map.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157b version of the file.)</span></li>
+        <li><span class="corefile">/includes/classes/ajax/zcAjaxPayment.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157b version of the file.)</span></li>
         <li>/includes/classes/zca/zca_breadcrumb.php</li>
         <li>/includes/classes/zca_photoswipe/autoload_default.php</li>
         <li>/includes/classes/zca_photoswipe/jquery_photoswipe.php</li>
@@ -155,7 +154,7 @@ img {
         <li>/includes/languages/english/bootstrap/shopping_cart.php</li>
         <li>/includes/languages/english/bootstrap/specials.php</li>
         <li>/includes/languages/english/extra_definitions/zca_photoswipe.php</li>
-        <li><span class="corefile">/includes/modules/order_total/ot_gv.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157a version of the file.)</li>
+        <li><span class="corefile">/includes/modules/order_total/ot_gv.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157b version of the file.)</li>
         <li>/includes/modules/bootstrap/additional_images.php</li>
         <li>/includes/modules/bootstrap/bootstrap_main_image.php</li>
         <li>/includes/modules/pages/address_book_process/jscript_addr_pulldowns_zca_bootstrap.php</li>
@@ -173,7 +172,7 @@ img {
         <li>/includes/modules/pages/product_reviews/jscript_zca_photoswipe.php</li>
         <li>/includes/modules/pages/product_reviews_info/jscript_zca_photoswipe.php</li>
         <li>/includes/modules/pages/product_reviews_write/jscript_zca_photoswipe.php</li>
-        <li><span class="corefile">/includes/modules/pages/specials/main_template_vars.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157a version of the file.)</li>
+        <li><span class="corefile">/includes/modules/pages/specials/main_template_vars.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157b version of the file.)</li>
         <li>/includes/templates/bootstrap/css/stylesheet_photoswipe.css</li>
         <li>/includes/templates/bootstrap/jscript/jscript_zca_bootstrap.php</li>
         <li>/includes/templates/bootstrap/sideboxes/tpl_banner_box.php</li>
@@ -222,13 +221,14 @@ img {
             <li>Navigate to <em>Tools :: Layout Boxes Controller</em> to enable and position the sideboxes for your site's use.</li>
         </ul></li>
     </ol>
+    <p>As a suggestion, keep the as-distributed <code>bootstrap</code> template's files unmodified so that you can easily revert to see if your custom changes have affected the template's output.  Once you have installed the template and customized its sidebox use, you can <a href="https://www.zen-cart.com/downloads.php?do=file&id=2087" target="_blank">clone the template</a> for use on your site.</p>
 
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
         <li>v3.0.0, 2020-11-04 (lat9/drbyte)<ul>
             <li>BUGFIX: Correct various PHP notices, deprecations and warnings.</li>
-            <li>CHANGE: Use zc157a version of <code>/includes/modules/order_total/ot_coupon.php</code> as the change-basis.</li>
+            <li>CHANGE: Use zc157b version of <code>/includes/modules/order_total/ot_coupon.php</code> as the change-basis.</li>
             <li>CHANGE: Remove <code>/includes/classes/ajax/zcAjaxPayment.php</code> from this distribution, no change needed.</li>
             <li>CHANGE: &quot;Rename&quot; the template's <code>jscript_zca_bootstrap.php</code> to use a <code>.js</code> extension, so it's cacheable.</li>
             <li>CHANGE: Use the zc157+ version of the <code>breadcrumb.php</code> class; no longer a core-file overwrite.</li>
