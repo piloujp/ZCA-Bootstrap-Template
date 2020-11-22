@@ -2,7 +2,7 @@
 /**
  * additional_images module
  * 
- * BOOTSTRAP v1.0.BETA
+ * BOOTSTRAP v3.0.0
  *
  * Prepares list of additional product images to be displayed in template
  *
@@ -92,10 +92,10 @@ if ($num_images) {
     // -----
     // This notifier lets any image-handler know the current image being processed, providing the following parameters:
     //
-        // $p1 ... (r/o) ... The current product's name
+    // $p1 ... (r/o) ... The current product's name
     // $p2 ... (r/w) ... The (possibly updated) filename (including path) of the current additional image.
     //
-        $zco_notifier->notify('NOTIFY_MODULES_ADDITIONAL_IMAGES_GET_LARGE', $products_name, $products_image_large);
+    $zco_notifier->notify('NOTIFY_MODULES_ADDITIONAL_IMAGES_GET_LARGE', $products_name, $products_image_large);
 
     $flag_has_large = file_exists($products_image_large);
     $products_image_large = ($flag_has_large ? $products_image_large : $products_image_directory . $file);

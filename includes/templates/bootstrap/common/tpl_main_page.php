@@ -96,7 +96,7 @@ $center_column_width = $center_column - $side_columns_total;
   if (SHOW_BANNERS_GROUP_SET1 != '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET1)) {
     if ($banner->RecordCount() > 0) {
 $find_banners = zen_build_banners_group(SHOW_BANNERS_GROUP_SET1);
-$show_banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET1);
+$banner_group = 1;
 ?>
 
 <div class="zca-banner bannerOne rounded">
@@ -165,7 +165,7 @@ if (!isset($flag_disable_left) || !$flag_disable_left) {
   if (SHOW_BANNERS_GROUP_SET3 != '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET3)) {
     if ($banner->RecordCount() > 0) {
 $find_banners = zen_build_banners_group(SHOW_BANNERS_GROUP_SET3);
-$show_banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET3);
+$banner_group = 3;
 ?>
 
 <div class="zca-banner bannerThree rounded">
@@ -198,7 +198,7 @@ echo zen_display_banner('static', $banner);
   if (SHOW_BANNERS_GROUP_SET4 != '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET4)) {
     if ($banner->RecordCount() > 0) {
 $find_banners = zen_build_banners_group(SHOW_BANNERS_GROUP_SET4);
-$show_banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET4);
+$banner_group = 4;
 ?>
 
 <div class="zca-banner bannerFour rounded">
@@ -272,7 +272,7 @@ Parse Time: <?php echo isset($parse_time) ? $parse_time : 'n/a'; ?> - Number of 
   if (SHOW_BANNERS_GROUP_SET6 != '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET6)) {
     if ($banner->RecordCount() > 0) {
 $find_banners = zen_build_banners_group(SHOW_BANNERS_GROUP_SET6);
-$show_banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET6);
+$banner_group = 6;
 ?>
 
 <div class="zca-banner bannerSix rounded">

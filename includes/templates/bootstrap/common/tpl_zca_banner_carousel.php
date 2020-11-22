@@ -1,73 +1,59 @@
- <?php
+<?php
 /**
- * 
- * ZCA Homepage Carousel
+ * ZCA Banners Carousel
  * Plugin Template
  * 
- * BOOTSTRAP PRO
+ * BOOTSTRAP v3.0.0
  *
- * @package templateSystem
- * @copyright Copyright 2003-2005 Zen Cart Development Team
- * @copyright Portions Copyright 2003 osCommerce
- * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  */
 
+$content = '';
+$banner_cnt = 0;
 
-    $content = "";
-// select banners_group to be used
-  $new_banner_search = $find_banners;
-
+$new_banner_search = $find_banners;
+$my_banner_filter='';
 // secure pages
-  switch ($request_type) {
-    case ('SSL'):
-      $my_banner_filter=" and banners_on_ssl= " . "1 ";
-      break;
-    case ('NONSSL'):
-      $my_banner_filter='';
-      break;
-  }
-
-  $sql = "select banners_id from " . TABLE_BANNERS . " where status = 1 " . $new_banner_search . $my_banner_filter . " order by banners_sort_order";
-  $banners = $db->Execute($sql);
+if ($request_type === 'SSL') {
+    $my_banner_filter=" AND banners_on_ssl=1";
+}
+$sql = "select banners_id from " . TABLE_BANNERS . " where status = 1 " . $new_banner_search . $my_banner_filter . " order by banners_sort_order";
+$banners = $db->Execute($sql);
 
 // if no active banner in the specified banner group then the box will not show
-  $banner_cnt = 0;
+if ($banners->EOF) {
+  return;
+}
+?>
 
-    $content .= '<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">';  
-    $content .= '<ol class="carousel-indicators">';  
-    $content .= '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>';  
-    $content .= '<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>';  
-    $content .= '<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>';  
-    $content .= '</ol>';  
-    $content .= '<div class="carousel-inner rounded ">';  
-  
-  while (!$banners->EOF) {
-    $banner_cnt++;
-    $banner = $show_banner;
+<div id="carouselGroup<?php echo (int)$banner_group; ?>" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+       <li data-target="#carouselGroup<?php echo (int)$banner_group; ?>" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselGroup<?php echo (int)$banner_group; ?>" data-slide-to="1"></li>
+        <li data-target="#carouselGroup<?php echo (int)$banner_group; ?>" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner rounded">
+<?php 
+    foreach ($banners as $row) {
+        $banner_cnt++;
     
-    if ($banner_cnt == '1') {
-    $addBannerClass = 'active';    
-    } else {
-    $addBannerClass = '';   
-    }
- 
-    $content .= '<div class="carousel-item '.$addBannerClass.'">';  
-    $content .= zen_display_banner('static', $banners->fields['banners_id']);
-    $content .= '</div>';  
+        $addBannerClass = '';   
+        if ($banner_cnt === 1) {
+            $addBannerClass = 'active';    
+        }
+?>
+        <div class="carousel-item <?php echo $addBannerClass; ?>">
+            <?php echo zen_display_banner('static', $row['banners_id']); ?>
+        </div>
   
-    $banners->MoveNext();
-  }
+<?php } ?>
 
-    $content .= '</div>';
-    $content .= '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">';
-    $content .= '<span class="carousel-control-prev-icon" aria-hidden="true"></span>';
-    $content .= '<span class="sr-only">Previous</span>';
-    $content .= '</a>';
-    $content .= '<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">';
-    $content .= '<span class="carousel-control-next-icon" aria-hidden="true"></span>';
-    $content .= '<span class="sr-only">Next</span>';
-    $content .= '</a>';
-    $content .= '</div>';
-
-echo $content;
-?> 
+    </div>
+    <a class="carousel-control-prev" href="#carouselGroup<?php echo (int)$banner_group; ?>" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselGroup<?php echo (int)$banner_group; ?>" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>

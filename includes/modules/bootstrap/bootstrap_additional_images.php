@@ -127,7 +127,7 @@ if ($num_images > 0) {
         $large_link = zen_href_link(FILENAME_POPUP_IMAGE_ADDITIONAL, 'pID=' . $_GET['products_id'] . '&pic=' . $i . '&products_image_large_additional=' . $products_image_large);
 
         $slideNumber = $i + 1; 
-        $thumb = '<a id="carousel-selector-' . $slideNumber . '" data-slide-to="' . $slideNumber . '" data-target="#myCarousel">';
+        $thumb = '<a id="carousel-selector-' . $slideNumber . '" data-slide-to="' . $slideNumber . '" data-target="#productImagesCarousel">';
         $thumb .= $thumb_regular;    
         $thumb .= '</a>';
 
