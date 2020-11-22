@@ -16,7 +16,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="myLargeModalLabel"><?php echo $products_name; ?></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="<?php echo TEXT_MODAL_CLOSE; ?>">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -24,7 +24,7 @@
   <?php echo zen_image($products_image_large, $products_name); ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo TEXT_MODAL_CLOSE; ?></button>
       </div>
     </div>
   </div>
