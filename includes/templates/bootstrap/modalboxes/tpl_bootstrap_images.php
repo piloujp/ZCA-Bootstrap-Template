@@ -24,7 +24,7 @@
                     <!-- main slider carousel -->
                     <div class="row">
                         <div class="col-lg-8 offset-lg-2" id="slider">
-                            <div id="myCarousel" class="carousel slide">
+                            <div id="productImagesCarousel" class="carousel slide">
                                 <!-- main slider carousel items -->
                                 <div class="carousel-inner text-center">
 <?php
@@ -53,15 +53,15 @@ if ($flag_show_product_info_additional_images != 0 && $num_images > 0) {
 }
 ?>
                                     <div id="carousel-btn-toolbar" class="btn-toolbar justify-content-between p-3" role="toolbar">
-                                        <a class="carousel-control-prev left pt-3" href="#myCarousel" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-                                        <a class="carousel-control-next right pt-3" href="#myCarousel" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+                                        <a class="carousel-control-prev left pt-3" href="#productImagesCarousel" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+                                        <a class="carousel-control-next right pt-3" href="#productImagesCarousel" data-slide="next"><i class="fa fa-chevron-right"></i></a>
                                     </div>
                                 </div>
                                 <!-- main slider carousel nav controls -->
 
                                 <ul class="carousel-indicators list-inline mx-auto justify-content-center py-3">
                                     <li class="list-inline-item active">
-                                        <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#myCarousel">
+                                        <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#productImagesCarousel">
 <?php
 require DIR_WS_MODULES . zen_get_module_directory('main_product_image.php');
 ?>

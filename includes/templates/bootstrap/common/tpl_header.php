@@ -4,13 +4,6 @@
  * 
  * BOOTSTRAP v3.0.0
  *
- * this file can be copied to /templates/your_template_dir/pagename<br />
- * example: to override the privacy page<br />
- * make a directory /templates/my_template/privacy<br />
- * copy /templates/templates_defaults/common/tpl_footer.php to /templates/my_template/privacy/tpl_header.php<br />
- * to override the global settings and turn off the footer un-comment the following line:<br />
- * <br />
- * $flag_disable_header = true;<br />
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -104,7 +97,7 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
             echo '<div class="col-sm-12">';
             }
             ?>
-        <?php echo '<a href="' . HTTP_SERVER . DIR_WS_CATALOG . '">' . zen_image($template->get_template_dir(HEADER_LOGO_IMAGE, DIR_WS_TEMPLATE, $current_page_base,'images'). '/' . HEADER_LOGO_IMAGE, HEADER_ALT_TEXT, HEADER_LOGO_WIDTH, HEADER_LOGO_HEIGHT) . '</a><br />'; ?>
+        <?php echo '<a href="' . HTTP_SERVER . DIR_WS_CATALOG . '">' . zen_image($template->get_template_dir(HEADER_LOGO_IMAGE, DIR_WS_TEMPLATE, $current_page_base,'images'). '/' . HEADER_LOGO_IMAGE, HEADER_ALT_TEXT, HEADER_LOGO_WIDTH, HEADER_LOGO_HEIGHT) . '</a><br>'; ?>
     </div>
 <?php if (HEADER_SALES_TEXT != '' || (SHOW_BANNERS_GROUP_SET2 != '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET2))) { ?>    
     <div id="taglineWrapper" class="col-sm-12 text-center">
@@ -119,10 +112,10 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
   if (SHOW_BANNERS_GROUP_SET2 != '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET2)) {
     if ($banner->RecordCount() > 0) {
 $find_banners = zen_build_banners_group(SHOW_BANNERS_GROUP_SET2);
-$show_banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET2);
+$banner_group = 2;
 ?>
 
-<div class="bannerTwo rounded">
+<div class="zca-banner bannerTwo rounded">
 <?php 
 if (ZCA_ACTIVATE_BANNER_TWO_CAROUSEL == 'true') {
 require($template->get_template_dir('tpl_zca_banner_carousel.php',DIR_WS_TEMPLATE, $current_page_base,'common'). '/tpl_zca_banner_carousel.php'); 
@@ -149,7 +142,7 @@ echo zen_display_banner('static', $banner);
 <?php require($template->get_template_dir('tpl_modules_categories_tabs.php',DIR_WS_TEMPLATE, $current_page_base,'templates'). '/tpl_modules_categories_tabs.php'); ?>
 <!--eof-optional categories tabs navigation display-->
 
-<br />
+<br>
 
 <!--bof-header ezpage links-->
 <?php if (EZPAGES_STATUS_HEADER == '1' or (EZPAGES_STATUS_HEADER == '2' && zen_is_whitelisted_admin_ip())) { ?>
