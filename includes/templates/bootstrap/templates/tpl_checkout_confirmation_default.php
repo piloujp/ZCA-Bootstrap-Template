@@ -69,6 +69,7 @@
 <div id="paymentMethod-content" class="content"><?php echo $confirmation['title']; ?></div>
 <?php
     }
+    if (!empty($confirmation['fields'])) {
 ?>
 <div id="paymentMethod-content-one" class="content">
 <?php
@@ -77,10 +78,11 @@
 <div><?php echo $confirmation['fields'][$i]['title']; ?></div>
 <div><?php echo $confirmation['fields'][$i]['field']; ?></div>
 <?php
-     }
+      }
 ?>
 </div>
 <?php
+    }
   }
 ?>
 
