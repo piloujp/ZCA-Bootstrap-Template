@@ -37,10 +37,10 @@ if ($process == false || $error == true) {
 <?php
     if ($addresses_count < MAX_ADDRESS_BOOK_ENTRIES) {
       echo zen_draw_form('checkout_address', zen_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL'), 'post', 'class="group"'); 
-/**
- * require template to collect address details
- */
-require $template->get_template_dir('tpl_modules_checkout_new_address.php', DIR_WS_TEMPLATE, $current_page_base, 'templates') . '/tpl_modules_checkout_new_address.php';
+        /**
+         * require template to collect address details
+         */
+        require $template->get_template_dir('tpl_modules_checkout_new_address.php', DIR_WS_TEMPLATE, $current_page_base, 'templates') . '/tpl_modules_checkout_new_address.php';
 ?>
         <div id="addressBookEntries-btn-toolbar" class="btn-toolbar justify-content-between" role="toolbar">
             <?php echo TITLE_CONTINUE_CHECKOUT_PROCEDURE . '<br />' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
@@ -49,7 +49,6 @@ require $template->get_template_dir('tpl_modules_checkout_new_address.php', DIR_
     <?php echo '</form>'; ?>
 <?php
     }
-    if ($addresses_count > 1) {
 ?>
     <?php echo zen_draw_form('checkout_address_book', zen_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL'), 'post', 'class="group"'); ?>
 
@@ -69,7 +68,6 @@ require $template->get_template_dir('tpl_modules_checkout_new_address.php', DIR_
 <!--eof choose from your address book entries card-->
     <?php echo '</form>'; ?>
 <?php
-    }
 }
 if ($process == true) {
 ?>

@@ -21,17 +21,19 @@ while (!$addresses->EOF) {
         $primary_border = ' border-primary';
         $primary_background = ' bg-primary text-white';
         $primary_address = BOOTSTRAP_CURRENT_ADDRESS;
+        $selected = true;
     } else {
         $primary_border = '';
         $primary_background = '';
         $primary_address = '';
+        $selected = false;
     }
 ?>
 <!--bof address book single entries card-->
 <div id="addressBookSingleEntryId<?php echo $addresses->fields['address_book_id']; ?>-card" class="card mb-3 <?php echo $primary_border ; ?>">
     <h4 id="addressBookSingleEntryId<?php echo $addresses->fields['address_book_id']; ?>-card-header" class="card-header <?php echo $primary_background ; ?>">
         <div class="custom-control custom-radio custom-control-inline">
-            <?php echo zen_draw_radio_field('address', $addresses->fields['address_book_id'], '', 'id="name-' . $addresses->fields['address_book_id'] . '"'); ?>
+            <?php echo zen_draw_radio_field('address', $addresses->fields['address_book_id'], $selected, 'id="name-' . $addresses->fields['address_book_id'] . '"'); ?>
 
             <label for="name-<?php echo $addresses->fields['address_book_id']; ?>" class="custom-control-label"><?php echo zen_output_string_protected($addresses->fields['firstname'] . ' ' . $addresses->fields['lastname']); ?><?php echo $primary_address ; ?></label>
         </div>

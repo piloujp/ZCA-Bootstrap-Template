@@ -39,7 +39,7 @@ if ($process == false || $error == true) {
 <!--eof shipping address card-->
 <?php
     if ($addresses_count < MAX_ADDRESS_BOOK_ENTRIES) {
-      echo zen_draw_form('checkout_address', zen_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'), 'post', 'class="group"');
+        echo zen_draw_form('checkout_address', zen_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'), 'post', 'class="group"');
         /**
          * require template to display new address form
          */
@@ -52,7 +52,6 @@ if ($process == false || $error == true) {
     <?php echo '</form>'; ?>
 <?php
     }
-    if ($addresses_count > 1) {
 ?>
     <?php echo zen_draw_form('checkout_address_book', zen_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'), 'post', 'class="group"'); ?>
 <!--bof choose from your address book entries card-->
@@ -71,7 +70,6 @@ if ($process == false || $error == true) {
 <!--eof choose from your address book entries card-->
     <?php echo '</form>'; ?>
 <?php
-    }
 }
 
 if ($process == true) {
