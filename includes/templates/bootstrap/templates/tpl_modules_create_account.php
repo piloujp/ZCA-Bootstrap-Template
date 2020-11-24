@@ -10,7 +10,7 @@
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: rbarbour zcadditions.com 2019 Jul 15 Modified in v1.5.7 $
+ * @version $Id: DrByte 2020 Nov 17 Modified in v1.5.7b $
  */
 ?>
 
@@ -154,7 +154,7 @@
 ?>
 <div class="p-2"></div>
 <label class="inputLabel" for="fax"><?php echo ENTRY_FAX_NUMBER; ?></label>
-<?php echo zen_draw_input_field('fax', '', 'id="fax" placeholder="' . ENTRY_FAX_NUMBER_TEXT . '"', 'tel'); ?>
+<?php echo zen_draw_input_field('fax', '', zen_set_field_length(TABLE_CUSTOMERS, 'customers_fax', '32') . ' id="fax" placeholder="' . ENTRY_FAX_NUMBER_TEXT . '"', 'tel'); ?>
 <?php
   }
 ?>
@@ -171,7 +171,7 @@
 <div id="verifyAge-card-body" class="card-body p-3">
 
 <label class="inputLabel" for="dob"><?php echo ENTRY_DATE_OF_BIRTH; ?></label>
-<?php echo zen_draw_input_field('dob','', 'id="dob" placeholder="' . ENTRY_DATE_OF_BIRTH_TEXT . '"' . (ACCOUNT_DOB == 'true' && (int)ENTRY_DOB_MIN_LENGTH != 0 ? ' required' : '')); ?>
+<?php echo zen_draw_input_field('dob','', zen_set_field_length(TABLE_CUSTOMERS, 'customers_dob', '20') . ' id="dob" placeholder="' . ENTRY_DATE_OF_BIRTH_TEXT . '"' . (ACCOUNT_DOB == 'true' && (int)ENTRY_DOB_MIN_LENGTH != 0 ? ' required' : '')); ?>
 
 </div>
 </div>
@@ -194,7 +194,7 @@
 ?>
 <div class="p-2"></div>
 <label class="inputLabel" for="nickname"><?php echo ENTRY_NICK; ?></label>
-<?php echo zen_draw_input_field('nick','','id="nickname" placeholder="' . ENTRY_NICK_TEXT . '"'); ?>
+<?php echo zen_draw_input_field('nick','', zen_set_field_length(TABLE_CUSTOMERS, 'customers_nick', '32') . ' id="nickname" placeholder="' . ENTRY_NICK_TEXT . '"'); ?>
 <div class="p-2"></div>
 <?php
   }
