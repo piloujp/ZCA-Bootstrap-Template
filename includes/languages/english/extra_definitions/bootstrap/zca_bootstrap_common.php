@@ -27,6 +27,7 @@ define('TEXT_SELECT_OTHER_SHIPPING_DESTINATION', 'Please select the preferred sh
 define('NEW_ADDRESS_TITLE', 'Enter new address');
 define('TEXT_PRIMARY_ADDRESS', ' (Primary Address)');
 define('PRIMARY_ADDRESS', ' (Primary Address)');
+define('TABLE_HEADING_ADDRESS_BOOK_ENTRIES', 'Choose From Your Address Book Entries');
 
 // -----
 // Used on the product*_info pages.

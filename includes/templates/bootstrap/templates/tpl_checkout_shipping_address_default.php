@@ -27,7 +27,7 @@ if ($process == false || $error == true) {
         <div id="shippingAddress-card-body" class="card-body p-3">
             <div class="row">
                 <div id="shippingAddress-shipToAddress" class="shipToAddress col-sm-5">
-                    <address><?php echo zen_address_label($_SESSION['customer_id'], $_SESSION['sendto'], true, ' ', '<br />'); ?></address>
+                    <address><?php echo zen_address_label($_SESSION['customer_id'], $_SESSION['sendto'], true, ' ', '<br>'); ?></address>
                 </div>
                 <div class="col-sm-7">
                     <div id="shippingAddress-content" class="content"><?php if ($addresses_count < MAX_ADDRESS_BOOK_ENTRIES) echo TEXT_CREATE_NEW_SHIPPING_ADDRESS; ?></div>
@@ -36,39 +36,50 @@ if ($process == false || $error == true) {
 
         </div>
     </div>
+    
+    <div class="row">
 <!--eof shipping address card-->
 <?php
     if ($addresses_count < MAX_ADDRESS_BOOK_ENTRIES) {
-        echo zen_draw_form('checkout_address', zen_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'), 'post', 'class="group"');
-        /**
-         * require template to display new address form
-         */
-        require $template->get_template_dir('tpl_modules_checkout_new_address.php', DIR_WS_TEMPLATE, $current_page_base, 'templates'). '/tpl_modules_checkout_new_address.php';
 ?>
-        <div id="addressBookEntries-btn-toolbar" class="btn-toolbar justify-content-between" role="toolbar">
-            <?php echo TITLE_CONTINUE_CHECKOUT_PROCEDURE . '<br />' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
-            <?php echo zen_draw_hidden_field('action', 'submit') . zen_image_submit(BUTTON_IMAGE_CONTINUE, BUTTON_CONTINUE_ALT); ?>
+        <div class="col-lg-6">
+            <div id="checkoutNewAddress-card" class="card mb-3">
+                <?php echo zen_draw_form('checkout_address', zen_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'), 'post', 'class="group"'); ?>
+                <h4 id="checkoutNewAddress-card-header" class="card-header"><?php echo TITLE_PLEASE_SELECT; ?></h4>
+                <div id="checkoutNewAddress-card-body" class="card-body p-3">
+<?php 
+        require $template->get_template_dir('tpl_modules_common_address_format.php', DIR_WS_TEMPLATE, $current_page_base, 'templates') . '/tpl_modules_common_address_format.php'; 
+?>
+                    <div id="addressBookEntries-btn-toolbar" class="btn-toolbar justify-content-between mt-3" role="toolbar">
+                        <?php echo TITLE_CONTINUE_CHECKOUT_PROCEDURE . '<br>' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
+                        <?php echo zen_draw_hidden_field('action', 'submit') . zen_image_submit(BUTTON_IMAGE_CONTINUE, BUTTON_CONTINUE_ALT); ?>
+                    </div>
+                </div>
+                <?php echo '</form>'; ?>
+            </div>
         </div>
-    <?php echo '</form>'; ?>
 <?php
     }
 ?>
-    <?php echo zen_draw_form('checkout_address_book', zen_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'), 'post', 'class="group"'); ?>
 <!--bof choose from your address book entries card-->
-        <div id="addressBookEntries-card" class="card mb-3">
-            <h4 id="addressBookEntries-card-header" class="card-header"><?php echo TABLE_HEADING_ADDRESS_BOOK_ENTRIES; ?></h4>
-            <div id="addressBookEntries-card-body" class="card-body p-3">
+        <div class="col-lg-6">
+            <div id="addressBookEntries-card" class="card mb-3">
+                <?php echo zen_draw_form('checkout_address_book', zen_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'), 'post', 'class="group"'); ?>
+                <h4 id="addressBookEntries-card-header" class="card-header"><?php echo TABLE_HEADING_ADDRESS_BOOK_ENTRIES; ?></h4>
+                <div id="addressBookEntries-card-body" class="card-body p-3">
 <?php
-        require $template->get_template_dir('tpl_modules_checkout_address_book.php', DIR_WS_TEMPLATE, $current_page_base, 'templates') . '/tpl_modules_checkout_address_book.php';
+    require $template->get_template_dir('tpl_modules_checkout_address_book.php', DIR_WS_TEMPLATE, $current_page_base, 'templates') . '/tpl_modules_checkout_address_book.php';
 ?>
-                <div id="addressBookEntries-btn-toolbar" class="btn-toolbar justify-content-between" role="toolbar">
-                    <?php echo TITLE_CONTINUE_CHECKOUT_PROCEDURE . '<br />' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
-                    <?php echo zen_draw_hidden_field('action', 'submit') . zen_image_submit(BUTTON_IMAGE_CONTINUE, BUTTON_CONTINUE_ALT); ?>
+                    <div id="addressBookEntries-btn-toolbar" class="btn-toolbar justify-content-between" role="toolbar">
+                        <?php echo TITLE_CONTINUE_CHECKOUT_PROCEDURE . '<br />' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
+                        <?php echo zen_draw_hidden_field('action', 'submit') . zen_image_submit(BUTTON_IMAGE_CONTINUE, BUTTON_CONTINUE_ALT); ?>
+                    </div>
                 </div>
+<!--eof choose from your address book entries card-->
+                <?php echo '</form>'; ?>
             </div>
         </div>
-<!--eof choose from your address book entries card-->
-    <?php echo '</form>'; ?>
+    </div>
 <?php
 }
 
