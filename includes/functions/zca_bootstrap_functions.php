@@ -60,3 +60,25 @@ function zca_get_language_dir($language_filename)
     $language_dir = (file_exists($language_page_directory . $template_dir . '/' . $language_filename)) ? "$template_dir/" : '';
     return $language_dir;
 }
+
+// -----
+// Common function to get font-awesome version of the products' rating stars.
+//
+// $rating ... An integer value between 1 and 5.
+// $size ..... A character string to identify the relative 'size' of the generated stars, one of the font-awesome size suffixes:
+//             'xs', 'sm', 'lg', '2x', '3x', '5x', '7x' or '10x'. 
+//
+function zca_get_rating_stars($rating, $size = '')
+{
+    $rating = (int)$rating;
+    $rating = ($rating < 1) ? 1 : $rating;
+    $rating = ($rating > 5) ? 5 : $rating;
+    
+    $rating_stars = '';
+    $size = ($size != '') ? " fa-$size" : '';
+    for ($i = 1; $i <= 5; $i++) {
+        $fa_class = ($i <= $rating) ? 'fas' : 'far';
+        $rating_stars .= '<i class="' . (($i <= $rating) ? 'fas' : 'far') . ' fa-star' . $size . '"></i>';
+    }
+    return $rating_stars;
+}

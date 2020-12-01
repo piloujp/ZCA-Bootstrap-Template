@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v1.0.BETA
+ * BOOTSTRAP v3.0.1
  *
  * @package templateSystem
  * @copyright Copyright 2003-2005 Zen Cart Development Team
@@ -93,7 +93,7 @@
   </div>
   <div id="productsReview-card-body" class="card-body">
 <div id="productsReview-rating" class="rating text-center"> 
-<h3 class="rating"><?php echo zen_image(DIR_WS_TEMPLATE_IMAGES . 'stars_' . $review_info->fields['reviews_rating'] . '.gif', sprintf(TEXT_OF_5_STARS, $review_info->fields['reviews_rating'])), sprintf(TEXT_OF_5_STARS, $review_info->fields['reviews_rating']); ?></h3>     
+<h3 class="rating"><?php echo zca_get_rating_stars($review_info->fields['reviews_rating'], 'xs'); ?></h3>
   </div>      
     <blockquote class="blockquote mb-0">
 <div id="productReviewsInfoDefault-content" class="content"><?php echo zen_break_string(nl2br(zen_output_string_protected(stripslashes($review_info->fields['reviews_text']))), 60, '-<br />'); ?></div>

@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.0.1
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -58,7 +58,7 @@
 <hr />
    
 <div id="review<?php echo $reviews->fields['reviews_id']; ?>-rating" class="rating text-center"> 
-<h3 class="rating"><?php echo zen_image(DIR_WS_TEMPLATE_IMAGES . 'stars_' . $reviews->fields['reviews_rating'] . '.gif', sprintf(TEXT_OF_5_STARS, $reviews->fields['reviews_rating'])), sprintf(TEXT_OF_5_STARS, $reviews->fields['reviews_rating']); ?></h3>     
+<h3 class="rating"><?php echo zca_get_rating_stars($reviews->fields['reviews_rating'], 'xs'); ?></h3>
   </div>      
     <blockquote class="blockquote mb-0">
 <div id="review<?php echo $reviews->fields['reviews_id']; ?>-content" class="content"><?php echo zen_trunc_string(nl2br(zen_output_string_protected(stripslashes($reviews->fields['reviews_text']))), MAX_PREVIEW); ?></div>

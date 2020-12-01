@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.0.1
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -87,23 +87,23 @@ if (!empty($products_model)) {
 
 <div class="custom-control custom-radio custom-control-inline">
 <?php echo zen_draw_radio_field('rating', '1', '', 'id="rating-1" class="custom-control-input"'); ?>
-<?php echo '<label class="custom-control-label" for="rating-1">' . zen_image($template->get_template_dir(OTHER_IMAGE_REVIEWS_RATING_STARS_ONE, DIR_WS_TEMPLATE, $current_page_base,'images'). '/' . OTHER_IMAGE_REVIEWS_RATING_STARS_ONE, OTHER_REVIEWS_RATING_STARS_ONE_ALT) . '</label> '; ?>
+<?php echo '<label class="custom-control-label rating" for="rating-1">' . zca_get_rating_stars(1, 'xs') . '</label> '; ?>
 </div>
 <div class="custom-control custom-radio custom-control-inline">
 <?php echo zen_draw_radio_field('rating', '2', '', 'id="rating-2" class="custom-control-input"'); ?>
-<?php echo '<label class="custom-control-label" for="rating-2">' . zen_image($template->get_template_dir(OTHER_IMAGE_REVIEWS_RATING_STARS_TWO, DIR_WS_TEMPLATE, $current_page_base,'images'). '/' . OTHER_IMAGE_REVIEWS_RATING_STARS_TWO, OTHER_REVIEWS_RATING_STARS_TWO_ALT) . '</label>'; ?>
+<?php echo '<label class="custom-control-label rating" for="rating-2">' . zca_get_rating_stars(2, 'xs') . '</label>'; ?>
 </div>
 <div class="custom-control custom-radio custom-control-inline">
 <?php echo zen_draw_radio_field('rating', '3', '', 'id="rating-3" class="custom-control-input"'); ?>
-<?php echo '<label class="custom-control-label" for="rating-3">' . zen_image($template->get_template_dir(OTHER_IMAGE_REVIEWS_RATING_STARS_THREE, DIR_WS_TEMPLATE, $current_page_base,'images'). '/' . OTHER_IMAGE_REVIEWS_RATING_STARS_THREE, OTHER_REVIEWS_RATING_STARS_THREE_ALT) . '</label>'; ?>
+<?php echo '<label class="custom-control-label rating" for="rating-3">' . zca_get_rating_stars(3, 'xs') . '</label>'; ?>
 </div>
 <div class="custom-control custom-radio custom-control-inline">
 <?php echo zen_draw_radio_field('rating', '4', '', 'id="rating-4" class="custom-control-input"'); ?>
-<?php echo '<label class="custom-control-label" for="rating-4">' . zen_image($template->get_template_dir(OTHER_IMAGE_REVIEWS_RATING_STARS_FOUR, DIR_WS_TEMPLATE, $current_page_base,'images'). '/' . OTHER_IMAGE_REVIEWS_RATING_STARS_FOUR, OTHER_REVIEWS_RATING_STARS_FOUR_ALT) . '</label>'; ?>
+<?php echo '<label class="custom-control-label rating" for="rating-4">' . zca_get_rating_stars(4, 'xs') . '</label>'; ?>
 </div>
 <div class="custom-control custom-radio custom-control-inline">
 <?php echo zen_draw_radio_field('rating', '5', '', 'id="rating-5" class="custom-control-input"'); ?>
-<?php echo '<label class="custom-control-label" for="rating-5">' . zen_image($template->get_template_dir(OTHER_IMAGE_REVIEWS_RATING_STARS_FIVE, DIR_WS_TEMPLATE, $current_page_base,'images'). '/' . OTHER_IMAGE_REVIEWS_RATING_STARS_FIVE, OTHER_REVIEWS_RATING_STARS_FIVE_ALT) . '</label>'; ?>
+<?php echo '<label class="custom-control-label rating" for="rating-5">' . zca_get_rating_stars(5, 'xs') . '</label>'; ?>
 </div>
 
 <label id="textArea-label" for="review-text"><?php echo SUB_TITLE_REVIEW; ?></label>
