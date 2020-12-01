@@ -144,6 +144,9 @@ class ZcaBootstrapObserver extends base
                 
             case 'NOTIFY_ZEN_CSS_BUTTON_SUBMIT':
                 $this->setVariables($eventID, $p1);
+                if (trim($this->button_name) == trim($this->sec_class)) {
+                    $this->sec_class = '';
+                }
                 
                 $css_button = '<button type="submit" class="btn '. $this->button_name . $this->sec_class . '"' . $this->parameters . '>' . $this->text . '</button>';
                 $p2 = $css_button;
@@ -151,6 +154,9 @@ class ZcaBootstrapObserver extends base
                 
             case 'NOTIFY_ZEN_CSS_BUTTON_BUTTON':
                 $this->setVariables($eventID, $p1);
+                if (trim($this->button_name) == trim($this->sec_class)) {
+                    $this->sec_class = '';
+                }
                 
                 $css_button = '<button type="button" class="btn '. $this->button_name . $this->sec_class . '"' . $this->parameters . '>' . $this->text . '</button>';
                 $p2 = $css_button;
