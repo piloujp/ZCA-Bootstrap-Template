@@ -2,7 +2,7 @@
 /**
  * @author ZCAdditions.com, ZCA Bootstrap Template
  *
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.0.1
  *
 */
  
@@ -64,14 +64,14 @@ function zca_get_language_dir($language_filename)
 // -----
 // Common function to get font-awesome version of the products' rating stars.
 //
-// $rating ... An integer value between 1 and 5.
+// $rating ... An integer value between 0 and 5.
 // $size ..... A character string to identify the relative 'size' of the generated stars, one of the font-awesome size suffixes:
-//             'xs', 'sm', 'lg', '2x', '3x', '5x', '7x' or '10x'. 
+//             'xs', 'sm', 'lg', '2x', '3x', '5x', '7x' or '10x'.  Note that this value is unchecked!
 //
 function zca_get_rating_stars($rating, $size = '')
 {
     $rating = (int)$rating;
-    $rating = ($rating < 1) ? 1 : $rating;
+    $rating = ($rating < 0) ? 0 : $rating;
     $rating = ($rating > 5) ? 5 : $rating;
     
     $rating_stars = '';
