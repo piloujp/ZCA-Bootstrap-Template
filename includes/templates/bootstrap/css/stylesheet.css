@@ -30,7 +30,7 @@ img{max-width:100%;height:auto;border:0;}
 
 /* set height of scrollable area in mobile menu */
 div#navbarSupportedContent {
-    max-height:500px;
+    max-height:90vh;
     overflow-y:auto;
 }
 
