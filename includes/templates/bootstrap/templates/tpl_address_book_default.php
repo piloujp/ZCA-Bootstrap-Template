@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v1.0.BETA
+ * BOOTSTRAP 3.0.1
  *
  * Loaded automatically by index.php?main_page=adress_book.<br />
  * Allows customer to manage entries in their address book
@@ -26,11 +26,11 @@
 <div id="primaryAddress-card-body" class="card-body p-3">
     
 <div class="row">
-    <div id="primaryAddress-content" class="content col-7">
+    <div id="primaryAddress-content" class="content col-5 col-sm-7">
 <?php echo PRIMARY_ADDRESS_DESCRIPTION; ?>
     </div>
 
-    <div id="primaryAddress-defaultAddress" class="defaultAddress col-5">
+    <div id="primaryAddress-defaultAddress" class="defaultAddress col-7 col-sm-5">
 <address class="bg-success p-3 text-white"><?php echo zen_address_label($_SESSION['customer_id'], $_SESSION['customer_default_address_id'], true, ' ', '<br />'); ?></address>
     </div>
 </div>
