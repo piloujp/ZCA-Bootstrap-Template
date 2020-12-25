@@ -129,6 +129,7 @@ nav.navbar .navbar-toggler:hover {
 	}
 #ezpagesBarFooter a.nav-link:hover  {
 	color: <?php echo ZCA_FOOTER_EZPAGE_LINK_COLOR_HOVER; ?>;
+    background-color: <?php echo ZCA_BUTTON_COLOR; ?>;
 	}
 
 
@@ -241,4 +242,10 @@ a.page-link:hover {
 .productFreePrice {
 	color: <?php echo ZCA_BODY_PRODUCTS_FREE_COLOR; ?>;
 	}
+	
+
+.legalCopyright, .legalCopyright a {color: <?php echo ZCA_FOOTER_EZPAGE_LINK_COLOR; ?>; text-decoration: none}
+
+
+
 </style>
