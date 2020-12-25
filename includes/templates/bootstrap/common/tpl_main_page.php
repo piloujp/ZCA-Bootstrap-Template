@@ -150,7 +150,7 @@ if (!isset($flag_disable_left) || !$flag_disable_left) {
 <?php
 }
 ?>
-    <div class="col-sm-12 col-lg-<?php echo $center_column_width; ?>">
+    <div class="col-12 col-lg-<?php echo $center_column_width; ?>">
 <!-- bof  breadcrumb -->
 <?php if (!$breadcrumb->isEmpty() && (DEFINE_BREADCRUMB_STATUS == '1' || (DEFINE_BREADCRUMB_STATUS == '2' && !$this_is_home_page))) { ?>
 <div id="navBreadCrumb">
