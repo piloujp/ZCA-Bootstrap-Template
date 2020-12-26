@@ -7,7 +7,7 @@
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: DrByte 2020 Dec 26  for v1.5.7 $
+ * @version $Id: DrByte 2020 Dec 27  for v1.5.7 $
  */
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
@@ -130,13 +130,15 @@ if ($num_products_count > 0) {
             switch ($column_list[$col]) {
                 case 'PRODUCT_LIST_MODEL':
                     $lc_align = 'center';
-                    $lc_text = $record['products_model'];
+                    $lc_text = '';
+                    //if ($product_listing_layout_style == 'columns') $lc_text .= '<label>' . TABLE_HEADING_MODEL . '</label>';
+                    $lc_text .= $record['products_model'];
                     break;
                 case 'PRODUCT_LIST_NAME':
-                    $lc_align = 'center';
-                    $lc_text = '<h3 class="itemTitle">
+                    if ($product_listing_layout_style == 'columns') $lc_align = 'center';
+                    $lc_text = '<h5 class="itemTitle">
                         <a href="' . zen_href_link(zen_get_info_page($record['products_id']), 'cPath=' . zen_get_generated_category_path_rev($linkCpath) . '&products_id=' . $record['products_id']) . '">' . $record['products_name'] . '</a>
-                        </h3>';
+                        </h5>';
                         if ((int)PRODUCT_LIST_DESCRIPTION > 0) {
                             $lc_text .= '
                             <div class="listingDescription">' . zen_trunc_string(zen_clean_html(stripslashes(zen_get_products_description($record['products_id'], $_SESSION['languages_id']))), PRODUCT_LIST_DESCRIPTION) . '</div>';
@@ -144,12 +146,16 @@ if ($num_products_count > 0) {
                     break;
                 case 'PRODUCT_LIST_MANUFACTURER':
                     $lc_align = 'center';
-                    $lc_text = '<a href="' . zen_href_link(FILENAME_DEFAULT, 'manufacturers_id=' . $record['manufacturers_id']) . '">' . $record['manufacturers_name'] . '</a>';
+                    $lc_text = '';
+                    //if ($product_listing_layout_style == 'columns') $lc_text .= '<label>' . TABLE_HEADING_MANUFACTURER . '</label>';
+                    $lc_text .= '<a href="' . zen_href_link(FILENAME_DEFAULT, 'manufacturers_id=' . $record['manufacturers_id']) . '">' . $record['manufacturers_name'] . '</a>';
                     break;
                 case 'PRODUCT_LIST_PRICE':
                     $lc_price = zen_get_products_display_price($record['products_id']) . '<br>';
                     $lc_align = 'center';
-                    $lc_text =  $lc_price;
+                    $lc_text = '';
+                    // if ($product_listing_layout_style == 'columns') $lc_text .= '<label>' . TABLE_HEADING_PRICE . '</label>';
+                    $lc_text .=  $lc_price;
 
                     // more info in place of buy now
                     $lc_button = '';
@@ -167,8 +173,9 @@ if ($num_products_count > 0) {
                                 $record['product_is_call'] == 0
                                 &&
                                 // product is in stock or customers may add it to cart anyway
-                                ($record['products_quantity'] > 0 || SHOW_PRODUCTS_SOLD_OUT_IMAGE == 0) ) 
-                            {
+                                ($record['products_quantity'] > 0 || SHOW_PRODUCTS_SOLD_OUT_IMAGE == 0) 
+
+                            ) {
                                 $how_many++;
                             }
                             // hide quantity box
@@ -200,11 +207,15 @@ if ($num_products_count > 0) {
                     break;
                 case 'PRODUCT_LIST_QUANTITY':
                     $lc_align = 'center';
-                    $lc_text = $record['products_quantity'];
+                    $lc_text = '';
+                    //if ($product_listing_layout_style == 'columns') $lc_text .= '<label>' . TABLE_HEADING_QUANTITY . '</label>';
+                    $lc_text .= $record['products_quantity'];
                     break;
                 case 'PRODUCT_LIST_WEIGHT':
                     $lc_align = 'center';
-                    $lc_text = $record['products_weight'];
+                    $lc_text = '';
+                    //if ($product_listing_layout_style == 'columns') $lc_text .= '<label>' . TABLE_HEADING_WEIGHT . '</label>';
+                    $lc_text .= $record['products_weight'];
                     break;
                 case 'PRODUCT_LIST_IMAGE':
                     $lc_align = 'center';
@@ -218,7 +229,7 @@ if ($num_products_count > 0) {
 
             if ($product_listing_layout_style == 'rows') {
                 $align_class = empty($lc_align) ? '' : " text-$lc_align";
-                $list_box_contents[$rows][$col] = [
+                $list_box_contents[$rows][] = [
                     //'align' => $lc_align, // not used with Bootstrap template: converted to css class below
                     'params' => 'class="productListing-data' . $align_class . '"',
                     'text'  => $lc_text,
@@ -241,7 +252,7 @@ if ($num_products_count > 0) {
 
         if ($product_listing_layout_style == 'columns') {
             $lc_text = implode('<br>', $product_contents);
-            $list_box_contents[$rows][$column] = [
+            $list_box_contents[$rows][] = [
                 'params' => 'class="card mb-3 p-3 centerBoxContentsListing text-center"',
                 'text'  => $lc_text,
             ];
