@@ -209,7 +209,7 @@ if ($num_products_count > 0) {
                 case 'PRODUCT_LIST_IMAGE':
                     $lc_align = 'center';
                     if (!empty($record['products_image']) || PRODUCTS_IMAGE_NO_IMAGE_STATUS > 0) {
-                        $lc_text = '<a href="' . zen_href_link(zen_get_info_page($record['products_id']), 'cPath=' . zen_get_generated_category_path_rev($linkCpath) . '&products_id=' . $record['products_id']) . '">' . zen_image(DIR_WS_IMAGES . $record['products_image'], $record['products_name'], IMAGE_PRODUCT_LISTING_WIDTH, IMAGE_PRODUCT_LISTING_HEIGHT, 'class="listingProductImage"') . '</a>';
+                        $lc_text = '<a href="' . zen_href_link(zen_get_info_page($record['products_id']), 'cPath=' . zen_get_generated_category_path_rev($linkCpath) . '&products_id=' . $record['products_id']) . '">' . zen_image(DIR_WS_IMAGES . $record['products_image'], $record['products_name'], IMAGE_PRODUCT_LISTING_WIDTH, IMAGE_PRODUCT_LISTING_HEIGHT, 'class="img-fluid listingProductImage"') . '</a>';
                     }
                     break;
             }
