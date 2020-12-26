@@ -2,7 +2,7 @@
 /**
  * information sidebox - displays list of general info links, as defined in this file
  *
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.0.1
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -12,6 +12,14 @@
 
   unset($information);
   $information = array();
+
+  if (defined('FILENAME_ABOUT_US')) {
+    $information[] = '<a class="list-group-item list-group-item-action" href="' . zen_href_link(FILENAME_ABOUT_US) . '">' . BOX_INFORMATION_ABOUT_US . '</a>';
+  }
+
+  if (defined('FILENAME_BRANDS')) {
+    $information[] = '<a class="list-group-item list-group-item-action" href="' . zen_href_link(FILENAME_BRANDS) . '">' . BOX_HEADING_BRANDS . '</a>';
+  }
 
   if (DEFINE_SHIPPINGINFO_STATUS <= 1) {
     $information[] = '<a class="list-group-item list-group-item-action" href="' . zen_href_link(FILENAME_SHIPPING) . '">' . BOX_INFORMATION_SHIPPING . '</a>';

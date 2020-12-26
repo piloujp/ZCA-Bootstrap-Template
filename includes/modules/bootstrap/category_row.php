@@ -1,5 +1,7 @@
 <?php
 /**
+ * BOOTSTRAP v3.0.1
+ *
  * index category_row.php
  *
  * Prepares the content for displaying a category's sub-category listing in grid format.  
@@ -37,7 +39,7 @@ if ($num_categories > 0) {
     //    $categories->fields['products_name'] = zen_get_products_name($categories->fields['products_id']);
 
     $list_box_contents[$row][$col] = array('params' => 'class="categoryListBoxContents card mb-3 p-3 text-center"',
-    'text' => '<a href="' . zen_href_link(FILENAME_DEFAULT, $cPath_new) . '">' . zen_image(DIR_WS_IMAGES . $categories->fields['categories_image'], $categories->fields['categories_name'], SUBCATEGORY_IMAGE_WIDTH, SUBCATEGORY_IMAGE_HEIGHT) . '<br />' . $categories->fields['categories_name'] . '</a>');
+    'text' => '<a href="' . zen_href_link(FILENAME_DEFAULT, $cPath_new) . '">' . zen_image(DIR_WS_IMAGES . $categories->fields['categories_image'], $categories->fields['categories_name'], SUBCATEGORY_IMAGE_WIDTH, SUBCATEGORY_IMAGE_HEIGHT) . '<br>' . $categories->fields['categories_name'] . '</a>');
 
     $col ++;
     if ($col > (MAX_DISPLAY_CATEGORIES_PER_ROW -1)) {

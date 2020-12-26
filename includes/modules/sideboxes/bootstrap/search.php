@@ -2,7 +2,7 @@
 /**
  * search sidebox - displays keyword-search field for customer to initiate a search
  *
- * BOOTSTRAP v1.0.BETA
+ * BOOTSTRAP v3.0.1
  * 
  * @package templateSystem
  * @copyright Copyright 2003-2005 Zen Cart Development Team
