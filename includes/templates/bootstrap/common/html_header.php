@@ -38,7 +38,7 @@ require(DIR_WS_MODULES . zen_get_module_directory('meta_tags.php'));
 
     <meta charset="<?php echo CHARSET; ?>">
     <title><?php echo META_TAG_TITLE; ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="keywords" content="<?php echo META_TAG_KEYWORDS; ?>">
     <meta name="description" content="<?php echo META_TAG_DESCRIPTION; ?>">
     <meta name="author" content="<?php echo STORE_NAME ?>">
