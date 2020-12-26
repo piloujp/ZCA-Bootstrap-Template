@@ -218,6 +218,10 @@ a.page-link:hover {
     background-color: <?php echo ZCA_CENTERBOX_CARD_BACKGROUND_COLOR_HOVER; ?>;
 }
 
+.listingProductImage {
+    min-width: <?php echo (int)IMAGE_PRODUCT_LISTING_WIDTH; ?>px;
+}
+
 /* product reviews */
 .productReviewCard:hover {
     background-color: <?php echo ZCA_CENTERBOX_CARD_BACKGROUND_COLOR_HOVER; ?>;
