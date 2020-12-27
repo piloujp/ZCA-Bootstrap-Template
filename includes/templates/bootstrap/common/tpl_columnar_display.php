@@ -17,25 +17,32 @@ $zco_notifier->notify('NOTIFY_TPL_COLUMNAR_DISPLAY_START', $current_page_base, $
 ?>
 
 <div class="card mb-3">
+  
+<?php
+  if ($title) {
+  ?>
 
-<?php if ($title) { ?>
 <?php echo $title; ?>
-<?php } ?>
 
+<?php
+ }
+ ?>
 <div class="card-body text-center">
 <?php
 if (is_array($list_box_contents)) {
-    foreach ($list_box_contents as $row => $cols) {
+ for($row=0, $n=sizeof($list_box_contents); $row<$n; $row++) {
+    $params = "";
+    //if (isset($list_box_contents[$row]['params'])) $params .= ' ' . $list_box_contents[$row]['params'];
 ?>
 
 <div class="card-deck text-center">
 <?php
-    foreach ($cols as $col) {
-      $c_params = "";
-      if (isset($col['params'])) $c_params .= ' ' . (string)$col['params'];
-      if (isset($col['text'])) {
+    for($col=0, $j=sizeof($list_box_contents[$row]); $col<$j; $col++) {
+      $r_params = "";
+      if (isset($list_box_contents[$row][$col]['params'])) $r_params .= ' ' . (string)$list_box_contents[$row][$col]['params'];
+     if (isset($list_box_contents[$row][$col]['text'])) {
 ?>
-<?php echo '    <div' . $c_params . '>' . $col['text'] .  '</div>' . "\n"; ?>
+    <?php echo '<div' . $r_params . '>' . $list_box_contents[$row][$col]['text'] .  '</div>'; ?>
 <?php
       }
     }
