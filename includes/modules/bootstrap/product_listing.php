@@ -24,8 +24,9 @@ $error_categories = false;
 $show_submit = zen_run_normal();
 
 $columns_per_row = defined('PRODUCT_LISTING_COLUMNS_PER_ROW') ? (int)PRODUCT_LISTING_COLUMNS_PER_ROW : 1;
-if ($columns_per_row < 1) $columns_per_row = 1;
 $product_listing_layout_style = $columns_per_row > 1 ? 'columns' : 'rows';
+if (empty($columns_per_row)) $product_listing_layout_style = 'fluid';
+if ($columns_per_row === 'fluid') $product_listing_layout_style = 'fluid';
 
 $max_results = (int)MAX_DISPLAY_PRODUCTS_LISTING;
 if ($product_listing_layout_style == 'columns' && $columns_per_row > 1) {
@@ -108,14 +109,36 @@ if ($product_listing_layout_style == 'rows') {
 
 $num_products_count = $listing_split->number_of_rows;
 
+$rows = 0;
+$column = 0;
+$extra_row = 0;
+
 if ($num_products_count > 0) {
-    $rows = 0;
-    $column = 0;
     $listing = $db->Execute($listing_split->sql_query);
-    $extra_row = 0;
     foreach ($listing as $record) {
         if ($product_listing_layout_style == 'rows') {
             $rows++;
+            // handle even/odd striping if not set already with CSS
+            $list_box_contents[$rows] = ['params' => 'class="productListing-' . ((($rows - $extra_row) % 2 == 0) ? 'even' : 'odd') . '"'];
+        }
+
+        // set css classes for "row" wrapper, to allow for fluid grouping of cells based on viewport
+        if ($product_listing_layout_style == 'fluid') {
+            $grid_cards_classes = 'row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3';
+            $grid_classes_matrix = [
+                '10' => 'row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-5',
+                '8' => 'row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4',
+                '6' => 'row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3',
+            ];
+            if (isset($center_column_width)) {
+                foreach($grid_classes_matrix as $width => $classes) {
+                    if ($center_column_width >= $width) {
+                        $grid_cards_classes = $classes;
+                        break;
+                    }
+                }
+            }
+            $list_box_contents[$rows]['params'] = 'class="row ' . $grid_cards_classes . ' text-center"';
         }
 
         $product_contents = [];
@@ -230,7 +253,7 @@ if ($num_products_count > 0) {
             if ($product_listing_layout_style == 'rows') {
                 $align_class = empty($lc_align) ? '' : " text-$lc_align";
                 $list_box_contents[$rows][] = [
-                    //'align' => $lc_align, // not used with Bootstrap template: converted to css class below
+                    //'align' => $lc_align, // not used with Bootstrap template: converted to css class on next line
                     'params' => 'class="productListing-data' . $align_class . '"',
                     'text'  => $lc_text,
                 ];
@@ -250,16 +273,20 @@ if ($num_products_count > 0) {
             }
         }
 
-        if ($product_listing_layout_style == 'columns') {
+        if ($product_listing_layout_style == 'columns' || $product_listing_layout_style == 'fluid') {
             $lc_text = implode('<br>', $product_contents);
             $list_box_contents[$rows][] = [
-                'params' => 'class="card mb-3 p-3 centerBoxContentsListing text-center"',
+                'params' => 'class="card mb-3 p-3 centerBoxContentsListing text-center h-100 "',
                 'text'  => $lc_text,
+                'wrap_with_classes' => 'col mb-4',
+                'card_type' => $product_listing_layout_style,
             ];
-            $column ++;
-            if ($column >= $columns_per_row) {
-                $column = 0;
-                $rows++;
+            if ($product_listing_layout_style == 'columns') {
+                $column ++;
+                if ($column >= $columns_per_row) {
+                    $column = 0;
+                    $rows++;
+                }
             }
         }
     }
