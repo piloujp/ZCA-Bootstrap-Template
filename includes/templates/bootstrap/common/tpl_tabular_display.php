@@ -2,7 +2,7 @@
 /**
  * Common Template - tpl_tabular_display.php
  *
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.0.1
  *
  * This file is used for generating tabular output where needed, based on the supplied array of table-cell contents.
  *
@@ -20,11 +20,10 @@ $zco_notifier->notify('NOTIFY_TPL_TABULAR_DISPLAY_START', $current_page_base, $l
   $cell_title = (!isset($cell_title) || empty($cell_title)) ? 'list' : $cell_title;
 
 ?>
-<table id="<?php echo 'cat' . $cPath . 'Table'; ?>" class="tabTable table-bordered table-striped">
+<table id="<?php echo 'cat' . $cPath . 'Table'; ?>" class="tabTable table-bordered table-striped table-hover">
 <?php
 foreach ($list_box_contents as $row => $cols) {
     $r_params = '';
-    $c_params = '';
     if (isset($list_box_contents[$row]['params'])) $r_params .= ' ' . $list_box_contents[$row]['params'];
 ?>
   <tr <?php echo $r_params; ?>>
