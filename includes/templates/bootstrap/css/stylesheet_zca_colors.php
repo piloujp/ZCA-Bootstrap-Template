@@ -91,12 +91,12 @@ nav.navbar .navbar-toggler:hover {
 	}
 	    /* header category tabs */
 #navCatTabs a {
-    color: <?php echo ZCA_HEADER_TABS_TEXT_COLOR; ?>;
-	background-color: <?php echo ZCA_HEADER_TABS_COLOR_HOVER; ?>;
+	color: <?php echo ZCA_HEADER_TABS_TEXT_COLOR; ?>;
+	background-color: <?php echo ZCA_HEADER_TABS_COLOR; ?>;
 	}
 #navCatTabs a:hover  {
-    color: <?php echo ZCA_HEADER_TABS_TEXT_COLOR_HOVER; ?>;
-	background-color: <?php echo ZCA_HEADER_TABS_COLOR; ?>;
+	color: <?php echo ZCA_HEADER_TABS_TEXT_COLOR_HOVER; ?>;
+	background-color: <?php echo ZCA_HEADER_TABS_COLOR_HOVER; ?>;
 	}
 
 	
