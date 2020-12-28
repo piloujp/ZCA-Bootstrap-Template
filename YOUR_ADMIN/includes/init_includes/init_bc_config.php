@@ -188,10 +188,10 @@ if (defined('ZCA_BODY_TEXT_COLOR')) {
 		VALUES ('Header Category Tabs Text Color on Hover', 'ZCA_HEADER_TABS_TEXT_COLOR_HOVER', '#cccccc', 'Default:#cccccc', '".$bc_configuration_id."', 42, NULL, now(), NULL, NULL)";
     $db->Execute($sql);	
 		$sql = "INSERT INTO ".DB_PREFIX."configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) 
-		VALUES ('Header Category Tabs Color', 'ZCA_HEADER_TABS_COLOR', '#33b5e5', 'Default:#33b5e5', '".$bc_configuration_id."', 43, NULL, now(), NULL, NULL)";
+		VALUES ('Header Category Tabs Background Color', 'ZCA_HEADER_TABS_COLOR', '#33b5e5', 'Default:#33b5e5', '".$bc_configuration_id."', 43, NULL, now(), NULL, NULL)";
     $db->Execute($sql);	
 		$sql = "INSERT INTO ".DB_PREFIX."configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) 
-		VALUES ('Header Category Tabs Color on Hover', 'ZCA_HEADER_TABS_COLOR_HOVER', '#0099CC', 'Default:#0099CC', '".$bc_configuration_id."', 44, NULL, now(), NULL, NULL)";
+		VALUES ('Header Category Tabs Background Color on Hover', 'ZCA_HEADER_TABS_COLOR_HOVER', '#0099CC', 'Default:#0099CC', '".$bc_configuration_id."', 44, NULL, now(), NULL, NULL)";
     $db->Execute($sql);	
 		
 		$sql = "INSERT INTO ".DB_PREFIX."configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) 
