@@ -248,7 +248,7 @@ a.page-link:hover {
 	}
 	
 
-.legalCopyright, .legalCopyright a {color: <?php echo ZCA_FOOTER_EZPAGE_LINK_COLOR; ?>; text-decoration: none}
+.legalCopyright, .legalCopyright a {color: <?php echo ZCA_FOOTER_EZPAGE_LINK_COLOR; ?>;}
 
 
 
