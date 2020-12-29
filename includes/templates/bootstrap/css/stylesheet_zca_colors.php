@@ -186,8 +186,22 @@ nav.navbar .navbar-toggler:hover {
 	color: <?php echo ZCA_CENTERBOX_HEADER_TEXT_COLOR; ?>;
 	background-color: <?php echo ZCA_CENTERBOX_HEADER_BACKGROUND_COLOR; ?>;
 	}
-	
-	
+
+	/* category cards */
+.categoryListBoxContents.card {
+	color: <?php echo ZCA_CENTERBOX_TEXT_COLOR; ?>;
+	background-color: <?php echo ZCA_CENTERBOX_BACKGROUND_COLOR; ?>;
+	}
+
+.categoryListBoxContents {
+	background-color: <?php echo ZCA_CENTERBOX_CARD_BACKGROUND_COLOR; ?>;
+	}
+
+.categoryListBoxContents:hover {
+	background-color: <?php echo ZCA_CENTERBOX_CARD_BACKGROUND_COLOR_HOVER; ?>;
+	}
+
+
 	/* pagination links */	
 a.page-link {
 	color: <?php echo ZCA_BUTTON_PAGEINATION_TEXT_COLOR; ?>;
