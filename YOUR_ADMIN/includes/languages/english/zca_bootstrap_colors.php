@@ -17,3 +17,7 @@ define('TEXT_INFO_LAST_MODIFIED', 'Last Modified:');
 define('TABLE_HEADING_CONFIGURATION_TITLE', 'Title');
 define('TABLE_HEADING_CONFIGURATION_VALUE', 'Value');
 define('TABLE_HEADING_ACTION', 'Action');
+
+// BOF download SQL file
+define('BUTTON_DOWNLOAD_SQL', 'Download SQL');
+// EOF download SQL file

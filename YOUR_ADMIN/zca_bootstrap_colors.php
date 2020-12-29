@@ -16,6 +16,30 @@ $groupID = $db->Execute($sqlGroup);
 
 $_GET['gID'] = $groupID->fields['configuration_group_id'];
 
+// BOF download SQL file
+$sqlfile = isset($_GET['sqlfile']) ? $_GET['sqlfile'] : '';
+if (zen_not_null($sqlfile)) {
+  $filename = 'zca_bootstrap_colors_' . date('Ymd_His') . '.sql';
+  header('Content-Type: text/plain; charset=utf-8');
+  header('Content-Disposition: attachment; filename=' . $filename);
+  $out = fopen('php://output', 'w');
+
+  $gID = (isset($_GET['gID'])) ? $_GET['gID'] : 1;
+  $configuration = $db->Execute("SELECT configuration_value, configuration_key
+                                 FROM " . TABLE_CONFIGURATION . "
+                                 WHERE configuration_group_id = " . (int)$gID . "
+                                 ORDER BY sort_order");
+  foreach ($configuration as $item) {
+    fwrite($out, "UPDATE " . TABLE_CONFIGURATION);
+    fwrite($out, " SET configuration_value = '" . $item['configuration_value'] . "', last_modified = now()");
+    fwrite($out, " WHERE configuration_key = '" . $item['configuration_key'] . "';" . PHP_EOL);
+  }
+
+  fclose($out);
+  die();
+}
+// EOF download SQL file
+
 $action = (isset($_GET['action']) ? $_GET['action'] : '');
 
 if (zen_not_null($action)) {
@@ -49,45 +73,9 @@ $cfg_group = $db->Execute("SELECT configuration_group_title
 <!doctype html>
 <html <?php echo HTML_PARAMS; ?>>
   <head>
-    <meta charset="<?php echo CHARSET; ?>">
-    <title><?php echo HEADING_TITLE; ?></title>
-    <link rel="stylesheet" href="includes/stylesheet.css">
-    <link rel="stylesheet" href="includes/cssjsmenuhover.css" media="all" id="hoverJS">
-    <link rel="stylesheet" href="includes/admin_access.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <?php
-    $zcV155 = (PROJECT_VERSION_MAJOR > 1 || (PROJECT_VERSION_MAJOR == 1 && substr(PROJECT_VERSION_MINOR, 0, 3) >= 5.5));
-    if ($zcV155 != true) {
-      ?>
-      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <?php
-    }
-    ?>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-    <script src="includes/menu.js"></script>
-    <script src="includes/general.js"></script>
-
-    <?php
-    if ($zcV155 != true) {
-      ?>
-      <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <?php
-    }
-    ?>
-    <script>
-      function init() {
-          cssjsmenu('navbar');
-          if (document.getElementById) {
-              var kill = document.getElementById('hoverJS');
-              kill.disabled = true;
-          }
-      }
-    </script>
+    <?php require DIR_WS_INCLUDES . 'admin_html_head.php'; ?>
   </head>
-  <body onLoad  ="init()">
+  <body>
     <!-- header       //-->
     <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
     <!-- header_eof //-->
@@ -170,6 +158,11 @@ $cfg_group = $db->Execute("SELECT configuration_group_title
               ?>
             </tbody>
           </table>
+<?php /* BOF download SQL file */ ?>
+          <div class="text-right">
+            <a class="btn btn-default btn-sm" role="button" href="<?= zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'sqlfile=1', 'SSL') ?>"><?= BUTTON_DOWNLOAD_SQL; ?></a>
+          </div>
+<?php /* EOF download SQL file */ ?>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 configurationColumnRight">
           <?php
@@ -192,7 +185,7 @@ $cfg_group = $db->Execute("SELECT configuration_group_title
               }
               $contents[] = array('text' => TEXT_INFO_EDIT_INTRO);
               $contents[] = array('text' => '<br><b>' . $cInfo->configuration_title . '</b><br>' . $cInfo->configuration_description . '<br>' . $value_field);
-              $contents[] = array('align' => 'center', 'text' => '<br>' . zen_image_submit('button_update.gif', IMAGE_UPDATE, 'name="submit' . $cInfo->configuration_key . '"') . '&nbsp;<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'gID=' . $_GET['gID'] . '&cID=' . $cInfo->configuration_id) . '">' . zen_image_button('button_cancel.gif', IMAGE_CANCEL) . '</a>');
+              $contents[] = array('align' => 'center', 'text' => '<br><button type="submit" class="btn btn-primary" name="submit' . $cInfo->configuration_key . '">' . IMAGE_UPDATE . '</button>&nbsp;<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'gID=' . $_GET['gID'] . '&cID=' . $cInfo->configuration_id) . '" class="btn btn-default" role="button">' . IMAGE_CANCEL . '</a>');
               break;
             default:
               if (isset($cInfo) && is_object($cInfo)) {
@@ -201,7 +194,7 @@ $cfg_group = $db->Execute("SELECT configuration_group_title
                   $contents[] = array('text' => '<strong>Key: ' . $cInfo->configuration_key . '</strong><br />');
                 }
 
-                $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'gID=' . $_GET['gID'] . '&cID=' . $cInfo->configuration_id . '&action=edit') . '">' . zen_image_button('button_edit.gif', IMAGE_EDIT) . '</a>');
+                $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'gID=' . $_GET['gID'] . '&cID=' . $cInfo->configuration_id . '&action=edit') . '" class="btn btn-primary">' . IMAGE_EDIT . '</a>');
                 $contents[] = array('text' => '<br>' . $cInfo->configuration_description);
                 $contents[] = array('text' => '<br>' . TEXT_INFO_DATE_ADDED . ' ' . zen_date_short($cInfo->date_added));
                 if (zen_not_null($cInfo->last_modified)) {
