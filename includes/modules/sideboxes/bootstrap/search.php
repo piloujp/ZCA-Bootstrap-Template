@@ -2,7 +2,7 @@
 /**
  * search sidebox - displays keyword-search field for customer to initiate a search
  *
- * BOOTSTRAP v3.0.1
+ * BOOTSTRAP v3.1.0
  * 
  * @package templateSystem
  * @copyright Copyright 2003-2005 Zen Cart Development Team
@@ -11,9 +11,8 @@
  * @version $Id: search.php 2834 2006-01-11 22:16:37Z birdbrain $
  */
 
-  require($template->get_template_dir('tpl_search.php',DIR_WS_TEMPLATE, $current_page_base,'sideboxes'). '/tpl_search.php');
+require($template->get_template_dir('tpl_search.php',DIR_WS_TEMPLATE, $current_page_base,'sideboxes'). '/tpl_search.php');
 
-  $title = BOX_HEADING_SEARCH;
-  $title_link = false;
-  require($template->get_template_dir($column_box_default, DIR_WS_TEMPLATE, $current_page_base,'common') . '/' . $column_box_default);
-?>
+$title = BOX_HEADING_SEARCH;
+$title_link = false;
+require($template->get_template_dir($column_box_default, DIR_WS_TEMPLATE, $current_page_base,'common') . '/' . $column_box_default);

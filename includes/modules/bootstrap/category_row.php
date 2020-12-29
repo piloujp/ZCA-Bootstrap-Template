@@ -1,6 +1,6 @@
 <?php
 /**
- * BOOTSTRAP v3.0.1
+ * BOOTSTRAP v3.1.0
  *
  * index category_row.php
  *

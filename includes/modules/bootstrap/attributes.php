@@ -2,7 +2,7 @@
 /**
  * attributes module
  *
- * BOOTSTRAP v3.0.1
+ * BOOTSTRAP v3.1.0
  *
  * Prepares attributes content for rendering in the template system
  * Prepares HTML for input fields with required uniqueness so template can display them as needed and keep collected data in proper fields
