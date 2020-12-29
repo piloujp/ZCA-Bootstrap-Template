@@ -4,7 +4,7 @@
  * 
  * BOOTSTRAP v3.1.0
  *
- * Loaded automatically by index.php?main_page=checkout_shipping.<br />
+ * Loaded automatically by index.php?main_page=checkout_shipping.<br>
  * Displays allowed shipping modules for selection by customer.
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
@@ -20,7 +20,7 @@
 
     <?php echo zen_draw_form('checkout_address', zen_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL')) . zen_draw_hidden_field('action', 'process'); ?>
 
-    <h1 id="checkoutShippingDefault-pageHeading" class="pageHeading"><?php echo HEADING_TITLE; ?></h1>
+    <h1 class="pageHeading"><?php echo HEADING_TITLE; ?></h1>
 
     <?php if ($messageStack->size('checkout_shipping') > 0) echo $messageStack->output('checkout_shipping'); ?>
 
@@ -28,17 +28,17 @@
   
 <!--bof shipping information card-->
         <div id="shippingInformation-card" class="card mb-3">
-            <h4 id="shippingInformation-card-header" class="card-header"><?php echo TITLE_SHIPPING_ADDRESS; ?></h4>
-            <div id="shippingInformation-card-body" class="card-body p-3">
+            <h4 class="card-header"><?php echo TITLE_SHIPPING_ADDRESS; ?></h4>
+            <div class="card-body p-3">
                 <div class="row">
-                    <div id="shippingInformation-shipToAddress" class="shipToAddress col-sm-5">
-                        <address><?php echo zen_address_label($_SESSION['customer_id'], $_SESSION['sendto'], true, ' ', '<br />'); ?></address>      
+                    <div class="shipToAddress col-sm-5">
+                        <address><?php echo zen_address_label($_SESSION['customer_id'], $_SESSION['sendto'], true, ' ', '<br>'); ?></address>      
                     </div>
                     <div class="col-sm-7">
 <?php echo TEXT_CHOOSE_SHIPPING_DESTINATION; ?>
 <?php if ($displayAddressEdit) { ?>
 
-                        <div id="shippingInformation-btn-toolbar" class="btn-toolbar justify-content-end mt-3" role="toolbar">
+                        <div class="btn-toolbar justify-content-end mt-3" role="toolbar">
 <?php echo '<a href="' . $editShippingButtonLink . '">' . zen_image_button(BUTTON_IMAGE_CHANGE_ADDRESS, BUTTON_CHANGE_ADDRESS_ALT) . '</a>'; ?>
                         </div>
 
@@ -54,8 +54,8 @@ if (zen_count_shipping_modules() > 0) {
 ?>
 <!--bof shipping method card-->
         <div id="shippingMethod-card" class="card mb-3">
-            <h4 id="shippingMethod-card-header" class="card-header"><?php echo TABLE_HEADING_SHIPPING_METHOD; ?></h4>
-            <div id="shippingMethod-card-body" class="card-body p-3">
+            <h4 class="card-header"><?php echo TABLE_HEADING_SHIPPING_METHOD; ?></h4>
+            <div class="card-body p-3">
 <?php
     if (count($quotes) > 1 && count($quotes[0]) > 1) {
 ?>
@@ -84,11 +84,11 @@ if (zen_count_shipping_modules() > 0) {
             if (!empty($quotes[$i]['module'])) { // Standard
 ?>
 <!--bof shipping method option card-->
-                <div id="shippingMethodOption-card" class="card mb-3">
-                    <div id="shippingMethodOption-card-header" class="card-header">
+                <div class="card mb-3">
+                    <div class="card-header">
                         <?php echo $quotes[$i]['module']; ?>&nbsp;<?php if (isset($quotes[$i]['icon']) && zen_not_null($quotes[$i]['icon'])) { echo $quotes[$i]['icon']; } ?>
                     </div>
-                    <div id="shippingMethodOption-card-body" class="card-body p-3">
+                    <div class="card-body p-3">
 <?php
                 if (isset($quotes[$i]['error'])) {
 ?>
@@ -140,9 +140,9 @@ if (zen_count_shipping_modules() > 0) {
 ?>
 <!--bof noShipping method card-->
         <div id="noShipping-card" class="card mb-3">
-            <div id="noShipping-card-body" class="card-body p-3">
-                <h2 id="shippingMethodOption-noOptions-pageHeading" class="pageHeading"><?php echo TITLE_NO_SHIPPING_AVAILABLE; ?></h2>
-                <div id="shippingMethodOption-noOptions-content" class="content"><?php echo TEXT_NO_SHIPPING_AVAILABLE; ?></div>
+            <div class="card-body p-3">
+                <h2 class="pageHeading"><?php echo TITLE_NO_SHIPPING_AVAILABLE; ?></h2>
+                <div class="content"><?php echo TEXT_NO_SHIPPING_AVAILABLE; ?></div>
             </div>
         </div>
 <!--eof noShipping method card-->
@@ -151,8 +151,8 @@ if (zen_count_shipping_modules() > 0) {
 ?>
 <!--bof order comments card--> 
         <div id="orderComments-card" class="card mb-3">
-            <h4 id="orderComments-card-header" class="card-header"><?php echo TABLE_HEADING_COMMENTS; ?></h4>
-            <div id="orderComments-card-body" class="card-body p-3">
+            <h4 class="card-header"><?php echo TABLE_HEADING_COMMENTS; ?></h4>
+            <div class="card-body p-3">
                 <?php echo zen_draw_textarea_field('comments', '45', '3', (isset($comments) ? $comments : ''), 'aria-label="' . TABLE_HEADING_COMMENTS . '"'); ?>
             </div>
         </div>
@@ -160,7 +160,7 @@ if (zen_count_shipping_modules() > 0) {
     </div>  
   
     <div id="checkoutShippingDefault-btn-toolbar1" class="btn-toolbar justify-content-between" role="toolbar">
-        <?php echo '<strong>' . TITLE_CONTINUE_CHECKOUT_PROCEDURE . '</strong><br />' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
+        <?php echo '<strong>' . TITLE_CONTINUE_CHECKOUT_PROCEDURE . '</strong><br>' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
         <?php echo zen_image_submit(BUTTON_IMAGE_CONTINUE_CHECKOUT, BUTTON_CONTINUE_ALT); ?>
     </div>
     <?php echo '</form>'; ?>
