@@ -1,4 +1,5 @@
-<style type="text/css">
+<style type="text/css" title="Inline Styles">
+/* BOOTSTRAP4 Template v3.1.0 */
 
 	/* body */
 body {
@@ -91,12 +92,12 @@ nav.navbar .navbar-toggler:hover {
 	}
 	    /* header category tabs */
 #navCatTabs a {
-    color: <?php echo ZCA_HEADER_TABS_TEXT_COLOR; ?>;
-	background-color: <?php echo ZCA_HEADER_TABS_COLOR_HOVER; ?>;
+	color: <?php echo ZCA_HEADER_TABS_TEXT_COLOR; ?>;
+	background-color: <?php echo ZCA_HEADER_TABS_COLOR; ?>;
 	}
 #navCatTabs a:hover  {
-    color: <?php echo ZCA_HEADER_TABS_TEXT_COLOR_HOVER; ?>;
-	background-color: <?php echo ZCA_HEADER_TABS_COLOR; ?>;
+	color: <?php echo ZCA_HEADER_TABS_TEXT_COLOR_HOVER; ?>;
+	background-color: <?php echo ZCA_HEADER_TABS_COLOR_HOVER; ?>;
 	}
 
 	
@@ -129,6 +130,7 @@ nav.navbar .navbar-toggler:hover {
 	}
 #ezpagesBarFooter a.nav-link:hover  {
 	color: <?php echo ZCA_FOOTER_EZPAGE_LINK_COLOR_HOVER; ?>;
+	background-color: <?php echo ZCA_BUTTON_COLOR; ?>;
 	}
 
 
@@ -217,6 +219,10 @@ a.page-link:hover {
     background-color: <?php echo ZCA_CENTERBOX_CARD_BACKGROUND_COLOR_HOVER; ?>;
 }
 
+.listingProductImage {
+    min-width: <?php echo (int)IMAGE_PRODUCT_LISTING_WIDTH; ?>px;
+}
+
 /* product reviews */
 .productReviewCard:hover {
     background-color: <?php echo ZCA_CENTERBOX_CARD_BACKGROUND_COLOR_HOVER; ?>;
@@ -241,4 +247,10 @@ a.page-link:hover {
 .productFreePrice {
 	color: <?php echo ZCA_BODY_PRODUCTS_FREE_COLOR; ?>;
 	}
+	
+
+.legalCopyright, .legalCopyright a {color: <?php echo ZCA_FOOTER_EZPAGE_LINK_COLOR; ?>;}
+
+
+
 </style>
