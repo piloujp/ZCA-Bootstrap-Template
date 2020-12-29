@@ -1,4 +1,5 @@
-<style type="text/css">
+<style type="text/css" title="Inline Styles">
+/* BOOTSTRAP4 Template v3.1.0 */
 
 	/* body */
 body {
