@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.1.0
  *
  * @package templateSystem
  * @copyright Copyright 2003-2016 Zen Cart Development Team
@@ -14,8 +14,9 @@
 // For each row/column to be displayed, need to change the parameters to 'align' with
 // the bootstrap formatting.
 //
-for ($i = 0, $n = count($list_box_contents); $i < $n; $i++) {
-    for ($j = 0, $m = count($list_box_contents[$i]); $j < $m; $j++) {
+foreach ($list_box_contents as $i => $k) {
+    foreach ($k as $j => $value) {
+        if (!is_numeric($j)) continue;
         $list_box_contents[$i][$j]['params'] = 'class="card mb-3 p-3 centerBoxContentsListing text-center"';
     }
 }
