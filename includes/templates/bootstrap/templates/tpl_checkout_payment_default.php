@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.0.1
  *
  * Loaded automatically by index.php?main_page=checkout_payment.<br />
  * Displays the allowed payment modules, for selection by customer.
@@ -100,10 +100,36 @@ if (!$payment_modules->in_special_checkout()) {
                 <h4 id="discountCoupon-card-header" class="card-header"><?php echo $selection[$i]['module']; ?></h4> 
                 <div id="discountCoupon-card-body" class="card-body p-3">
                     <?php echo $selection[$i]['redeem_instructions']; ?>
-                    <div id="discountCoupon-gvBal"><?php echo (isset($selection[$i]['checkbox'])) ? $selection[$i]['checkbox'] : ''; ?></div>
+<?php
+                if (isset($selection[$i]['checkbox'])) {
+?> 
+                    <div id="discountCoupon-gvBal"><?php echo $selection[$i]['checkbox']; ?></div>
+<?php
+                }
+?>
 
+<?php
+                if (strpos($selection[$i]['fields'][$j]['field'], 'type="checkbox"') !== false) {   // intercept checkbox selections
+?>
+                    <div class="custom-control custom-checkbox">
+                      <?php echo $selection[$i]['fields'][$j]['field']; ?> 
+                      <label class="custom-control-label"<?php echo isset($selection[$i]['fields'][$j]['tag']) ? ' for="'.$selection[$i]['fields'][$j]['tag'].'"': ''; ?>><?php echo $selection[$i]['fields'][$j]['title']; ?></label>
+                    </div>
+<?php
+                } elseif (strpos($selection[$i]['fields'][$j]['field'], 'type="radio"') !== false) {    // intercept radio selections
+?>
+                    <div class="custom-control custom-radio">
+                      <?php echo $selection[$i]['fields'][$j]['field']; ?> 
+                      <label class="custom-control-label"<?php echo isset($selection[$i]['fields'][$j]['tag']) ? ' for="'.$selection[$i]['fields'][$j]['tag'].'"': ''; ?>><?php echo $selection[$i]['fields'][$j]['title']; ?></label>
+                    </div>
+<?php
+                } else {
+?>
                     <label class="inputLabel"<?php echo ($selection[$i]['fields'][$j]['tag']) ? ' for="'.$selection[$i]['fields'][$j]['tag'].'"': ''; ?>><?php echo $selection[$i]['fields'][$j]['title']; ?></label>
                     <?php echo $selection[$i]['fields'][$j]['field']; ?>
+<?php
+                }
+?>
                 </div>  
             </div>
 <!--eof discount coupon card-->
