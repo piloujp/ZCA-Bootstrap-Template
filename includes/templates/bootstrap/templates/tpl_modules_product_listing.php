@@ -44,7 +44,7 @@
 /**
  * load the list_box_content template to display the products
  */
-if ($product_listing_layout_style == 'columns') {
+if (in_array($product_listing_layout_style, ['columns', 'fluid'])) {
   require($template->get_template_dir('tpl_columnar_display.php',DIR_WS_TEMPLATE, $current_page_base,'common'). '/tpl_columnar_display.php');
 } else {
   require($template->get_template_dir('tpl_tabular_display.php',DIR_WS_TEMPLATE, $current_page_base,'common'). '/tpl_tabular_display.php');
