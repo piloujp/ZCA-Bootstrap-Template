@@ -2,7 +2,7 @@
 /**
  * Module Template
  * 
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.0.1
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -28,11 +28,11 @@
 <?php if ( ($listing_split->number_of_rows > 0) && ( (PREV_NEXT_BAR_LOCATION == '1') || (PREV_NEXT_BAR_LOCATION == '3') ) ) {
 ?>
 
-<div id="productsListing-topRow" class="row">
+<div id="productsListing-topRow" class="d-flex align-items-center justify-content-between flex-column flex-md-row">
 
-<div id="productsListing-topNumber" class="topNumber col-sm"><?php echo $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS); ?></div>
+<div id="productsListing-topNumber" class="topNumber"><?php echo $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS); ?></div>
 
-<div id="productsListing-topLinks" class="topLinks col-sm"><?php echo TEXT_RESULT_PAGE . $listing_split->display_links($max_display_page_links, zen_get_all_get_params(array('page', 'info', 'x', 'y', 'main_page')), $paginateAsUL); ?></div>
+<div id="productsListing-topLinks" class="topLinks"><?php echo TEXT_RESULT_PAGE . $listing_split->display_links($max_display_page_links, zen_get_all_get_params(array('page', 'info', 'x', 'y', 'main_page')), $paginateAsUL); ?></div>
 
 </div>
 
@@ -53,10 +53,10 @@ if ($product_listing_layout_style == 'columns') {
 
 
 <?php if ($listing_split->number_of_rows && (PREV_NEXT_BAR_LOCATION == '2' || PREV_NEXT_BAR_LOCATION == '3') ) { ?>
-<div id="productsListing-bottomRow" class="row">
+<div id="productsListing-bottomRow" class="d-flex align-items-center justify-content-between flex-column flex-md-row">
 
-<div id="productsListing-bottomNumber" class="bottomNumber col-sm"><?php echo $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS); ?></div>
-<div id="productsListing-bottomLinks" class="bottomLinks col-sm"><?php echo TEXT_RESULT_PAGE . $listing_split->display_links($max_display_page_links, zen_get_all_get_params(array('page', 'info', 'x', 'y')), $paginateAsUL); ?></div>
+<div id="productsListing-bottomNumber" class="bottomNumber"><?php echo $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS); ?></div>
+<div id="productsListing-bottomLinks" class="bottomLinks"><?php echo TEXT_RESULT_PAGE . $listing_split->display_links($max_display_page_links, zen_get_all_get_params(array('page', 'info', 'x', 'y')), $paginateAsUL); ?></div>
 
 </div>
 
