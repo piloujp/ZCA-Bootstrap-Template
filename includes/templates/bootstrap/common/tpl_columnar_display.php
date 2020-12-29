@@ -2,7 +2,7 @@
 /**
  * Common Template - tpl_columnar_display.php
  *
- * BOOTSTRAP v3.0.1
+ * BOOTSTRAP v3.1.0
  *
  * This file is used for generating columnar output where needed, based on the supplied array of table-cell contents.
  *
