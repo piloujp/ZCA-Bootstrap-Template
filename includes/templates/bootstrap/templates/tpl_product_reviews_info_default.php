@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.0.1
+ * BOOTSTRAP v3.1.0
  *
  * @package templateSystem
  * @copyright Copyright 2003-2005 Zen Cart Development Team

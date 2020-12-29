@@ -2,7 +2,7 @@
 /**
  * @author ZCAdditions.com, ZCA Bootstrap Template
  *
- * BOOTSTRAP v3.0.1
+ * BOOTSTRAP v3.1.0
  *
 */
  

@@ -2,9 +2,9 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP 3.0.1
+ * BOOTSTRAP 3.1.0
  *
- * Loaded automatically by index.php?main_page=adress_book.<br />
+ * Loaded automatically by index.php?main_page=address_book.<br />
  * Allows customer to manage entries in their address book
  *
  * @package templateSystem

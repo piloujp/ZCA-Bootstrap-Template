@@ -1,7 +1,7 @@
 /**
  * Main Template CSS Stylesheet
  * 
- * BOOTSTRAP v3.0.1
+ * BOOTSTRAP v3.1.0
  *
  */
 
@@ -9,7 +9,7 @@
 img{max-width:100%;height:auto;border:0;}
 
 .normalprice, .productSpecialPriceSale {
-	text-decoration: line-through;
+    text-decoration: line-through;
 }
 
 #back-to-top {
