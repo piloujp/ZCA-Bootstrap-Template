@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.0.1
+ * BOOTSTRAP v3.1.0
  *
  * Loaded automatically by index.php?main_page=checkout_payment.<br />
  * Displays the allowed payment modules, for selection by customer.
@@ -36,10 +36,10 @@ if (!$payment_modules->in_special_checkout()) {
     
 <!--bof billing address card-->    
             <div id="billingAddress-card" class="card mb-3">
-                <h4 id="billingAddress-card-header" class="card-header"><?php echo TITLE_BILLING_ADDRESS; ?></h4>    
-                <div id="billingAddress-card-body" class="card-body p-3">
+                <h4 class="card-header"><?php echo TITLE_BILLING_ADDRESS; ?></h4>    
+                <div class="card-body p-3">
                     <div class="row">
-                        <div id="billingAddress-billToAddress" class="billToAddress col-sm-5">
+                        <div class="billToAddress col-sm-5">
                             <address><?php echo zen_address_label($_SESSION['customer_id'], $_SESSION['billto'], true, ' ', '<br />'); ?></address>    
                         </div>
                         <div class="col-sm-7">
@@ -47,7 +47,7 @@ if (!$payment_modules->in_special_checkout()) {
 <?php 
     if (MAX_ADDRESS_BOOK_ENTRIES >= 2) { 
 ?>
-                            <div id="billingAddress-btn-toolbar" class="btn-toolbar justify-content-end mt-3" role="toolbar">
+                            <div class="btn-toolbar justify-content-end mt-3" role="toolbar">
                                 <?php echo '<a href="' . zen_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_CHANGE_ADDRESS, BUTTON_CHANGE_ADDRESS_ALT) . '</a>'; ?>
                             </div>
 <?php 
@@ -66,21 +66,21 @@ if (!$payment_modules->in_special_checkout()) {
 
 <!--bof your total card--> 
             <div id="yourTotal-card" class="card mb-3">
-                <h4 id="yourTotal-card-header" class="card-header"><?php echo TEXT_YOUR_TOTAL; ?></h4> 
-                <div id="yourTotal-card-body" class="card-body p-3">
+                <h4 class="card-header"><?php echo TEXT_YOUR_TOTAL; ?></h4> 
+                <div class="card-body p-3">
 <?php
     if (MODULE_ORDER_TOTAL_INSTALLED) {
         $order_totals = $order_total_modules->process();
 ?>
                     <div class="table-responsive">
-                        <table id="shoppingCartDefault-cartTableDisplay" class="cartTableDisplay table table-bordered table-striped">
+                        <table class="cartTableDisplay table table-bordered table-striped">
                             <?php $order_total_modules->output(); ?>
                         </table>
                     </div>
 <?php
     }
 ?>
-                </div>  
+                </div>
             </div>  
 <!--eof your total card--> 
 
@@ -96,14 +96,14 @@ if (!$payment_modules->in_special_checkout()) {
             for ($j = 0, $n2 = (isset($selection[$i]['fields']) ? count($selection[$i]['fields']) : 0); $j < $n2; $j++) {
 ?>
 <!--bof discount coupon card-->
-            <div id="discountCoupon-card" class="card mb-3">
-                <h4 id="discountCoupon-card-header" class="card-header"><?php echo $selection[$i]['module']; ?></h4> 
-                <div id="discountCoupon-card-body" class="card-body p-3">
+            <div class="card mb-3">
+                <h4 class="card-header"><?php echo $selection[$i]['module']; ?></h4> 
+                <div class="card-body p-3">
                     <?php echo $selection[$i]['redeem_instructions']; ?>
 <?php
                 if (isset($selection[$i]['checkbox'])) {
 ?> 
-                    <div id="discountCoupon-gvBal"><?php echo $selection[$i]['checkbox']; ?></div>
+                    <div><?php echo $selection[$i]['checkbox']; ?></div>
 <?php
                 }
 ?>
@@ -143,8 +143,8 @@ if (!$payment_modules->in_special_checkout()) {
 
 <!--bof payment method card-->      
             <div id="paymentMethod-card" class="card mb-3">
-                <h4 id="paymentMethod-card-header" class="card-header"><?php echo TABLE_HEADING_PAYMENT_METHOD; ?></h4> 
-                <div id="paymentMethod-card-body" class="card-body p-3">
+                <h4 class="card-header"><?php echo TABLE_HEADING_PAYMENT_METHOD; ?></h4> 
+                <div class="card-body p-3">
 <?php
         if (SHOW_ACCEPTED_CREDIT_CARDS != '0') {
             if (SHOW_ACCEPTED_CREDIT_CARDS == '1') {
@@ -172,13 +172,13 @@ if (!$payment_modules->in_special_checkout()) {
         $radio_buttons = 0;
         for ($i = 0, $n = count($selection); $i < $n; $i++) {
 ?>
-                    <div id="paymentMethodsOption-card" class="card mb-3">
+                    <div class="card mb-3">
 <?php
             if (count($selection) >= 1) {
                 if (empty($selection[$i]['noradio'])) {
                     $radio_value = (isset($_SESSION['payment']) && $selection[$i]['id'] == $_SESSION['payment']);
 ?>
-                        <div id="paymentMethodsOption-card-header" class="card-header">
+                        <div class="card-header">
                             <div class="custom-control custom-radio custom-control-inline">
                                 <?php echo zen_draw_radio_field('payment', $selection[$i]['id'], $radio_value, 'id="pmt-'.$selection[$i]['id'].'"'); ?>
 <?php   
@@ -210,7 +210,7 @@ if (!$payment_modules->in_special_checkout()) {
 <?php
             } elseif (isset($selection[$i]['fields']) && is_array($selection[$i]['fields'])) {
 ?>
-                        <div id="paymentMethodsOption-card-body" class="ccInfo card-body p-3">
+                        <div class="ccInfo card-body p-3">
 <?php
                 for ($j=0, $n2=sizeof($selection[$i]['fields']); $j<$n2; $j++) {
 ?>
@@ -242,8 +242,8 @@ if (!$payment_modules->in_special_checkout()) {
 
 <!--bof order comments card--> 
             <div id="orderComments-card" class="card mb-3">
-                <h4 id="orderComments-card-header" class="card-header"><?php echo TABLE_HEADING_COMMENTS; ?></h4>
-                <div id="orderComments-card-body" class="card-body p-3">
+                <h4 class="card-header"><?php echo TABLE_HEADING_COMMENTS; ?></h4>
+                <div class="card-body p-3">
 <?php echo zen_draw_textarea_field('comments', '45', '3', (isset($comments) ? $comments : ''), 'aria-label="' . TABLE_HEADING_COMMENTS . '"'); ?>
                 </div>
             </div>
@@ -253,8 +253,8 @@ if (!$payment_modules->in_special_checkout()) {
 ?>
 <!--bof conditions card--> 
             <div id="conditions-card" class="card mb-3">
-                <h4 id="conditions-card-header" class="card-header"><?php echo TABLE_HEADING_CONDITIONS; ?></h4>
-                <div id="conditions-card-body" class="card-body p-3">
+                <h4 class="card-header"><?php echo TABLE_HEADING_CONDITIONS; ?></h4>
+                <div class="card-body p-3">
                     <?php echo TEXT_CONDITIONS_DESCRIPTION;?>
 
                     <div class="custom-control custom-checkbox">
