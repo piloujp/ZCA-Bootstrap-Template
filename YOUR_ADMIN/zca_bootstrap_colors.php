@@ -16,8 +16,8 @@ $groupID = $db->Execute($sqlGroup);
 
 $gID = $groupID->fields['configuration_group_id'];
 if (empty($gID)) {
-  $gID = 0;
   $messageStack->add(MISSING_CONFIGURATION, 'error');
+  zen_redirect(zen_href_link(FILENAME_DEFAULT));
 }
 
 // BOF upload CSV file
