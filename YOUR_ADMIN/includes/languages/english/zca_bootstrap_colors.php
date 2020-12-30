@@ -18,6 +18,10 @@ define('TABLE_HEADING_CONFIGURATION_TITLE', 'Title');
 define('TABLE_HEADING_CONFIGURATION_VALUE', 'Value');
 define('TABLE_HEADING_ACTION', 'Action');
 
+// BOF SQL file
+define('BUTTON_DOWNLOAD_SQL', 'Download SQL');
+// EOF SQL file
+
 // BOF CSV file
 define('BUTTON_DOWNLOAD_CSV', 'Download CSV');
 define('BUTTON_UPLOAD_CSV', 'Upload CSV');
@@ -30,8 +34,10 @@ define('CSV_HEADER_TITLE', 'Title');
 define('UPLOAD_FILE_PROCESSED_ALL_OK', "File Processed; all %s updates successful."); 
 define('UPLOAD_FILE_PROCESSED_SOME_OK', "File Processed; %s out of %s updates successful."); 
 
-define('UPLOAD_SUCCESS', 'Success: '); 
-define('UPLOAD_WARNING', 'Warning: '); 
-define('UPLOAD_FAILED', 'Failed: '); 
-define('NO_CSV_FILE', 'CSV File not specified or empty.'); 
+define('UPLOAD_SUCCESS', 'Success: ');
+define('UPLOAD_WARNING', 'Warning: ');
+define('UPLOAD_FAILED', 'Failed: ');
+define('MISSING_CONFIGURATION', 'Missing configuration');
+define('NO_CSV_FILE', 'CSV File not specified or empty.');
+define('CSV_FILE_MALFORMED', 'CSV file malformed.');
 // EOF CSV file

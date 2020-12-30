@@ -14,28 +14,40 @@ $sqlGroup = "SELECT configuration_group_id
 
 $groupID = $db->Execute($sqlGroup);
 
-$_GET['gID'] = $groupID->fields['configuration_group_id'];
+$gID = $groupID->fields['configuration_group_id'];
+if (empty($gID)) {
+  $gID = 1;
+  $messageStack->add(MISSING_CONFIGURATION, 'error');
+}
 
 // BOF upload CSV file
 $uploadcsv = isset($_GET['uploadcsv']) ? $_GET['uploadcsv'] : '';
 if (zen_not_null($uploadcsv)) {
   $file_contents = '';
   $color_list = [];
+  $fail_count = 0;
+  $line_count = 0;
   if (isset($_FILES['csv_file']) && isset($_FILES['csv_file']['tmp_name']) && $_FILES['csv_file']['tmp_name'] != '') {
     $filename = $_FILES['csv_file']['tmp_name'];
     if (($handle = fopen($filename, "r")) !== false) {
       while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+        $line_count++;
+        if (count($data) < 2) {
+          $string = 'Insufficient columns in line ' . $line_count;
+          error_log(print_r($string, true) . "\n", 3, DIR_FS_CATALOG . '/logs/zca_bootstrap_colors.log');
+          $fail_count++;
+          continue;
+        }
         $color_list[] = [
           'configuration_key' => $data[0],
           'configuration_value' => $data[1],
-          'configuration_title' => $data[2]
         ];
       }
       fclose($handle);
     }
   }
 
-  if (count($color_list) > 0) {
+  if ($fail_count == 0 && count($color_list) > 0) {
     $success_count = 0;
     $fail_count = 0;
     $line_count = 0;
@@ -48,7 +60,7 @@ if (zen_not_null($uploadcsv)) {
       $configuration_value = zen_db_input($color{'configuration_value'});
 
       $color_query = $db->Execute("SELECT * FROM " . TABLE_CONFIGURATION . "
-                                   WHERE configuration_group_id=" . (int)$_GET['gID'] . " AND configuration_key='" . $configuration_key . "'");
+                                   WHERE configuration_group_id=" . (int)$gID . " AND configuration_key='" . $configuration_key . "'");
       if ($color_query->RecordCount() != 1) {
         $string = '';
         if ($color_query->EOF) {
@@ -61,7 +73,7 @@ if (zen_not_null($uploadcsv)) {
       $db->Execute("UPDATE " . TABLE_CONFIGURATION . "
                     SET configuration_value = '" . $configuration_value . "',
                         last_modified = now()
-                    WHERE configuration_group_id=" . (int)$_GET['gID'] . " AND configuration_key='" . $configuration_key . "'");
+                    WHERE configuration_group_id=" . (int)$gID . " AND configuration_key='" . $configuration_key . "'");
       $success_count++;
     }
     if ($fail_count == 0) {
@@ -70,7 +82,11 @@ if (zen_not_null($uploadcsv)) {
       $messageStack->add(UPLOAD_WARNING . sprintf(UPLOAD_FILE_PROCESSED_SOME_OK, $success_count, $success_count + $fail_count), 'caution');
     }
   } else {
-    $messageStack->add(UPLOAD_FAILED . NO_CSV_FILE, 'error');
+    if ($fail_count == 0) {
+      $messageStack->add(UPLOAD_FAILED . NO_CSV_FILE, 'error');
+    } else {
+      $messageStack->add(UPLOAD_FAILED . CSV_FILE_MALFORMED, 'error');
+    }
   }
 }
 // EOF upload SQL file
@@ -84,7 +100,6 @@ if (zen_not_null($downloadcsv)) {
   $out = fopen('php://output', 'w');
   fputcsv($out, [CSV_HEADER_KEY, CSV_HEADER_VALUE, CSV_HEADER_TITLE]);
 
-  $gID = (isset($_GET['gID'])) ? $_GET['gID'] : 1;
   $configuration = $db->Execute("SELECT configuration_value, configuration_key, configuration_title
                                  FROM " . TABLE_CONFIGURATION . "
                                  WHERE configuration_group_id = " . (int)$gID . "
@@ -117,13 +132,11 @@ if (zen_not_null($action)) {
                               WHERE configuration_id = " . (int)$cID . "
                               LIMIT 1");
 
-      zen_redirect(zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'gID=' . $_GET['gID'] . '&cID=' . (int)$cID));
+      zen_redirect(zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . (int)$cID));
       break;
   }
 }
 
-$gID = (isset($_GET['gID'])) ? $_GET['gID'] : 1;
-$_GET['gID'] = $gID;
 $cfg_group = $db->Execute("SELECT configuration_group_title
                            FROM " . TABLE_CONFIGURATION_GROUP . "
                            WHERE configuration_group_id = " . (int)$gID);
@@ -188,11 +201,11 @@ $cfg_group = $db->Execute("SELECT configuration_group_title
 
                   if ((isset($cInfo) && is_object($cInfo)) && ($item['configuration_id'] == $cInfo->configuration_id)) {
                     ?>
-                  <tr id="defaultSelected" class="dataTableRowSelected" onclick="document.location.href = '<?php echo zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'gID=' . (int)$_GET['gID'] . '&cID=' . (int)$cInfo->configuration_id . '&action=edit'); ?>'">
+                  <tr id="defaultSelected" class="dataTableRowSelected" onclick="document.location.href = '<?php echo zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . (int)$cInfo->configuration_id . '&action=edit'); ?>'">
                       <?php
                     } else {
                       ?>
-                  <tr class="dataTableRow" onclick="document.location.href = '<?php echo zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'gID=' . (int)$_GET['gID'] . '&cID=' . (int)$item['configuration_id'] . '&action=edit'); ?>'">
+                  <tr class="dataTableRow" onclick="document.location.href = '<?php echo zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . (int)$item['configuration_id'] . '&action=edit'); ?>'">
                       <?php
                     }
                     ?>
@@ -206,7 +219,7 @@ $cfg_group = $db->Execute("SELECT configuration_group_title
                       if ((isset($cInfo) && is_object($cInfo)) && ($item['configuration_id'] == $cInfo->configuration_id)) {
                         echo zen_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', '');
                       } else {
-                        echo '<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'gID=' . (int)$_GET['gID'] . '&cID=' . (int)$item['configuration_id']) . '" name="link_' . $item['configuration_key'] . '">' . zen_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>';
+                        echo '<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . (int)$item['configuration_id']) . '" name="link_' . $item['configuration_key'] . '">' . zen_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>';
                       }
                       ?>
                   </td>
@@ -246,13 +259,13 @@ $cfg_group = $db->Execute("SELECT configuration_group_title
                 $value_field = zen_draw_input_field('configuration_value', htmlspecialchars($cInfo->configuration_value, ENT_COMPAT, CHARSET, TRUE), 'size="60" class="cfgInput form-control col-md-3" id="full-popover" data-color-format="hex"');
               }
 
-              $contents = array('form' => zen_draw_form('configuration', FILENAME_ZCA_BOOTSTRAP_COLORS, 'gID=' . (int)$_GET['gID'] . '&cID=' . (int)$cInfo->configuration_id . '&action=save'));
+              $contents = array('form' => zen_draw_form('configuration', FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . (int)$cInfo->configuration_id . '&action=save'));
               if (ADMIN_CONFIGURATION_KEY_ON == 1) {
                 $contents[] = array('text' => '<strong>Key: ' . $cInfo->configuration_key . '</strong><br />');
               }
               $contents[] = array('text' => TEXT_INFO_EDIT_INTRO);
               $contents[] = array('text' => '<br><b>' . $cInfo->configuration_title . '</b><br>' . $cInfo->configuration_description . '<br>' . $value_field);
-              $contents[] = array('align' => 'center', 'text' => '<br><button type="submit" class="btn btn-primary" name="submit' . $cInfo->configuration_key . '">' . IMAGE_UPDATE . '</button>&nbsp;<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'gID=' . $_GET['gID'] . '&cID=' . $cInfo->configuration_id) . '" class="btn btn-default" role="button">' . IMAGE_CANCEL . '</a>');
+              $contents[] = array('align' => 'center', 'text' => '<br><button type="submit" class="btn btn-primary" name="submit' . $cInfo->configuration_key . '">' . IMAGE_UPDATE . '</button>&nbsp;<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . $cInfo->configuration_id) . '" class="btn btn-default" role="button">' . IMAGE_CANCEL . '</a>');
               break;
             default:
               if (isset($cInfo) && is_object($cInfo)) {
@@ -261,7 +274,7 @@ $cfg_group = $db->Execute("SELECT configuration_group_title
                   $contents[] = array('text' => '<strong>Key: ' . $cInfo->configuration_key . '</strong><br />');
                 }
 
-                $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'gID=' . $_GET['gID'] . '&cID=' . $cInfo->configuration_id . '&action=edit') . '" class="btn btn-primary">' . IMAGE_EDIT . '</a>');
+                $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . $cInfo->configuration_id . '&action=edit') . '" class="btn btn-primary">' . IMAGE_EDIT . '</a>');
                 $contents[] = array('text' => '<br>' . $cInfo->configuration_description);
                 $contents[] = array('text' => '<br>' . TEXT_INFO_DATE_ADDED . ' ' . zen_date_short($cInfo->date_added));
                 if (zen_not_null($cInfo->last_modified)) {
