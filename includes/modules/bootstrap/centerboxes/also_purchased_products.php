@@ -31,25 +31,25 @@ if (isset($_GET['products_id']) && SHOW_PRODUCT_INFO_COLUMNS_ALSO_PURCHASED_PROD
         }
 
         while (!$also_purchased_products->EOF) {
-            $also_purchased_products->fields['products_name'] = zen_get_products_name($also_purchased_products->fields['products_id']);
+            $app_products_id = $also_purchased_products->fields['products_id'];
       
             /** bof products price */
-            $products_price = zen_get_products_display_price($also_purchased_products->fields['products_id']);
-
+            $products_price = zen_get_products_display_price($app_products_id);
             $also_purchased_products_price = '<div class="centerBoxContentsItem-price text-center">' . $products_price . '</div>';
             /** eof products price */
 
             /** bof products name */
-            $also_purchased_products->fields['products_name'] = zen_get_products_name($also_purchased_products->fields['products_id']);    
+            $app_products_name = zen_get_products_name($app_products_id);
+            $app_products_link = zen_href_link(zen_get_info_page($app_products_id), "products_id=$app_products_id");
     
-            $also_purchased_products_name = '<div class="centerBoxContentsItem-name text-center"><a href="' . zen_href_link(zen_get_info_page($also_purchased_products->fields['products_id']), 'cPath=' . $productsInCategory[$also_purchased_products->fields['products_id']] . '&products_id=' . $also_purchased_products->fields['products_id']) . '">' . $also_purchased_products->fields['products_name'] . '</a></div>';
+            $also_purchased_products_name = '<div class="centerBoxContentsItem-name text-center"><a href="' . $app_products_link . '">' . $app_products_name . '</a></div>';
             /** eof products name */
 
             /** bof products image */
             if (empty($also_purchased_products->fields['products_image']) && (int)PRODUCTS_IMAGE_NO_IMAGE_STATUS === 0) {
                 $also_purchased_products_image = '';
             } else {
-                $also_purchased_products_image = '<div class="centerBoxContentsItem-image text-center"><a href="' . zen_href_link(zen_get_info_page($also_purchased_products->fields['products_id']), 'cPath=' . $productsInCategory[$also_purchased_products->fields['products_id']] . '&products_id=' . $also_purchased_products->fields['products_id']) . '">' . zen_image(DIR_WS_IMAGES . $also_purchased_products->fields['products_image'], $also_purchased_products->fields['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a></div>';
+                $also_purchased_products_image = '<div class="centerBoxContentsItem-image text-center"><a href="' . $app_products_link . '">' . zen_image(DIR_WS_IMAGES . $also_purchased_products->fields['products_image'], $app_products_name, SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a></div>';
             }
             /** eof products image */
       
