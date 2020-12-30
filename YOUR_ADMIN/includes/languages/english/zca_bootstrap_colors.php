@@ -37,7 +37,7 @@ define('UPLOAD_FILE_PROCESSED_SOME_OK', "File Processed; %s out of %s updates su
 define('UPLOAD_SUCCESS', 'Success: ');
 define('UPLOAD_WARNING', 'Warning: ');
 define('UPLOAD_FAILED', 'Failed: ');
-define('MISSING_CONFIGURATION', 'Missing configuration');
+define('MISSING_CONFIGURATION', 'ZCA Bootstrap Colors configuration not found.');
 define('NO_CSV_FILE', 'CSV File not specified or empty.');
 define('CSV_FILE_MALFORMED', 'CSV file malformed.');
 // EOF CSV file

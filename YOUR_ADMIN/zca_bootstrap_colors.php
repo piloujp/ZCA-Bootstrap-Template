@@ -14,20 +14,21 @@ $sqlGroup = "SELECT configuration_group_id
 
 $groupID = $db->Execute($sqlGroup);
 
-$gID = $groupID->fields['configuration_group_id'];
-if (empty($gID)) {
+if (empty($groupID->fields['configuration_group_id'])) {
   $messageStack->add(MISSING_CONFIGURATION, 'error');
-  zen_redirect(zen_href_link(FILENAME_DEFAULT));
+  $gID = 0;
+} else {
+  $gID = $groupID->fields['configuration_group_id'];
 }
 
 // BOF upload CSV file
 $uploadcsv = isset($_GET['uploadcsv']) ? $_GET['uploadcsv'] : '';
-if (zen_not_null($uploadcsv)) {
+if (!empty($uploadcsv)) {
   $file_contents = '';
   $color_list = [];
   $fail_count = 0;
   $line_count = 0;
-  if (isset($_FILES['csv_file']) && isset($_FILES['csv_file']['tmp_name']) && $_FILES['csv_file']['tmp_name'] != '') {
+  if (!empty($_FILES['csv_file']) && !empty($_FILES['csv_file']['tmp_name'])) {
     $filename = $_FILES['csv_file']['tmp_name'];
     if (($handle = fopen($filename, "r")) !== false) {
       while (($data = fgetcsv($handle, 1000, ",")) !== false) {
@@ -35,6 +36,12 @@ if (zen_not_null($uploadcsv)) {
         if (count($data) < 2) {
           $string = 'Insufficient columns in line ' . $line_count;
           error_log(print_r($string, true) . "\n", 3, DIR_FS_CATALOG . '/logs/zca_bootstrap_colors.log');
+          $fail_count++;
+          continue;
+        }
+        if ($line_count === 1 && ($data[0] != CSV_HEADER_KEY || $data[1] != CSV_HEADER_VALUE)) {
+          $errormsg = 'Incorrect column headers in line ' . $line_count;
+          error_log(print_r($errormsg, true) . "\n", 3, DIR_FS_CATALOG . '/logs/zca_bootstrap_colors.log');
           $fail_count++;
           continue;
         }
@@ -47,7 +54,7 @@ if (zen_not_null($uploadcsv)) {
     }
   }
 
-  if ($fail_count == 0 && count($color_list) > 0) {
+  if (empty($fail_count) && !empty($color_list)) {
     $success_count = 0;
     $fail_count = 0;
     $line_count = 0;
@@ -62,11 +69,10 @@ if (zen_not_null($uploadcsv)) {
       $color_query = $db->Execute("SELECT * FROM " . TABLE_CONFIGURATION . "
                                    WHERE configuration_group_id=" . (int)$gID . " AND configuration_key='" . $configuration_key . "'");
       if ($color_query->RecordCount() != 1) {
-        $string = '';
         if ($color_query->EOF) {
           $string = 'Error in line ' . $line_count . ' - no matching key ' . $configuration_key;
+          error_log(print_r($string, true) . "\n", 3, DIR_FS_CATALOG . '/logs/zca_bootstrap_colors.log');
         } 
-        error_log(print_r($string, true) . "\n", 3, DIR_FS_CATALOG . '/logs/zca_bootstrap_colors.log');
         $fail_count++;
         continue;
       }
@@ -76,7 +82,7 @@ if (zen_not_null($uploadcsv)) {
                     WHERE configuration_group_id=" . (int)$gID . " AND configuration_key='" . $configuration_key . "'");
       $success_count++;
     }
-    if ($fail_count == 0) {
+    if (empty($fail_count)) {
       $messageStack->add(UPLOAD_SUCCESS . sprintf(UPLOAD_FILE_PROCESSED_ALL_OK, $success_count), 'success');
     } else {
       $messageStack->add(UPLOAD_WARNING . sprintf(UPLOAD_FILE_PROCESSED_SOME_OK, $success_count, $success_count + $fail_count), 'caution');
@@ -93,7 +99,7 @@ if (zen_not_null($uploadcsv)) {
 
 // BOF download CSV file
 $downloadcsv = isset($_GET['downloadcsv']) ? $_GET['downloadcsv'] : '';
-if (zen_not_null($downloadcsv)) {
+if (!empty($downloadcsv)) {
   $filename = 'zca_bootstrap_colors_' . date('Ymd_His') . '.csv';
   header('Content-Type: text/csv; charset=utf-8');
   header('Content-Disposition: attachment; filename=' . $filename);
@@ -115,7 +121,7 @@ if (zen_not_null($downloadcsv)) {
 
 $action = (isset($_GET['action']) ? $_GET['action'] : '');
 
-if (zen_not_null($action)) {
+if (!empty($action)) {
   switch ($action) {
     case 'save':
       $cID = zen_db_prepare_input($_GET['cID']);
@@ -229,7 +235,10 @@ $cfg_group = $db->Execute("SELECT configuration_group_title
               ?>
             </tbody>
           </table>
-<?php /* BOF CSV file */ ?>
+<?php
+/* BOF CSV file */
+if (!empty($gID)) {
+?>
           <div class="row">
             <?php echo zen_draw_form('upload_csv', FILENAME_ZCA_BOOTSTRAP_COLORS, 'uploadcsv=1', 'post', 'enctype="multipart/form-data" class="form-horizontal"'); ?>
               <div class="form-group">
@@ -242,7 +251,10 @@ $cfg_group = $db->Execute("SELECT configuration_group_title
           <div class="row text-right">
             <a class="btn btn-primary" role="button" href="<?php echo zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'downloadcsv=1', 'SSL') ?>"><?php echo BUTTON_DOWNLOAD_CSV; ?></a>
           </div>
-<?php /* EOF CSV file */ ?>
+<?php
+}
+/* EOF CSV file */
+?>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 configurationColumnRight">
           <?php
