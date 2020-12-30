@@ -18,10 +18,6 @@ define('TABLE_HEADING_CONFIGURATION_TITLE', 'Title');
 define('TABLE_HEADING_CONFIGURATION_VALUE', 'Value');
 define('TABLE_HEADING_ACTION', 'Action');
 
-// BOF SQL file
-define('BUTTON_DOWNLOAD_SQL', 'Download SQL');
-// EOF SQL file
-
 // BOF CSV file
 define('BUTTON_DOWNLOAD_CSV', 'Download CSV');
 define('BUTTON_UPLOAD_CSV', 'Upload CSV');
