@@ -14,16 +14,17 @@ $sqlGroup = "SELECT configuration_group_id
 
 $groupID = $db->Execute($sqlGroup);
 
+$gID = 0;
+
+// Without a valid config group present, it means the ZCA Bootstrap module isn't installed/configured yet/anymore.
 if (empty($groupID->fields['configuration_group_id'])) {
   $messageStack->add(MISSING_CONFIGURATION, 'error');
-  $gID = 0;
 } else {
   $gID = $groupID->fields['configuration_group_id'];
 }
 
 // BOF upload CSV file
-$uploadcsv = isset($_GET['uploadcsv']) ? $_GET['uploadcsv'] : '';
-if (!empty($uploadcsv)) {
+if (!empty($_GET['uploadcsv'])) {
   $file_contents = '';
   $color_list = [];
   $fail_count = 0;
@@ -98,8 +99,7 @@ if (!empty($uploadcsv)) {
 // EOF upload SQL file
 
 // BOF download CSV file
-$downloadcsv = isset($_GET['downloadcsv']) ? $_GET['downloadcsv'] : '';
-if (!empty($downloadcsv)) {
+if (!empty($_GET['downloadcsv'])) {
   $filename = 'zca_bootstrap_colors_' . date('Ymd_His') . '.csv';
   header('Content-Type: text/csv; charset=utf-8');
   header('Content-Disposition: attachment; filename=' . $filename);
