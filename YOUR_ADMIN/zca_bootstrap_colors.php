@@ -227,7 +227,7 @@ $cfg_group = $db->Execute("SELECT configuration_group_title
             <?php echo '</form>'; ?>
           </div>
           <div class="row text-right">
-            <a class="btn btn-primary" role="button" href="<?= zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'downloadcsv=1', 'SSL') ?>"><?= BUTTON_DOWNLOAD_CSV; ?></a>
+            <a class="btn btn-primary" role="button" href="<? echo zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'downloadcsv=1', 'SSL') ?>"><? echo BUTTON_DOWNLOAD_CSV; ?></a>
           </div>
 <?php /* EOF CSV file */ ?>
         </div>
