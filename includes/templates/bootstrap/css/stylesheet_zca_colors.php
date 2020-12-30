@@ -120,7 +120,12 @@ nav.navbar .navbar-toggler:hover {
 #footerWrapper {
 	color: <?php echo ZCA_FOOTER_WRAPPER_TEXT_COLOR; ?>;
 	background-color: <?php echo ZCA_FOOTER_WRAPPER_BACKGROUND_COLOR; ?>;
-	}	
+	}
+
+.legalCopyright, .legalCopyright a {
+	color: <?php echo ZCA_FOOTER_WRAPPER_TEXT_COLOR; ?>;
+	}
+
 	    /* footer ezpage bar */
 #ezpagesBarFooter {
 	background-color: <?php echo ZCA_FOOTER_EZPAGE_BACKGROUND_COLOR; ?>;
@@ -181,8 +186,22 @@ nav.navbar .navbar-toggler:hover {
 	color: <?php echo ZCA_CENTERBOX_HEADER_TEXT_COLOR; ?>;
 	background-color: <?php echo ZCA_CENTERBOX_HEADER_BACKGROUND_COLOR; ?>;
 	}
-	
-	
+
+	/* category cards */
+.categoryListBoxContents.card {
+	color: <?php echo ZCA_CENTERBOX_TEXT_COLOR; ?>;
+	background-color: <?php echo ZCA_CENTERBOX_BACKGROUND_COLOR; ?>;
+	}
+
+.categoryListBoxContents {
+	background-color: <?php echo ZCA_CENTERBOX_CARD_BACKGROUND_COLOR; ?>;
+	}
+
+.categoryListBoxContents:hover {
+	background-color: <?php echo ZCA_CENTERBOX_CARD_BACKGROUND_COLOR_HOVER; ?>;
+	}
+
+
 	/* pagination links */	
 a.page-link {
 	color: <?php echo ZCA_BUTTON_PAGEINATION_TEXT_COLOR; ?>;
@@ -248,9 +267,6 @@ a.page-link:hover {
 	color: <?php echo ZCA_BODY_PRODUCTS_FREE_COLOR; ?>;
 	}
 	
-
-.legalCopyright, .legalCopyright a {color: <?php echo ZCA_FOOTER_EZPAGE_LINK_COLOR; ?>;}
-
 
 
 </style>
