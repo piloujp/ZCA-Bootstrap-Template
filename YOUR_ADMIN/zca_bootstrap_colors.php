@@ -8,23 +8,18 @@
  */
 require('includes/application_top.php');
 
-$action = (isset($_GET['action']) ? $_GET['action'] : '');
-
 $sqlGroup = "SELECT configuration_group_id
              FROM " . TABLE_CONFIGURATION_GROUP . "
              WHERE configuration_group_title = 'ZCA Bootstrap Colors'";
 $groupID = $db->Execute($sqlGroup);
 // Without a valid config group present, it means the ZCA Bootstrap module isn't installed/configured yet/anymore.
-if (empty($groupID->fields['configuration_group_id'])) {
-  //$messageStack->add_session(MISSING_CONFIGURATION, 'error');
-  //zen_redirect(zen_href_link(FILENAME_DEFAULT));
-
-  $messageStack->add(MISSING_CONFIGURATION, 'error');
-  $gID = 0;                             // unused configuration group
-  $action = '';                         // block any pending action
-} else {
-  $gID = $groupID->fields['configuration_group_id'];
+if ($groupID->EOF) {
+  $messageStack->add_session(MISSING_CONFIGURATION, 'error');
+  zen_redirect(zen_href_link(FILENAME_DEFAULT));
 }
+$gID = $groupID->fields['configuration_group_id'];
+
+$action = (isset($_GET['action']) ? $_GET['action'] : '');
 
 if (!empty($action)) {
   switch ($action) {
