@@ -32,3 +32,12 @@ This Zen Cart template uses a [Bootstrap](https://getbootstrap.com/docs/4.5/gett
   - Can use either a `column` or `row` layout, based on a configuration setting.
 - *Minimal* stylesheet overrides.
 - Admin controlled colors.
+
+## Useful Links:
+
+- 'Official' Bootstrap 4.5 documentation: https://getbootstrap.com/docs/4.5/components/alerts/
+- Bootstrap Classes 'Cheat-sheet': https://hackerthemes.com/bootstrap-cheatsheet/
+- Templates, Snippets and more: https://bootstrapious.com/
+- w3schools has a bunch of 'Try It' links: https://www.w3schools.com/bootstrap4/default.asp
+- A neat (free) tool to view multiple viewports at the same time: https://responsively.app 
+- Free themes for Bootstrap: https://bootswatch.com/
