@@ -5,6 +5,8 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: Author: DrByte  Fri Feb 26 00:25:51 2016 -0500 Modified in v1.5.5 $
+ *
+ * BOOTSTRAP v3.1.0
  */
 require('includes/application_top.php');
 
@@ -66,7 +68,7 @@ if (!empty($action)) {
             continue;
           }
           $configuration_key = zen_db_input($color['configuration_key']);
-          $configuration_value = zen_db_input($color{'configuration_value'});
+          $configuration_value = zen_db_input($color['configuration_value']);
 
           $color_query = $db->Execute("SELECT * FROM " . TABLE_CONFIGURATION . "
                                        WHERE configuration_group_id=" . (int)$gID . " AND configuration_key='" . $configuration_key . "'");
