@@ -220,8 +220,8 @@ if ($num_products_count > 0) {
             }
             $listing_model = (isset($record['products_model'])) ? $record['products_model'] : '';
             $listing_mfg_name = (isset($record['manufacturers_name'])) ? $record['manufacturers_name'] : '';
-            $listing_quantity = (isset($record['products_quantity'])) ? $record['products_quantity'] : '';
-            $listing_weight = (isset($record['products_weight'])) ? $record['products_weight'] : '';
+            $listing_quantity = (isset($record['products_quantity'])) ? $record['products_quantity'] : 0;
+            $listing_weight = (isset($record['products_weight'])) ? $record['products_weight'] : 0;
             $listing_mfg_link = zen_href_link(FILENAME_DEFAULT, 'manufacturers_id=' . (int)$record['manufacturers_id']);
             $listing_price = zen_get_products_display_price($record['products_id']);
             $more_info_button = '<a class="moreinfoLink" href="' . $href . '">' . MORE_INFO_TEXT . '</a>';
@@ -250,7 +250,7 @@ if ($num_products_count > 0) {
                         $record['product_is_call'] == 0
                         &&
                         // product is in stock or customers may add it to cart anyway
-                        ($record['products_quantity'] > 0 || SHOW_PRODUCTS_SOLD_OUT_IMAGE == 0)
+                        ($listing_quantity > 0 || SHOW_PRODUCTS_SOLD_OUT_IMAGE == 0)
                     ) {
                         $how_many++;
                     }
@@ -384,7 +384,7 @@ if ($num_products_count > 0) {
                     'parent_category_name' => $record['parent_category_name'],
                     'category_name' => $record['category_name'],
                     'manufacturers_id' => $record['manufacturers_id'],
-                    'manufacturers_name' => $record['manufacturers_name'],
+                    'manufacturers_name' => $listing_mfg_name,
                     'text' => $lc_text,
                 ];
 //                // add description
@@ -421,7 +421,7 @@ if ($num_products_count > 0) {
                 'parent_category_name' => $record['parent_category_name'],
                 'category_name' => $record['category_name'],
                 'manufacturers_id' => $record['manufacturers_id'],
-                'manufacturers_name' => $record['manufacturers_name'],
+                'manufacturers_name' => $listing_mfg_name,
             ];
             if ($product_listing_layout_style === 'columns') {
                 $column++;
