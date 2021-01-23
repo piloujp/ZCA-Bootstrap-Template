@@ -157,12 +157,25 @@ if ($flagHasCartContents) {
     <?php echo '</form>'; ?>
 <?php
     if (SHOW_SHIPPING_ESTIMATOR_BUTTON == '1') {
+        // -----
+        // Determine whether the modal should be shown on the page's initial rendering.  It will be if its
+        // form was just posted.
+        //
+        if (isset($_POST['action']) && $_POST['action'] == 'submit') {
+?>
+    <script>
+    jQuery(document).ready(function () {
+        jQuery('#shippingEstimatorModal').modal('show');
+    });
+    </script>
+<?php
+        }
 ?>
     <div id="shoppingCartDefault-shoppingEstimator-btn-toolbar" class="btn-toolbar my-3" role="toolbar">
-        <?php echo '<a href="javascript:popupWindow(\'' . zen_href_link(FILENAME_POPUP_SHIPPING_ESTIMATOR) . '\')">' .
-        zen_image_button(BUTTON_IMAGE_SHIPPING_ESTIMATOR, BUTTON_SHIPPING_ESTIMATOR_ALT) . '</a>'; ?>
+        <?php echo zen_image_button(BUTTON_IMAGE_SHIPPING_ESTIMATOR, BUTTON_SHIPPING_ESTIMATOR_ALT, 'data-toggle="modal" data-target="#shippingEstimatorModal"'); ?>
     </div>
 <?php
+        require $template->get_template_dir('tpl_shipping_estimator.php', DIR_WS_TEMPLATE, $current_page_base, 'modalboxes') . '/tpl_shipping_estimator.php';
     }
 ?>
 <!-- ** BEGIN PAYPAL EXPRESS CHECKOUT ** -->

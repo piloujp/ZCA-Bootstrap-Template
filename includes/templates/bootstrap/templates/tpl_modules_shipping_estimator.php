@@ -2,7 +2,7 @@
 /**
  * Module Template - for shipping-estimator display
  *
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.1.0
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -16,7 +16,7 @@ if (empty($extra)) {
 }
 ?>
 <div id="shippingEstimatorContent">
-    <?php echo zen_draw_form('estimator', zen_href_link($show_in . '#view', '', $request_type), 'post'); ?>
+    <?php echo zen_draw_form('estimator', zen_href_link(FILENAME_SHOPPING_CART, '', $request_type), 'post'); ?>
     <?php if (is_array($selected_shipping)) {
         zen_draw_hidden_field('scid', $selected_shipping['id']);
     } ?>

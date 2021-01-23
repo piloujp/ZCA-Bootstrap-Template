@@ -2,6 +2,8 @@
 /**
  * jscript_addr_pulldowns_zca_bootstrap
  *
+ * BOOTSTRAP v3.1.0
+ *
  * handles pulldown menu dependencies for state/country selection
  *
  * @package page
@@ -17,7 +19,6 @@ $zca_address_pages = array(
     FILENAME_CHECKOUT_PAYMENT_ADDRESS, 
     FILENAME_CHECKOUT_SHIPPING_ADDRESS,
     FILENAME_ADDRESS_BOOK_PROCESS,
-    FILENAME_POPUP_SHIPPING_ESTIMATOR,
 );
 if (ACCOUNT_STATE_DRAW_INITIAL_DROPDOWN != 'true' || !isset($_GET['main_page']) || !in_array($_GET['main_page'], $zca_address_pages)) {
     return;
