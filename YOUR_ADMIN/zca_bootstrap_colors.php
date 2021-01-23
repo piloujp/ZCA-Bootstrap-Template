@@ -23,8 +23,7 @@ $gID = $groupID->fields['configuration_group_id'];
 
 $action = (isset($_GET['action']) ? $_GET['action'] : '');
 
-if (!empty($action)) {
-  switch ($action) {
+switch ($action) {
 
 // BOF upload CSV file
     case 'uploadcsv':
@@ -32,7 +31,7 @@ if (!empty($action)) {
       $color_list = [];
       $fail_count = 0;
       $line_count = 0;
-      if (!empty($_FILES['csv_file']) && !empty($_FILES['csv_file']['tmp_name'])) {
+      if (!empty($_FILES['csv_file']['tmp_name'])) {
         $filename = $_FILES['csv_file']['tmp_name'];
         if (($handle = fopen($filename, "r")) !== false) {
           while (($data = fgetcsv($handle, 1000, ",")) !== false) {
@@ -132,19 +131,9 @@ if (!empty($action)) {
                         last_modified = now()
                     WHERE configuration_id = " . (int)$cID);
 
-      $result = $db->Execute("SELECT configuration_key
-                              FROM " . TABLE_CONFIGURATION . "
-                              WHERE configuration_id = " . (int)$cID . "
-                              LIMIT 1");
-
       zen_redirect(zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . (int)$cID));
       break;
-  }
 }
-
-$cfg_group = $db->Execute("SELECT configuration_group_title
-                           FROM " . TABLE_CONFIGURATION_GROUP . "
-                           WHERE configuration_group_id = " . (int)$gID);
 ?>
 <!doctype html>
 <html <?php echo HTML_PARAMS; ?>>
@@ -295,7 +284,7 @@ if (!empty($gID)) {
               break;
           }
 
-          if ((!empty($heading)) && (!empty($contents))) {
+          if (!empty($heading) && !empty($contents)) {
             $box = new box;
             echo $box->infoBox($heading, $contents);
           }
