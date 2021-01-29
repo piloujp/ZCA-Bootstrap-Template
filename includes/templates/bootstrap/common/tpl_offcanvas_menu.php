@@ -78,57 +78,51 @@ if (SHOW_CATEGORIES_BOX_PRODUCTS_ALL == 'true') {
 ?>
     </div>
 </li>
-
+<?php
+// -----
+// Check to see that the information sidebox is to be displayed.  If so, bring in the $information
+// array from the 'standard' sidebox, with modifications to its class for the offcanvas menu's display.
+//
+$information_sidebox = $db->Execute(
+    "SELECT *
+       FROM " . TABLE_LAYOUT_BOXES . "
+      WHERE layout_template = '$template_dir'
+        AND layout_box_name = 'information.php'
+        AND layout_box_status = 1
+      LIMIT 1"
+);
+if (!$information_sidebox->EOF) {
+    $information_box = DIR_WS_MODULES . zen_get_module_sidebox_directory('information.php'); 
+    if (file_exists($information_box)) {
+        $information_sidebox_class = 'dropdown-item';
+        require $information_box;
+        unset($information_sidebox_class);
+        
+        if (count($information) > 0) {
+?>
 <li class="nav-item dropdown d-lg-none">
     <a class="nav-link dropdown-toggle" href="#" id="infoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <?php echo BOX_HEADING_INFORMATION; ?>
     </a>
     <div class="dropdown-menu" aria-labelledby="infoDropdown">
+        <ul class="m-0 p-0">
 <?php
-    echo '<ul class="m-0 p-0">';
-if (DEFINE_SHIPPINGINFO_STATUS <= 1) {
-        echo '<li><a class="dropdown-item" href="'.zen_href_link(FILENAME_SHIPPING) . '">'. BOX_INFORMATION_SHIPPING.'</a></li>';
-}
-if (DEFINE_PRIVACY_STATUS <= 1) {
-        echo '<li><a class="dropdown-item" href="'.zen_href_link(FILENAME_PRIVACY) . '">'. BOX_INFORMATION_PRIVACY.'</a></li>';
-}
-if (DEFINE_CONDITIONS_STATUS <= 1) {
-        echo '<li><a class="dropdown-item" href="'.zen_href_link(FILENAME_CONDITIONS) . '">'. BOX_INFORMATION_CONDITIONS.'</a></li>';
-}
-if (!empty($external_bb_url) && !empty($external_bb_text)) { // forum/bb link
-        echo '<li><a class="dropdown-item" href="' . $external_bb_url . '" rel="noopener" target="_blank">' . $external_bb_text . '</a></li>';
-}
-if (DEFINE_SITE_MAP_STATUS <= 1) {
-        echo '<li><a class="dropdown-item" href="'.zen_href_link(FILENAME_SITE_MAP) . '">'. BOX_INFORMATION_SITE_MAP.'</a></li>';
-}
-  if (defined('MODULE_ORDER_TOTAL_GV_STATUS') && MODULE_ORDER_TOTAL_GV_STATUS == 'true') {
-        echo '<li><a class="dropdown-item" href="'.zen_href_link(FILENAME_GV_FAQ) . '">'. BOX_INFORMATION_GV.'</a></li>';
-}
-  if (DEFINE_DISCOUNT_COUPON_STATUS <= 1 && defined('MODULE_ORDER_TOTAL_COUPON_STATUS') && MODULE_ORDER_TOTAL_COUPON_STATUS == 'true') {
-        echo '<li><a class="dropdown-item" href="'.zen_href_link(FILENAME_DISCOUNT_COUPON) . '">'. BOX_INFORMATION_DISCOUNT_COUPONS.'</a></li>';
-}
-if (SHOW_NEWSLETTER_UNSUBSCRIBE_LINK == 'true') {
-        echo '<li><a class="dropdown-item" href="'.zen_href_link(FILENAME_UNSUBSCRIBE) . '">'. BOX_INFORMATION_UNSUBSCRIBE.'</a></li>';
-}
-if (DEFINE_PAGE_2_STATUS <= 1) {
-        echo '<li><a class="dropdown-item" href="'.zen_href_link(FILENAME_PAGE_2) . '">'. BOX_INFORMATION_PAGE_2.'</a></li>';
-}
-if (DEFINE_PAGE_3_STATUS <= 1) {
-        echo '<li><a class="dropdown-item" href="'.zen_href_link(FILENAME_PAGE_3) . '">'. BOX_INFORMATION_PAGE_3.'</a></li>';
-}
-if (DEFINE_PAGE_4_STATUS <= 1) {
-        echo '<li><a class="dropdown-item" href="'.zen_href_link(FILENAME_PAGE_4) . '">'. BOX_INFORMATION_PAGE_4.'</a></li>';
-}
-    echo '</ul>';
+            foreach ($information as $next_link) {
 ?>
+            <li><?php echo $next_link; ?></li>
+<?php
+            }
+?>
+        </ul>
     </div>
-</li>  
+</li>
 <?php
-  // test if ez-pages links should display
-if (EZPAGES_STATUS_SIDEBOX == '1' or (EZPAGES_STATUS_SIDEBOX== '2' && zen_is_whitelisted_admin_ip())) {
-?>
+        }
+    }
+}
 
-<?php
+// test if ez-pages links should display
+if (EZPAGES_STATUS_SIDEBOX == '1' or (EZPAGES_STATUS_SIDEBOX== '2' && zen_is_whitelisted_admin_ip())) {
     if (isset($var_linksList)) {
         unset($var_linksList);
     }
@@ -184,7 +178,11 @@ if (EZPAGES_STATUS_SIDEBOX == '1' or (EZPAGES_STATUS_SIDEBOX== '2' && zen_is_whi
                 $next_page_entry['link'] = $offcanvasAltURL;
             }
 
-            $next_page_entry['link'] .= ($next_page['page_open_new_window'] == '1') ? '" target="_blank" rel="noopener"' : '';
+            // -----
+            // NOTE: The trailing double-quote is INTENTIONALLY not provided since that will be provided when the anchor-link is
+            // generated in the loop below!
+            //
+            $next_page_entry['link'] .= ($next_page['page_open_new_window'] == '1') ? '" target="_blank" rel="noopener' : '';
             
             $page_query_list_sidebox[] = $next_page_entry;
         }
