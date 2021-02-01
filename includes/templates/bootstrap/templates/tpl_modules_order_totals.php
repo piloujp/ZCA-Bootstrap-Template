@@ -13,11 +13,7 @@
 // -----
 // If a column-span for the title is provided, use it; otherwise, default to 3.
 //
-// Note: Globalization is required since this function is called from the order_total class'
-// output method.
-//
-global $zca_bootstrap_ot_colspan;
-$zca_bootstrap_ot_colspan = (!empty($zca_bootstrap_ot_colspan)) ? $zca_bootstrap_ot_colspan : '3';
+$zca_bootstrap_ot_colspan = (!empty($_SESSION['zca_bootstrap_ot_colspan'])) ? $_SESSION['zca_bootstrap_ot_colspan'] : '3';
 
 /**
  * Displays order-totals modules' output, as called from order_total::output
