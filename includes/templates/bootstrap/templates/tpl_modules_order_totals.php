@@ -13,7 +13,9 @@
 // -----
 // If a column-span for the title is provided, use it; otherwise, default to 3.
 //
-$zca_bootstrap_ot_colspan = (!empty($_SESSION['zca_bootstrap_ot_colspan'])) ? $_SESSION['zca_bootstrap_ot_colspan'] : '3';
+global $current_page_base;
+$zca_bootstrap_ot_colspan = 
+    (defined('FILENAME_CHECKOUT_ONE') && $current_page_base == FILENAME_CHECKOUT_ONE && !empty($_SESSION['zca_bootstrap_ot_colspan'])) ? $_SESSION['zca_bootstrap_ot_colspan'] : '3';
 
 /**
  * Displays order-totals modules' output, as called from order_total::output
