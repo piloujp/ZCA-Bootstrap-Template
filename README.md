@@ -41,3 +41,7 @@ This Zen Cart template uses a [Bootstrap](https://getbootstrap.com/docs/4.5/gett
 - w3schools has a bunch of 'Try It' links: https://www.w3schools.com/bootstrap4/default.asp
 - A neat (free) tool to view multiple viewports at the same time: https://responsively.app 
 - Free themes for Bootstrap: https://bootswatch.com/
+
+## Additional Information:
+
+- [FAQs](./pages/faqs.md).  View the current list of Frequently Asked Questions.
