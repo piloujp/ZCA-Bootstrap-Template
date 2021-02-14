@@ -12,6 +12,9 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: Scott C Wilson 2020 Apr 09 Modified in v1.5.7 $
  */
+/*
+ * BOOTSTRAP v3.1.1
+*/
 if (!defined('IS_ADMIN_FLAG')) {
     die('Illegal Access');
 }
@@ -303,5 +306,14 @@ if ($_SESSION['cart']->count_contents() > 0) {
 <?php
 }
 ?>
+<?php
+//-bof-bootstrap  *** 1 of 1 ***
+// -----
+// Don't use 'base' Zen Cart processing, in deference to the bootstrap jscript_addr_pulldowns_zca_bootstrap.php
+//
+/*
 <script type="text/javascript">update_zone(document.estimator); </script>
+*/
+//-eof-bootstrap  *** 1 of 1 ***
+?>
 <!-- shipping_estimator_eof //-->

@@ -2,7 +2,7 @@
 /**
  * Module Template - for shipping-estimator display
  *
- * BOOTSTRAP v3.1.0
+ * BOOTSTRAP v3.1.1
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -29,7 +29,7 @@ if ($_SESSION['cart']->count_contents()) {
 <?php 
         if (!empty($totalsDisplay)) { 
 ?>
-    <div class="cartTotalsDisplay important"><?php echo $totalsDisplay; ?></div>
+    <div class="text-center"><?php echo $totalsDisplay; ?></div>
 <?php 
         }
         // only display addresses if more than 1
@@ -40,9 +40,8 @@ if ($_SESSION['cart']->count_contents()) {
 <?php
         }
 ?>
-    <div class="bold back" id="seShipTo"><?php echo CART_SHIPPING_METHOD_TO; ?></div>
-    <address class="back"><?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'); ?></address>
-    <br class="clearBoth" />
+    <div class="font-weight-bold" id="seShipTo"><?php echo CART_SHIPPING_METHOD_TO; ?></div>
+    <address><?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br>'); ?></address>
 <?php
     } else {
 ?>
@@ -50,33 +49,39 @@ if ($_SESSION['cart']->count_contents()) {
 <?php 
         if (!empty($totalsDisplay)) { 
 ?>
-    <div class="cartTotalsDisplay important"><?php echo $totalsDisplay; ?></div>
+    <div class="text-center"><?php echo $totalsDisplay; ?></div>
 <?php
         }
         if ($_SESSION['cart']->get_content_type() != 'virtual') {
 ?>
     <label class="inputLabel" for="country"><?php echo ENTRY_COUNTRY; ?></label>
     <?php echo zen_get_country_list('zone_country_id', $selected_country, 'id="country"'); ?>
-    <br class="clearBoth" />
-
-    <a name="view"></a>
+    <div class="p-2"></div>
+<?php
+            if (ACCOUNT_STATE_DRAW_INITIAL_DROPDOWN == 'true') {
+?>
     <label class="inputLabel" for="stateZone" id="zoneLabel"><?php echo ENTRY_STATE; ?></label>
-    <?php echo zen_draw_pull_down_menu('zone_id', zen_prepare_country_zones_pull_down($selected_country), $state_zone_id, 'id="stateZone"');?>
-    <br class="clearBoth" id="stBreak" />
-    <label class="inputLabel" for="state" id="stateLabel"><?php echo (isset($state_field_label) ? $state_field_label : ''); ?></label>
-    <?php echo zen_draw_input_field('state', $selectedState, zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state"') .'&nbsp;<span class="alert" id="stText">&nbsp;</span>'; ?>
-    <br class="clearBoth" />
+    <?php echo zen_draw_pull_down_menu('zone_id', zen_prepare_country_zones_pull_down($selected_country), $state_zone_id, 'id="stateZone"'); ?>
+    <div class="p-2" id="stBreak"></div>
+<?php
+            } else {
+?>
+    <label class="inputLabel" for="state" id="stateLabel"><?php echo ENTRY_STATE; ?></label>
+<?php
+            }
+?>
+    <?php echo zen_draw_input_field('state', $selectedState, zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state"'); ?>
+    <div class="p-2"></div>
 <?php
             if (CART_SHIPPING_METHOD_ZIP_REQUIRED == 'true') {
 ?>
     <label class="inputLabel"><?php echo ENTRY_POST_CODE; ?></label>
     <?php echo  zen_draw_input_field('zip_code', $zip_code, 'size="7"'); ?>
-    <br class="clearBoth" />
+    <div class="p-2"></div>
 <?php
             }
 ?>
-    <div class="buttonRow forward"><?php echo  zen_image_submit(BUTTON_IMAGE_UPDATE, BUTTON_UPDATE_ALT); ?></div>
-    <br class="clearBoth" />
+    <div class="text-right mt-2 mb-2"><?php echo zen_image_submit(BUTTON_IMAGE_UPDATE, BUTTON_UPDATE_ALT); ?></div>
 <?php
         }
     }
@@ -85,20 +90,16 @@ if ($_SESSION['cart']->count_contents()) {
     } elseif ($free_shipping == 1) {
         echo sprintf(FREE_SHIPPING_DESCRIPTION, $currencies->format(MODULE_ORDER_TOTAL_SHIPPING_FREE_SHIPPING_OVER));
     } else {
-?>
-    <table class="table table-striped" id="seQuoteResults">
-<?php 
         if (!zen_is_logged_in() || zen_in_guest_checkout()) { 
 ?>
-        <tr>
-            <td colspan="2" class="seDisplayedAddressLabel">
-                <?php echo CART_SHIPPING_QUOTE_CRITERIA; ?><br />
-                <?php echo '<span class="seDisplayedAddressInfo">' . zen_get_zone_name($selected_country, $state_zone_id, '') . ($selectedState != '' ? ' ' . $selectedState : '') . ' ' . (isset($order->delivery['postcode']) ? $order->delivery['postcode'] : '') . ' ' . zen_get_country_name($order->delivery['country_id']) . '</span>'; ?>
-            </td>
-        </tr>
+        <div>
+            <div class="pb-2"><?php echo CART_SHIPPING_QUOTE_CRITERIA; ?></div>
+            <div class="pb-2"><?php echo zen_get_zone_name($selected_country, $state_zone_id, '') . ($selectedState != '' ? ' ' . $selectedState : '') . ' ' . (isset($order->delivery['postcode']) ? $order->delivery['postcode'] : '') . ' ' . zen_get_country_name($order->delivery['country_id']); ?></div>
+        </div>
 <?php 
         } 
 ?>
+    <table class="table table-striped" id="seQuoteResults">
         <thead>
             <tr>
                 <th scope="col" id="seProductsHeading"><?php echo CART_SHIPPING_METHOD_TEXT; ?></th>
@@ -123,8 +124,8 @@ if ($_SESSION['cart']->count_contents()) {
                 } else {
                     if ($selected_shipping['id'] == $thisquoteid) {
 ?>
-                <td class="bold"><?php echo $quotes[$i]['module']; ?>&nbsp;(<?php echo $quotes[$i]['methods'][0]['title']; ?>)</td>
-                <td class="cartTotalDisplay bold"><?php echo $currencies->format(zen_add_tax($quotes[$i]['methods'][0]['cost'], isset($quotes[$i]['tax']) ? $quotes[$i]['tax'] : 0)); ?></td>
+                <td class="font-weight-bold"><?php echo $quotes[$i]['module']; ?>&nbsp;(<?php echo $quotes[$i]['methods'][0]['title']; ?>)</td>
+                <td class="cartTotalDisplay font-weight-bold"><?php echo $currencies->format(zen_add_tax($quotes[$i]['methods'][0]['cost'], isset($quotes[$i]['tax']) ? $quotes[$i]['tax'] : 0)); ?></td>
             </tr>
 <?php
                     } else {
@@ -153,8 +154,8 @@ if ($_SESSION['cart']->count_contents()) {
                     } else {
                         if ($selected_shipping['id'] == $thisquoteid) {
 ?>
-                <td class="bold"><?php echo $quotes[$i]['module']; ?>&nbsp;(<?php echo $quotes[$i]['methods'][$j]['title']; ?>)</td>
-                <td class="cartTotalDisplay bold"><?php echo $currencies->format(zen_add_tax($quotes[$i]['methods'][$j]['cost'], isset($quotes[$i]['tax']) ? $quotes[$i]['tax'] : 0)); ?></td>
+                <td class="font-weight-bold"><?php echo $quotes[$i]['module']; ?>&nbsp;(<?php echo $quotes[$i]['methods'][$j]['title']; ?>)</td>
+                <td class="cartTotalDisplay font-weight-bold"><?php echo $currencies->format(zen_add_tax($quotes[$i]['methods'][$j]['cost'], isset($quotes[$i]['tax']) ? $quotes[$i]['tax'] : 0)); ?></td>
             </tr>
 <?php
                         } else {
