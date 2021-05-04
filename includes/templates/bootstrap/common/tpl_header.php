@@ -2,7 +2,7 @@
 /**
  * Common Template - tpl_header.php
  * 
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.1.2
  *
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
@@ -11,21 +11,6 @@
  * @version $Id: DrByte 2020 May 19 Modified in v1.5.7 $
  */
 ?>
-
-<?php
-  // Display all header alerts via messageStack:
-  if ($messageStack->size('header') > 0) {
-    echo $messageStack->output('header');
-  }
-  if (isset($_GET['error_message']) && zen_not_null($_GET['error_message'])) {
-    echo zen_output_string_protected(urldecode($_GET['error_message']));
-  }
-  if (isset($_GET['info_message']) && zen_not_null($_GET['info_message'])) {
-   echo zen_output_string_protected($_GET['info_message']);
-  }
-?>
-
-
 <!--bof-header logo and navigation display-->
 <?php
 if (!isset($flag_disable_header) || !$flag_disable_header) {
@@ -89,7 +74,6 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
 
 <!--bof-branding display-->
 <div id="logoWrapper">
-    
    <div id="logo" class="row align-items-center p-3"> 
    <?php if (HEADER_SALES_TEXT != '') {
            echo '<div class="col-sm-4">';
@@ -136,6 +120,18 @@ echo zen_display_banner('static', $banner);
 </div>
 <!--eof-branding display-->
 
+<?php
+// Display all header alerts via messageStack:
+if ($messageStack->size('header') > 0) {
+    echo $messageStack->output('header');
+}
+if (isset($_GET['error_message']) && zen_not_null($_GET['error_message'])) {
+    echo zen_output_string_protected(urldecode($_GET['error_message']));
+}
+if (isset($_GET['info_message']) && zen_not_null($_GET['info_message'])) {
+    echo zen_output_string_protected($_GET['info_message']);
+}
+?>
 <!--eof-header logo and navigation display-->
 
 <!--bof-optional categories tabs navigation display-->
