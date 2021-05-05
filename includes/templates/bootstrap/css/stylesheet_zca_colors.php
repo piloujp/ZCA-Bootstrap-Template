@@ -72,7 +72,7 @@ nav.navbar .navbar-toggler:hover {color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_TEX
 .centerBoxHeading {color: <?php echo ZCA_CENTERBOX_HEADER_TEXT_COLOR; ?>;background-color: <?php echo ZCA_CENTERBOX_HEADER_BACKGROUND_COLOR; ?>;}
 
 /* category cards */
- categoryListBoxContents.card {color: <?php echo ZCA_CENTERBOX_TEXT_COLOR; ?>;background-color: <?php echo ZCA_CENTERBOX_BACKGROUND_COLOR; ?>;}
+.categoryListBoxContents.card {color: <?php echo ZCA_CENTERBOX_TEXT_COLOR; ?>;background-color: <?php echo ZCA_CENTERBOX_BACKGROUND_COLOR; ?>;}
 .categoryListBoxContents {background-color: <?php echo ZCA_CENTERBOX_CARD_BACKGROUND_COLOR; ?>;}
 .categoryListBoxContents:hover {background-color: <?php echo ZCA_CENTERBOX_CARD_BACKGROUND_COLOR_HOVER; ?>;}
 
@@ -93,10 +93,10 @@ a.page-link:hover {color: <?php echo ZCA_BUTTON_PAGEINATION_TEXT_COLOR_HOVER; ?>
 .productReviewCard:hover {background-color: <?php echo ZCA_CENTERBOX_CARD_BACKGROUND_COLOR_HOVER; ?>;}
 
 /* product prices */
-.productBasePrice {color: <?php echo ZCA_BODY_PRODUCTS_BASE_COLOR; ?>;} 
-.normalprice {color: <?php echo ZCA_BODY_PRODUCTS_NORMAL_COLOR; ?>;} 
-.productSpecialPrice {color: <?php echo ZCA_BODY_PRODUCTS_SPECIAL_COLOR; ?>;} 
-.productPriceDiscount {color: <?php echo ZCA_BODY_PRODUCTS_DISCOUNT_COLOR; ?>;} 
+.productBasePrice {color: <?php echo ZCA_BODY_PRODUCTS_BASE_COLOR; ?>;}
+.normalprice {color: <?php echo ZCA_BODY_PRODUCTS_NORMAL_COLOR; ?>;}
+.productSpecialPrice {color: <?php echo ZCA_BODY_PRODUCTS_SPECIAL_COLOR; ?>;}
+.productPriceDiscount {color: <?php echo ZCA_BODY_PRODUCTS_DISCOUNT_COLOR; ?>;}
 .productSalePrice {color: <?php echo ZCA_BODY_PRODUCTS_SALE_COLOR; ?>;}
 .productFreePrice {color: <?php echo ZCA_BODY_PRODUCTS_FREE_COLOR; ?>;}
 </style>
