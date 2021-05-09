@@ -75,7 +75,7 @@ switch ($action) {
             if ($color_query->EOF) {
               $string = 'Error in line ' . $line_count . ' - no matching key ' . $configuration_key;
               error_log(print_r($string, true) . "\n", 3, DIR_FS_CATALOG . '/logs/zca_bootstrap_colors.log');
-            } 
+            }
             $fail_count++;
             continue;
           }
@@ -141,7 +141,7 @@ switch ($action) {
     <?php require DIR_WS_INCLUDES . 'admin_html_head.php'; ?>
   </head>
   <body>
-    <!-- header       //-->
+    <!-- header //-->
     <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
     <!-- header_eof //-->
 
@@ -305,9 +305,9 @@ if (!empty($gID)) {
         });
       });
     </script>
-    <!  -- body_eof //-->
+    <!-- body_eof //-->
 
-    <!  -- footer //-->
+    <!-- footer //-->
     <?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
     <!-- footer_eof //-->
     <br>
