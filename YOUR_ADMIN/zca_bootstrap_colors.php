@@ -261,22 +261,22 @@ if (!empty($gID)) {
 
               $contents = array('form' => zen_draw_form('configuration', FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . (int)$cInfo->configuration_id . '&action=save'));
               if (ADMIN_CONFIGURATION_KEY_ON == 1) {
-                $contents[] = array('text' => '<strong>Key: ' . $cInfo->configuration_key . '</strong><br />');
+                $contents[] = array('text' => '<strong>Key: ' . $cInfo->configuration_key . '</strong><br>');
               }
               $contents[] = array('text' => TEXT_INFO_EDIT_INTRO);
-              $contents[] = array('text' => '<br><b>' . $cInfo->configuration_title . '</b><br>' . $cInfo->configuration_description . '<br>' . $value_field);
-              $contents[] = array('align' => 'center', 'text' => '<br><button type="submit" class="btn btn-primary" name="submit' . $cInfo->configuration_key . '">' . IMAGE_UPDATE . '</button>&nbsp;<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . $cInfo->configuration_id) . '" class="btn btn-default" role="button">' . IMAGE_CANCEL . '</a>');
+              $contents[] = array('text' => '<strong>' . $cInfo->configuration_title . '</strong><br>' . $cInfo->configuration_description . '<br>' . $value_field);
+              $contents[] = array('align' => 'center', 'text' => '<button type="submit" class="btn btn-primary" name="submit' . $cInfo->configuration_key . '">' . IMAGE_UPDATE . '</button>&nbsp;<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . $cInfo->configuration_id) . '" class="btn btn-default" role="button">' . IMAGE_CANCEL . '</a>');
               break;
             default:
               if (isset($cInfo) && is_object($cInfo)) {
                 $heading[] = array('text' => '<h4>' . $cInfo->configuration_title . '</h4>');
                 if (ADMIN_CONFIGURATION_KEY_ON == 1) {
-                  $contents[] = array('text' => '<strong>Key: ' . $cInfo->configuration_key . '</strong><br />');
+                  $contents[] = array('text' => '<strong>Key: ' . $cInfo->configuration_key . '</strong><br>');
                 }
 
                 $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . $cInfo->configuration_id . '&action=edit') . '" class="btn btn-primary">' . IMAGE_EDIT . '</a>');
-                $contents[] = array('text' => '<br>' . $cInfo->configuration_description);
-                $contents[] = array('text' => '<br>' . TEXT_INFO_DATE_ADDED . ' ' . zen_date_short($cInfo->date_added));
+                $contents[] = array('text' => $cInfo->configuration_description);
+                $contents[] = array('text' => TEXT_INFO_DATE_ADDED . ' ' . zen_date_short($cInfo->date_added));
                 if (zen_not_null($cInfo->last_modified)) {
                   $contents[] = array('text' => TEXT_INFO_LAST_MODIFIED . ' ' . zen_date_short($cInfo->last_modified));
                 }
