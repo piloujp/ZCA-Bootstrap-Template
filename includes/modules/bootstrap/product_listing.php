@@ -221,7 +221,7 @@ if ($num_products_count > 0) {
             $listing_mfg_name = (isset($record['manufacturers_name'])) ? $record['manufacturers_name'] : '';
             $listing_quantity = (isset($record['products_quantity'])) ? $record['products_quantity'] : 0;
             $listing_weight = (isset($record['products_weight'])) ? $record['products_weight'] : 0;
-            $listing_mfg_link = zen_href_link(FILENAME_DEFAULT, 'manufacturers_id=' . (int)$record['manufacturers_id']);
+            $listing_mfg_link = !empty($record['manufacturers_id']) ? zen_href_link(FILENAME_DEFAULT, 'manufacturers_id=' . (int)$record['manufacturers_id']) : '';
             $listing_price = zen_get_products_display_price($record['products_id']);
             $more_info_button = '<a class="moreinfoLink" href="' . $href . '">' . MORE_INFO_TEXT . '</a>';
             $buy_now_link = zen_href_link($_GET['main_page'], zen_get_all_get_params(array('action')) . 'action=buy_now&products_id=' . $record['products_id']);
@@ -310,6 +310,13 @@ if ($num_products_count > 0) {
                     break;
 
                 case 'PRODUCT_LIST_MANUFACTURER':
+                    // -----
+                    // If no manufacturer present for the current product, nothing to be added.
+                    //
+                    if ($listing_mfg_link === '' || $listing_mfg_name === '') {
+                        break;
+                    }
+
                     $lc_align = 'center';
                     if ($product_listing_layout_style === 'table') $lc_align = '';
                     $lc_text = '';

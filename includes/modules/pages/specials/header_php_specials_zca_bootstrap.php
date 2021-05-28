@@ -23,10 +23,13 @@ if (!(function_exists('zca_bootstrap_active') && zca_bootstrap_active())) {
 //Removed call to define page & sorter dropdown. not included in this template
 $listing_sql =
     "SELECT p.products_id, p.products_type, pd.products_name, p.products_image, p.products_price, p.products_tax_class_id, p.products_date_added, p.products_model, 
-            p.products_quantity, p.products_weight, p.product_is_call, p.product_is_always_free_shipping, p.products_qty_box_status, p.master_categories_id
+            p.products_quantity, p.products_weight, p.product_is_call, p.product_is_always_free_shipping, p.products_qty_box_status, p.master_categories_id,
+            p.manufacturers_id, m.manufacturers_name
        FROM (" . TABLE_PRODUCTS . " p
                 LEFT JOIN " . TABLE_SPECIALS . " s 
                     ON p.products_id = s.products_id
+                LEFT JOIN " . TABLE_MANUFACTURERS . " m
+                    ON m.manufacturers_id = p.manufacturers_id
                 LEFT JOIN " . TABLE_PRODUCTS_DESCRIPTION . " pd 
                     ON p.products_id = pd.products_id
                    AND pd.language_id = :languageID
