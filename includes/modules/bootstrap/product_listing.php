@@ -2,7 +2,7 @@
 /**
  * product_listing module
  * 
- * BOOTSTRAP v3.1.0
+ * BOOTSTRAP v3.1.2
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -103,7 +103,6 @@ if ($product_listing_layout_style === 'table') {
         ];
     }
 }
-
 
 // Build row/cell content
 
@@ -433,7 +432,6 @@ if ($num_products_count > 0) {
         }
     }
 } else {
-
     $list_box_contents = [];
     $list_box_contents[0][] = [
         'params' => 'class="productListing-data"',
@@ -453,6 +451,5 @@ $zco_notifier->notify('NOTIFY_PRODUCT_LISTING_END', $current_page_base, $list_bo
 
 if ($how_many > 0 && PRODUCT_LISTING_MULTIPLE_ADD_TO_CART != 0 && $show_submit == true && $num_products_count > 0) {
     // bof: multiple products
-    echo zen_draw_form('multiple_products_cart_quantity', zen_href_link(FILENAME_DEFAULT, zen_get_all_get_params(array('action')) . 'action=multiple_products_add_product', $request_type), 'post', 'enctype="multipart/form-data"');
+    echo zen_draw_form('multiple_products_cart_quantity', zen_href_link($current_page_base, zen_get_all_get_params(array('action')) . 'action=multiple_products_add_product', $request_type), 'post', 'enctype="multipart/form-data"');
 }
-
