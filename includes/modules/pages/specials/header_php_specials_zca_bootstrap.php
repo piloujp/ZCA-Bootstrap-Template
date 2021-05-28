@@ -2,7 +2,7 @@
 /**
  * Specials
  * 
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.1.2
  *
  * @package page
  * @copyright Copyright 2003-2006 Zen Cart Development Team
@@ -39,7 +39,7 @@ $listing_sql = $db->bindVars($listing_sql, ':languageID', $_SESSION['languages_i
 
 //check to see if we are in normal mode ... not showcase, not maintenance, etc
 $show_submit = zen_run_normal();
-$define_list = array(
+$define_list = [
     'PRODUCT_LIST_MODEL' => PRODUCT_LIST_MODEL,
     'PRODUCT_LIST_NAME' => PRODUCT_LIST_NAME,
     'PRODUCT_LIST_MANUFACTURER' => PRODUCT_LIST_MANUFACTURER,
@@ -47,12 +47,12 @@ $define_list = array(
     'PRODUCT_LIST_QUANTITY' => PRODUCT_LIST_QUANTITY,
     'PRODUCT_LIST_WEIGHT' => PRODUCT_LIST_WEIGHT,
     'PRODUCT_LIST_IMAGE' => PRODUCT_LIST_IMAGE,
-);
+];
 
 asort($define_list);
 $column_list = array();
 foreach ($define_list as $key => $value) {
-    if ($value > 0) {
+    if ((int)$value > 0) {
         $column_list[] = $key;
     }
 }
