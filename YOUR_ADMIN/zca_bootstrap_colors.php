@@ -75,7 +75,7 @@ switch ($action) {
             if ($color_query->EOF) {
               $string = 'Error in line ' . $line_count . ' - no matching key ' . $configuration_key;
               error_log(print_r($string, true) . "\n", 3, DIR_FS_CATALOG . '/logs/zca_bootstrap_colors.log');
-            } 
+            }
             $fail_count++;
             continue;
           }
@@ -141,7 +141,7 @@ switch ($action) {
     <?php require DIR_WS_INCLUDES . 'admin_html_head.php'; ?>
   </head>
   <body>
-    <!-- header       //-->
+    <!-- header //-->
     <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
     <!-- header_eof //-->
 
@@ -213,7 +213,7 @@ switch ($action) {
                       if ((isset($cInfo) && is_object($cInfo)) && ($item['configuration_id'] == $cInfo->configuration_id)) {
                         echo zen_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', '');
                       } else {
-                        echo '<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . (int)$item['configuration_id']) . '" name="link_' . $item['configuration_key'] . '">' . zen_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>';
+                        echo '<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . (int)$item['configuration_id']) . '" id="link_' . $item['configuration_key'] . '">' . zen_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>';
                       }
                       ?>
                   </td>
@@ -261,22 +261,22 @@ if (!empty($gID)) {
 
               $contents = array('form' => zen_draw_form('configuration', FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . (int)$cInfo->configuration_id . '&action=save'));
               if (ADMIN_CONFIGURATION_KEY_ON == 1) {
-                $contents[] = array('text' => '<strong>Key: ' . $cInfo->configuration_key . '</strong><br />');
+                $contents[] = array('text' => '<strong>Key: ' . $cInfo->configuration_key . '</strong><br>');
               }
               $contents[] = array('text' => TEXT_INFO_EDIT_INTRO);
-              $contents[] = array('text' => '<br><b>' . $cInfo->configuration_title . '</b><br>' . $cInfo->configuration_description . '<br>' . $value_field);
-              $contents[] = array('align' => 'center', 'text' => '<br><button type="submit" class="btn btn-primary" name="submit' . $cInfo->configuration_key . '">' . IMAGE_UPDATE . '</button>&nbsp;<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . $cInfo->configuration_id) . '" class="btn btn-default" role="button">' . IMAGE_CANCEL . '</a>');
+              $contents[] = array('text' => '<strong>' . $cInfo->configuration_title . '</strong><br>' . $cInfo->configuration_description . '<br>' . $value_field);
+              $contents[] = array('align' => 'center', 'text' => '<button type="submit" class="btn btn-primary" name="submit' . $cInfo->configuration_key . '">' . IMAGE_UPDATE . '</button>&nbsp;<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . $cInfo->configuration_id) . '" class="btn btn-default" role="button">' . IMAGE_CANCEL . '</a>');
               break;
             default:
               if (isset($cInfo) && is_object($cInfo)) {
                 $heading[] = array('text' => '<h4>' . $cInfo->configuration_title . '</h4>');
                 if (ADMIN_CONFIGURATION_KEY_ON == 1) {
-                  $contents[] = array('text' => '<strong>Key: ' . $cInfo->configuration_key . '</strong><br />');
+                  $contents[] = array('text' => '<strong>Key: ' . $cInfo->configuration_key . '</strong><br>');
                 }
 
                 $contents[] = array('align' => 'center', 'text' => '<a href="' . zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . $cInfo->configuration_id . '&action=edit') . '" class="btn btn-primary">' . IMAGE_EDIT . '</a>');
-                $contents[] = array('text' => '<br>' . $cInfo->configuration_description);
-                $contents[] = array('text' => '<br>' . TEXT_INFO_DATE_ADDED . ' ' . zen_date_short($cInfo->date_added));
+                $contents[] = array('text' => $cInfo->configuration_description);
+                $contents[] = array('text' => TEXT_INFO_DATE_ADDED . ' ' . zen_date_short($cInfo->date_added));
                 if (zen_not_null($cInfo->last_modified)) {
                   $contents[] = array('text' => TEXT_INFO_LAST_MODIFIED . ' ' . zen_date_short($cInfo->last_modified));
                 }
@@ -305,9 +305,9 @@ if (!empty($gID)) {
         });
       });
     </script>
-    <!  -- body_eof //-->
+    <!-- body_eof //-->
 
-    <!  -- footer //-->
+    <!-- footer //-->
     <?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
     <!-- footer_eof //-->
     <br>
