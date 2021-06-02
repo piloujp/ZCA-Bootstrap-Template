@@ -1,4 +1,4 @@
-<style type="text/css" title="Inline Styles">
+<style>
 /* BOOTSTRAP4 Template v3.1.2 */
 /* body */
 body {color: <?php echo ZCA_BODY_TEXT_COLOR; ?>;background-color: <?php echo ZCA_BODY_BACKGROUND_COLOR; ?>;}
@@ -99,4 +99,15 @@ a.page-link:hover {color: <?php echo ZCA_BUTTON_PAGEINATION_TEXT_COLOR_HOVER; ?>
 .productPriceDiscount {color: <?php echo ZCA_BODY_PRODUCTS_DISCOUNT_COLOR; ?>;}
 .productSalePrice {color: <?php echo ZCA_BODY_PRODUCTS_SALE_COLOR; ?>;}
 .productFreePrice {color: <?php echo ZCA_BODY_PRODUCTS_FREE_COLOR; ?>;}
+
+/* product info pages */
+<?php
+if (!defined('ZCA_ADD_TO_CART_TEXT_COLOR')) {
+    define('ZCA_ADD_TO_CART_TEXT_COLOR', '#fff');
+    define('ZCA_ADD_TO_CART_BACKGROUND_COLOR', '#00C851');
+    define('ZCA_ADD_TO_CART_BORDER_COLOR', '#00C851');
+}
+?>
+#addToCart-card-header {color: <?php echo ZCA_ADD_TO_CART_TEXT_COLOR; ?>; background-color: <?php echo ZCA_ADD_TO_CART_BACKGROUND_COLOR; ?>;}
+#addToCart-card {border-color: <?php echo ZCA_ADD_TO_CART_BORDER_COLOR; ?>;}
 </style>
