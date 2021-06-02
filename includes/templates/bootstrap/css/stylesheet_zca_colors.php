@@ -102,12 +102,23 @@ a.page-link:hover {color: <?php echo ZCA_BUTTON_PAGEINATION_TEXT_COLOR_HOVER; ?>
 
 /* product info pages */
 <?php
-if (!defined('ZCA_ADD_TO_CART_TEXT_COLOR')) {
-    define('ZCA_ADD_TO_CART_TEXT_COLOR', '#fff');
-    define('ZCA_ADD_TO_CART_BACKGROUND_COLOR', '#00C851');
-    define('ZCA_ADD_TO_CART_BORDER_COLOR', '#00C851');
-}
+// -----
+// Additional coloring for v3.1.2.
+//
+if (defined('ZCA_ADD_TO_CART_TEXT_COLOR')) {
 ?>
 #addToCart-card-header {color: <?php echo ZCA_ADD_TO_CART_TEXT_COLOR; ?>; background-color: <?php echo ZCA_ADD_TO_CART_BACKGROUND_COLOR; ?>;}
 #addToCart-card {border-color: <?php echo ZCA_ADD_TO_CART_BORDER_COLOR; ?>;}
+<?php
+}
+
+if (defined('ZCA_BUTTON_IN_CART_BACKGROUND_COLOR')) {
+?>
+.btn.button_add_selected {background:<?php echo ZCA_BUTTON_ADD_SELECTED_BACKGROUND_COLOR; ?>;color:<?php echo ZCA_BUTTON_ADD_SELECTED_TEXT_COLOR; ?>;}
+.btn.button_add_selected:hover {background:<?php echo ZCA_BUTTON_ADD_SELECTED_BACKGROUND_COLOR_HOVER; ?>;color:<?php echo ZCA_BUTTON_ADD_SELECTED_TEXT_COLOR_HOVER; ?>;}
+.btn.button_in_cart {background:<?php echo ZCA_BUTTON_IN_CART_BACKGROUND_COLOR; ?>;color:<?php echo ZCA_BUTTON_IN_CART_TEXT_COLOR; ?>;}
+.btn.button_in_cart:hover {background:<?php echo ZCA_BUTTON_IN_CART_BACKGROUND_COLOR_HOVER; ?>;color:<?php echo ZCA_BUTTON_IN_CART_TEXT_COLOR_HOVER; ?>;}
+<?php
+}
+?>
 </style>

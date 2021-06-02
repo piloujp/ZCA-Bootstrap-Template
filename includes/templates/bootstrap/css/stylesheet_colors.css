@@ -54,13 +54,9 @@ EOF SIDEBOXES */
 
 /* BOF PRODUCT LISTING PAGES
 .active .page-link {background:#05a5cb!important;color:#FFF!important;border-color:#05a5cb!important;} */
-.button_add_selected {background:#00C851;color:#FFF;}
-.button_add_selected:hover {background:#007E33;color:#FFF;}
 /* EOF PRODUCT LISTING PAGES */
 
 /* BOF PRODUCT INFO PAGES */
-.button_in_cart {background:#00C851;color:#FFF;}
-.button_in_cart:hover {background:#007E33;color:#FFF;}
 a.carousel-control-prev,
 a.carousel-control-next,
 a.carousel-control-prev:hover,

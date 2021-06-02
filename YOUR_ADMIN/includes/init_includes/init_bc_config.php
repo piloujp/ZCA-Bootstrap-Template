@@ -177,6 +177,7 @@ if (!defined('ZCA_BODY_TEXT_COLOR')) {
 // -----
 // Additional selections added for Bootstrap 3.1.2
 //
+$zca_colors_updated = false;
 if (!defined('ZCA_ADD_TO_CART_BACKGROUND_COLOR')) {
     $db->Execute(
         "INSERT INTO " . TABLE_CONFIGURATION . "
@@ -186,7 +187,25 @@ if (!defined('ZCA_ADD_TO_CART_BACKGROUND_COLOR')) {
             ('Add-to-Cart Card Text Color', 'ZCA_ADD_TO_CART_TEXT_COLOR', '#fff', 'Default: #fff', " . $bccid . ", 101, now()),
             ('Add-to-Cart Card Border Color', 'ZCA_ADD_TO_CART_BORDER_COLOR', '#00C851', 'Default: #00C851', " . $bccid . ", 102, now())"
     );
-    if (defined('ZCA_BODY_TEXT_COLOR')) {
-        $messageStack->add('Additional ZCA Bootstrap Colors successfully added.', 'success');
-    }
+    $zca_colors_updated = true;
+}
+if (!defined('ZCA_BUTTON_IN_CART_BACKGROUND_COLOR')) {
+    $db->Execute(
+        "INSERT INTO " . TABLE_CONFIGURATION . "
+            (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added)
+         VALUES
+            ('Add-to-Cart Button Background Color', 'ZCA_BUTTON_IN_CART_BACKGROUND_COLOR', '#00C851', 'Default: #00C851', " . $bccid . ", 120, now()),
+            ('Add-to-Cart Button Text Color', 'ZCA_BUTTON_IN_CART_TEXT_COLOR', '#fff', 'Default: #fff', " . $bccid . ", 121, now()),
+            ('Add-to-Cart Button Background Color on Hover', 'ZCA_BUTTON_IN_CART_BACKGROUND_COLOR_HOVER', '#007E33', 'Default: #007E33', " . $bccid . ", 122, now()),
+            ('Add-to-Cart Button Text Color on Hover', 'ZCA_BUTTON_IN_CART_TEXT_COLOR_HOVER', '#fff', 'Default: #fff', " . $bccid . ", 123, now()),
+            ('Add-Selected Button Background Color', 'ZCA_BUTTON_ADD_SELECTED_BACKGROUND_COLOR', '#00C851', 'Default: #00C851', " . $bccid . ", 120, now()),
+            ('Add-Selected Button Text Color', 'ZCA_BUTTON_ADD_SELECTED_TEXT_COLOR', '#fff', 'Default: #fff', " . $bccid . ", 121, now()),
+            ('Add-Selected Button Background Color on Hover', 'ZCA_BUTTON_ADD_SELECTED_BACKGROUND_COLOR_HOVER', '#007E33', 'Default: #007E33', " . $bccid . ", 122, now()),
+            ('Add-Selected Button Text Color on Hover', 'ZCA_BUTTON_ADD_SELECTED_TEXT_COLOR_HOVER', '#fff', 'Default: #fff', " . $bccid . ", 123, now())"
+    );
+    $zca_colors_updated = true;
+}
+
+if ($zca_colors_updated) {
+    $messageStack->add('Additional ZCA Bootstrap Colors successfully added.', 'success');
 }
