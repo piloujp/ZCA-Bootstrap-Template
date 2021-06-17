@@ -2,7 +2,7 @@
 /**
  * product_listing module
  * 
- * BOOTSTRAP v3.1.2
+ * BOOTSTRAP v3.1.3
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
