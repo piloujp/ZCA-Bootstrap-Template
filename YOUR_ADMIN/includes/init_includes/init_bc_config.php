@@ -6,7 +6,7 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: init_bc_config.php
- * BOOTSTRAP v3.1.2
+ * BOOTSTRAP v3.1.3
  */
 
 // -----
@@ -204,6 +204,23 @@ if (!defined('ZCA_BUTTON_IN_CART_BACKGROUND_COLOR')) {
             ('Add-Selected Button Text Color on Hover', 'ZCA_BUTTON_ADD_SELECTED_TEXT_COLOR_HOVER', '#fff', 'Default: #fff', " . $bccid . ", 123, now())"
     );
     $zca_colors_updated = true;
+}
+
+// -----
+// Correcting duplication of sort-orders in update applied above.
+//
+$bc_check = $db->ExecuteNoCache(
+    "SELECT sort_order
+       FROM " . TABLE_CONFIGURATION . "
+      WHERE configuration_key = 'ZCA_BUTTON_ADD_SELECTED_BACKGROUND_COLOR'
+        AND sort_order = 120
+      LIMIT 1"
+);
+if (!$bc_check->EOF) {
+    $db->Execute("UPDATE " . TABLE_CONFIGURATION . " SET sort_order = 130 WHERE configuration_key = 'ZCA_BUTTON_ADD_SELECTED_BACKGROUND_COLOR' LIMIT 1");
+    $db->Execute("UPDATE " . TABLE_CONFIGURATION . " SET sort_order = 131 WHERE configuration_key = 'ZCA_BUTTON_ADD_SELECTED_TEXT_COLOR' LIMIT 1");
+    $db->Execute("UPDATE " . TABLE_CONFIGURATION . " SET sort_order = 132 WHERE configuration_key = 'ZCA_BUTTON_ADD_SELECTED_BACKGROUND_COLOR_HOVER' LIMIT 1");
+    $db->Execute("UPDATE " . TABLE_CONFIGURATION . " SET sort_order = 133 WHERE configuration_key = 'ZCA_BUTTON_ADD_SELECTED_TEXT_COLOR_HOVER' LIMIT 1");
 }
 
 if ($zca_colors_updated) {
