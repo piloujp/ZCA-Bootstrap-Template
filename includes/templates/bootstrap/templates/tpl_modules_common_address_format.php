@@ -2,7 +2,7 @@
 /**
  * Module Template
  * 
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.1.3
  *
  * Displays address-book details/selection
  *
@@ -70,7 +70,7 @@ if (!isset($entry) || !is_object($entry)) {
   if (ACCOUNT_COMPANY == 'true') {
 ?>
 <label class="inputLabel" for="company"><?php echo ENTRY_COMPANY; ?></label>
-<?php echo zen_draw_input_field('company', $entry->fields['entry_company'], zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_company', '40') . ' id="company" placeholder="' . ENTRY_COMPANY_TEXT . '"' . (ACCOUNT_COMPANY == 'true' && (int)ENTRY_COMPANY_MIN_LENGTH != 0 ? ' required' : '')); ?>
+<?php echo zen_draw_input_field('company', $entry->fields['entry_company'], zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_company', '40') . ' id="company" autocomplete="organization" placeholder="' . ENTRY_COMPANY_TEXT . '"' . (ACCOUNT_COMPANY == 'true' && (int)ENTRY_COMPANY_MIN_LENGTH != 0 ? ' required' : '')); ?>
 <div class="p-2"></div>
 <?php
   }
@@ -83,7 +83,7 @@ if (!isset($entry) || !is_object($entry)) {
   if (ACCOUNT_SUBURB == 'true') {
 ?>
 <label class="inputLabel" for="suburb"><?php echo ENTRY_SUBURB; ?></label>
-<?php echo zen_draw_input_field('suburb', $entry->fields['entry_suburb'], zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_suburb', '40') . ' id="suburb" placeholder="' . ENTRY_SUBURB_TEXT . '"'); ?>
+<?php echo zen_draw_input_field('suburb', $entry->fields['entry_suburb'], zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_suburb', '40') . ' id="suburb" autocomplete="address-line2" placeholder="' . ENTRY_SUBURB_TEXT . '"'); ?>
 <div class="p-2"></div>
 <?php
   }
