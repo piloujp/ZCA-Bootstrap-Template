@@ -215,7 +215,6 @@ if ($num_products_count > 0) {
             $listing_description = '';
             if ((int)PRODUCT_LIST_DESCRIPTION > 0) {
                 $listing_description = zen_trunc_string(zen_clean_html(stripslashes(zen_get_products_description($record['products_id'], $_SESSION['languages_id']))), PRODUCT_LIST_DESCRIPTION);
-                $lc_text .= '<div class="listingDescription">' . $listing_description . '</div>';
             }
             $listing_model = (isset($record['products_model'])) ? $record['products_model'] : '';
             $listing_mfg_name = (isset($record['manufacturers_name'])) ? $record['manufacturers_name'] : '';
