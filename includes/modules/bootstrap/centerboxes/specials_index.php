@@ -7,6 +7,8 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: lat9 2019 Jan 06 Modified in v1.5.6b $
+ *
+ * BOOTSTRAP v3.1.3
  */
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
