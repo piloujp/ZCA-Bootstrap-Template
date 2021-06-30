@@ -5,6 +5,11 @@
  *
  */
 
+
+.clearBoth {
+   clear: both;
+}
+
 /* This is used to re-size images */
 img{max-width:100%;height:auto;border:0;}
 
@@ -97,3 +102,4 @@ table.tabTable td {
   column-count: 2;
 }   
 }
+
