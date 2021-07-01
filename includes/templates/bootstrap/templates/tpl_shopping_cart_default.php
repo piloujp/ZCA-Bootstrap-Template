@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.1.0
+ * BOOTSTRAP v3.1.3
  *
  * Loaded automatically by index.php?main_page=shopping_cart.<br />
  * Displays shopping-cart contents
@@ -66,11 +66,11 @@ if ($flagHasCartContents) {
         <table id="shoppingCartDefault-cartTableDisplay" class="cartTableDisplay table table-bordered table-striped">
             <tr>
                 <th scope="col" id="cartTableDisplay-qtyHeading"><?php echo TABLE_HEADING_QUANTITY; ?></th>
-                <th scope="col" id="cartTableDisplay-qtyUpdateHeading">&nbsp;</th>
+                <th scope="col" class="d-none d-sm-block" id="cartTableDisplay-qtyUpdateHeading">&nbsp;</th>
                 <th scope="col" id="cartTableDisplay-productsHeading"><?php echo TABLE_HEADING_PRODUCTS; ?></th>
                 <th scope="col" id="cartTableDisplay-priceHeading"><?php echo TABLE_HEADING_PRICE; ?></th>
                 <th scope="col" id="cartTableDisplay-totalsHeading"><?php echo TABLE_HEADING_TOTAL; ?></th>
-                <th scope="col" id="cartTableDisplay-removeHeading">&nbsp;</th>
+                <th scope="col" class="d-none d-sm-block" id="cartTableDisplay-removeHeading">&nbsp;</th>
             </tr>
 <?php
     foreach ($productArray as $product) {
@@ -85,9 +85,9 @@ if ($flagHasCartContents) {
         }
 ?>
                 </td>
-                <td class="qtyUpdateCell text-center"><?php echo (!empty($product['buttonUpdate'])) ? $product['buttonUpdate'] : ''; ?></td>
+                <td class="qtyUpdateCell text-center d-none d-sm-block"><?php echo (!empty($product['buttonUpdate'])) ? $product['buttonUpdate'] : ''; ?></td>
                 <td class="productsCell">
-                    <a href="<?php echo $product['linkProductsName']; ?>"><?php echo $product['productsImage']; ?><?php echo $product['productsName'] . '' . $product['flagStockCheck'] . ''; ?></a>
+                    <a href="<?php echo $product['linkProductsName']; ?>"><span class="d-none d-sm-block"><?php echo $product['productsImage']; ?></span><?php echo $product['productsName'] . '' . $product['flagStockCheck'] . ''; ?></a>
 
 <?php
         echo $product['attributeHiddenField'];
@@ -110,7 +110,7 @@ if ($flagHasCartContents) {
                 </td>
                 <td class="priceCell"><?php echo $product['productsPriceEach']; ?></td>
                 <td class="totalsCell"><?php echo $product['productsPrice']; ?></td>
-                <td class="removeCell text-center">
+                <td class="removeCell text-center d-none d-sm-block">
 <?php
         if ($product['buttonDelete']) {
 ?>

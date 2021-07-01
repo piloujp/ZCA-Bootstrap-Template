@@ -220,12 +220,13 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.1.3-beta1, 2021-06-17 (lat9/scottcwilson)<ul>
+        <li>v3.1.3-beta2, 2021-07-01 (lat9/scottcwilson)<ul>
             <li>BUGFIX: Remove redundant code from the <code>product_listing</code> module.</li>
             <li>BUGFIX: Standardize centerbox image sizes, all now using 'SMALL_IMAGE_WIDTH' and 'SMALL_IMAGE_HEIGHT'.</li>
             <li>BUGFIX: Apply <em>specificity</em> to the address rendering so that browser autofill's will fill in the proper fields.</li>
             <li>BUGFIX: Correcting duplicate sort-orders for color settings added in v3.1.2.</li>
-            <li>BUGFIX: Need the <code>clearBoth</code> CSS class defined, used by base templates.</li>
+            <li>BUGFIX: Need the <code>clearBoth</code> CSS class defined, used by <code>template_default</code> templates.</li>
+            <li>BUGFIX: Shopping-cart display requires horizontal scroll on extra-small screens.</li>
             <li>The following files were changed:<ol>
                 <li>/includes/modules/bootstrap/product_listing.php</li>
                 <li>/includes/modules/bootstrap/centerboxes/featured_products.php</li>
@@ -234,6 +235,7 @@ img {
                 <li>/includes/templates/bootstrap/css/stylesheet.css</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_common_address_format.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_create_account.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_shopping_cart_default.php</li>
                 <li>/YOUR_ADMIN/includes/init_includes/init_bc_config.php</li>
             </ol></li>
         </ul></li>
