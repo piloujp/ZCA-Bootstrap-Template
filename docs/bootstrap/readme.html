@@ -227,7 +227,9 @@ img {
             <li>BUGFIX: Correcting duplicate sort-orders for color settings added in v3.1.2.</li>
             <li>BUGFIX: Need the <code>clearBoth</code> CSS class defined, used by <code>template_default</code> templates.</li>
             <li>BUGFIX: Shopping-cart display requires horizontal scroll on extra-small screens.</li>
+            <li>BUGFIX: &quot;Shopping for ...&quot; message from admin <em>Place Order</em> button doesn't use font-awesome icons.<sup>1</sup></li>
             <li>The following files were changed:<ol>
+                <li>/includes/auto_loaders/config.zca_bootstrap.php<sup>1</sup></li>
                 <li>/includes/modules/bootstrap/product_listing.php</li>
                 <li>/includes/modules/bootstrap/centerboxes/featured_products.php</li>
                 <li>/includes/modules/bootstrap/centerboxes/specials_index.php</li>
@@ -238,6 +240,39 @@ img {
                 <li>/includes/templates/bootstrap/templates/tpl_shopping_cart_default.php</li>
                 <li>/YOUR_ADMIN/includes/init_includes/init_bc_config.php</li>
             </ol></li>
+            <li><sup>1</sup><b>Note:</b> For this change to be effective for stores running zc157c and earlier, a <span class="corefile">core-file edit</span> of <code>/includes/auto_loaders/config.core.php</code> is required. Find the following section:
+            <pre>
+/**
+ * Breakpoint 130.
+ *
+ * require('includes/init_includes/init_customer_auth.php');
+ * messageStack = new messageStack();
+ *
+ */
+  $autoLoadConfig[130][] = array('autoType'=>'classInstantiate',
+                                 'className'=>'messageStack',
+                                 'objectName'=>'messageStack');
+  $autoLoadConfig[130][] = array('autoType'=>'init_script',
+                                 'loadFile'=> 'init_customer_auth.php');
+            </pre>
+            and make the highlighted changes:
+            <pre>
+/**
+ * Breakpoint 130.
+ *
+ * require('includes/init_includes/init_customer_auth.php');
+ * messageStack = new messageStack();
+ *
+ */
+  $autoLoadConfig[130][] = array('autoType'=>'classInstantiate',
+                                 'className'=>'messageStack',
+                                 'objectName'=>'messageStack');
+<span class="corefile">//-bof-bootstrap-v313-Moving load point</span>
+  $autoLoadConfig[<span class="corefile">135</span>][] = array('autoType'=>'init_script',
+                                 'loadFile'=> 'init_customer_auth.php');
+<span class="corefile">//-eof-bootstrap-v313</span>
+            </pre>
+            </li>
         </ul></li>
         <li>v3.1.2, 2021-06-02 (lat9/torvista)<ul>
             <li>BUGFIX: Remove unwanted background color from EZ-Pages' footer links.</li>
