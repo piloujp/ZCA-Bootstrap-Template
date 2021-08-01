@@ -143,10 +143,10 @@ class zca_splitPageResults extends base
         }
 
         // previous button - not displayed on first page
-        $link = '<a class="page-link" href="' . zen_href_link($_GET['main_page'], $parameters . ($this->current_page_number > 2 ? $this->page_name . '=' . ($this->current_page_number - 1) : ''), $request_type) . '" title="' . PREVNEXT_TITLE_PREVIOUS_PAGE . '">' . PREVNEXT_BUTTON_PREV . '</a>';
+        $link = '<a class="page-link" href="' . zen_href_link($_GET['main_page'], $parameters . ($this->current_page_number > 2 ? $this->page_name . '=' . ($this->current_page_number - 1) : ''), $request_type) . '" title="' . PREVNEXT_TITLE_PREVIOUS_PAGE . '" aria-label="' . ARIA_PAGINATION_PREVIOUS_PAGE . '">' . PREVNEXT_BUTTON_PREV . '</a>';
         if ($this->current_page_number > 1) {
             $display_links_string .= '<li class="page-item">' . $link . '</li>';
-            $ul_elements .= '  <li class="pagination-previous page-item" aria-label="' . ARIA_PAGINATION_PREVIOUS_PAGE . '">' . $link . '</li>' . "\n";
+            $ul_elements .= '  <li class="pagination-previous page-item">' . $link . '</li>' . "\n";
         } else {
             // $ul_elements .= '  <li class="disabled pagination-previous">' . $link . '</li>' . "\n";
         }
