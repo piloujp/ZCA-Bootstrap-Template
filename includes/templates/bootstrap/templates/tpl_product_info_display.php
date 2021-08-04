@@ -255,36 +255,34 @@ if ($flag_show_ask_a_question) {
 
 <!--bof Add to Cart Box -->
 <?php
-if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == '') {
+if (CUSTOMERS_APPROVAL == 3 && TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == '') {
   // do nothing
 } else {
-?>
-            <?php
-    $display_qty = (($flag_show_product_info_in_cart_qty == 1 and $_SESSION['cart']->in_cart($_GET['products_id'])) ? '<p>' . PRODUCTS_ORDER_QTY_TEXT_IN_CART . $_SESSION['cart']->get_quantity($_GET['products_id']) . '</p>' : '');
-            if ($products_qty_box_status == 0 or $products_quantity_order_max== 1) {
-              // hide the quantity box and default to 1
-              $the_button = '<input type="hidden" name="cart_quantity" value="1" />' . zen_draw_hidden_field('products_id', (int)$_GET['products_id']) . zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
-            } else {
-              // show the quantity box
-    $the_button = '<div class="input-group mb-3">';
-    $the_button .= '<input class="form-control" type="text" name="cart_quantity" value="' . $products_get_buy_now_qty . '" aria-label="' . ARIA_QTY_ADD_TO_CART . '">';
-    $the_button .= '<div class="input-group-append">';
+    $display_qty = (($flag_show_product_info_in_cart_qty == 1 && $_SESSION['cart']->in_cart($_GET['products_id'])) ? '<p>' . PRODUCTS_ORDER_QTY_TEXT_IN_CART . $_SESSION['cart']->get_quantity($_GET['products_id']) . '</p>' : '');
+    if ($products_qty_box_status == 0 || $products_quantity_order_max== 1) {
+      // hide the quantity box and default to 1
+      $the_button = '<input type="hidden" name="cart_quantity" value="1" />' . zen_draw_hidden_field('products_id', (int)$_GET['products_id']) . zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
+    } else {
+        // show the quantity box
+        $the_button = '<div class="input-group mb-3">';
+        $the_button .= '<input class="form-control" type="text" name="cart_quantity" value="' . $products_get_buy_now_qty . '" aria-label="' . ARIA_QTY_ADD_TO_CART . '">';
+        $the_button .= '<div class="input-group-append">';
 
-    
-    if (zen_get_products_quantity_min_units_display((int)$_GET['products_id']) > '0') {
-    $the_button .= '<div class="input-group-text">';
-    $the_button .= zen_get_products_quantity_min_units_display((int)$_GET['products_id']);
-    $the_button .= '</div>'; 
+        
+        if (zen_get_products_quantity_min_units_display((int)$_GET['products_id']) > '0') {
+            $the_button .= '<div class="input-group-text">';
+            $the_button .= zen_get_products_quantity_min_units_display((int)$_GET['products_id']);
+            $the_button .= '</div>'; 
+        }
+        
+        $the_button .= zen_draw_hidden_field('products_id', (int)$_GET['products_id']) . zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
+        $the_button .= '</div>';
+        $the_button .= '</div>';
+        
     }
-    
-    $the_button .= zen_draw_hidden_field('products_id', (int)$_GET['products_id']) . zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
-    $the_button .= '</div>';   
-    $the_button .= '</div>';   
-    
-            }
     $display_button = zen_get_buy_now_button($_GET['products_id'], $the_button);
-  ?>
-  <?php if ($display_qty != '' or $display_button != '') { ?>
+?>
+<?php if ($display_qty != '' || $display_button != '') { ?>
 <!--bof add to cart card-->
 <div id="addToCart-card" class="card mb-3">
   <div id="addToCart-card-header" class="card-header"><?php echo PRODUCTS_ORDER_QTY_TEXT; ?></div>
