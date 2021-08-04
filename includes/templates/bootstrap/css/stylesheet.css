@@ -1,11 +1,9 @@
 /**
  * Main Template CSS Stylesheet
  * 
- * BOOTSTRAP v3.1.0
+ * BOOTSTRAP v3.1.4
  *
  */
-
-
 .clearBoth {
    clear: both;
 }
@@ -19,8 +17,8 @@ img{max-width:100%;height:auto;border:0;}
 
 #back-to-top {
     position: fixed;
-    bottom: 40px;
-    right: 40px;
+    bottom: 5rem;
+    right: 1rem;
     z-index: 1;
     text-align: center;
     cursor: pointer;
