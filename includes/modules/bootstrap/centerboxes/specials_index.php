@@ -77,7 +77,7 @@ if ($num_products_count > 0) {
 
     $zco_notifier->notify('NOTIFY_MODULES_SPECIALS_INDEX_B4_LIST_BOX', array(), $special_products->fields, $products_price);
 
-    $list_box_contents[$row][$col] = array('params' => 'class="centerBoxContents card mb-3 p-3 text-center" id="centerBoxContentsNew"',
+    $list_box_contents[$row][$col] = array('params' => 'class="centerBoxContents card mb-3 p-3 text-center"',
     'text' => (($special_products->fields['products_image'] == '' and PRODUCTS_IMAGE_NO_IMAGE_STATUS == 0) ? '' : '<a href="' . zen_href_link(zen_get_info_page($special_products->fields['products_id']), 'cPath=' . $productsInCategory[$special_products->fields['products_id']] . '&products_id=' . $special_products->fields['products_id']) . '">' . zen_image(DIR_WS_IMAGES . $special_products->fields['products_image'], $special_products->fields['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a><br />') . '<a href="' . zen_href_link(zen_get_info_page($special_products->fields['products_id']), 'cPath=' . $productsInCategory[$special_products->fields['products_id']] . '&products_id=' . $special_products->fields['products_id']) . '">' . $special_products->fields['products_name'] . '</a><br />' . $products_price);
 
     $col ++;
