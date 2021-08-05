@@ -9,7 +9,15 @@
 }
 
 /* This is used to re-size images */
-img{max-width:100%;height:auto;border:0;}
+img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+}
+
+.qmix > br {
+    display: none;
+}
 
 .normalprice, .productSpecialPriceSale {
     text-decoration: line-through;
