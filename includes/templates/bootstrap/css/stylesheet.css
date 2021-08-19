@@ -7,6 +7,12 @@
 .clearBoth {
    clear: both;
 }
+.forward {
+    float: right;
+}
+.back {
+    float: left;
+}
 
 /* This is used to re-size images */
 img {
