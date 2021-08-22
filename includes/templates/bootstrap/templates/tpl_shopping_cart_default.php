@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.1.3
+ * BOOTSTRAP v3.1.5
  *
  * Loaded automatically by index.php?main_page=shopping_cart.<br />
  * Displays shopping-cart contents
