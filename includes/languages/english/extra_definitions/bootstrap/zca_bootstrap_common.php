@@ -19,6 +19,8 @@ define('BUTTON_MY_ACCOUNT_TEXT', 'My Account');
 
 define('BUTTON_RETURN_TO_PROD_LIST_ALT', 'Product Listing');
 
+define('BUTTON_BACK_TO_TOP_TITLE', 'Back to top');
+
 // -----
 // Used during checkout and on various address-rendering pages.
 //
