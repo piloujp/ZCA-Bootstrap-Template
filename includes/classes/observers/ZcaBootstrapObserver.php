@@ -212,7 +212,7 @@ class ZcaBootstrapObserver extends base
                     $products_image_large = $p1['products_image_large'];
                     $i = $p1['index'];
                     $link = '<a href="javascript:void(0)" class="imageModal">';
-                    $link .= '<img src="' . $products_image_large . '" height="' . SMALL_IMAGE_HEIGHT . '" width="'. SMALL_IMAGE_WIDTH . '" id="' . $i . '">';
+                    $link .= '<img src="' . $products_image_large . '" height="' . SMALL_IMAGE_HEIGHT . '" width="'. SMALL_IMAGE_WIDTH . '" id="' . $i . '" alt="' . $p1['products_name'] . '">';
                     $link .= '<div class="p-1"></div>';
                     $link .= '<span class="imgLink">' . TEXT_CLICK_TO_ENLARGE . '</span>';
                     $link .= '</a>';
