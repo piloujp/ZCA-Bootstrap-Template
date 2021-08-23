@@ -1,6 +1,8 @@
 <?php
 // -----
-// Part of the ZCA Bootstrap template, @zcadditions, @lat9.
+// Part of the ZCA Bootstrap template, @zcadditions, @lat9, @marco-pm
+//
+// BOOTSTRAP 3.1.5.
 //
 class ZcaBootstrapObserver extends base 
 {
