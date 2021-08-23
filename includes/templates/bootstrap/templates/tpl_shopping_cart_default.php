@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.1.3
+ * BOOTSTRAP v3.1.5
  *
  * Loaded automatically by index.php?main_page=shopping_cart.<br />
  * Displays shopping-cart contents
@@ -114,7 +114,7 @@ if ($flagHasCartContents) {
 <?php
         if ($product['buttonDelete']) {
 ?>
-                    <a href="<?php echo zen_href_link(FILENAME_SHOPPING_CART, 'action=remove_product&product_id=' . $product['id']); ?>" class="btn"><i class="fas fa-trash-alt"></i></a>
+                    <a href="<?php echo zen_href_link(FILENAME_SHOPPING_CART, 'action=remove_product&product_id=' . $product['id']); ?>" class="btn" aria-label="<?php echo ICON_TRASH_ALT ?>" title="<?php echo ICON_TRASH_ALT ?>"><i aria-hidden="true" class="fas fa-trash-alt"></i></a>
 <?php
         }
         if ($product['checkBoxDelete'] ) {
