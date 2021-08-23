@@ -1,6 +1,6 @@
 <?php
 /*
- * BOOTSTRAP v3.1.0
+ * BOOTSTRAP v3.1.5
  */
 // -----
 // Part of the Bootstrap template, defining commonly-used phrases and phrases unique to the bootstrap template.
@@ -18,6 +18,8 @@ define('BUTTON_ADD_TO_CART_ALT', 'Add This to My Cart');
 define('BUTTON_MY_ACCOUNT_TEXT', 'My Account');
 
 define('BUTTON_RETURN_TO_PROD_LIST_ALT', 'Product Listing');
+
+define('BUTTON_BACK_TO_TOP_TITLE', 'Back to top');
 
 // -----
 // Used during checkout and on various address-rendering pages.

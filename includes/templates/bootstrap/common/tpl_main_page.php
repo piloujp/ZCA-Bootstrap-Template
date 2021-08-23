@@ -2,7 +2,7 @@
 /**
  * Common Template - tpl_main_page.php
  * 
- * BOOTSTRAP v3.1.0
+ * BOOTSTRAP v3.1.5
  *
  * Governs the overall layout of an entire page<br />
  * Normally consisting of a header, left side column. center column. right side column and footer<br />
@@ -294,7 +294,7 @@ echo zen_display_banner('static', $banner);
   $zco_notifier->notify('NOTIFY_FOOTER_END', $current_page);
 ?>
   
-<a href="#" id="back-to-top" class="btn" title="Back to top" role="button"><i class="fas fa-chevron-circle-up"></i></a>
+<a href="#" id="back-to-top" class="btn" title="<?php echo BUTTON_BACK_TO_TOP_TITLE ?>" aria-label="<?php echo BUTTON_BACK_TO_TOP_TITLE ?>" role="button"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></a>
   
 </div>
 </body>
