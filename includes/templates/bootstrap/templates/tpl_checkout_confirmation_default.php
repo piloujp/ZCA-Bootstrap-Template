@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.1.0
+ * BOOTSTRAP v3.1.5
  *
  * Loaded automatically by index.php?main_page=checkout_confirmation.<br />
  * Displays final checkout details, cart, payment and shipping info details.
@@ -238,13 +238,6 @@ if ($flagAnyOutOfStock) {
                     </table>
                 </div>
 
-<?php
-    echo zen_draw_form('checkout_confirmation', $form_action_url, 'post', 'id="checkout_confirmation" onsubmit="submitonce();"');
-
-    if (is_array($payment_modules->modules)) {
-        echo $payment_modules->process_button();
-    }
-?>
                 <div id="cartContents-btn-toolbar" class="btn-toolbar justify-content-end mt-3" role="toolbar">
                     <?php echo '<a href="' . zen_href_link(FILENAME_SHOPPING_CART, '', 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT) . '</a>'; ?>
                 </div>
@@ -253,7 +246,13 @@ if ($flagAnyOutOfStock) {
 <!--eof shopping cart contents card-->
 
     </div>
-  
+<?php
+    echo zen_draw_form('checkout_confirmation', $form_action_url, 'post', 'id="checkout_confirmation" onsubmit="submitonce();"');
+
+    if (is_array($payment_modules->modules)) {
+        echo $payment_modules->process_button();
+    }
+?>
     <div id="checkoutConfirmationDefault-btn-toolbar" class="btn-toolbar justify-content-between" role="toolbar">
         <?php echo TITLE_CONTINUE_CHECKOUT_PROCEDURE . '<br />' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
         <?php echo zen_image_submit(BUTTON_IMAGE_CONFIRM_ORDER, BUTTON_CONFIRM_ORDER_ALT, 'name="btn_submit" id="btn_submit"') ;?>

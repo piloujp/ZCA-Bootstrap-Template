@@ -220,16 +220,18 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.1.5-beta1, 2021-08-23 (lat9/marco-pm)<ul>
+        <li>v3.1.5-beta2, 2021-08-31 (lat9/marco-pm)<ul>
             <li>BUGFIX: Adding <code>alt=</code> tag to additional images.</li>
             <li>BUGFIX: Adding language-translation for <em>Back to Top</em> button's <code>title=</code> tag.</li>
             <li>BUGFIX: Adding aria-label and -title to shopping-cart buttons.</li>
+            <li>BUGFIX: Correct form-start tag placement to correct invalid HTML on <code>checkout_confirmation</code>.</li>
             <li>The following files were changed:<ol>
                 <li>/includes/classes/observers/ZcaBootstrapObserver.php</li>
                 <li>/includes/languages/english/extra_definitions/bootstrap/zca_bootstrap_common.php</li>
                 <li>/includes/modules/pages/shopping_cart/header_php_shopping_cart_zca_bootstrap.php</li>
                 <li>/includes/templates/bootstrap/template_info.php</li>
                 <li>/includes/templates/bootstrap/common/tpl_main_page.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_checkout_confirmation_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_shopping_cart_default.php</li>
              </ol></li>
         </ul></li>
