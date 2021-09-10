@@ -76,31 +76,30 @@ if (zen_count_customer_orders() > 0) {
             <div id="previousOrders-helpLink" class="helpLink text-right p-3">
                 <a href="<?php echo zen_href_link(FILENAME_ACCOUNT_HISTORY, '', 'SSL'); ?>"><?php echo OVERVIEW_SHOW_ALL_ORDERS; ?></a>
             </div>
-            <div class="table-responsive">
-                <table id="previousOrders-orderTableDisplay" class="orderTableDisplay table table-bordered table-striped">
-                    <tr id="previousOrders-tableHeading" class="tableHeading">
-                        <th scope="col" id="previousOrders-dateHeading"><?php echo TABLE_HEADING_DATE; ?></th>
-                        <th scope="col" id="previousOrders-orderIdHeading"><?php echo TABLE_HEADING_ORDER_NUMBER; ?></th>
-                        <th scope="col" id="previousOrders-shipToHeading"><?php echo TABLE_HEADING_SHIPPED_TO; ?></th>
-                        <th scope="col" id="previousOrders-statusHeading"><?php echo TABLE_HEADING_STATUS; ?></th>
-                        <th scope="col" id="previousOrders-totalHeading"><?php echo TABLE_HEADING_TOTAL; ?></th>
-                        <th scope="col" id="previousOrders-buttonHeading"><?php echo TABLE_HEADING_VIEW; ?></th>
-                    </tr>
+            <div class="card-deck">
 <?php
-    foreach($ordersArray as $orders) {
+    foreach ($ordersArray as $orders) {
+        $order_link = zen_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id=' . $orders['orders_id'], 'SSL');
 ?>
-                    <tr>
-                        <td class="dateCell"><?php echo zen_date_short($orders['date_purchased']); ?></td>
-                        <td class="orderIdCell"><?php echo TEXT_NUMBER_SYMBOL . $orders['orders_id']; ?></td>
-                        <td class="shipToCell"><address><?php echo zen_output_string_protected($orders['order_name']) . '<br />' . $orders['order_country']; ?></address></td>
-                        <td class="statusCell"><?php echo $orders['orders_status_name']; ?></td>
-                        <td class="totalCell text-right"><?php echo $orders['order_total']; ?></td>
-                        <td class="buttonCell text-right"><?php echo '<a href="' . zen_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id=' . $orders['orders_id'], 'SSL') . '"> ' . zen_image_button(BUTTON_IMAGE_VIEW_SMALL, BUTTON_VIEW_SMALL_ALT) . '</a>'; ?></td>
-                    </tr>
+                <div class="card">
+                    <div class="card-header text-center">
+                        <a class="orderIdCell" href="<?php echo $order_link; ?>"><?php echo TEXT_NUMBER_SYMBOL . $orders['orders_id']; ?></a>
+                    </div>
+                    <div class="card-body text-center">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item dateCell border-0 p-1"><?php echo zen_date_short($orders['date_purchased']); ?></li>
+                            <li class="list-group-item shipToCell border-0 p-1"><?php echo zen_output_string_protected($orders['order_name']) . '<br>' . $orders['order_country']; ?></li>
+                            <li class="list-group-item statusCell border-0 p-1"><?php echo $orders['orders_status_name']; ?></li>
+                            <li class="list-group-item border-0 p-1"><?php echo $orders['order_total']; ?></li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a class="buttonCell" href="<?php echo $order_link; ?>"><?php echo zen_image_button(BUTTON_IMAGE_VIEW_SMALL, BUTTON_VIEW_SMALL_ALT); ?></a>
+                    </div>
+                </div>
 <?php
     }
 ?>
-                </table>
             </div>
         </div>
     </div>
