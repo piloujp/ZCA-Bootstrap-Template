@@ -65,6 +65,7 @@ if (in_array($current_page_base, explode(',', 'checkout_shipping,checkout_shippi
 // ZCA BOOTSTRAP TEMPLATE
 if (!empty($flag_disable_right) or COLUMN_RIGHT_STATUS == '0' or SET_COLUMN_RIGHT_LAYOUT == '0') {
   $box_width_right = '0';
+  $box_width_right_new = '';
 } else {
   $box_width_right = SET_COLUMN_RIGHT_LAYOUT;
   $box_width_right_new = 'col-sm-' . SET_COLUMN_RIGHT_LAYOUT . ' d-none d-lg-block';
@@ -72,6 +73,7 @@ if (!empty($flag_disable_right) or COLUMN_RIGHT_STATUS == '0' or SET_COLUMN_RIGH
 
 if (!empty($flag_disable_left) or COLUMN_LEFT_STATUS == '0' or SET_COLUMN_LEFT_LAYOUT == '0') {
   $box_width_left = '0';
+  $box_width_left_new = '';
 } else {
   $box_width_left = SET_COLUMN_LEFT_LAYOUT;
   $box_width_left_new = 'col-sm-' . SET_COLUMN_LEFT_LAYOUT . ' d-none d-lg-block';
