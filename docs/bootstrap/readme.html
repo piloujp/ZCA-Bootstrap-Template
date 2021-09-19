@@ -220,21 +220,24 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.1.5-beta2, 2021-08-31 (lat9/marco-pm)<ul>
+        <li>v3.1.5-beta3, 2021-09-19 (lat9/marco-pm)<ul>
             <li>BUGFIX: Adding <code>alt=</code> tag to additional images.</li>
             <li>BUGFIX: Adding language-translation for <em>Back to Top</em> button's <code>title=</code> tag.</li>
             <li>BUGFIX: Adding aria-label and -title to shopping-cart buttons.</li>
             <li>BUGFIX: Correct form-start tag placement to correct invalid HTML on <code>checkout_confirmation</code>.</li>
             <li>BUGFIX: Correct data-overflow on <code>account</code> page's <em>Previous Orders</em>.</li>
             <li>BUGFIX: Correct PHP notices issued when left/right columns are fully disabled.</li>
+            <li>BUGFIX: Enable integration with attribute image-swapper plugins.</li>
             <li>The following files were changed:<ol>
                 <li>/includes/classes/observers/ZcaBootstrapObserver.php</li>
                 <li>/includes/languages/english/extra_definitions/bootstrap/zca_bootstrap_common.php</li>
                 <li>/includes/modules/pages/shopping_cart/header_php_shopping_cart_zca_bootstrap.php</li>
                 <li>/includes/templates/bootstrap/template_info.php</li>
                 <li>/includes/templates/bootstrap/common/tpl_main_page.php</li>
+                <li>/includes/templates/bootstrap/modalboxes/tpl_image.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_account_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_checkout_confirmation_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_modules_main_product_image.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_shopping_cart_default.php</li>
              </ol></li>
         </ul></li>
