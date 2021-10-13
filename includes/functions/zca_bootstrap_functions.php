@@ -74,11 +74,11 @@ function zca_get_rating_stars($rating, $size = '')
     $rating = ($rating < 0) ? 0 : $rating;
     $rating = ($rating > 5) ? 5 : $rating;
     
-    $rating_stars = '';
+    $rating_stars = '<span class="sr-only">' . $rating . ' ' . (($rating === 1) ? ARIA_REVIEW_STAR : ARIA_REVIEW_STARS) . '</span>';
     $size = ($size != '') ? " fa-$size" : '';
     for ($i = 1; $i <= 5; $i++) {
         $fa_class = ($i <= $rating) ? 'fas' : 'far';
-        $rating_stars .= '<i class="' . (($i <= $rating) ? 'fas' : 'far') . ' fa-star' . $size . '"></i>';
+        $rating_stars .= '<i class="' . $fa_class . ' fa-star' . $size . '"></i>';
     }
     return $rating_stars;
 }
