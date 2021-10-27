@@ -1,6 +1,6 @@
 <?php
 /*
- * BOOTSTRAP v3.1.5
+ * BOOTSTRAP v3.1.6
  */
 // -----
 // Part of the Bootstrap template, defining commonly-used phrases and phrases unique to the bootstrap template.
@@ -75,6 +75,8 @@ define('TEXT_NO_PRODUCTS2', 'There is no product available from this manufacture
 //
 define('TEXT_MODAL_CLOSE', 'Close');
 define('TEXT_MORE_INFO', '[More Info]');
+define('ARIA_REVIEW_STAR', 'star');
+define('ARIA_REVIEW_STARS', 'stars');
 
 // -----
 // Overriding definition for the login page, removing unwanted javascript.
