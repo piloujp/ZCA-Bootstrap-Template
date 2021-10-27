@@ -1,6 +1,6 @@
 <?php
 /*
- * BOOTSTRAP v3.1.5
+ * BOOTSTRAP v3.1.6
  */
 // -----
 // Part of the Bootstrap template, defining commonly-used phrases and phrases unique to the bootstrap template.
