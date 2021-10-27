@@ -42,7 +42,7 @@ if ($num_categories > 0) {
 
         $list_box_contents[$row][$col] = [
             'params' => 'class="categoryListBoxContents card mb-3 p-3 text-center"',
-            'text' => '<a href="' . zen_href_link(FILENAME_DEFAULT, $cPath_new) . '">' . zen_image(DIR_WS_IMAGES . $next_category['categories_image'], $next_category['categories_name'], SUBCATEGORY_IMAGE_WIDTH, SUBCATEGORY_IMAGE_HEIGHT) . '<br>' . $next_category['categories_name'] . '</a>'
+            'text' => '<a href="' . zen_href_link(FILENAME_DEFAULT, $cPath_new) . '">' . zen_image(DIR_WS_IMAGES . $next_category['categories_image'], $next_category['categories_name'], SUBCATEGORY_IMAGE_WIDTH, SUBCATEGORY_IMAGE_HEIGHT, 'loading="lazy"') . '<br>' . $next_category['categories_name'] . '</a>'
         ];
 
         $col++;
