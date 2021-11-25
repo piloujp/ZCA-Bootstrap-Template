@@ -2,7 +2,7 @@
 /**
  * Module Template
  * 
- * BOOTSTRAP v3.1.3
+ * BOOTSTRAP v3.1.6
  *
  * Displays address-book details/selection
  *
@@ -33,7 +33,14 @@ if (!isset($entry) || !is_object($entry)) {
         'entry_country_id' => STORE_COUNTRY,
     );
 }
+
+// -----
+// Adding a (hidden) span to contain a 'stBreak' identifier, to keep the 'base' Zen Cart
+// jscript_addr_pulldowns.php from throwing a javascript error for that missing 'id'.
+//
 ?>
+<span class="d-none" id="stBreak">&nbsp;</span>
+
 <div class="required-info text-right"><?php echo FORM_REQUIRED_INFORMATION; ?></div>
 
 <?php
