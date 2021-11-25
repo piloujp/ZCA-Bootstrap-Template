@@ -95,6 +95,13 @@ if (ACCOUNT_SUBURB === 'true') {
             <?php echo zen_draw_input_field('city', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_city', '40') . ' id="city" placeholder="' . ENTRY_CITY_TEXT . '"'. ((int)ENTRY_CITY_MIN_LENGTH > 0 ? ' required' : '')); ?>
             <div class="p-2"></div>
 <?php
+// -----
+// Adding a (hidden) span to contain a 'stBreak' identifier, to keep the 'base' Zen Cart
+// jscript_addr_pulldowns.php from throwing a javascript error for that missing 'id'.
+//
+?>
+            <span class="d-none" id="stBreak">&nbsp;</span>
+<?php
 if (ACCOUNT_STATE === 'true') {
     if ($flag_show_pulldown_states === true) {
 ?>
