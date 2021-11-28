@@ -1,6 +1,6 @@
 <?php
 /*
- * BOOTSTRAP v3.1.6
+ * BOOTSTRAP v3.2.0
  */
 // -----
 // Part of the Bootstrap template, defining commonly-used phrases and phrases unique to the bootstrap template.
@@ -82,3 +82,11 @@ define('ARIA_REVIEW_STARS', 'stars');
 // Overriding definition for the login page, removing unwanted javascript.
 //
 define('TEXT_VISITORS_CART', '<strong>Note:</strong> If you have shopped with us before and left something in your cart, for your convenience, the contents will be merged if you log back in.');
+
+// -----
+// Used by the (optional) AJAX search feature.
+//
+define('TEXT_AJAX_SEARCH_TITLE', 'What can we help you find?');
+define('TEXT_AJAX_SEARCH_PLACEHOLDER', 'Search here...');
+define('TEXT_AJAX_SEARCH_RESULTS', 'Total %u results found.');
+define('TEXT_AJAX_SEARCH_VIEW_ALL', 'View All');
