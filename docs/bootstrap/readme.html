@@ -71,7 +71,7 @@ img {
 
 <body>
     <h1>Bootstrap-4 Template for Zen Cart v1.5.7 and later</h1>
-    <h3>Version 3.1.6, by lat9, drbyte, scottcwilson, marco-pm and dennisns7d</h3>
+    <h3>Version 3.2.0, by lat9, drbyte, scottcwilson, marco-pm and dennisns7d</h3>
     <p>Current Support Thread at Zen Cart Forums: <a href="https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread" target="_blank">https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread</a></p>
     <p>Zen Cart Download Link: <a href="https://www.zen-cart.com/downloads.php?do=file&id=2191" target="_blank">https://www.zen-cart.com/downloads.php?do=file&id=2191</a></p>
     <p>GitHub repository: <a href="https://github.com/lat9/ZCA-Bootstrap-Template" target="_blank">https://github.com/lat9/ZCA-Bootstrap-Template</a>.</p>
@@ -106,6 +106,20 @@ img {
         <li>/includes/modules/pages/specials/header_php_specials_zca_bootstrap.php</li>
         <li>/includes/modules/sideboxes/bootstrap/*.php</li>
         <li>/includes/templates/bootstrap/*.*</li>
+        <li>/YOUR_ADMIN/zca_bootstrap_colors.php</li>
+        <li>/YOUR_ADMIN/includes/auto_loaders/config.bc.php</li>
+        <li>/YOUR_ADMIN/includes/auto_loaders/config.zca_bootstrap_admin.php</li>
+        <li>/YOUR_ADMIN/includes/css/colorpicker.css</li>
+        <li>/YOUR_ADMIN/includes/extra_datafiles/zca_bootstrap_colors.php</li>
+        <li>/YOUR_ADMIN/includes/functions/extra_functions/zen_cfg_read_only.php <span class="smaller">(Added in v3.2.0)</span></li>
+        <li>/YOUR_ADMIN/includes/init_includes/init_bc_config.php</li>
+        <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin.php</li>
+        <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin_install.php <span class="smaller">(Added in v3.2.0)</span></li>
+        <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin_update.php <span class="smaller">(Added in v3.2.0)</span></li>
+        <li>/YOUR_ADMIN/includes/javascript/colorpicker.js</li>
+        <li>/YOUR_ADMIN/includes/languages/english/zca_bootstrap_colors.php</li>
+        <li>/YOUR_ADMIN/includes/languages/english/extra_definitions/zca_bootstrap_colors.php</li>
+        <li>/YOUR_ADMIN/includes/languages/english/extra_definitions/zca_bootstrap_messages.php</li>
     </ol>
 
     <h2>Upgrading from v2.0.0c</h2>
@@ -220,12 +234,13 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.1.6-beta2, 2021-11-25 (lat9/marco-pm)<ul>
+        <li>v3.2.0-beta2, 2021-11-28 (lat9/marco-pm)<ul>
             <li>BUGFIX: Screen-reader updates for products' rating-stars.</li>
             <li>CHANGE: Using lazy-loading for category and product images.</li>
             <li>BUGFIX: Correcting javascript error on address-entry and create-account pages.</li>
             <li>BUGFIX: Correcting missplaced ending-div on products' listings.</li>
-            <li>The following files were changed:<ol>
+            <li>CHANGE: Create template-specific configuration-settings' group.</li>
+            <li>The following files were changed or <span class="added">added</span>:<ol>
                 <li>/includes/functions/zca_bootstrap_functions.php</li>
                 <li>/includes/languages/english/extra_definitions/bootstrap/zca_bootstrap_common.php</li>
                 <li>/includes/modules/bootstrap/category_row.php</li>
@@ -234,6 +249,11 @@ img {
                 <li>/includes/templates/bootstrap/templates/tpl_modules_common_address_format.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_create_account.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_product_listing.php</li>
+                <li><span class="added">/YOUR_ADMIN/includes/functions/extra_functions/zen_cfg_read_only.php</span></li>
+                <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin.php</li>
+                <li><span class="added">/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin_install.php</span></li>
+                <li><span class="added">/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin_update.php</span></li>
+                <li>/YOUR_ADMIN/includes/languages/english/extra_definitions/zca_bootstrap_messages.php</li>
              </ol></li>
         </ul></li>
         <li>v3.1.5, 2021-09-21 (lat9/marco-pm)<ul>
