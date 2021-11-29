@@ -2,7 +2,7 @@
 /**
  * Template for Mobile Header Drop Down
  * 
- * BOOTSTRAP v3.1.0
+ * BOOTSTRAP v3.2.0
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -40,7 +40,7 @@ foreach ($categories_tab as $category_tab) {
 ?>
         </ul>
 <?php
-if (SHOW_CATEGORIES_BOX_SPECIALS == 'true') {
+if (SHOW_CATEGORIES_BOX_SPECIALS === 'true') {
    $show_this = $db->Execute("SELECT s.products_id FROM " . TABLE_SPECIALS . " s WHERE s.status = 1 LIMIT 1");
    if (!$show_this->EOF) {
 ?>
@@ -49,9 +49,8 @@ if (SHOW_CATEGORIES_BOX_SPECIALS == 'true') {
     }
 }
 
-if (SHOW_CATEGORIES_BOX_PRODUCTS_NEW == 'true') {
+if (SHOW_CATEGORIES_BOX_PRODUCTS_NEW === 'true') {
       // display limits
-//    $display_limit = zen_get_products_new_timelimit();
     $display_limit = zen_get_new_date_range();
     $show_this = $db->Execute("SELECT p.products_id FROM " . TABLE_PRODUCTS . " p WHERE p.products_status = 1 " . $display_limit . " LIMIT 1");
     if (!$show_this->EOF) { 
@@ -61,7 +60,7 @@ if (SHOW_CATEGORIES_BOX_PRODUCTS_NEW == 'true') {
     }
 }
 
-if (SHOW_CATEGORIES_BOX_FEATURED_PRODUCTS == 'true') {
+if (SHOW_CATEGORIES_BOX_FEATURED_PRODUCTS === 'true') {
     $show_this = $db->Execute("SELECT products_id FROM " . TABLE_FEATURED . " WHERE status = 1 LIMIT 1");
     if (!$show_this->EOF) {
 ?>
@@ -70,7 +69,7 @@ if (SHOW_CATEGORIES_BOX_FEATURED_PRODUCTS == 'true') {
     }
 }
 
-if (SHOW_CATEGORIES_BOX_PRODUCTS_ALL == 'true') {
+if (SHOW_CATEGORIES_BOX_PRODUCTS_ALL === 'true') {
 ?>
         <div class="dropdown-divider"></div><a class="dropdown-item" href="<?php echo zen_href_link(FILENAME_PRODUCTS_ALL); ?>"><?php echo CATEGORIES_BOX_HEADING_PRODUCTS_ALL; ?></a>
 <?php
@@ -121,13 +120,54 @@ if (!$information_sidebox->EOF) {
     }
 }
 
+// -----
+// Check to see that the more_information sidebox is to be displayed.  If so, bring in the $more_information
+// array from the 'standard' sidebox, with modifications to its class for the offcanvas menu's display.
+//
+$more_information_sidebox = $db->Execute(
+    "SELECT *
+       FROM " . TABLE_LAYOUT_BOXES . "
+      WHERE layout_template = '$template_dir'
+        AND layout_box_name = 'more_information.php'
+        AND layout_box_status = 1
+      LIMIT 1"
+);
+if (!$more_information_sidebox->EOF) {
+    $more_information_box = DIR_WS_MODULES . zen_get_module_sidebox_directory('more_information.php'); 
+    if (file_exists($more_information_box)) {
+        $more_information_sidebox_class = 'dropdown-item';
+        require $more_information_box;
+        unset($more_information_sidebox_class);
+        
+        if (count($more_information) > 0) {
+?>
+<li class="nav-item dropdown d-lg-none">
+    <a class="nav-link dropdown-toggle" href="#" id="moreInfoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <?php echo BOX_HEADING_MORE_INFORMATION; ?>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="moreInfoDropdown">
+        <ul class="m-0 p-0">
+<?php
+            foreach ($more_information as $next_link) {
+?>
+            <li><?php echo $next_link; ?></li>
+<?php
+            }
+?>
+        </ul>
+    </div>
+</li>
+<?php
+        }
+    }
+}
+
 // test if ez-pages links should display
-if (EZPAGES_STATUS_SIDEBOX == '1' or (EZPAGES_STATUS_SIDEBOX== '2' && zen_is_whitelisted_admin_ip())) {
+if (EZPAGES_STATUS_SIDEBOX === '1' || (EZPAGES_STATUS_SIDEBOX === '2' && zen_is_whitelisted_admin_ip())) {
     if (isset($var_linksList)) {
         unset($var_linksList);
     }
 
-// BOE - Bootstrap for 1.5.6     
     $page_query = $db->Execute(
         "SELECT e.*, ec.*
            FROM " . TABLE_EZPAGES . " e
@@ -138,13 +178,9 @@ if (EZPAGES_STATUS_SIDEBOX == '1' or (EZPAGES_STATUS_SIDEBOX== '2' && zen_is_whi
             AND e.sidebox_sort_order > 0
           ORDER BY e.sidebox_sort_order, ec.pages_title"
     );   
-    
-// old code for 1.5.5:
-//    $page_query = $db->Execute("select * from " . TABLE_EZPAGES . " where status_sidebox = 1 and sidebox_sort_order > 0 order by sidebox_sort_order, pages_title");
-// EOE - Bootstrap for 1.5.6  
 
     if (!$page_query->EOF) {
-        $page_query_list_sidebox = array();
+        $page_query_list_sidebox = [];
         foreach ($page_query as $next_page) {
             $next_page_entry = array(
                 'name' => htmlspecialchars($next_page['pages_title'], ENT_COMPAT, CHARSET, true),
@@ -152,7 +188,7 @@ if (EZPAGES_STATUS_SIDEBOX == '1' or (EZPAGES_STATUS_SIDEBOX== '2' && zen_is_whi
             
             switch (true) {
                 // external link new window or same window
-                case ($next_page['alt_url_external'] != ''):
+                case ($next_page['alt_url_external'] !== ''):
                     $offcanvasAltURL = $next_page['alt_url_external'];
                     break;
 
@@ -161,7 +197,7 @@ if (EZPAGES_STATUS_SIDEBOX == '1' or (EZPAGES_STATUS_SIDEBOX== '2' && zen_is_whi
                     if (strpos($next_page['alt_url'], 'http') === 0) {
                         $offcanvasAltURL = $next_page['alt_url'];
                     } else {
-                        $offcanvasAltURL =  zen_href_link($next_page['alt_url'], '', ($next_page['page_is_ssl'] == '0') ? 'NONSSL' : 'SSL', true, true, true);
+                        $offcanvasAltURL =  zen_href_link($next_page['alt_url'], '', ($next_page['page_is_ssl'] === '0') ? 'NONSSL' : 'SSL', true, true, true);
                     }
                     break;
 
@@ -171,9 +207,9 @@ if (EZPAGES_STATUS_SIDEBOX == '1' or (EZPAGES_STATUS_SIDEBOX== '2' && zen_is_whi
             }
             
             // if altURL is specified, use it; otherwise, use EZPage ID to create link
-            if ($offcanvasAltURL == '') {
+            if ($offcanvasAltURL === '') {
                 $toc_chapter = ($next_page['toc_chapter'] > 0) ? ('&chapter=' . $next_page['toc_chapter']) : '';
-                $next_page_entry['link'] = zen_href_link(FILENAME_EZPAGES, 'id=' . $next_page['pages_id'] . $toc_chapter, ($next_page['page_is_ssl'] == '0') ? 'NONSSL' : 'SSL');
+                $next_page_entry['link'] = zen_href_link(FILENAME_EZPAGES, 'id=' . $next_page['pages_id'] . $toc_chapter, ($next_page['page_is_ssl'] === '0') ? 'NONSSL' : 'SSL');
             } else {
                 $next_page_entry['link'] = $offcanvasAltURL;
             }
@@ -182,7 +218,7 @@ if (EZPAGES_STATUS_SIDEBOX == '1' or (EZPAGES_STATUS_SIDEBOX== '2' && zen_is_whi
             // NOTE: The trailing double-quote is INTENTIONALLY not provided since that will be provided when the anchor-link is
             // generated in the loop below!
             //
-            $next_page_entry['link'] .= ($next_page['page_open_new_window'] == '1') ? '" target="_blank" rel="noopener' : '';
+            $next_page_entry['link'] .= ($next_page['page_open_new_window'] === '1') ? '" target="_blank" rel="noopener' : '';
             
             $page_query_list_sidebox[] = $next_page_entry;
         }
