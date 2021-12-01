@@ -6,9 +6,13 @@
 // The $cgi value contains the configuration_group_id associated with the template's configuration.
 // settings.
 //
+// Bootstrap v3.2.0.
+//
 switch (true) {
     // -----
-    // v3.2.0: Adding settings for the Bootstrap template's AJAX search feature.
+    // v3.2.0: Add settings for the Bootstrap template's AJAX search feature.  Update
+    // description for 'Product Listing :: Columns Per Row' to indicate the preferred
+    // values for the Bootstrap template.
     //
     case version_compare(ZCA_BOOTSTRAP_VERSION, '3.2.0', '<'):
         $db->Execute(
@@ -24,6 +28,12 @@ switch (true) {
                 ('AJAX Search: Image Height', 'BS4_AJAX_SEARCH_IMAGE_HEIGHT', '50', 'Identify the height of a product\'s image displayed in the AJAX search modal.  Default: <b>50</b>.', $cgi, now(), 1011, NULL, NULL),
 
                 ('AJAX Search: Use minified script?', 'BS4_AJAX_SEARCH_USE_MINIMIZED_SCRIPT', 'true', 'Use the minimized version of the AJAX search script?', $cgi, now(), 1020, NULL, 'zen_cfg_select_option(array(\'true\', \'false\'),')"
+        );
+        $db->Execute(
+            "UPDATE " . TABLE_CONFIGURATION . "
+                SET configuration_description = 'Select the number of columns of products to show per row in the product listing.<br>Recommended: 3<br>1=[rows] mode.<br><br>For the <code>bootstrap</code> template, use 0 (fluid columns) or 1 (rows).<br>'
+              WHERE configuration_key = 'PRODUCT_LISTING_COLUMNS_PER_ROW'
+              LIMIT 1"
         );
     default:                                                    //- Fall through from above
         break;
