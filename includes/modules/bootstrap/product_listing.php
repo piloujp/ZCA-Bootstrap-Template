@@ -178,18 +178,30 @@ if ($num_products_count > 0) {
 //            }
 //        }
 
-        // set css classes for "row" wrapper, to allow for fluid grouping of cells based on viewport
-        // these defaults are based on Bootstrap4, but can be customized to suit your own framework
+        // -----
+        // Set css classes for "row" wrapper, to allow for fluid grouping of cells based on viewport
+        // these defaults are based on Bootstrap4, but can be customized to suit your own framework by
+        // supplying the store-specific $grid_classes_matrix, preferably within a php file within the
+        // site's /includes/extra_datafiles sub-directory.
+        //
         if ($product_listing_layout_style === 'fluid') {
             $grid_cards_classes = 'row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3';
-            // this array is intentionally in reverse order, with largest index first
-            $grid_classes_matrix = [
-                '12' => 'row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6',
-                '10' => 'row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-5',
-                '9' => 'row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5',
-                '8' => 'row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4',
-                '6' => 'row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3',
-            ];
+
+            // -----
+            // Starting with v3.2.0, the $grid_classes_matrix can be specified in a separate file, enabling
+            // store-by-store customizations without change to this overall module.
+            //
+            if (!isset($grid_classes_matrix)) {
+                // this array is intentionally in reverse order, with largest index first
+                $grid_classes_matrix = [
+                    '12' => 'row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6',
+                    '10' => 'row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-5',
+                    '9' => 'row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5',
+                    '8' => 'row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4',
+                    '6' => 'row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3',
+                ];
+            }
+
             // determine classes to use based on number of grid-columns used by "center" column
             if (isset($center_column_width)) {
                 foreach ($grid_classes_matrix as $width => $classes) {
