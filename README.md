@@ -1,4 +1,4 @@
-# ZCA Bootstrap Template v3.1.5 for zc157 and later
+# ZCA Bootstrap Template v3.2.0 for zc157 and later
 
 This Zen Cart template uses a [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/) foundation to provide an updated look-and-feel to your Zen Cart.  Since the template is standards-based, it's easier to make layout changes to your store.
 
@@ -27,6 +27,7 @@ This Zen Cart template uses a [Bootstrap](https://getbootstrap.com/docs/4.5/gett
 - Order Progress Bar on Checkout Pages.
 - Modals replace popup Windows (except shipping estimator).
 - Optional Additional Images Modal w/ Carousel.
+- Optional AJAX search from the header.
 - ***All*** pages listing products (`advanced_search_results`, `featured_products`,  `products_all`, `products_new` , `specials` and `index&cPath`) 
   - Use a common layout format.
   - Can use either a `column` or `row` layout, based on a configuration setting.
