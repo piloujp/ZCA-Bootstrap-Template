@@ -2,7 +2,7 @@
 /**
  * Common Template - tpl_main_page.php
  * 
- * BOOTSTRAP v3.2.0
+ * BOOTSTRAP v3.2.1
  *
  * Governs the overall layout of an entire page<br />
  * Normally consisting of a header, left side column. center column. right side column and footer<br />
@@ -62,6 +62,7 @@ if (in_array($current_page_base, explode(',', str_replace(' ', '', 'checkout_shi
 
 // ZCA BOOTSTRAP TEMPLATE
 if (!empty($flag_disable_right) || COLUMN_RIGHT_STATUS === '0' || SET_COLUMN_RIGHT_LAYOUT === '0') {
+    $flag_disable_right = true;
     $box_width_right = '0';
     $box_width_right_new = '';
 } else {
@@ -70,6 +71,7 @@ if (!empty($flag_disable_right) || COLUMN_RIGHT_STATUS === '0' || SET_COLUMN_RIG
 }
 
 if (!empty($flag_disable_left) || COLUMN_LEFT_STATUS === '0' || SET_COLUMN_LEFT_LAYOUT === '0') {
+    $flag_disable_left = true;
     $box_width_left = '0';
     $box_width_left_new = '';
 } else {
