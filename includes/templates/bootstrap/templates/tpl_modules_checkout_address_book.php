@@ -17,7 +17,12 @@
  */
 require DIR_WS_MODULES . zen_get_module_directory('checkout_address_book.php');
 while (!$addresses->EOF) {
-    if ($addresses->fields['address_book_id'] == $_SESSION['sendto']) {
+    $selected = ($addresses->fields['address_book_id'] == $_SESSION['sendto']); 
+    if ($current_page_base === FILENAME_CHECKOUT_PAYMENT_ADDRESS) {
+       $selected = ($addresses->fields['address_book_id'] == $_SESSION['billto']); 
+    }
+
+    if ($selected) { 
         $primary_border = ' border-primary';
         $primary_background = ' bg-primary text-white';
         $primary_address = BOOTSTRAP_CURRENT_ADDRESS;
