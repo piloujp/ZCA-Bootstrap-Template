@@ -2,7 +2,7 @@
 /**
  * Common Template - tpl_main_page.php
  * 
- * BOOTSTRAP v3.2.1
+ * BOOTSTRAP v3.3.0
  *
  * Governs the overall layout of an entire page<br />
  * Normally consisting of a header, left side column. center column. right side column and footer<br />

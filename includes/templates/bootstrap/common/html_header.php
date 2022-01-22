@@ -2,7 +2,7 @@
 /**
  * Common Template
  *
- * BOOTSTRAP v3.1.0
+ * BOOTSTRAP v3.3.0
  *
  * outputs the html header. i,e, everything that comes before the \</head\> tag <br />
  *
@@ -141,7 +141,7 @@ require(DIR_WS_MODULES . zen_get_module_directory('meta_tags.php'));
     // User defined styles come last 
     $user_styles = DIR_WS_TEMPLATE . 'css/site_specific_styles.php'; 
     if (file_exists($user_styles)) {
-       require $user_styles; 
+        require $user_styles; 
     }
 
     /** CDN for jQuery core * */

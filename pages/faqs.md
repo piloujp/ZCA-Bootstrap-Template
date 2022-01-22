@@ -1,5 +1,32 @@
 # Bootstrap-4 Template FAQs
 
+## Applying Site-Specific Styling
+
+Starting with v3.3.0 of the template, there's now a built-in way to apply your site-specific styling to the template.  The file `/includes/templates/bootstrap/css/dist-site_specific_styles.php` is included in the template's distribution zip-file as an example.
+
+To make use of this feature, you'll start by copying (or renaming) the above file in your template-override's version of `/includes/templates/bootstrap/css/site_specific_styles.php`.  From there, since it's a `.php` file, you can load additional stylesheets and/or use your site's configuration settings to create inline CSS to accomplish your goals.  Here's a combined example of what can be done:
+
+```php
+<?php
+// -----
+// Set a different color for the h1 tag only on the home page.
+//
+if ($this_is_home_page) {
+?>
+<style>
+    h1 {color: red;}
+</style>
+<?php
+}
+
+// -----
+// Load an additional stylesheet.
+//
+?>
+<link href="<?php echo $template->get_template_dir('.css', DIR_WS_TEMPLATE, $current_page_base, 'css') . '/mysite.css'; ?>" rel="stylesheet">
+    
+```
+
 ## Troubleshooting
 
 ### Configuration :: Product Listing :: Columns per row, display anomalies

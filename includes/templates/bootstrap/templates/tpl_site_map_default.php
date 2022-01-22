@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.2.1
+ * BOOTSTRAP v3.3.0
  *
  * Loaded by index.php?main_page=site_map <br />
  * Displays site-map and some hard-coded navigation components
