@@ -241,11 +241,13 @@ img {
             <li>BUGFIX: Correcting HTML validation issue on the <code>site_map</code> page.</li>
             <li>BUGFIX: Ensure sideboxes are disabled if they're not enabled via either &quot;Layout Settings&quot; or &quot;Bootstrap Template Settings&quot;.</li>
             <li>CHANGE: Enable inclusion of site-specific styling (it's loaded last) to enable styling overrides for your site.</li>
+            <li>BUGFIX: 'checkout_payment_address' page incorrectly identifies shipping address (not billing address) as current.</li>
             <li>The following files were changed or <span class="added">added</span>:<ol>
                 <li>/includes/templates/bootstrap/template_info.php</li>
                 <li><span class="added">/includes/templates/bootstrap/css/dist-site_specific_styles.php</span></li>
                 <li>/includes/templates/bootstrap/common/html_header.php</li>
                 <li>/includes/templates/bootstrap/common/tpl_main_page.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_modules_checkout_address_book.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_site_map_default.php</li>
              </ol></li>
         </ul></li>

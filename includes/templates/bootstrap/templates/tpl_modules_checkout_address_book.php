@@ -2,7 +2,7 @@
 /**
  * tpl_modules_checkout_address_book.php
  * 
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.3.0
  *
  * @package templateSystem
  * @copyright Copyright 2003-2009 Zen Cart Development Team
@@ -17,12 +17,12 @@
  */
 require DIR_WS_MODULES . zen_get_module_directory('checkout_address_book.php');
 while (!$addresses->EOF) {
-    $selected = ($addresses->fields['address_book_id'] == $_SESSION['sendto']); 
+    $selected = ($addresses->fields['address_book_id'] == $_SESSION['sendto']);
     if ($current_page_base === FILENAME_CHECKOUT_PAYMENT_ADDRESS) {
-       $selected = ($addresses->fields['address_book_id'] == $_SESSION['billto']); 
+        $selected = ($addresses->fields['address_book_id'] == $_SESSION['billto']);
     }
 
-    if ($selected) { 
+    if ($selected) {
         $primary_border = ' border-primary';
         $primary_background = ' bg-primary text-white';
         $primary_address = BOOTSTRAP_CURRENT_ADDRESS;
