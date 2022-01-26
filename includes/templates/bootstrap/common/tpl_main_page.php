@@ -151,11 +151,7 @@ if (empty($flag_disable_left)) {
 <?php
 if (!$breadcrumb->isEmpty() && (DEFINE_BREADCRUMB_STATUS === '1' || (DEFINE_BREADCRUMB_STATUS === '2' && !$this_is_home_page))) {
 ?>
-            <div id="navBreadCrumb">
-                <ol class="breadcrumb">
-                    <?php echo $breadcrumb->trail(BREAD_CRUMBS_SEPARATOR, '<li>', '</li>'); ?>
-                </ol>
-            </div>
+            <div id="navBreadCrumb"><?php echo $breadcrumb->trail(BREAD_CRUMBS_SEPARATOR); ?></div>
 <?php
 }
 
