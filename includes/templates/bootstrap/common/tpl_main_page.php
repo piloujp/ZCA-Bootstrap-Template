@@ -151,7 +151,22 @@ if (empty($flag_disable_left)) {
 <?php
 if (!$breadcrumb->isEmpty() && (DEFINE_BREADCRUMB_STATUS === '1' || (DEFINE_BREADCRUMB_STATUS === '2' && !$this_is_home_page))) {
 ?>
-            <div id="navBreadCrumb"><?php echo $breadcrumb->trail(BREAD_CRUMBS_SEPARATOR); ?></div>
+            <div id="navBreadCrumb">
+                <ol class="breadcrumb">
+<?php
+    // -----
+    // Getting the breadcrumbs to produce valid HTML, since the breadcrumb class adds the separator after the closing </li>.
+    //
+    // 1. Replace all occurrences of the separator followed by 'whitespace' characters.
+    // 2. Insert the separator into a span at the beginning of each breadcrumb element.
+    // 3. Remove the leading separator from the first breadcrumb element and output.
+    //
+    $breadcrumbs = preg_replace('^' . BREAD_CRUMBS_SEPARATOR . '\s?^', '', $breadcrumb->trail(BREAD_CRUMBS_SEPARATOR, '<li>', '</li>'));
+    $breadcrumbs = str_replace('<li>', '<li><span class="breadcrumb-separator">' . BREAD_CRUMBS_SEPARATOR . '</span>', $breadcrumbs);
+    echo preg_replace('^<li><span class="breadcrumb-separator">' . BREAD_CRUMBS_SEPARATOR . '</span>^', '<li>', $breadcrumbs, 1);
+?>
+                </ol>
+            </div>
 <?php
 }
 
