@@ -2,7 +2,7 @@
 // -----
 // Part of the ZCA Bootstrap template, @zcadditions, @lat9, @marco-pm
 //
-// BOOTSTRAP 3.1.5.
+// BOOTSTRAP 3.3.0.
 //
 class ZcaBootstrapObserver extends base 
 {
@@ -197,7 +197,7 @@ class ZcaBootstrapObserver extends base
             case 'NOTIFY_ZEN_DRAW_PULL_DOWN_MENU':
                 $field = $p2;
                 if (strpos($field, 'class="') !== false) {
-                    $field = str_replace('class="', 'class="custom-select', $field);
+                    $field = str_replace('class="', 'class="custom-select ', $field);
                 } else {
                     $field = str_replace('<select ', '<select class="custom-select" ', $field);
                 }
