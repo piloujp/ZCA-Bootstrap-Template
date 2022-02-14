@@ -2,7 +2,7 @@
 /**
  * jscript_addr_pulldowns_zca_bootstrap
  *
- * BOOTSTRAP v3.1.0
+ * BOOTSTRAP v3.3.0
  *
  * handles pulldown menu dependencies for state/country selection
  *
@@ -12,14 +12,14 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: Scott C Wilson Sat Oct 27 01:31:20 2018 -0400 Modified in v1.5.6 $
  */
-$zca_address_pages = array(
+$zca_address_pages = [
     FILENAME_CREATE_ACCOUNT, 
     FILENAME_LOGIN, 
     FILENAME_SHOPPING_CART, 
     FILENAME_CHECKOUT_PAYMENT_ADDRESS, 
     FILENAME_CHECKOUT_SHIPPING_ADDRESS,
     FILENAME_ADDRESS_BOOK_PROCESS,
-);
+];
 if (defined('FILENAME_NO_ACCOUNT')) {
    $zca_address_pages[] = FILENAME_NO_ACCOUNT; 
 }
@@ -31,7 +31,7 @@ if (ACCOUNT_STATE_DRAW_INITIAL_DROPDOWN != 'true' || !isset($_GET['main_page']) 
 jQuery(document).ready(function () {
     <?php echo zca_js_zone_list('c2z'); ?>
     var textPleaseSelect = '<?php echo BOOTSTRAP_PLEASE_SELECT; ?>';
-    
+
     // -----
     // Initialize the display for the dropdown vs. hand-entry of the state fields.  If the initially-selected
     // country doesn't have zones, the dropdown will contain only 1 element ('Type a choice below ...').
@@ -46,7 +46,7 @@ jQuery(document).ready(function () {
         }
     }
     initializeStateZones();
-    
+
     // -----
     // Monitor the address block for changes to the selected country.
     //
@@ -54,7 +54,7 @@ jQuery(document).ready(function () {
     {
         updateCountryZones(jQuery('#country option:selected').val());
     });
-    
+
     // -----
     // This function provides the processing needed when a country has been changed.  It makes
     // use of the c2z (countries-to-zones) array, built and provided by the jscript_main.php's
