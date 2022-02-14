@@ -20,6 +20,9 @@ $zca_address_pages = array(
     FILENAME_CHECKOUT_SHIPPING_ADDRESS,
     FILENAME_ADDRESS_BOOK_PROCESS,
 );
+if (defined('FILENAME_NO_ACCOUNT')) {
+   $zca_address_pages[] = FILENAME_NO_ACCOUNT; 
+}
 if (ACCOUNT_STATE_DRAW_INITIAL_DROPDOWN != 'true' || !isset($_GET['main_page']) || !in_array($_GET['main_page'], $zca_address_pages)) {
     return;
 }
