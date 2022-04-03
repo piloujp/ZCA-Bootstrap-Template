@@ -2,7 +2,7 @@
 // -----
 // AJAX Search for the Zen Cart Bootstrap Template.
 //
-// Bootstrap v3.2.0.
+// Bootstrap v3.3.0.
 //
 class zcAjaxBootstrapSearch extends base
 {
@@ -54,7 +54,7 @@ class zcAjaxBootstrapSearch extends base
 
                 $search_results_count = $count->fields['count'];
                 if ($search_results_count != 0) {
-                    $select_clause = 'SELECT DISTINCT p.products_image, p.products_id, pd.products_name, p.master_categories_id, p.products_model';
+                    $select_clause = 'SELECT DISTINCT p.products_image, p.products_id, p.products_sort_order, pd.products_name, p.master_categories_id, p.products_model';
                     $order_by_clause = ' ORDER BY p.products_sort_order, pd.products_name';
                     $limit_clause = ' LIMIT ' . (int)BS4_AJAX_SEARCH_RESULTS_PER_PAGE;
                     

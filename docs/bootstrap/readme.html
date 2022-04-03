@@ -246,7 +246,9 @@ img {
             <li>BUGFIX: Ensure intervening space added between 'select' tags' class attributes.</li>
             <li>CHANGE: Enable integration with the &quot;COWOA&quot; plugin.</li>
             <li>BUGFIX: Add additional HTML attributes for accessibility.</li>
+            <li>BUGFIX: Correct MySQL fatal error on AJAX search for strict MySQL 5.7+ installations.</li>
             <li>The following files were changed or <span class="added">added</span>:<ol>
+                <li>/includes/classes/ajax/zcAjaxBootstrapSearch.php</li>
                 <li>/includes/classes/observers/ZcaBootstrapObserver.php</li>
                 <li>/includes/templates/bootstrap/template_info.php</li>
                 <li><span class="added">/includes/templates/bootstrap/css/dist-site_specific_styles.php</span></li>
