@@ -134,7 +134,7 @@ if ($flagHasCartContents) {
     if (SHOW_SHOPPING_CART_UPDATE == 2 || SHOW_SHOPPING_CART_UPDATE == 3) {
 ?>
                     <div id="cartUpdate" class="text-center">
-                        <button type="submit" class="btn"><i class="fas fa-sync-alt"></i></button>
+                        <button type="submit" class="btn" aria-label="<?php echo BUTTON_UPDATE_ALT;?>"><i class="fas fa-sync-alt"></i></button>
                     </div>
 <?php
     }
