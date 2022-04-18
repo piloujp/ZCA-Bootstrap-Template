@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.1.4
+ * BOOTSTRAP v3.3.1
  *
  * Loaded automatically by index.php?main_page=product_info.<br />
  * Displays details of a typical product
@@ -193,7 +193,7 @@ if ($flag_show_ask_a_question) {
 <?php } ?>
 <!--eof Product Price block above Attributes -->
 
-<div id="productInfo-productAttributes" class="productAttributes">
+<div id="productAttributes">
 
 <?php
 /**
