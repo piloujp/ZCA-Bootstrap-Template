@@ -201,7 +201,7 @@ if ($flag_show_ask_a_question) {
 <?php } ?>
 <!--eof Product Price block above Attributes -->
 
-<div id="productMusicInfo-productAttributes" class="productAttributes">
+<div id="productAttributes">
 
 <?php
 /**
