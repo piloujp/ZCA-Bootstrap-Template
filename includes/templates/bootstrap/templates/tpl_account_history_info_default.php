@@ -123,7 +123,7 @@ if (!empty($statusArray)) {
                                 <th scope="col" id="orderHistoryStatusTableDisplay-commentsHeading"><?php echo TABLE_HEADING_STATUS_COMMENTS; ?></th>
                             </tr>
 <?php
-    $first = true; 
+    $protected = true; 
     foreach ($statusArray as $statuses) {
 ?>
                             <tr>
@@ -132,17 +132,13 @@ if (!empty($statusArray)) {
                                 <td class="commentsCell">
 <?php 
         if (!empty($statuses['comments'])) {
-            if ($first) { 
-                echo nl2br(zen_output_string_protected($statuses['comments']));
-                $first = false; 
-            } else {
-                echo nl2br(zen_output_string($statuses['comments']));
-            }
+           echo nl2br(zen_output_string($statuses['comments'], false, $protected));
         }
 ?>
                                 </td> 
                             </tr>
 <?php
+        $protected = false;
     }
 ?>
                         </table>
