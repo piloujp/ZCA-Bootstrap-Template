@@ -53,9 +53,15 @@ if (isset($_GET['action']) && ($_GET['action'] === 'success')) {
 <?php
     // show dropdown if set
     if (CONTACT_US_LIST !== '') {
+        // -----
+        // This value is set by the zc158 processing, mimic the value provided there if it's not set, i.e. running on a previous Zen Cart version.
+        //
+        if (!isset($send_to_default)) {
+            $send_to_default = count($send_to_array) + 1;
+        }
 ?>
             <label class="inputLabel" for="send-to"><?php echo SEND_TO_TEXT; ?></label><?php echo '<span class="alert">' . ENTRY_REQUIRED_SYMBOL . '</span>'; ?>
-            <?php echo zen_draw_pull_down_menu('send_to',  $send_to_array, 0, 'id="send-to"'); ?>
+            <?php echo zen_draw_pull_down_menu('send_to',  $send_to_array, $send_to_default, 'id="send-to" required size="' . count($send_to_array) . '"'); ?>
             <div class="p-2"></div>
 <?php
     }
