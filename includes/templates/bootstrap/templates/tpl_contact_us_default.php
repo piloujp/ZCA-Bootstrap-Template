@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.3.1
+ * BOOTSTRAP v3.4.0
  *
  * Loaded automatically by index.php?main_page=contact_us.<br />
  * Displays contact us page form.
@@ -73,8 +73,13 @@ if (isset($_GET['action']) && ($_GET['action'] === 'success')) {
             <label class="inputLabel" for="email-address"><?php echo ENTRY_EMAIL; ?></label>
             <?php echo zen_draw_input_field('email', ($email_address), ' size="40" id="email-address" autocomplete="off" placeholder="' . ENTRY_REQUIRED_SYMBOL . '" required', 'email'); ?>
             <div class="p-2"></div>
-
-            <label class="inputLabel" for="telephone"><?php echo ENTRY_TELEPHONE; ?></label>
+<?php
+    // -----
+    // zc158 no longer uses the 'ENTRY_TELEPHONE' define, replacing it with 'ENTRY_TELEPHONE_NUMBER'.
+    //
+    $telephone_label = (defined('ENTRY_TELEPHONE_NUMBER')) ? ENTRY_TELEPHONE_NUMBER : ENTRY_TELEPHONE;
+?>
+            <label class="inputLabel" for="telephone"><?php echo $telephone_label; ?></label>
             <?php echo zen_draw_input_field('telephone', ($telephone), ' size="20" id="telephone" autocomplete="off"', 'tel'); ?>
             <div class="p-2"></div>
 
