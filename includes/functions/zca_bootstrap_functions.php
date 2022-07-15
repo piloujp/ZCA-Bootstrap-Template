@@ -2,7 +2,7 @@
 /**
  * @author ZCAdditions.com, ZCA Bootstrap Template
  *
- * BOOTSTRAP v3.1.6
+ * BOOTSTRAP v3.4.0
  *
 */
  
@@ -18,7 +18,9 @@ function zca_bootstrap_active()
 
 function zca_js_zone_list($varname = 'c2z')
 {
-    $countries = $GLOBALS['db']->Execute(
+    global $db;
+
+    $countries = $db->Execute(
         "SELECT DISTINCT zone_country_id
            FROM " . TABLE_ZONES . "
                 INNER JOIN " . TABLE_COUNTRIES . "
@@ -26,26 +28,24 @@ function zca_js_zone_list($varname = 'c2z')
                    AND status = 1
        ORDER BY zone_country_id"
     );
-    
-    $c2z = array();
-    while (!$countries->EOF) {
-        $current_country_id = $countries->fields['zone_country_id'];
-        $c2z[$current_country_id] = array();
 
-        $states = $GLOBALS['db']->Execute(
+    $c2z = [];
+    foreach ($countries as $country) {
+        $current_country_id = $country['zone_country_id'];
+        $c2z[$current_country_id] = [];
+
+        $states = $db->Execute(
             "SELECT zone_name, zone_id
                FROM " . TABLE_ZONES . "
               WHERE zone_country_id = $current_country_id
            ORDER BY zone_name"
         );
-        while (!$states->EOF) {
-            $c2z[$current_country_id][$states->fields['zone_id']] = $states->fields['zone_name'];
-            $states->MoveNext();
+        foreach ($states as $state) {
+            $c2z[$current_country_id][$state['zone_id']] = $state['zone_name'];
         }
-        $countries->MoveNext();
     }
-    
-    if (count($c2z) == 0) {
+
+    if (count($c2z) === 0) {
         $output_string = '';
     } else {
         $output_string = 'var ' . $varname . ' = \'' . addslashes(json_encode($c2z)) . '\';' . PHP_EOL;
@@ -81,4 +81,20 @@ function zca_get_rating_stars($rating, $size = '')
         $rating_stars .= '<i class="' . $fa_class . ' fa-star' . $size . '"></i>';
     }
     return $rating_stars;
+}
+
+// -----
+// A function to provide compatability for the template's use for 'strftime' formatted
+// dates; that function is deprecated in PHP 8.1 and will be removed in a future version.
+// zc158 has defined a class that can be used to provide that compatibility.
+//
+function zca_get_translated_month_name()
+{
+    if (zen_get_zcversion() >= '1.5.8') {
+        global $zcDate;
+        $month_name = $zcDate->output('%B');
+    } else {
+        $month_name = strftime('%B');
+    }
+    return $month_name;
 }
