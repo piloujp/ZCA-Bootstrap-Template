@@ -94,7 +94,7 @@ if ($action === 'doneprocess') {
     if ($messageStack->size('gv_send') > 0) {
         echo $messageStack->output('gv_send');
     }
-    
+
     // -----
     // zc158 defines a new label for the recipient's name; use that if present, otherwise
     // fall-back to the previous label name.
