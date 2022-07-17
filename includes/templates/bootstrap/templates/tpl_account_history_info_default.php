@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.3.1
+ * BOOTSTRAP v3.4.0
  *
  * Loaded automatically by index.php?main_page=account_edit.<br />
  * Displays information related to a single specific order
@@ -47,10 +47,15 @@ if ($tax_column_present) {
                         <th scope="col" id="orderHistory-totalHeading"><?php echo HEADING_TOTAL; ?></th>
                     </tr>
 <?php
+// -----
+// zc158 replaces the 'QUANTITY_SUFFIX' definition with 'CART_QUANTITY_SUFFIX'.  Use
+// the zc158 definition, if present.
+//
+$quantity_suffix = (defined('CART_QUANTITY_SUFFIX')) ? CART_QUANTITY_SUFFIX : QUANTITY_SUFFIX;
 foreach ($order->products as $product) {
 ?>
                     <tr>
-                        <td class="qtyCell"><?php echo $product['qty'] . QUANTITY_SUFFIX; ?></td>
+                        <td class="qtyCell"><?php echo $product['qty'] . $quantity_suffix; ?></td>
                         <td class="productCell"<?php echo $products_colspan; ?>><?php echo $product['name']; ?>
 <?php
     if (!empty($product['attributes'])) {
