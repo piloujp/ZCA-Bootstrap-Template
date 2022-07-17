@@ -4,7 +4,7 @@
  * 
  * BOOTSTRAP v3.4.0
  *
- * Loaded automatically by index.php?main_page=account_edit.<br />
+ * Loaded automatically by index.php?main_page=account_edit.
  * Displays information related to a single specific order
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
@@ -86,7 +86,7 @@ foreach ($order->products as $product) {
 <?php
     $ppe = zen_round(zen_add_tax($product['final_price'], $product['tax']), $currencies->get_decimal_places($order->info['currency']));
     $ppt = $ppe * $product['qty'];
-    echo $currencies->format($ppt, true, $order->info['currency'], $order->info['currency_value']) . ($product['onetime_charges'] != 0 ? '<br />' . $currencies->format(zen_add_tax($product['onetime_charges'], $product['tax']), true, $order->info['currency'], $order->info['currency_value']) : '');
+    echo $currencies->format($ppt, true, $order->info['currency'], $order->info['currency_value']) . ($product['onetime_charges'] != 0 ? '<br>' . $currencies->format(zen_add_tax($product['onetime_charges'], $product['tax']), true, $order->info['currency'], $order->info['currency_value']) : '');
 ?>
                         </td>
                     </tr>
@@ -137,7 +137,7 @@ if (!empty($statusArray)) {
                                 <td class="commentsCell">
 <?php 
         if (!empty($statuses['comments'])) {
-           echo nl2br(zen_output_string($statuses['comments'], false, $protected));
+            echo nl2br(zen_output_string($statuses['comments'], false, $protected));
         }
 ?>
                                 </td> 
