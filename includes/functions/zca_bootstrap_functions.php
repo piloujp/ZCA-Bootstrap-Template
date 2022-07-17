@@ -53,12 +53,30 @@ function zca_js_zone_list($varname = 'c2z')
     return $output_string;
 }
 
-function zca_get_language_dir($language_filename)
+// -----
+// Loads a language-file for the requested modal page.  Some of the "core" Zen Cart pop-up pages
+// are replaced by modals for the Bootstrap template.
+//
+// NOTE: This function, introduced in v3.4.0, replaces the zca_get_language_dir function to enable
+// a single template distribution to support both the zc157 series and its zc158+ follow-on.
+//
+function zca_load_language_for_modal($modal_pagename)
 {
-    global $language_page_directory, $template_dir;
+    if (zen_get_zcversion() >= '1.5.8') {
+        global $languageLoader;
 
-    $language_dir = (file_exists($language_page_directory . $template_dir . '/' . $language_filename)) ? "$template_dir/" : '';
-    return $language_dir;
+        $languageLoader->setCurrentPage($modal_pagename);
+        $languageLoader->loadLanguageForView();
+    } else {
+        global $language_page_directory, $template_dir;
+
+        $modal_language_filename = $modal_pagename . '.php';
+        $language_dir = '';
+        if (file_exists($language_page_directory . $template_dir . '/' . $modal_language_filename)) {
+            $language_dir = "$template_dir/";
+        }
+        require $language_page_directory . $language_dir . $modal_language_filename;
+    }
 }
 
 // -----
