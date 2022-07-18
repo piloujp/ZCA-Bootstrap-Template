@@ -15,7 +15,7 @@
 // The "core" Zen Cart sideboxes normally bracket the $title with a <label></label>;
 // those tags are neither needed nor wanted for the bootstrap implementation.
 //
-$title = str_replace(['<label', '</label>'], '', $title);
+$title = str_replace(['<label>', '</label>'], '', $title);
 
 if (!empty($title_link)) {
     $title = '<a href="' . zen_href_link($title_link) . '">' . $title . BOX_HEADING_LINKS . '</a>';
