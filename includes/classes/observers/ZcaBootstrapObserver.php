@@ -39,6 +39,9 @@ class ZcaBootstrapObserver extends base
 
                     //- From /includes/modules{/bootstrap}/additional_images.php
                     'NOTIFY_MODULES_ADDITIONAL_IMAGES_SCRIPT_LINK',
+
+                    //- From /includes/modules/pages/checkout_confirmation/header_php.php
+                    'NOTIFY_HEADER_END_CHECKOUT_CONFIRMATION',
                 ]
             );
         }
@@ -221,6 +224,18 @@ class ZcaBootstrapObserver extends base
                     
                     $p2 = $link;
                     $p3 = 'class="card p-3 mb-3"';
+                }
+                break;
+
+            // -----
+            // zc158 adds a variable ($payment_title) for the templates' use in displaying the
+            // payment-method's title.  That's not in zc157, so we'll mimic the zc158 handling so
+            // that the template can play in both versions!
+            //
+            case 'NOTIFY_HEADER_END_CHECKOUT_CONFIRMATION':
+                global $payment_title, $credit_covers;
+                if (!isset($payment_title)) {
+                    $payment_title = ($credit_covers === true) ? PAYMENT_METHOD_GV : ${$_SESSION['payment']}->title;
                 }
                 break;
 
