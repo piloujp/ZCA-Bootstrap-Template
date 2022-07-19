@@ -42,6 +42,9 @@ class ZcaBootstrapObserver extends base
 
                     //- From /includes/modules/pages/checkout_confirmation/header_php.php
                     'NOTIFY_HEADER_END_CHECKOUT_CONFIRMATION',
+
+                    //- From /includes/modules/order_total/ot_coupon.php
+                    'NOTIFY_OT_COUPON_GENERATE_POPUP_LINK',
                 ]
             );
         }
@@ -237,6 +240,13 @@ class ZcaBootstrapObserver extends base
                 if (!isset($payment_title)) {
                     $payment_title = ($credit_covers === true) ? PAYMENT_METHOD_GV : ${$_SESSION['payment']}->title;
                 }
+                break;
+
+            // -----
+            // zc158 adds this notification to the core, possibly hand-edited for zc157 installations.
+            //
+            case 'NOTIFY_OT_COUPON_GENERATE_POPUP_LINK':
+                $p2 = '<a data-toggle="modal" data-id="' . $p1['coupon_id'] . '" href="#couponHelpModal">' . $p1['coupon_code'] . '</a>';
                 break;
 
             default:

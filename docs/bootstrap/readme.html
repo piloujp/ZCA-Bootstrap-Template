@@ -93,7 +93,7 @@ img {
         <li>/includes/languages/english/bootstrap/extra_definitions/*.php</li>
         <li>/includes/modules/bootstrap/*.php</li>
         <li>/includes/modules/bootstrap/centerboxes/*.php</li>
-        <li><span class="corefile">/includes/modules/order_total/ot_coupon.php</span></li>
+        <li><span class="corefile removed">/includes/modules/order_total/ot_coupon.php</span> <span class="smaller">(No longer distributed as of v3.4.0)</span></li>
         <li>/includes/modules/pages/account_history/header_php_account_history_zca_bootstrap.php</li>
         <li>/includes/modules/pages/featured_products/header_php_featured_products_zca_bootstrap.php</li>
         <li>/includes/modules/pages/page_not_found/header_php_page_not_found_zca_bootstrap.php</li>
@@ -219,10 +219,9 @@ img {
     </ol>
 
     <h2>Initial Installation</h2>
-    <p>This template currently has one <span class="corefile">core-file overwrite</span>; you should <strong>always</strong> backup your cart's database and files prior to making any changes.</p>
+    <p>This template currently distributes no <span class="corefile">core-file overwrite</span>; you should <strong>always</strong> backup your cart's database and files prior to making any changes.</p>
     <ol>
         <li>Unzip the template's package file, which you've most likely already done if you're reading this!</li>
-        <li>If you haven't made any changes to the Zen Cart 'base' version of <code>/includes/modules/order_total/ot_coupon.php</code>, you can simply copy that file from the template's distribution.  Otherwise, you'll need to merge the one marked section with your store's version of the file.</li>
         <li>Rename the distribution's <code>YOUR_ADMIN</code> sub-directory to match the name of your site's Zen Cart admin directory.</li>
         <li>Copy the files present in the <code>includes</code> and the renamed <code>YOUR_ADMIN</code> sub-directories to your site's file-system.</li>
         <li>Log into your Zen Cart admin to allow the template's initialization to be run.  If you want to enable the template:<ul>
@@ -234,6 +233,45 @@ img {
     </ol>
     <p>As a suggestion, keep the as-distributed <code>bootstrap</code> template's files unmodified so that you can easily revert to see if your custom changes have affected the template's output.  Once you have installed the template and customized its sidebox use, you can <a href="https://www.zen-cart.com/downloads.php?do=file&id=2087" target="_blank">clone the template</a> for use on your site.</p>
     <p><b>Note:</b> If you've made an initial installation of the template &mdash; as you <em>should</em> &mdash; in a test version of your live site, you've most likely customized the coloring to match your site. You can use the template's admin &quot;Tools :: ZCA Bootstrap Colors&quot; tool to download a CSV format of your coloring (see the bottom of that tool) and then upload that CSV once you're ready to enable the template on your live site!</p>
+    <p>For an initial installation running on the zc157-series, if you want the template to display any popup coupon-help in a modal instead of a javascript popup, you'll need to make a hand-edit to your site's <code>/includes/modules/order_totals/ot_coupon.php</code> file.</p>
+    <ol>
+        <li>Make a backup copy of that file, using a file extension <b>other than</b> <code>.php</code>, e.g. <code>ot_coupon.php.original</code>.</li>
+        <li>Edit <code>ot_coupon.php</code>, find the following section:
+            <code><br>
+    function credit_selection()<br>
+    {<br>
+        global $discount_coupon, $request_type;<br>
+<br>
+        $couponLink = '';<br>
+        if (isset($discount_coupon->fields['coupon_code']) && isset($_SESSION['cc_id'])) {<br>
+            $coupon_code = $discount_coupon->fields['coupon_code'];<br>
+            $couponLink = '<a href="javascript:couponpopupWindow(\'' .
+              zen_href_link(FILENAME_POPUP_COUPON_HELP, 'cID=' . $_SESSION['cc_id'], $request_type) .
+              '\')">' . $coupon_code . '</a>';<br>
+        }<br>
+            </code><br><br>
+            and make the following changes, simply adding the zc158+ notification:<br><br>
+            <code><br>
+    function credit_selection()<br>
+    {<br>
+        global $discount_coupon, $request_type, $zco_notifier;<br>
+<br>
+        $couponLink = '';<br>
+        if (isset($discount_coupon->fields['coupon_code']) && isset($_SESSION['cc_id'])) {<br>
+            $coupon_code = $discount_coupon->fields['coupon_code'];<br>
+            $couponLink = '<a href="javascript:couponpopupWindow(\'' .
+              zen_href_link(FILENAME_POPUP_COUPON_HELP, 'cID=' . $_SESSION['cc_id'], $request_type) .
+              '\')">' . $coupon_code . '</a>';<br>
+<br>
+            $zco_notifier->notify('NOTIFY_OT_COUPON_GENERATE_POPUP_LINK', ['coupon_id' => $_SESSION['cc_id'], 'coupon_code' => $coupon_code], $couponLink);<br>
+        }<br>
+            </code>
+    </ol>
+
+    <h2>Upgrading</h2>
+    <p>This readme's <b>Version History</b> section, below, identifies each file changed, <span class="added">added</span> or <span class="removed">removed</span> for each release of the template, starting with v3.0.0.  When you're upgrading, note each of the changes from your currently-installed version to that associated with the upgrade.  Pay specific attention to the files added and removed!</p>
+    <p>Unzip the template's package file and use a file-comparision program (like WinMerge or BeyondCompare) to either overwrite (if you've made a <em>clone</em> of the template) or merge the differences into the 'base' <code>bootstrap</code> sub-directories.  If you haven't made a <em>clone</em> of the template, pay specific attention to any changes that you've made to those 'base' files!  If you <b>have</b> made a <em>clone</em>, use your file-comparison program to merge the 'base' template's updates into your cloned copy.  In either case, pay specific attention to the files added and removed!</p>
+    <p>Starting with v3.4.0, the template's package file <b>no longer distributes</b> a modified version of <code>/includes/modules/order_total/ot_coupon.php</code>, since that file's changed drastically between the zc157 series and the forthcoming zc158.  Prior versions included a single change-block, updating that module to use a modal popup to view a coupon's help information.  If your site already has that change, it will continue to operate for the zc157 series, but should be overwritten with the zc158 distribution's version when your site is upgraded to use the Zen Cart 1.5.8 file-set.</p>
 
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
@@ -254,6 +292,7 @@ img {
                 <li>/includes/modules/bootstrap/centerboxes/new_products.php</li>
                 <li>/includes/modules/bootstrap/centerboxes/specials_index.php</li>
                 <li>/includes/modules/bootstrap/centerboxes/upcoming_products.php</li>
+                <li><span class="corefile removed">/includes/modules/order_total/ot_coupon.php</span> <span class="smaller">(Removed from this distribution <b>only</b>)</span></li>
                 <li><span class="removed">/includes/modules/sideboxes/bootstrap/music_genres.php</span></li>
                 <li><span class="removed">/includes/modules/sideboxes/bootstrap/record_companies.php</span></li>
                 <li><span class="removed">/includes/modules/sideboxes/bootstrap/search.php</span></li>
