@@ -2,7 +2,7 @@
 /**
  * jscript_addr_pulldowns_zca_bootstrap
  *
- * BOOTSTRAP v3.3.0
+ * BOOTSTRAP v3.4.0
  *
  * handles pulldown menu dependencies for state/country selection
  *
@@ -13,22 +13,22 @@
  * @version $Id: Scott C Wilson Sat Oct 27 01:31:20 2018 -0400 Modified in v1.5.6 $
  */
 $zca_address_pages = [
-    FILENAME_CREATE_ACCOUNT, 
-    FILENAME_LOGIN, 
-    FILENAME_SHOPPING_CART, 
-    FILENAME_CHECKOUT_PAYMENT_ADDRESS, 
+    FILENAME_CREATE_ACCOUNT,
+    FILENAME_LOGIN,
+    FILENAME_SHOPPING_CART,
+    FILENAME_CHECKOUT_PAYMENT_ADDRESS,
     FILENAME_CHECKOUT_SHIPPING_ADDRESS,
     FILENAME_ADDRESS_BOOK_PROCESS,
 ];
 if (defined('FILENAME_NO_ACCOUNT')) {
-   $zca_address_pages[] = FILENAME_NO_ACCOUNT; 
+   $zca_address_pages[] = FILENAME_NO_ACCOUNT;
 }
-if (ACCOUNT_STATE_DRAW_INITIAL_DROPDOWN != 'true' || !isset($_GET['main_page']) || !in_array($_GET['main_page'], $zca_address_pages)) {
+if (ACCOUNT_STATE !== 'true' || ACCOUNT_STATE_DRAW_INITIAL_DROPDOWN !== 'true' || !isset($_GET['main_page']) || !in_array($_GET['main_page'], $zca_address_pages)) {
     return;
 }
 ?>
 <script>
-jQuery(document).ready(function () {
+jQuery(window).on('load', function() {
     <?php echo zca_js_zone_list('c2z'); ?>
     var textPleaseSelect = '<?php echo BOOTSTRAP_PLEASE_SELECT; ?>';
 
@@ -39,10 +39,10 @@ jQuery(document).ready(function () {
     initializeStateZones = function() 
     {
         if (jQuery('#stateZone > option').length == 1) {
-            jQuery('#stateZone, #stateZone+span, #stateZone+span+br, #stateZone+br').hide();
+            jQuery('#stateZone, #stateZone+span, #stateZone+span+br, #stateZone+br, #zoneLabel').hide();
         } else {
             jQuery('#state, #state+span, #stBreak, #stateLabel').hide();
-            jQuery('#stateZone').show();
+            jQuery('#stateZone, #zoneLabel').show();
         }
     }
     initializeStateZones();
@@ -60,11 +60,14 @@ jQuery(document).ready(function () {
     // use of the c2z (countries-to-zones) array, built and provided by the jscript_main.php's
     // processing.  The value for "textPleaseSelect" is set there, too.
     //
+    // Note: When the selected country has zones, the 'state' input is reset to an empty
+    // string.  Otherwise, that previous value is displayed as part of the current selection!
+    //
     function updateCountryZones(selected_country)
     {
         var countryHasZones = false;
         var countryZones = '<option selected="selected" value="0">' + textPleaseSelect + '</option>';
-        jQuery.each(jQuery.parseJSON(c2z), function(country_id, country_zones) {
+        jQuery.each(JSON.parse(c2z), function(country_id, country_zones) {
             if (selected_country == country_id) {
                 countryHasZones = true;
                 jQuery.each(country_zones, function(zone_id, zone_name) {
@@ -74,10 +77,11 @@ jQuery(document).ready(function () {
         });
         if (countryHasZones) {
             jQuery('#stateZone').html(countryZones);
-            jQuery('#stateZone, #stateZone+span, #stateZone+span+br, #stateZone+br').show();
+            jQuery('#stateZone, #stateZone+span, #stateZone+span+br, #stateZone+br, #zoneLabel').show();
             jQuery('#state, #state+span, #stBreak, #stateLabel').hide();
+            jQuery('#state').val('');
         } else {
-            jQuery('#stateZone, #stateZone+span').hide();
+            jQuery('#stateZone, #stateZone+span, #zoneLabel').hide();
             jQuery('#state, #state+span, #stBreak, #stateLabel').show();
         }
     }
