@@ -21,7 +21,7 @@ if ($show_welcome === true) {
     // zc158 introduces the HEADING_TITLE_NESTED constant.  Use that, if defined,
     // otherwise fall-back to the legacy title.
     //
-    $heading_titld = (defined('HEADING_TITLE_NESTED')) ? HEADING_TITLE_NESTED : HEADING_TITLE;
+    $heading_title = (defined('HEADING_TITLE_NESTED')) ? HEADING_TITLE_NESTED : HEADING_TITLE;
 ?>
     <h1 id="indexCategories-pageHeading" class="pageHeading"><?php echo $heading_title; ?></h1>
 <?php
