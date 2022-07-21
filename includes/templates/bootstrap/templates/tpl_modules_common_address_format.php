@@ -121,7 +121,7 @@ if (ACCOUNT_STATE === 'true') {
 <?php
     echo zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state" class="form-control" placeholder="' . ENTRY_STATE_TEXT . '"');
     if ($flag_show_pulldown_states === false) {
-      echo zen_draw_hidden_field('zone_id', $zone_name, ' ');
+        echo zen_draw_hidden_field('zone_id', $zone_name, ' ');
     }
 }
 ?>
@@ -132,7 +132,7 @@ if (ACCOUNT_STATE === 'true') {
 <div class="p-2"></div>
 
 <?php
-if (!isset($_GET['edit']) || $_SESSION['customer_default_address_id'] != $_GET['edit']) {
+if ($current_page_base === FILENAME_ADDRESS_BOOK_PROCESS && (!isset($_GET['edit']) || (int)$_SESSION['customer_default_address_id'] !== (int)$_GET['edit'])) {
 ?>
 <div class="custom-control custom-checkbox">
     <?php echo zen_draw_checkbox_field('primary', 'on', false, 'id="primary"') . ' <label class="custom-control-label" for="primary">' . SET_AS_PRIMARY . '</label>'; ?>
