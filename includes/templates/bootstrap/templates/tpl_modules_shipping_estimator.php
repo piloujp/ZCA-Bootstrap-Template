@@ -62,9 +62,25 @@ if ($_SESSION['cart']->count_contents() !== 0) {
         }
         if ($_SESSION['cart']->get_content_type() !== 'virtual') {
             $flag_show_pulldown_states = (ACCOUNT_STATE_DRAW_INITIAL_DROPDOWN === 'true');
+
+            // -----
+            // zc158 introduces a common jQuery handler for the dropdown states' selection based
+            // on the country chosen.  When running on a zc158 (or later) 'core', use that handler instead
+            // of the legacy one provided by the Bootstrap template.
+            //
+            // When running a Zen Cart version prior to zc158, make sure that the 'stateLabel' field contains
+            // the required text; the value is pre-set for zc158 and later.
+            //
+            if (zen_get_zcversion() >= '1.5.8') {
+                $onchange_for_zc158 = ($flag_show_pulldown_states === true) ? ' onchange="update_zone(this.form);"' : '';
+                $state_field_label ??= '';
+            } else {
+                $onchange_for_zc158 = '';
+                $state_field_label = ENTRY_STATE;
+            }
 ?>
     <label class="inputLabel" for="country"><?php echo ENTRY_COUNTRY; ?></label>
-    <?php echo zen_get_country_list('zone_country_id', $selected_country, 'id="country"'); ?>
+    <?php echo zen_get_country_list('zone_country_id', $selected_country, 'id="country"' . $onchange_for_zc158); ?>
     <div class="p-2"></div>
 <?php
             if ($flag_show_pulldown_states === true) {
@@ -75,7 +91,7 @@ if ($_SESSION['cart']->count_contents() !== 0) {
 <?php
             }
 ?>
-    <label class="inputLabel" for="state" id="stateLabel"><?php echo ENTRY_STATE; ?></label>
+    <label class="inputLabel" for="state" id="stateLabel"><?php echo $state_field_label; ?></label>
     <?php echo zen_draw_input_field('state', $selectedState, zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . 'id="state"'); ?>
     <div class="p-2"></div>
 <?php

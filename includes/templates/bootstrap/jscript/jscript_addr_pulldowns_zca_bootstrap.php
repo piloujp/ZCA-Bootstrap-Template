@@ -12,6 +12,15 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: Scott C Wilson Sat Oct 27 01:31:20 2018 -0400 Modified in v1.5.6 $
  */
+// -----
+// zc158 introduces a common jQuery handler for the dropdown states' selection based
+// on the country chosen.  When running on a zc158 (or later) 'core', use that handler instead
+// of the legacy one provided by the Bootstrap template for previous Zen Cart versions.
+//
+if (zen_get_zcversion() >= '1.5.8') {
+    return;
+}
+
 $zca_address_pages = [
     FILENAME_CREATE_ACCOUNT,
     FILENAME_LOGIN,
@@ -39,10 +48,10 @@ jQuery(window).on('load', function() {
     initializeStateZones = function() 
     {
         if (jQuery('#stateZone > option').length == 1) {
-            jQuery('#stateZone, #stateZone+span, #stateZone+span+br, #stateZone+br, #zoneLabel').hide();
+            jQuery('#stateZone, #zoneLabel, #zoneLabel+span, #stBreak').hide();
         } else {
-            jQuery('#state, #state+span, #stBreak, #stateLabel').hide();
-            jQuery('#stateZone, #zoneLabel').show();
+            jQuery('#state, #stBreak, #stateLabel').hide();
+            jQuery('#stateZone, #zoneLabel, #zoneLabel+span').show();
         }
     }
     initializeStateZones();
@@ -50,8 +59,7 @@ jQuery(window).on('load', function() {
     // -----
     // Monitor the address block for changes to the selected country.
     //
-    jQuery(document).on('change', '#country', function(event) 
-    {
+    jQuery(document).on('change', '#country', function(event) {
         updateCountryZones(jQuery('#country option:selected').val());
     });
 
@@ -75,14 +83,15 @@ jQuery(window).on('load', function() {
                 });
             }
         });
+        jQuery('#state').val('');
         if (countryHasZones) {
             jQuery('#stateZone').html(countryZones);
-            jQuery('#stateZone, #stateZone+span, #stateZone+span+br, #stateZone+br, #zoneLabel').show();
-            jQuery('#state, #state+span, #stBreak, #stateLabel').hide();
-            jQuery('#state').val('');
+            jQuery('#stateZone, #zoneLabel, #zoneLabel+span').show();
+            jQuery('#state, #stBreak, #stateLabel').hide();
         } else {
-            jQuery('#stateZone, #stateZone+span, #zoneLabel').hide();
-            jQuery('#state, #state+span, #stBreak, #stateLabel').show();
+            jQuery('#state').removeAttr('disabled').addClass('form-control');
+            jQuery('#stateZone, #zoneLabel, #zoneLabel+span').hide();
+            jQuery('#state, #stateLabel').show();
         }
     }
 });
