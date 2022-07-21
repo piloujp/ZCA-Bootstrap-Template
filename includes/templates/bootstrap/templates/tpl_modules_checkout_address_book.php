@@ -49,7 +49,7 @@ foreach ($addresses as $address) {
     // database fields.  Determine what values to use when formatting previously-registered
     // addresses.
     //
-    $address_details = (zen_get_zcversion() > '1.5.8') ? $address['address'] : $address->fields;
+    $address_details = (zen_get_zcversion() >= '1.5.8') ? $address['address'] : $address->fields;
 ?>
     <div id="addressBookSingleEntryId<?php echo $address_book_id; ?>-card-body" class="card-body p-3">
         <address><?php echo zen_address_format(zen_get_address_format_id($address['country_id']), $address_details, true, ' ', '<br>'); ?></address>

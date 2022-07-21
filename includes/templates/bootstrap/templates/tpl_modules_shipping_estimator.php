@@ -103,7 +103,7 @@ if ($_SESSION['cart']->count_contents() !== 0) {
                 // Since this template currently supports both zc157 and zc158, we'll do some
                 // 'fiddling' based on the version of Zen Cart on which we're running.
                 //
-                $postcode_name = (zen_get_zcversion() > '1.5.8') ? 'postcode' : 'zip_code';
+                $postcode_name = (zen_get_zcversion() >= '1.5.8') ? 'postcode' : 'zip_code';
 ?>
     <label class="inputLabel" for="postcode"><?php echo ENTRY_POST_CODE; ?></label>
     <?php echo zen_draw_input_field($postcode_name, ${$postcode_name}, 'size="7" id="postcode"'); ?>
