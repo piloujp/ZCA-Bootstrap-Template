@@ -78,6 +78,7 @@ img {
 
     <h2>What it does</h2>
     <p>This template uses <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank">Bootstrap-4</a> to provide its styling and builds on the base that Raymond Barbour provided over the past few years, supporting Zen Cart versions 1.5.7 and later &mdash; <em>best supported</em> by zc157<b>c</b> and later.  If your store is based on either zc157, zc157a or zc157b, be sure that you have applied all the <a href="https://www.zen-cart.com/showthread.php?226872-Known-bugs-(and-fixes)-for-v1-5-7-series" target="_blank">patches</a>!</p>
+    <p>Starting with v3.4.0 of the template, the template-related files needed when used with <a href="https://www.zen-cart.com/downloads.php?do=file&id=2095" target="_blank">One-Page Checkout</a> are also provided.  The <a href="https://www.zen-cart.com/downloads.php?do=file&id=2305" target="_blank">previously-distributed</a> (and separate) version is no longer supported.</p>
     
     <h2>Bootstrap Template, Files List</h2>
     <p>The following files are provided in the current template distribution:</p>
@@ -93,6 +94,7 @@ img {
         <li>/includes/languages/english/bootstrap/extra_definitions/*.php</li>
         <li>/includes/modules/bootstrap/*.php</li>
         <li>/includes/modules/bootstrap/centerboxes/*.php</li>
+        <li>/includes/modules/sideboxes/bootstrap/*.php</li>
         <li><span class="corefile removed">/includes/modules/order_total/ot_coupon.php</span> <span class="smaller">(No longer distributed as of v3.4.0)</span></li>
         <li>/includes/modules/pages/account_history/header_php_account_history_zca_bootstrap.php</li>
         <li>/includes/modules/pages/featured_products/header_php_featured_products_zca_bootstrap.php</li>
@@ -276,7 +278,7 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.4.0, 2022-07-18 (lat9, dennisns7d)<ul>
+        <li>v3.4.0, 2022-07-22 (lat9, dennisns7d)<ul>
             <li>BUGFIX: Restore HTML class and id attributes to the &quot;attributes&quot; block's rendering.</li>
             <li>BUGFIX: Display HTML-formatted admin-entered comments when viewing an order's detailed history.</li>
             <li>BUGFIX: Preparing <code>contact_us</code> page's template for use in zc158.</li>
@@ -286,6 +288,7 @@ img {
             <li>BUGFIX: Remove 'dead' code from product-details manufacturer information display template.</li>
             <li>CHANGE: Move country selection above State/Province for address-entry displays.</li>
             <li>BUGFIX: Don't offer 'Set as primary' for pages other than <em>address_book_process</em>.</li>
+            <li>CHANGE: Include Bootstrap-formatted templates for &quot;One-Page Checkout&quot;.</li>
             <li>The following files were changed, <span class="added">added</span> or <span class="removed">removed</span>:<ol>
                 <li>/includes/classes/observers/ZcaBootstrapObserver.php</li>
                 <li>/includes/functions/zca_bootstrap_functions.php</li>
@@ -297,6 +300,7 @@ img {
                 <li>/includes/modules/bootstrap/centerboxes/specials_index.php</li>
                 <li>/includes/modules/bootstrap/centerboxes/upcoming_products.php</li>
                 <li><span class="corefile removed">/includes/modules/order_total/ot_coupon.php</span> <span class="smaller">(Removed from this distribution <b>only</b>)</span></li>
+                <li><span class="added">/includes/modules/sideboxes/bootstrap/information.php</span></li>
                 <li><span class="removed">/includes/modules/sideboxes/bootstrap/music_genres.php</span></li>
                 <li><span class="removed">/includes/modules/sideboxes/bootstrap/record_companies.php</span></li>
                 <li><span class="removed">/includes/modules/sideboxes/bootstrap/search.php</span></li>
@@ -306,6 +310,9 @@ img {
                 <li>/includes/templates/bootstrap/centerboxes/tpl_modules_specials_default.php</li>
                 <li>/includes/templates/bootstrap/common/tpl_box_default_left.php</li>
                 <li>/includes/templates/bootstrap/common/tpl_box_default_right.php</li>
+                <li><span class="added">/includes/templates/bootstrap/css/checkout_one.css</span></li>
+                <li><span class="added">/includes/templates/bootstrap/css/checkout_one_confirmation.css</span></li>
+                <li><span class="added">/includes/templates/bootstrap/css/checkout_success.css</span></li>
                 <li>/includes/templates/bootstrap/css/stylesheet.css</li>
                 <li>/includes/templates/bootstrap/jscript/jscript_addr_pulldowns_zca_bootstrap.php</li>
                 <li><span class="added">/includes/templates/bootstrap/jscript/jscript_sidebox_select_form.php</span></li>
@@ -321,21 +328,28 @@ img {
                 <li>/includes/templates/bootstrap/templates/tpl_account_history_info_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_account_password_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_address_book_default.php</li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_address_book_register.php</span></li>
                 <li>/includes/templates/bootstrap/templates/tpl_advanced_search_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_advanced_search_result_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_ajax_search_results.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_ask_a_question_default.php</li>
                 <li><span class="added">/includes/templates/bootstrap/templates/tpl_brands_default.php</span></li>
-                <li>/includes/templates/bootstrap/templates/tpl_checkout_shipping_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_checkout_confirmation_default.php</li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_checkout_one_confirmation_default.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_checkout_one_default.php</span></li>
                 <li>/includes/templates/bootstrap/templates/tpl_checkout_payment_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_checkout_shipping_default.php</li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_checkout_success_guest.php</span></li>
                 <li>/includes/templates/bootstrap/templates/tpl_contact_us_default.php</li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_create_account_register.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_create_account_success_register.php</span></li>
                 <li>/includes/templates/bootstrap/templates/tpl_discount_coupon_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_document_product_info_display.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_document_general_info_display.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_gv_send_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_index_categories.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_login_default.php</li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_login_guest.php</span></li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_attributes.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_checkout_address_book.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_create_account.php</li>
@@ -343,7 +357,20 @@ img {
                 <li><span class="removed">/includes/templates/bootstrap/templates/tpl_modules_products_all_listing.php</span></li>
                 <li><span class="removed">/includes/templates/bootstrap/templates/tpl_modules_products_featured_listing.php</span></li>
                 <li><span class="removed">/includes/templates/bootstrap/templates/tpl_modules_products_new_listing.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_modules_opc_address_block.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_modules_opc_billing_address.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_modules_opc_comments.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_modules_opc_conditions.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_modules_opc_credit_selections.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_modules_opc_customer_info.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_modules_opc_instructions.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_modules_opc_payment_choices.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_modules_opc_shipping_address.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_modules_opc_shipping_choices.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_modules_opc_shopping_cart.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_modules_opc_submit_block.php</span></li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_shipping_estimator.php</li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_order_status_default.php</span></li>
                 <li>/includes/templates/bootstrap/templates/tpl_page_not_found_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_password_forgotten_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_product_free_shipping_info_display.php</li>
