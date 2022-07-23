@@ -78,13 +78,18 @@ img {
 
     <h2>What it does</h2>
     <p>This template uses <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank">Bootstrap-4</a> to provide its styling and builds on the base that Raymond Barbour provided over the past few years, supporting Zen Cart versions 1.5.7 and later &mdash; <em>best supported</em> by zc157<b>c</b> and later.  If your store is based on either zc157, zc157a or zc157b, be sure that you have applied all the <a href="https://www.zen-cart.com/showthread.php?226872-Known-bugs-(and-fixes)-for-v1-5-7-series" target="_blank">patches</a>!</p>
-    <p>Starting with v3.4.0 of the template, the template-related files needed when used with <a href="https://www.zen-cart.com/downloads.php?do=file&id=2095" target="_blank">One-Page Checkout</a> are also provided.  The <a href="https://www.zen-cart.com/downloads.php?do=file&id=2305" target="_blank">previously-distributed</a> (and separate) version is no longer supported.</p>
-    
+    <p>Starting with v3.4.0 of the template, the template-related files needed when used with <a href="https://www.zen-cart.com/downloads.php?do=file&id=2095" target="_blank">One-Page Checkout</a> are also provided:</p>
+    <ul>
+        <li>These changes have been validated with v2.4.3 of <em>OPC</em>, I'll suggest upgrading to that version or later prior to upgrading to v3.4.0 or later of the Bootstrap-4 template.</li>
+        <li>The <a href="https://www.zen-cart.com/downloads.php?do=file&id=2305" target="_blank">previously-distributed</a> (and separate) BS4/OPC integration is no longer supported.</li>
+        <li>If you have <em>OPC</em> installed, its <b>Order Total: jQuery Selector</b> configuration setting should be set to <code>#ottotal > .ot-text</code> for the Bootstrap template's use.</li>
+    </ul>
+
     <h2>Bootstrap Template, Files List</h2>
     <p>The following files are provided in the current template distribution:</p>
     <ol>
         <li>/includes/auto_loaders/config.zca_bootstrap.php</li>
-        <li>/includes/classes/ajax/zcAjaxBootstrapSearch.php <span class="smaller">(Added in v5.2.0)</span></li>
+        <li>/includes/classes/ajax/zcAjaxBootstrapSearch.php <span class="smaller">(Added in v3.2.0)</span></li>
         <li>/includes/classes/observers/ZcaBootstrapObserver.php</li>
         <li>/includes/classes/zca/zca_message_stack.php</li>
         <li>/includes/classes/zca/zca_split_page_result.php</li>
