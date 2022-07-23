@@ -6,11 +6,8 @@
 // This module is included by tpl_modules_opc_billing_address.php and tpl_modules_opc_shipping_address.php and
 // provides a common-formatting for those two address-blocks.
 //
-// Modified for use by the 'bootstrap' template:  Bootstrap/OPC v1.0.4
+// Last updated: OPC v2.4.2/Bootstrap v3.4.0
 //
-?>
-<!--bof address block -->
-<?php
 // -----
 // Sanitize module input values.
 //
@@ -49,12 +46,12 @@ $_SESSION['opc']->setAddressLabelParams(' class="inputLabel"');
 // The first section of an address-block contains the condensed formatting of the address, to reduce
 // on-screen real-estate required.
 //
-if ($display_condensed_address) {
+if ($display_condensed_address === true) {
 ?>
 <div id="address-<?php echo $which; ?>" class="row">
     <div class="col-10"><?php echo zen_address_format(zen_get_address_format_id($address['country_id']), $address, true, '', '<br>'); ?></div>
 <?php
-if (!$opc_disable_address_change) {
+if ($opc_disable_address_change === false) {
 ?>
     <div class="text-right" id="opc-<?php echo $which; ?>-edit"><?php echo zen_image_button(BUTTON_IMAGE_EDIT_SMALL, BUTTON_EDIT_SMALL_ALT); ?></div>
 <?php
@@ -68,7 +65,7 @@ if (!$opc_disable_address_change) {
 // The second section contains the address-form through which an address can be changed, if enabled.  If the
 // address can't be changed, perform a quick return so that the form elements aren't rendered.
 //
-if ($opc_disable_address_change) {
+if ($opc_disable_address_change === true) {
     return;
 }
 ?>
@@ -81,7 +78,7 @@ if ($opc_disable_address_change) {
 // Note: Checking for more than two (2) entries, since the "Choose from previous selections" is
 // pre-populated!
 //
-if (!$opc_disable_address_change) {
+if ($opc_disable_address_change === false) {
     $address_selections = $_SESSION['opc']->formatAddressBookDropdown();
     if (count($address_selections) > 2) {
         $selected = $_SESSION['opc']->getAddressDropDownSelection($which);
@@ -129,7 +126,7 @@ if (ACCOUNT_STATE === 'true') {
     } else {
         echo zen_draw_hidden_field($zone_field_name, $address['zone_name']);
     }
-    
+
     echo $_SESSION['opc']->formatAddressElement($which, 'state', $address['state'], '', TABLE_ADDRESS_BOOK, 'entry_state', ENTRY_STATE_MIN_LENGTH, ENTRY_STATE_TEXT) . $clear_both;
 }
 
@@ -150,4 +147,3 @@ echo $_SESSION['opc']->formatAddressElement($which, 'postcode', $address['postco
 ?>
       <div id="messages-<?php echo $which; ?>" class="mt-2"></div>
 </div>
-<!--eof address block -->
