@@ -283,7 +283,7 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.4.0, 2022-07-22 (lat9, dennisns7d)<ul>
+        <li>v3.4.0, 2022-07-30 (lat9, dennisns7d)<ul>
             <li>BUGFIX: Restore HTML class and id attributes to the &quot;attributes&quot; block's rendering.</li>
             <li>BUGFIX: Display HTML-formatted admin-entered comments when viewing an order's detailed history.</li>
             <li>BUGFIX: Preparing <code>contact_us</code> page's template for use in zc158.</li>
@@ -294,6 +294,7 @@ img {
             <li>CHANGE: Move country selection above State/Province for address-entry displays.</li>
             <li>BUGFIX: Don't offer 'Set as primary' for pages other than <em>address_book_process</em>.</li>
             <li>CHANGE: Include Bootstrap-formatted templates for &quot;One-Page Checkout&quot;.</li>
+            <li>CHANGE: Preload Bootstrap, jQuery and Font Awesome CDN file (performance).</li>
             <li>The following files were changed, <span class="added">added</span> or <span class="removed">removed</span>:<ol>
                 <li>/includes/classes/observers/ZcaBootstrapObserver.php</li>
                 <li>/includes/functions/zca_bootstrap_functions.php</li>
@@ -314,6 +315,7 @@ img {
                 <li>/includes/templates/bootstrap/centerboxes/tpl_modules_featured_products.php</li>
                 <li>/includes/templates/bootstrap/centerboxes/tpl_modules_manufacturer_info.php</li>
                 <li>/includes/templates/bootstrap/centerboxes/tpl_modules_specials_default.php</li>
+                <li>/includes/templates/bootstrap/common/html_header.php</li>
                 <li>/includes/templates/bootstrap/common/tpl_box_default_left.php</li>
                 <li>/includes/templates/bootstrap/common/tpl_box_default_right.php</li>
                 <li><span class="added">/includes/templates/bootstrap/css/checkout_one.css</span></li>
