@@ -3,9 +3,14 @@
 // Part of the One-Page Checkout plugin, provided under GPL 2.0 license by lat9 (cindy@vinosdefrutastropicales.com).
 // Copyright (C) 2013-2022, Vinos de Frutas Tropicales.  All rights reserved.
 //
-// Last updated: OPC v2.4.2/Bootstrap v3.4.0
+// Last updated: OPC v2.4.4/Bootstrap v3.4.0
 //
-if ($_SESSION['opc']->isGuestCheckout() && DISPLAY_PRIVACY_CONDITIONS === 'true') {
+// -----
+// Don't display the conditions' block unless there is a shipping method available
+// and the payment-related address is validated.
+//
+if ($shipping_module_available === true && $display_payment_block === true) {
+    if ($_SESSION['opc']->isGuestCheckout() && DISPLAY_PRIVACY_CONDITIONS === 'true') {
 ?>
 <div id="privacy-div" class="card mb-3">
     <h4 class="card-header"><?php echo TABLE_HEADING_PRIVACY_CONDITIONS; ?></h4>
@@ -18,9 +23,9 @@ if ($_SESSION['opc']->isGuestCheckout() && DISPLAY_PRIVACY_CONDITIONS === 'true'
     </div>
 </div>
 <?php
-}
+    }
 
-if (DISPLAY_CONDITIONS_ON_CHECKOUT === 'true') {
+    if (DISPLAY_CONDITIONS_ON_CHECKOUT === 'true') {
 ?>
 <div id="conditions-div" class="card mb-3">
     <h4 class="card-header"><?php echo TABLE_HEADING_CONDITIONS; ?></h4>
@@ -33,4 +38,5 @@ if (DISPLAY_CONDITIONS_ON_CHECKOUT === 'true') {
     </div>
 </div>
 <?php
+    }
 }
