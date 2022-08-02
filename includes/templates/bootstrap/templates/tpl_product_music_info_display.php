@@ -296,7 +296,7 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
 <!--bof add to cart card--> 
 <div id="addToCart-card" class="card mb-3">
   <div id="addToCart-card-header" class="card-header"><?php echo PRODUCTS_ORDER_QTY_TEXT; ?></div>
-  <div id="addToCart-card-body" class="card-body text-center">
+  <div id="cartAdd" class="card-body text-center">
 <?php
       echo $display_qty;
       echo $display_button;
