@@ -16,7 +16,7 @@ require DIR_WS_MODULES . zen_get_module_directory('centerboxes/' . FILENAME_SPEC
 <?php
 if ($zc_show_special_products === true) {
 ?>
-<div class="card mb-3">
+<div id="specialsDefault" class="card mb-3 centerBoxWrapper">
 <?php
     if (!empty($title)) {
         echo $title;
