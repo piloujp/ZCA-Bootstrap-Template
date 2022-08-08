@@ -81,7 +81,7 @@ if ($num_products_count > 0) {
             $featured_products_image = '<a href="' . $featured_products_link . '">' . zen_image(DIR_WS_IMAGES . $featured_products->fields['products_image'], $featured_products_name, SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a><br>';
         }
         $list_box_contents[$row][$col] = [
-            'params' =>'class="centerBoxContents card mb-3 p-3 text-center"',
+            'params' => ' class="centerBoxContentsFeatured centerBoxContents card mb-3 p-3 text-center"',
             'text' => $featured_products_image . '<a href="' . $featured_products_link . '">' . $featured_products_name . '</a><br>' . $products_price
         ];
 

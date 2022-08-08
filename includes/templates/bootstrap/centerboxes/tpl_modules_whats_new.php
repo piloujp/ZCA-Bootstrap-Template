@@ -32,12 +32,9 @@ if ($zc_show_new_products === true) {
         <div class="card-deck text-center">
 <?php
             for ($col = 0, $j = count($list_box_contents[$row]); $col < $j; $col++) {
-                $r_params = '';
-                if (isset($list_box_contents[$row][$col]['params'])) {
-                    $r_params .= ' ' . (string)$list_box_contents[$row][$col]['params'];
-                }
+                $r_params = $list_box_contents[$row][$col]['params'];
                 if (isset($list_box_contents[$row][$col]['text'])) {
-                    echo '<div' . $r_params . '>' . $list_box_contents[$row][$col]['text'] .  '</div>';
+                    echo '<div' . $r_params . '>' . $list_box_contents[$row][$col]['text'] . '</div>';
                 }
             }
 ?>

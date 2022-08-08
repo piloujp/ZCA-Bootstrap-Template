@@ -52,7 +52,6 @@ if ($new_products_query !== '') {
 
 $row = 0;
 $col = 0;
-$zc_show_new_products = false;
 $list_box_contents = [];
 $title = '';
 
@@ -74,19 +73,16 @@ if ($num_products_count > 0) {
         $new_products_link = zen_href_link(zen_get_info_page($new_products_id), 'cPath=' . $productsInCategory[$new_products_id] . '&products_id=' . $new_products_id);
         $new_products_name = $new_products->fields['products_name'];
 
-        if ($new_products->fields['products_image'] === '' && PRODUCTS_IMAGE_NO_IMAGE_STATUS === '0') {
-            $new_products_image = '';
-        } else {
-            $new_products_image = '<div class="centerBoxContentsItem-image text-center"><a href="' . $new_products_link . '">' . zen_image(DIR_WS_IMAGES . $new_products->fields['products_image'], $new_products_name, SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a></div>';
+        $new_products_image = '';
+        if (!($new_products->fields['products_image'] === '' && PRODUCTS_IMAGE_NO_IMAGE_STATUS === '0')) {
+            $new_products_image = '<a href="' . $new_products_link . '">' . zen_image(DIR_WS_IMAGES . $new_products->fields['products_image'], $new_products_name, SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</a><br>';
         }
 
         $zco_notifier->notify('NOTIFY_MODULES_NEW_PRODUCTS_B4_LIST_BOX', [], $new_products->fields, $products_price);
 
-        $new_products_price = '<div class="centerBoxContentsItem-price text-center">' . $products_price . '</div>';
-        $new_products_name = '<div class="centerBoxContentsItem-name text-center"><a href="' . $new_products_link . '">' . $new_products_name . '</a></div>';
         $list_box_contents[$row][$col] = [
-            'params' => 'class="centerBoxContents card mb-3 p-3 text-center"',
-            'text' => $new_products_image . $new_products_name . $new_products_price
+            'params' => ' class="centerBoxContentsNew centerBoxContents card mb-3 p-3 text-center"',
+            'text' => $new_products_image . '<a href="' . $new_products_link . '">' . $new_products_name . '</a><br>' . $products_price
         ];
 
         $col++;

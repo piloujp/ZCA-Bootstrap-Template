@@ -88,7 +88,7 @@ if ($num_products_count > 0) {
         }
 
         $list_box_contents[$row][$col] = [
-            'params' => 'class="centerBoxContents card mb-3 p-3 text-center"',
+            'params' => ' class="centerBoxContentsSpecials centerBoxContents card mb-3 p-3 text-center"',
             'text' => $special_products_image . '<a href="' . $special_products_link . '">' . $special_products_name . '</a><br>' . $products_price
         ];
 
