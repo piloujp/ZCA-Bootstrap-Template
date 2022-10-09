@@ -193,9 +193,31 @@ if ($flagHasCartContents) {
  */
         require DIR_WS_MODULES . zen_get_module_directory('shipping_estimator.php');
     }
+
+    // -----
+    // Enable extra content to be included, via additional header_php_*.php files present
+    // in /includes/modules/pages/shopping_cart.
+    //
+    if (!empty($extra_content_shopping_cart) && is_array($extra_content_shopping_cart)) {
+        foreach ($extra_content_shopping_cart as $extra_content) {
+            require $extra_content;
+        }
+    }
 } else {
 ?>
-    <h1 id="shoppingCartDefault-pageHeading" class="pageHeading"><?php echo TEXT_CART_EMPTY; ?></h1> 
+    <h1 id="shoppingCartDefault-pageHeading" class="pageHeading"><?php echo TEXT_CART_EMPTY; ?></h1>
+<?php
+    // -----
+    // Enable extra content to be included, via additional header_php_*.php files present
+    // in /includes/modules/pages/shopping_cart.
+    //
+    if (!empty($extra_content_shopping_cart) && is_array($extra_content_shopping_cart)) {
+        foreach ($extra_content_shopping_cart as $extra_content) {
+            trigger_error($extra_content, E_USER_WARNING);
+            require $extra_content;
+        }
+    }
+?>
 <?php
     $show_display_shopping_cart_empty = $db->Execute(SQL_SHOW_SHOPPING_CART_EMPTY);
 
