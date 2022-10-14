@@ -71,13 +71,14 @@ img {
 
 <body>
     <h1>Bootstrap-4 Template for Zen Cart v1.5.7 and later</h1>
+    <h2>Including Zen Cart v1.5.8!</h2>
     <h3>Version 3.4.0, by lat9, drbyte, scottcwilson, marco-pm and dennisns7d</h3>
     <p>Current Support Thread at Zen Cart Forums: <a href="https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread" target="_blank">https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread</a></p>
     <p>Zen Cart Download Link: <a href="https://www.zen-cart.com/downloads.php?do=file&id=2191" target="_blank">https://www.zen-cart.com/downloads.php?do=file&id=2191</a></p>
     <p>GitHub repository: <a href="https://github.com/lat9/ZCA-Bootstrap-Template" target="_blank">https://github.com/lat9/ZCA-Bootstrap-Template</a>.</p>
 
     <h2>What it does</h2>
-    <p>This template uses <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank">Bootstrap-4</a> to provide its styling and builds on the base that Raymond Barbour provided over the past few years, supporting Zen Cart versions 1.5.7 and later &mdash; <em>best supported</em> by zc157<b>c</b> and later.  If your store is based on either zc157, zc157a or zc157b, be sure that you have applied all the <a href="https://www.zen-cart.com/showthread.php?226872-Known-bugs-(and-fixes)-for-v1-5-7-series" target="_blank">patches</a>!</p>
+    <p>This template uses <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/" target="_blank">Bootstrap-4</a> to provide its styling and builds on the base that Raymond Barbour provided over the past few years, supporting Zen Cart versions 1.5.7 and later &mdash; <em>best supported</em> by zc157<b>c</b> and <b>zc158</b>.  If your store is based on either zc157, zc157a or zc157b, be sure that you have applied all the <a href="https://www.zen-cart.com/showthread.php?226872-Known-bugs-(and-fixes)-for-v1-5-7-series" target="_blank">patches</a>!</p>
     <p>Starting with v3.4.0 of the template, the template-related files needed when used with <a href="https://www.zen-cart.com/downloads.php?do=file&id=2095" target="_blank">One-Page Checkout</a> are also provided:</p>
     <ul>
         <li>These changes have been validated with v2.4.3 of <em>OPC</em>, I'll suggest upgrading to that version or later prior to upgrading to v3.4.0 or later of the Bootstrap-4 template.</li>
@@ -278,12 +279,12 @@ img {
     <h2>Upgrading</h2>
     <p>This readme's <b>Version History</b> section, below, identifies each file changed, <span class="added">added</span> or <span class="removed">removed</span> for each release of the template, starting with v3.0.0.  When you're upgrading, note each of the changes from your currently-installed version to that associated with the upgrade.  Pay specific attention to the files added and removed!</p>
     <p>Unzip the template's package file and use a file-comparision program (like WinMerge or BeyondCompare) to either overwrite (if you've made a <em>clone</em> of the template) or merge the differences into the 'base' <code>bootstrap</code> sub-directories.  If you haven't made a <em>clone</em> of the template, pay specific attention to any changes that you've made to those 'base' files!  If you <b>have</b> made a <em>clone</em>, use your file-comparison program to merge the 'base' template's updates into your cloned copy.  In either case, pay specific attention to the files added and removed!</p>
-    <p>Starting with v3.4.0, the template's package file <b>no longer distributes</b> a modified version of <code>/includes/modules/order_total/ot_coupon.php</code>, since that file's changed drastically between the zc157 series and the forthcoming zc158.  Prior versions included a single change-block, updating that module to use a modal popup to view a coupon's help information.  If your site already has that change, it will continue to operate for the zc157 series, but should be overwritten with the zc158 distribution's version when your site is upgraded to use the Zen Cart 1.5.8 file-set.</p>
+    <p>Starting with v3.4.0, the template's package file <b>no longer distributes</b> a modified version of <code>/includes/modules/order_total/ot_coupon.php</code>, since that file's changed drastically between the zc157 series and zc158.  Prior versions included a single change-block, updating that module to use a modal popup to view a coupon's help information.  If your site already has that change, it will continue to operate for the zc157 series, but should be overwritten with the zc158 distribution's version when your site is upgraded to use the Zen Cart 1.5.8 file-set.</p>
 
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.4.0, 2022-11-09 (lat9, dennisns7d)<ul>
+        <li>v3.4.0, 2022-10-14 (lat9, dennisns7d)<ul>
             <li>BUGFIX: Restore HTML class and id attributes to the &quot;attributes&quot; block's rendering.</li>
             <li>BUGFIX: Display HTML-formatted admin-entered comments when viewing an order's detailed history.</li>
             <li>BUGFIX: Preparing <code>contact_us</code> page's template for use in zc158.</li>
@@ -298,10 +299,14 @@ img {
             <li>BUGFIX: Don't display the OPC 'conditions' block until there's a shipping-method available.</li>
             <li>CHANGE: Use 'standard' HTML id attribute and class for products' display as well as centerboxes.</li>
             <li>CHANGE: Enable additional content to be displayed on the &quot;shopping_cart&quot; page.</li>
+            <li>CHANGE: Modification to the storefront observer; dynamic properties deprecated.</li>
+            <li>CHANGE: Update &quot;zen_cfg_read_only&quot; function for zc157; it's in-core for zc158+.</li>
+            <li>BUGFIX: Remove unused language constants.</li>
             <li>The following files were changed, <span class="added">added</span> or <span class="removed">removed</span>:<ol>
                 <li>/includes/classes/observers/ZcaBootstrapObserver.php</li>
                 <li>/includes/functions/zca_bootstrap_functions.php</li>
                 <li><span class="added">/includes/languages/english/extra_definitions/bootstrap/lang.zca_bootstrap_common.php</span></li>
+                <li>/includes/languages/english/extra_definitions/bootstrap/zca_bootstrap_common.php</li>
                 <li>/includes/modules/bootstrap/category_row.php</li>
                 <li><span class="removed">/includes/modules/bootstrap/shipping_estimator.php</span></li>
                 <li>/includes/modules/bootstrap/centerboxes/featured_products.php</li>
@@ -393,6 +398,8 @@ img {
                 <li>/includes/templates/bootstrap/templates/tpl_shopping_cart_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_site_map_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_unsubscribe_default.php</li>
+                <li>/YOUR_ADMIN/includes/functions/extra_functions/zen_cfg_read_only.php</li>
+                <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin.php</li>
              </ol></li>
         </ul></li>
         <li>v3.3.0, 2022-04-13 (lat9, scottcwilson)<ul>
