@@ -6,6 +6,18 @@
 //
 class ZcaBootstrapObserver extends base
 {
+    protected
+        $display_sale_price,
+        $display_normal_price,
+        $display_special_price,
+        $product_is_free,
+        $product_is_call,
+        $products_tax_class_id,
+        $button_name,
+        $sec_class,
+        $parameters,
+        $text;
+
     // -----
     // On construction, watch for various notifications ONLY IF the ZCA Bootstrap template
     // is currently active.
@@ -15,7 +27,7 @@ class ZcaBootstrapObserver extends base
         if (!defined('PRODUCT_INFO_SHOW_BOOTSTRAP_MODAL_POPUPS')) {
             define('PRODUCT_INFO_SHOW_BOOTSTRAP_MODAL_POPUPS', 'Yes');
         }
-        
+
         if (zca_bootstrap_active()) {
             $this->attach(
                 $this, 
@@ -54,8 +66,17 @@ class ZcaBootstrapObserver extends base
     {
         switch ($eventID) {
             case 'NOTIFY_ZEN_GET_PRODUCTS_DISPLAY_PRICE_SALE':
-                $this->setVariables($eventID, $p1);
-                
+                $this->setVariables(
+                    $eventID,
+                    $p1,
+                    [
+                        'display_sale_price',
+                        'display_normal_price',
+                        'display_special_price',
+                        'products_tax_class_id',
+                    ]
+                );
+
                 if ($this->display_sale_price) {
                     if (SHOW_SALE_DISCOUNT == 1) {
                         if ($this->display_normal_price != 0) {
@@ -79,8 +100,18 @@ class ZcaBootstrapObserver extends base
                 break;
 
             case 'NOTIFY_ZEN_GET_PRODUCTS_DISPLAY_PRICE_SPECIAL':
-                $this->setVariables($eventID, $p1);
-                
+                $this->setVariables(
+                    $eventID,
+                    $p1,
+                    [
+                        'display_sale_price',
+                        'display_normal_price',
+                        'display_special_price',
+                        'product_is_free',
+                        'products_tax_class_id',
+                    ]
+                );
+
                 $show_normal_price = '<span class="mx-auto w-100 p-1 normalprice">' . $this->displayPrice($this->display_normal_price) . ' </span>';
                 if ($this->display_sale_price && $this->display_sale_price != $this->display_special_price) {
                     $show_special_price = '<span class="mx-auto w-100 p-1 productSpecialPriceSale">' . $this->displayPrice($this->display_special_price) . '</span>';
@@ -104,8 +135,18 @@ class ZcaBootstrapObserver extends base
                 break;
 
             case 'NOTIFY_ZEN_GET_PRODUCTS_DISPLAY_PRICE_NORMAL':
-                $this->setVariables($eventID, $p1);
-                
+                $this->setVariables(
+                    $eventID,
+                    $p1,
+                    [
+                        'display_sale_price',
+                        'display_normal_price',
+                        'display_special_price',
+                        'product_is_free',
+                        'products_tax_class_id',
+                    ]
+                );
+
                 if ($this->display_sale_price) {
                     $show_normal_price = '<span class="mx-auto w-100 p-1 normalprice">' . $this->displayPrice($this->display_normal_price) . ' </span>';
                     $show_special_price = '';
@@ -126,10 +167,17 @@ class ZcaBootstrapObserver extends base
                 break;
 
             case 'NOTIFY_ZEN_GET_PRODUCTS_DISPLAY_PRICE_FREE_OR_CALL':
-                $this->setVariables($eventID, $p1);
-                
+                $this->setVariables(
+                    $eventID,
+                    $p1,
+                    [
+                        'product_is_free',
+                        'product_is_call',
+                    ]
+                );
+
                 $free_tag = $call_tag = '';
-                
+
                 if ($this->product_is_free == '1') {
                     if (OTHER_IMAGE_PRICE_IS_FREE_ON == '0') {
                         $free_tag = '<span class="mx-auto w-100 p-1">' . PRODUCTS_PRICE_IS_FREE_TEXT . '</span>';
@@ -151,21 +199,39 @@ class ZcaBootstrapObserver extends base
                 break;
 
             case 'NOTIFY_ZEN_CSS_BUTTON_SUBMIT':
-                $this->setVariables($eventID, $p1);
+                $this->setVariables(
+                    $eventID,
+                    $p1,
+                    [
+                        'button_name',
+                        'sec_class',
+                        'parameters',
+                        'text',
+                    ]
+                );
                 if (trim($this->button_name) == trim($this->sec_class)) {
                     $this->sec_class = '';
                 }
-                
+
                 $css_button = '<button type="submit" class="btn '. $this->button_name . $this->sec_class . '"' . $this->parameters . '>' . $this->text . '</button>';
                 $p2 = $css_button;
                 break;
 
             case 'NOTIFY_ZEN_CSS_BUTTON_BUTTON':
-                $this->setVariables($eventID, $p1);
+                $this->setVariables(
+                    $eventID,
+                    $p1,
+                    [
+                        'button_name',
+                        'sec_class',
+                        'parameters',
+                        'text',
+                    ]
+                );
                 if (trim($this->button_name) == trim($this->sec_class)) {
                     $this->sec_class = '';
                 }
-                
+
                 $css_button = '<button type="button" class="btn '. $this->button_name . $this->sec_class . '"' . $this->parameters . '>' . $this->text . '</button>';
                 $p2 = $css_button;
                 break;
@@ -255,17 +321,17 @@ class ZcaBootstrapObserver extends base
     }
 
     // -----
-    // This function creates class variables for each of the elements in the
-    // (presumed) associative array received with the notification.
+    // This function creates class variables for the specified elements in the
+    // (presumed) associative array received with a notification.
     //
-    protected function setVariables($eventID, $updateParms)
+    protected function setVariables($eventID, $notifyParams, $variableArray)
     {
-        if (!is_array($updateParms)) {
-            trigger_error("Unknown read-only parameters received for $eventID: " . json_encode($updateParms), E_USER_ERROR);
+        if (!is_array($variableArray)) {
+            trigger_error("Unknown read-only parameters received for $eventID: " . json_encode($notifyParams) . ' ' . json_encode($variableArray), E_USER_ERROR);
         }
 
-        foreach ($updateParms as $key => $value) {
-            $this->$key = $value;
+        foreach ($variableArray as $key) {
+            $this->$key = $notifyParams[$key];
         }
     }
 
@@ -275,6 +341,7 @@ class ZcaBootstrapObserver extends base
     //
     protected function displayPrice($value)
     {
-        return $GLOBALS['currencies']->display_price($value, zen_get_tax_rate($this->products_tax_class_id));
+        global $currencies;
+        return $currencies->display_price($value, zen_get_tax_rate($this->products_tax_class_id));
     }
 }
