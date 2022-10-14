@@ -12,14 +12,6 @@ $define = [
 // -----
 // Additional buttons.
 //
-    'BUTTON_IMAGE_ADD_TO_CART' => 'button_add_to_cart.gif',
-    'BUTTON_IMAGE_MY_ACCOUNT' => 'button_my_account.gif',
-
-    'BUTTON_ADD_TO_CART_ALT' => 'Add This to My Cart',
-    'BUTTON_MY_ACCOUNT_TEXT' => 'My Account',
-
-    'BUTTON_RETURN_TO_PROD_LIST_ALT' => 'Product Listing',
-
     'BUTTON_BACK_TO_TOP_TITLE' => 'Back to top',
 
 // -----

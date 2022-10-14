@@ -1,6 +1,6 @@
 <?php
 /*
- * BOOTSTRAP v3.2.0
+ * BOOTSTRAP v3.4.0
  */
 // -----
 // Part of the Bootstrap template, defining commonly-used phrases and phrases unique to the bootstrap template.
@@ -11,14 +11,6 @@ define('BOOTSTRAP_CURRENT_ADDRESS', ' (Currently Selected)');
 // -----
 // Additional buttons.
 //
-define('BUTTON_IMAGE_ADD_TO_CART', 'button_add_to_cart.gif');
-define('BUTTON_IMAGE_MY_ACCOUNT', 'button_my_account.gif');
-
-define('BUTTON_ADD_TO_CART_ALT', 'Add This to My Cart');
-define('BUTTON_MY_ACCOUNT_TEXT', 'My Account');
-
-define('BUTTON_RETURN_TO_PROD_LIST_ALT', 'Product Listing');
-
 define('BUTTON_BACK_TO_TOP_TITLE', 'Back to top');
 
 // -----
