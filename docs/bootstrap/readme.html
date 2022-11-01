@@ -284,11 +284,17 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.4.1-beta1, 2022-10-31 (lat9)<ul>
+        <li>v3.4.1-beta2, 2022-11-01 (lat9)<ul>
             <li>BUGFIX: Correct unwanted display of main-page define-page on listings of categories with sub-categories.</li>
+            <li>BUGFIX: Use 'isset' rather than the null-coalesce (??) operator/assignment since zc157 supports PHP versions back to 5.6.</li>
             <li>The following files were changed, <span class="added">added</span> or <span class="removed">removed</span>:<ol>
                 <li>/includes/templates/bootstrap/template_info.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_checkout_shipping_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_discount_coupon_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_gv_faq_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_gv_send_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_index_categories.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_modules_shipping_estimator.php</li>
                 <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin.php</li>
              </ol></li>
         </ul></li>
