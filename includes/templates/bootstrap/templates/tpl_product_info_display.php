@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.3.1
+ * BOOTSTRAP v3.4.1
  *
  * Loaded automatically by index.php?main_page=product_info.
  * Displays details of a typical product
@@ -178,10 +178,10 @@ if ($flag_show_ask_a_question) {
 <div id="productsPriceTop-card" class="card mb-3">
   <div id="productsPriceTop-card-body" class="card-body p-3">
 <h2 id="productsPriceTop-productPriceTopPrice" class="productPriceTopPrice">
-  <?php  
+  <?php
 // base price
   if ($show_onetime_charges_description == 'true') {
-    $one_time = TEXT_ONETIME_CHARGE_SYMBOL . TEXT_ONETIME_CHARGE_DESCRIPTION;
+    $one_time = '<small>' . TEXT_ONETIME_CHARGE_SYMBOL . TEXT_ONETIME_CHARGE_DESCRIPTION . '</small><br>';
   } else {
     $one_time = '';
   }
@@ -238,15 +238,6 @@ if ($flag_show_ask_a_question) {
 <div id="productsPriceBottom-card" class="card mb-3">
   <div id="productsPriceBottom-card-body" class="card-body p-3">
 <h2 id="productsPriceBottom-productPriceBottomPrice" class="productPriceBottomPrice">
-  <?php  
-// base price
-  if ($show_onetime_charges_description == 'true') {
-    $one_time = TEXT_ONETIME_CHARGE_SYMBOL . TEXT_ONETIME_CHARGE_DESCRIPTION;
-  } else {
-    $one_time = '';
-  }
-  ?>
-
 <?php
   echo $one_time . ((zen_has_product_attributes_values((int)$_GET['products_id']) and $flag_show_product_info_starting_at == 1) ? TEXT_BASE_PRICE : '') . zen_get_products_display_price((int)$_GET['products_id']);
 ?>
