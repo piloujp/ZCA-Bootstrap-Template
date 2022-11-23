@@ -34,7 +34,8 @@ class zca_splitPageResults extends base
         $current_page_number,
         $number_of_pages,
         $number_of_rows_per_page,
-        $page_name;
+        $page_name,
+        $countQuery;
 
     /* class constructor */
     public function __construct($query, $max_rows, $count_key = '*', $page_holder = 'page', $debug = false, $countQuery = '')
