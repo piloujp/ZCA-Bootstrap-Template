@@ -169,6 +169,7 @@ if ($flag_show_ask_a_question) {
 
 <!--bof Attributes Module -->
 <?php
+$one_time = '';
   if ($pr_attr->fields['total'] > 0) {
 ?>
 
@@ -182,8 +183,6 @@ if ($flag_show_ask_a_question) {
 // base price
   if ($show_onetime_charges_description == 'true') {
     $one_time = '<small>' . TEXT_ONETIME_CHARGE_SYMBOL . TEXT_ONETIME_CHARGE_DESCRIPTION . '</small><br>';
-  } else {
-    $one_time = '';
   }
   ?>
 
