@@ -2,7 +2,7 @@
 /**
  * Override Modal for popup_attributes_qty_prices
  * 
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.4.1
  *
  * @package templateSystem
  * @copyright Copyright 2003-2016 Zen Cart Development Team
@@ -98,7 +98,7 @@ $show_onetime= 'false';
                 }
 //                $attribute_quantity .= '<td class="alignCenter">' . (($i <= 1 and $attribute_table_cost[$i] != 1) ? '1-' . $attribute_table_cost[$i] : $attribute_table_cost[$i-2]+1 . '-' . $attribute_table_cost[$i]) . '</td>';
                 $attribute_quantity .= '<td class="text-center">' . $zc_disp_qty . '</td>';
-                $attribute_quantity_price .= '<td class="text-right">' . $currencies->display_price($attribute_table_cost[$i+1], zen_get_tax_rate($_GET['products_tax_class_id'])) . '</td>';
+                $attribute_quantity_price .= '<td class="text-right">' . $currencies->display_price($attribute_table_cost[$i+1], zen_get_tax_rate($products_tax_class_id)) . '</td>';
                 $cnt_qty_prices++;
             }
             echo '<div class="table-responsive">'; 
