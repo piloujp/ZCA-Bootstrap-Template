@@ -9,6 +9,14 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  */
+// -----
+// Issue a notification, just in case an override is needed.
+//
+$processing_completed = false;
+$zco_notifier->notify('NOTIFY_BOOTSTRAP_ATTRIBUTES_QTY_PRICES', $products_tax_class_id, $processing_completed);
+if ($processing_completed === true) {
+    return;
+}
 ?>
 <div class="modal fade" id="attributesQtyPricesModal" tabindex="-1" role="dialog" aria-labelledby="attributesQtyPricesModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
