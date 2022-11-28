@@ -19,4 +19,4 @@ $template_screenshot = 'ZCA_BOOTSTRAP_TEMPLATE.png';
 // This setting's effect will require a change to be provided in zc158a, essentially enabling
 // the admin's "Layout Controller" to also display the single-column layout settings.
 //
-$uses_single_column_layout_settings = (isset($uses_single_column_layout_settings)) ? $uses_single_column_layout_settings : true;
+$uses_single_column_layout_settings = true;
