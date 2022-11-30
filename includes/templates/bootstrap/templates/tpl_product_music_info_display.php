@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.4.1
+ * BOOTSTRAP v3.4.2
  *
  * Loaded automatically by index.php?main_page=product_music_info
  * Displays details of a music product
@@ -177,6 +177,7 @@ if ($flag_show_ask_a_question) {
 
 <!--bof Attributes Module -->
 <?php
+$one_time = '';
   if ($pr_attr->fields['total'] > 0) {
 ?>
 
