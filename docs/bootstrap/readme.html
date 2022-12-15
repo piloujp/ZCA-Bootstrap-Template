@@ -284,12 +284,13 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.4.2-beta2, 2022-12-15 (lat9, dbltoe)<ul>
+        <li>v3.5.0-beta1, 2022-12-15 (lat9, dbltoe, torvista)<ul>
             <li>BUGFIX: Correct PHP warning on various product details' templates.</li>
             <li>BUGFIX: Add ARIA labels for centerboxes, sideboxes and the common header.</li>
-            <li>INTROP: Add notification just after &lt;head&gt; tag, enabling observers to insert scripts early in that section.</li>
+            <li>CHANGE: Add notification just after &lt;head&gt; tag, enabling observers to insert scripts early in that section.</li>
             <li>BUGFIX: Show header-search only when &quot;layout_box_status_single&quot; is enabled.</li>
-            <li>The following files were changed:<ol>
+            <li>CHANGE: Remove the local version of the jquery.min.js; makes no sense to keep.</li>
+            <li>The following files were changed or <span class="removed">removed</span>:<ol>
                 <li>/includes/languages/english/extra_definitions/bootstrap/lang.zca_bootstrap_common.php</li>
                 <li>/includes/languages/english/extra_definitions/bootstrap/zca_bootstrap_common.php</li>
                 <li>/includes/modules/bootstrap/product_listing.php</li>
@@ -303,6 +304,7 @@ img {
                 <li>/includes/templates/bootstrap/centerboxes/tpl_modules_yes_notifications.php</li>
                 <li>/includes/templates/bootstrap/common/html_header.php</li>
                 <li>/includes/templates/bootstrap/common/tpl_header.php <span class="smaller"><b>Note:</b> Includes refactoring!</span></li>
+                <li><span class="removed">/includes/templates/bootstrap/jscript/jquery.min.js</span></li>
                 <li>/includes/templates/bootstrap/sideboxes/tpl_featured.php</li>
                 <li>/includes/templates/bootstrap/sideboxes/tpl_reviews_random.php</li>
                 <li>/includes/templates/bootstrap/sideboxes/tpl_specials.php</li>
