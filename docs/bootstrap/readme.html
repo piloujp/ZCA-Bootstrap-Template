@@ -72,7 +72,7 @@ img {
 <body>
     <h1>Bootstrap-4 Template for Zen Cart v1.5.7 and later</h1>
     <h2>Including Zen Cart v1.5.8!</h2>
-    <h3>Version 3.4.2, by lat9, drbyte, scottcwilson, marco-pm and dennisns7d</h3>
+    <h3>Version 3.4.2, by lat9, drbyte, scottcwilson, marco-pm, dbltoe and dennisns7d</h3>
     <p>Current Support Thread at Zen Cart Forums: <a href="https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread" target="_blank">https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread</a></p>
     <p>Zen Cart Download Link: <a href="https://www.zen-cart.com/downloads.php?do=file&id=2191" target="_blank">https://www.zen-cart.com/downloads.php?do=file&id=2191</a></p>
     <p>GitHub repository: <a href="https://github.com/lat9/ZCA-Bootstrap-Template" target="_blank">https://github.com/lat9/ZCA-Bootstrap-Template</a>.</p>
@@ -284,10 +284,25 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.4.2-beta1, 2022-11-30 (lat9)<ul>
+        <li>v3.4.2-beta2, 2022-12-15 (lat9, dbltoe)<ul>
             <li>BUGFIX: Correct PHP warning on various product details' templates.</li>
+            <li>BUGFIX: Add ARIA labels for centerboxes, sideboxes and the common header.</li>
             <li>The following files were changed:<ol>
+                <li>/includes/languages/english/extra_definitions/bootstrap/lang.zca_bootstrap_common.php</li>
+                <li>/includes/languages/english/extra_definitions/bootstrap/zca_bootstrap_common.php</li>
+                <li>/includes/modules/bootstrap/product_listing.php</li>
+                <li>/includes/modules/bootstrap/centerboxes/also_purchased_products.php</li>
+                <li>/includes/modules/bootstrap/centerboxes/featured_products.php</li>
+                <li>/includes/modules/bootstrap/centerboxes/new_products.php</li>
+                <li>/includes/modules/bootstrap/centerboxes/specials_index.php</li>
                 <li>/includes/templates/bootstrap/template_info.php</li>
+                <li>/includes/templates/bootstrap/centerboxes/tpl_modules_no_notifications.php</li>
+                <li>/includes/templates/bootstrap/centerboxes/tpl_modules_yes_notifications.php</li>
+                <li>/includes/templates/bootstrap/common/tpl_header.php</li>
+                <li>/includes/templates/bootstrap/sideboxes/tpl_featured.php</li>
+                <li>/includes/templates/bootstrap/sideboxes/tpl_reviews_random.php</li>
+                <li>/includes/templates/bootstrap/sideboxes/tpl_specials.php</li>
+                <li>/includes/templates/bootstrap/sideboxes/tpl_whats_new.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_document_general_info_display.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_document_product_info_display.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_product_free_shipping_info_display.php</li>

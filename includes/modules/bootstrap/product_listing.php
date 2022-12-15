@@ -2,7 +2,7 @@
 /**
  * product_listing module
  * 
- * BOOTSTRAP v3.2.0
+ * BOOTSTRAP v3.4.2
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -384,7 +384,7 @@ if ($num_products_count > 0) {
                     $lc_text = '';
                     if (!empty($record['products_image']) || PRODUCTS_IMAGE_NO_IMAGE_STATUS > 0) {
 //                        $lc_text .= '<div class="list-image">';
-                        $lc_text .= '<a href="' . $href . '">';
+                        $lc_text .= '<a href="' . $href . '" title="' . zen_output_string_protected($listing_product_name) . '">';
                         $lc_text .= zen_image(DIR_WS_IMAGES . $record['products_image'], $listing_product_name, IMAGE_PRODUCT_LISTING_WIDTH, IMAGE_PRODUCT_LISTING_HEIGHT, 'class="img-fluid listingProductImage" loading="lazy"');
                         $lc_text .= '</a>';
 //                        $lc_text .= '</div>';

@@ -2,7 +2,7 @@
 /**
  * Common Template - tpl_header.php
  * 
- * BOOTSTRAP v3.1.2
+ * BOOTSTRAP v3.4.2
  *
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
@@ -21,7 +21,7 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
 <div id="navMainWrapper">
 <div id="navMain">
 
-<nav class="navbar fixed-top mx-3 navbar-expand-lg rounded-bottom">
+<nav class="navbar fixed-top mx-3 navbar-expand-lg rounded-bottom" aria-label="<?php echo TEXT_HEADER_ARIA_LABEL_NAVBAR; ?>">
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fas fa-bars"></i>
@@ -81,7 +81,7 @@ if (!isset($flag_disable_header) || !$flag_disable_header) {
             echo '<div class="col-sm-12">';
             }
             ?>
-        <?php echo '<a href="' . HTTP_SERVER . DIR_WS_CATALOG . '">' . zen_image($template->get_template_dir(HEADER_LOGO_IMAGE, DIR_WS_TEMPLATE, $current_page_base,'images'). '/' . HEADER_LOGO_IMAGE, HEADER_ALT_TEXT, HEADER_LOGO_WIDTH, HEADER_LOGO_HEIGHT) . '</a><br>'; ?>
+        <?php echo '<a href="' . HTTP_SERVER . DIR_WS_CATALOG . '" aria-label="' . TEXT_HEADER_ARIA_LABEL_LOGO . '">' . zen_image($template->get_template_dir(HEADER_LOGO_IMAGE, DIR_WS_TEMPLATE, $current_page_base,'images'). '/' . HEADER_LOGO_IMAGE, HEADER_ALT_TEXT, HEADER_LOGO_WIDTH, HEADER_LOGO_HEIGHT) . '</a><br>'; ?>
     </div>
 <?php if (HEADER_SALES_TEXT != '' || (SHOW_BANNERS_GROUP_SET2 != '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET2))) { ?>    
     <div id="taglineWrapper" class="col-sm-12 text-center">

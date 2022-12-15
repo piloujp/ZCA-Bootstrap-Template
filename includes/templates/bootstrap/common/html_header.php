@@ -54,6 +54,11 @@ $preloads = [
   <head>
 <?php
 // -----
+// Provide a notification that the <head> tag has been rendered for the current page.
+//
+$zco_notifier->notify('NOTIFY_HTML_HEAD_TAG_START', $current_page_base);
+
+// -----
 // Provide an easy way for a site to disable the preload, if they want to ensure
 // that it's working properly.  Just create a .php file in either /extra_configures or
 // /extra_datafiles that sets $bs4_no_preloading to a 'truthy' value.
