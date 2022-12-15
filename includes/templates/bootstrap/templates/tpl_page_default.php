@@ -49,14 +49,16 @@ if (count($toc_links) > 1 && EZPAGES_SHOW_TABLE_CONTENTS === '1') {
 <?php
     foreach($toc_links as $link) {
         // could be used to change classes on current link and toc (table of contents) links
-        if ($link['pages_id'] == $_GET['id']) {
+        if ($link['pages_id'] === $_GET['id']) {
             $current_page_indicator = CURRENT_PAGE_INDICATOR;
+            $page_link_params = ' class="activeLink"';
         } else {
             $current_page_indicator = NOT_CURRENT_PAGE_INDICATOR;
+            $page_link_params = '';
         }
 ?>
         <li class="list-group-item">
-            <?php echo $current_page_indicator; ?><a href="<?php echo zen_ez_pages_link($link['pages_id']);?>"><?php echo $link['pages_title']; ?></a>
+            <?php echo $current_page_indicator; ?><a href="<?php echo zen_ez_pages_link($link['pages_id']);?>"<?php echo $page_link_params; ?>><?php echo $link['pages_title']; ?></a>
         </li>
 <?php
     }
