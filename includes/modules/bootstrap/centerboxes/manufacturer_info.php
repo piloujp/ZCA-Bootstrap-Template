@@ -3,7 +3,7 @@
  * manufacturer_info sidebox - displays extra info about the selected product's manufacturer details (if defined in Admin->Catalog->Manufacturers)
  *
  * BOOTSTRAP v1.0.BETA
- * 
+ *
  * @package templateSystem
  * @copyright Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -30,4 +30,3 @@
 
     }
   }
-?>
