@@ -69,7 +69,6 @@ $title = '';
 
 // show only when 1 or more
 if ($num_products_count > 0) {
-    $list_box_contents = [];
     while (!$special_products->EOF) {
         $special_products_id = $special_products->fields['products_id'];
         $products_price = zen_get_products_display_price($special_products_id);
