@@ -2,7 +2,7 @@
 /**
  * Common Template - tpl_header.php
  * 
- * BOOTSTRAP v3.4.2
+ * BOOTSTRAP v3.5.0
  *
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
@@ -98,7 +98,7 @@ $sales_text_class = (HEADER_SALES_TEXT !== '') ? 'col-sm-4' : 'col-sm-12';
                 </a><br>
             </div>
 <?php
-if (HEADER_SALES_TEXT !== '' || (SHOW_BANNERS_GROUP_SET2 !== '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET2))) {
+if ((SHOW_BANNERS_GROUP_SET2 !== '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET2)) || HEADER_SALES_TEXT !== '') {
 ?>
             <div id="taglineWrapper" class="col-sm-12 text-center">
 <?php
