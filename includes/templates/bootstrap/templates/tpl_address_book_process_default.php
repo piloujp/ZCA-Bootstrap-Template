@@ -2,9 +2,9 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.5.0
  *
- * Loaded automatically by index.php?main_page=address_book_process.<br />
+ * Loaded automatically by index.php?main_page=address_book_process.
  * Allows customer to add a new address book entry
  *
  * @package templateSystem
@@ -39,7 +39,7 @@ if (isset($_GET['delete'])) {
 ?>
     <div class="required-info text-right"><?php echo DELETE_ADDRESS_DESCRIPTION; ?></div>
 
-    <address><?php echo zen_address_label($_SESSION['customer_id'], $_GET['delete'], true, ' ', '<br />'); ?></address>
+    <address><?php echo zen_address_label($_SESSION['customer_id'], $_GET['delete'], true, ' ', '<br>'); ?></address>
     <br class="clearBoth" />
  
     <div id="addressBookDelete-btn-toolbar" class="btn-toolbar justify-content-between" role="toolbar">

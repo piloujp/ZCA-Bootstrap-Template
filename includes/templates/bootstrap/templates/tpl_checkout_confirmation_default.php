@@ -2,9 +2,9 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.4.0
+ * BOOTSTRAP v3.5.0
  *
- * Loaded automatically by index.php?main_page=checkout_confirmation.<br />
+ * Loaded automatically by index.php?main_page=checkout_confirmation.
  * Displays final checkout details, cart, payment and shipping info details.
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
@@ -240,7 +240,7 @@ if ($flagAnyOutOfStock) {
     }
 ?>
     <div id="checkoutConfirmationDefault-btn-toolbar" class="btn-toolbar justify-content-between" role="toolbar">
-        <?php echo TITLE_CONTINUE_CHECKOUT_PROCEDURE . '<br />' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
+        <?php echo TITLE_CONTINUE_CHECKOUT_PROCEDURE . '<br>' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
         <?php echo zen_image_submit(BUTTON_IMAGE_CONFIRM_ORDER, BUTTON_CONFIRM_ORDER_ALT, 'name="btn_submit" id="btn_submit"') ;?>
     </div>
     <?php echo '</form>'; ?>

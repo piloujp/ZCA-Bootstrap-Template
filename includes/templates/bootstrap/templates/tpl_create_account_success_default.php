@@ -2,9 +2,9 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v1.0.BETA
+ * BOOTSTRAP v3.5.0
  *
- * Loaded automatically by index.php?main_page=create-account_success.<br />
+ * Loaded automatically by index.php?main_page=create-account_success.
  * Displays confirmation that a new account has been created.
  *
  * @package templateSystem
@@ -48,7 +48,7 @@ if ($addresses['address_book_id'] == $_SESSION['customer_default_address_id']) {
 <h4 id="addressBookSingleEntryId<?php echo $addresses['address_book_id']; ?>-card-header" class="card-header <?php echo $primary_background ; ?>"><?php echo zen_output_string_protected($addresses['firstname'] . ' ' . $addresses['lastname']); ?><?php echo $primary_address ; ?></h4>
 <div id="addressBookSingleEntryId<?php echo $addresses['address_book_id']; ?>-card-body" class="card-body p-3">
     
-<address><?php echo zen_address_format($addresses['format_id'], $addresses['address'], true, ' ', '<br />'); ?></address>
+<address><?php echo zen_address_format($addresses['format_id'], $addresses['address'], true, ' ', '<br>'); ?></address>
 
 <div class="btn-toolbar justify-content-between my-3" role="toolbar">
 <?php echo '<a href="' . zen_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'delete=' . $addresses['address_book_id'], 'SSL') . '">' . zen_image_button(BUTTON_IMAGE_DELETE, BUTTON_DELETE_ALT) . '</a>'; ?>

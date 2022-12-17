@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.1.0
+ * BOOTSTRAP v3.5.0
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -65,7 +65,7 @@ if (zen_has_product_attributes($products_id)) {
 }
 $the_button = $link;
 $products_link = '';
-echo zen_get_buy_now_button($products_id, $the_button, $products_link) . '<br />' . zen_get_products_quantity_min_units_display($products_id);
+echo zen_get_buy_now_button($products_id, $the_button, $products_link) . '<br>' . zen_get_products_quantity_min_units_display($products_id);
 ?>
                     <div class="p-1"></div>
                     <?php echo '<a href="' . zen_href_link(zen_get_info_page($_GET['products_id']), $get_params) . '">' . zen_image_button(BUTTON_IMAGE_GOTO_PROD_DETAILS , BUTTON_GOTO_PROD_DETAILS_ALT) . '</a>'; ?>

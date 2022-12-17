@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.1.0
+ * BOOTSTRAP v3.5.0
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -111,7 +111,7 @@ if (!empty($products_model)) {
 <?php echo zen_draw_textarea_field('review_text', 60, 5, '', 'id="review-text"'); ?>
 <?php echo zen_draw_input_field($antiSpamFieldName, '', ' size="60" id="RAS" style="visibility:hidden; display:none;" autocomplete="off"'); ?>
 
-<div id="productsReviewWrite-reviewsWriteNotice"><?php echo TEXT_NO_HTML . (REVIEWS_APPROVAL == '1' ? '<br />' . TEXT_APPROVAL_REQUIRED: ''); ?></div>
+<div id="productsReviewWrite-reviewsWriteNotice"><?php echo TEXT_NO_HTML . (REVIEWS_APPROVAL == '1' ? '<br>' . TEXT_APPROVAL_REQUIRED: ''); ?></div>
 
 <div id="productsReviewWrite-btn-toolbar" class="btn-toolbar justify-content-end my-3" role="toolbar">
 <?php echo zen_image_submit(BUTTON_IMAGE_SUBMIT, BUTTON_SUBMIT_ALT); ?>

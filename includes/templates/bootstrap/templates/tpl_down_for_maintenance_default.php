@@ -2,9 +2,9 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v1.0.BETA
+ * BOOTSTRAP v3.5.0
  *
- * Loaded automatically by index.php?main_page=down_for_maintenance.<br />
+ * Loaded automatically by index.php?main_page=down_for_maintenance.
  * When site is down for maintenance (and database is still active), this page is displayed to the customer
  *
  * @package templateSystem
@@ -26,7 +26,7 @@
 
 <?php if (DISPLAY_MAINTENANCE_TIME == 'true') { ?>
 <div id="downForMaintenanceDefault-content-one" class="content">
-<h3><?php echo TEXT_MAINTENANCE_ON_AT_TIME . '<br />' . TEXT_DATE_TIME; ?></h3>
+<h3><?php echo TEXT_MAINTENANCE_ON_AT_TIME . '<br>' . TEXT_DATE_TIME; ?></h3>
 </div>
 <?php } ?>
 

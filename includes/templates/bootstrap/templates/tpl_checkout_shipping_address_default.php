@@ -2,9 +2,9 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.5.0
  *
- * Loaded automatically by index.php?main_page=checkout_shipping_adresss.<br />
+ * Loaded automatically by index.php?main_page=checkout_shipping_adresss.
  * Allows customer to change the shipping address.
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
@@ -71,7 +71,7 @@ if ($process == false || $error == true) {
     require $template->get_template_dir('tpl_modules_checkout_address_book.php', DIR_WS_TEMPLATE, $current_page_base, 'templates') . '/tpl_modules_checkout_address_book.php';
 ?>
                     <div id="addressBookEntries-btn-toolbar" class="btn-toolbar justify-content-between" role="toolbar">
-                        <?php echo TITLE_CONTINUE_CHECKOUT_PROCEDURE . '<br />' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
+                        <?php echo TITLE_CONTINUE_CHECKOUT_PROCEDURE . '<br>' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
                         <?php echo zen_draw_hidden_field('action', 'submit') . zen_image_submit(BUTTON_IMAGE_CONTINUE, BUTTON_CONTINUE_ALT); ?>
                     </div>
                 </div>

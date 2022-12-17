@@ -65,10 +65,10 @@ $zco_notifier->notify('NOTIFY_HTML_HEAD_TAG_START', $current_page_base);
 //
 if (!empty($bs4_no_preloading)) {
 ?>
-    <link rel="preload" href="<?php echo $preloads['bscss']['link']; ?>" integrity="<?php echo $preloads['bscss']['integrity']; ?>" crossorigin="anonymous" as="style" />
-    <link rel="preload" href="<?php echo $preloads['fa']['link']; ?>" integrity="<?php echo $preloads['fa']['integrity']; ?>" crossorigin="anonymous" referrerpolicy="no-referrer" as="style" />
-    <link rel="preload" href="<?php echo $preloads['jquery']['link']; ?>" integrity="<?php echo $preloads['jquery']['integrity']; ?>" crossorigin="anonymous" as="script" />
-    <link rel="preload" href="<?php echo $preloads['bsjs']['link']; ?>" integrity="<?php echo $preloads['bsjs']['integrity']; ?>" crossorigin="anonymous" as="script" />
+    <link rel="preload" href="<?php echo $preloads['bscss']['link']; ?>" integrity="<?php echo $preloads['bscss']['integrity']; ?>" crossorigin="anonymous" as="style">
+    <link rel="preload" href="<?php echo $preloads['fa']['link']; ?>" integrity="<?php echo $preloads['fa']['integrity']; ?>" crossorigin="anonymous" referrerpolicy="no-referrer" as="style">
+    <link rel="preload" href="<?php echo $preloads['jquery']['link']; ?>" integrity="<?php echo $preloads['jquery']['integrity']; ?>" crossorigin="anonymous" as="script">
+    <link rel="preload" href="<?php echo $preloads['bsjs']['link']; ?>" integrity="<?php echo $preloads['bsjs']['integrity']; ?>" crossorigin="anonymous" as="script">
 <?php
 }
 ?>
@@ -87,7 +87,7 @@ if (!empty($bs4_no_preloading)) {
       <link href="<?php echo FAVICON; ?>" type="image/x-icon" rel="shortcut icon">
     <?php } //endif FAVICON  ?>
 
-    <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER . DIR_WS_HTTPS_CATALOG : HTTP_SERVER . DIR_WS_CATALOG ); ?>" />
+    <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER . DIR_WS_HTTPS_CATALOG : HTTP_SERVER . DIR_WS_CATALOG ); ?>">
     <?php if (isset($canonicalLink) && $canonicalLink != '') { ?>
       <link href="<?php echo $canonicalLink; ?>" rel="canonical">
     <?php } ?>

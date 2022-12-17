@@ -2,9 +2,9 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.5.0
  *
- * Loaded automatically by index.php?main_page=checkout_success.<br />
+ * Loaded automatically by index.php?main_page=checkout_success.
  * Displays confirmation details after order has been successfully processed.
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
@@ -139,7 +139,8 @@ if (isset($additional_payment_messages) && $additional_payment_messages != '') {
 <div class="custom-control custom-checkbox">
 <?php echo zen_draw_checkbox_field('notify[]', $notifications['products_id'], true, 'id="notify-' . $notifications['counter'] . '"') ;?>
 <label class="custom-control-label checkboxLabel" for="<?php echo 'notify-' . $notifications['counter']; ?>"><?php echo $notifications['products_name']; ?></label>
-</div><br />
+</div>
+<br>
   <?php } ?>
 <div id="productNotifications-btn-toolbar" class="btn-toolbar justify-content-end mt-3" role="toolbar">
 <?php echo zen_image_submit(BUTTON_IMAGE_UPDATE, BUTTON_UPDATE_ALT); ?>
