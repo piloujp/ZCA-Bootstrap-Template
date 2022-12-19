@@ -74,6 +74,13 @@ if (!$payment_modules->in_special_checkout()) {
 <?php
     if (MODULE_ORDER_TOTAL_INSTALLED) {
         $order_totals = $order_total_modules->process();
+
+        // -----
+        // "Unset" the session-based variable that lets tpl_modules_order_totals.php 'know'
+        // how many columns are taken up by the products' display ... since no product
+        // information is displayed on this page.
+        //
+        unset($_SESSION['zca_bootstrap_ot_colspan']);
 ?>
                     <div class="table-responsive">
                         <table class="cartTableDisplay table table-bordered table-striped" role="presentation">

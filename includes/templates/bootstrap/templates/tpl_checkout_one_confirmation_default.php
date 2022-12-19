@@ -148,12 +148,11 @@ if ($confirmation_required === true) {
     // the 'Products' column in two columns to ensure alignment of the order-totals' values.
     //
     $tax_column_present = (count($order->info['tax_groups']) > 1);
-    $products_colspan = ($tax_column_present) ? '' : ' colspan="2"';
 ?>
                     <table id="shoppingCartDefault-cartTableDisplay" class="cartTableDisplay table table-bordered table-striped">
                         <tr>
                             <th scope="col" id="cartTableDisplay-qtyHeading"><?php echo TABLE_HEADING_QUANTITY; ?></th>
-                            <th scope="col" id="cartTableDisplay-productsHeading"<?php echo $products_colspan; ?>><?php echo TABLE_HEADING_PRODUCTS; ?></th>
+                            <th scope="col" id="cartTableDisplay-productsHeading"><?php echo TABLE_HEADING_PRODUCTS; ?></th>
 <?php
   // If there are tax groups, display the tax columns for price breakdown
     if ($tax_column_present === true) {
@@ -170,7 +169,7 @@ if ($confirmation_required === true) {
 ?>
                         <tr>
                             <td  class="qtyCell"><?php echo $order->products[$i]['qty']; ?>&nbsp;x</td>
-                            <td class="productsCell"<?php echo $products_colspan; ?>><?php echo $order->products[$i]['name'] . ((!empty($stock_check[$i])) ? $stock_check[$i] : ''); ?>
+                            <td class="productsCell"><?php echo $order->products[$i]['name'] . ((!empty($stock_check[$i])) ? $stock_check[$i] : ''); ?>
 <?php 
         // if there are attributes, loop thru them and display one per line
         if (isset($order->products[$i]['attributes']) && count($order->products[$i]['attributes']) > 0 ) {
