@@ -30,7 +30,10 @@ if ($products_image !== '' && $flag_show_product_info_additional_images !== '0')
     // -----
     // Additional images in subdirectories require an intervening '_' to match.
     //
-    if ($products_image_directory !== '.') {
+    if ($products_image_directory === '.') {
+        $products_image_base .= '?';
+        $products_image_directory = '';
+    } else {
         $products_image_base .= '_';
         $products_image_directory .= '/';
     }
