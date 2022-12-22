@@ -156,7 +156,7 @@ if ($flagAnyOutOfStock) {
     // 'align' the totals column.
     //
     $tax_column_present = (count($order->info['tax_groups']) > 1);
-    $_SESSION['zca_bootstrap_ot_colspan'] = ($display_tax_column) ? '3' : '2';
+    $_SESSION['zca_bootstrap_ot_colspan'] = ($tax_column_present) ? '3' : '2';
 ?>
                     <table id="shoppingCartDefault-cartTableDisplay" class="cartTableDisplay table table-bordered table-striped">
                         <tr>
