@@ -1,4 +1,4 @@
-# ZCA Bootstrap Template v3.4.1 for zc157 and zc158
+# ZCA Bootstrap Template v3.5.0 for zc157 and zc158
 
 This Zen Cart template uses a [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/) foundation to provide an updated look-and-feel to your Zen Cart.  Since the template is standards-based, it's easier to make layout changes to your store.
 
@@ -10,8 +10,8 @@ This Zen Cart template uses a [Bootstrap](https://getbootstrap.com/docs/4.5/gett
 
 ## External Packages Used
 
-- [Bootstrap 4.6.0](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
-- [Font Awesome 5.15.1](https://fontawesome.com/)
+- [Bootstrap 4.6.2](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+- [Font Awesome 5.15.4](https://fontawesome.com/)
 - [jQuery 3.5.1](https://jquery.com/download/)
 
 ## Features:
