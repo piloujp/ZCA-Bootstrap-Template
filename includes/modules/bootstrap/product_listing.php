@@ -224,8 +224,6 @@ if ($num_products_count > 0) {
             $linkCpath = $_GET['filter_id'];
         }
 
-        for ($col = 0, $n = count($column_list); $col < $n; $col++) {
-            $lc_text = '';
 
             $href = zen_href_link(zen_get_info_page($record['products_id']), 'cPath=' . zen_get_generated_category_path_rev($linkCpath) . '&products_id=' . $record['products_id']);
             $listing_product_name = (isset($record['products_name'])) ? $record['products_name'] : '';
@@ -287,7 +285,8 @@ if ($num_products_count > 0) {
                 }
             }
             $zco_notifier->notify('NOTIFY_MODULES_PRODUCT_LISTING_PRODUCTS_BUTTON', [], $record, $lc_button);
-
+        for ($col = 0, $n = count($column_list); $col < $n; $col++) {
+            $lc_text = '';
             $lc_align = '';
             switch ($column_list[$col]) {
                 case 'PRODUCT_LIST_MODEL':
