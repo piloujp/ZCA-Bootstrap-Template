@@ -2,7 +2,7 @@
 /**
  * product_listing module
  * 
- * BOOTSTRAP v3.5.0
+ * BOOTSTRAP v3.5.1
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -224,70 +224,69 @@ if ($num_products_count > 0) {
             $linkCpath = $_GET['filter_id'];
         }
 
-        for ($col = 0, $n = count($column_list); $col < $n; $col++) {
-            $lc_text = '';
 
-            $href = zen_href_link(zen_get_info_page($record['products_id']), 'cPath=' . zen_get_generated_category_path_rev($linkCpath) . '&products_id=' . $record['products_id']);
-            $listing_product_name = (isset($record['products_name'])) ? $record['products_name'] : '';
+        $href = zen_href_link(zen_get_info_page($record['products_id']), 'cPath=' . zen_get_generated_category_path_rev($linkCpath) . '&products_id=' . $record['products_id']);
+        $listing_product_name = (isset($record['products_name'])) ? $record['products_name'] : '';
 
-            $listing_quantity = (isset($record['products_quantity'])) ? $record['products_quantity'] : 0;
+        $listing_quantity = (isset($record['products_quantity'])) ? $record['products_quantity'] : 0;
 
-            $listing_mfg_name = (isset($record['manufacturers_name'])) ? $record['manufacturers_name'] : '';
+        $listing_mfg_name = (isset($record['manufacturers_name'])) ? $record['manufacturers_name'] : '';
 
-            $more_info_button = '<a class="moreinfoLink" href="' . $href . '">' . MORE_INFO_TEXT . '</a>';
+        $more_info_button = '<a class="moreinfoLink" href="' . $href . '">' . MORE_INFO_TEXT . '</a>';
 
-            $buy_now_link = zen_href_link($_GET['main_page'], zen_get_all_get_params(['action']) . 'action=buy_now&products_id=' . $record['products_id']);
-            $buy_now_button = zca_button_link($buy_now_link, BUTTON_BUY_NOW_ALT, 'mt-2 button_buy_now listingBuyNowButton');
+        $buy_now_link = zen_href_link($_GET['main_page'], zen_get_all_get_params(['action']) . 'action=buy_now&products_id=' . $record['products_id']);
+        $buy_now_button = zca_button_link($buy_now_link, BUTTON_BUY_NOW_ALT, 'mt-2 button_buy_now listingBuyNowButton');
 
-            $lc_button = '';
-            if (zen_requires_attribute_selection($record['products_id']) || PRODUCT_LIST_PRICE_BUY_NOW === '0') {
-                // more info in place of buy now
-                $lc_button = $more_info_button;
-            } else {
-                if (PRODUCT_LISTING_MULTIPLE_ADD_TO_CART !== '0') {
-                    if (
-                        // not a hide qty box product
-                        $record['products_qty_box_status'] !== '0'
-                        &&
-                        // product type can be added to cart
-                        zen_get_products_allow_add_to_cart($record['products_id']) !== 'N'
-                        &&
-                        // product is not call for price
-                        $record['product_is_call'] === '0'
-                        &&
-                        // product is in stock or customers may add it to cart anyway
-                        ($listing_quantity > 0 || SHOW_PRODUCTS_SOLD_OUT_IMAGE === '0')
-                    ) {
-                        $how_many++;
-                    }
-                    // hide quantity box
-                    if ($record['products_qty_box_status'] === '0') {
-                        $lc_button = $buy_now_button;
-                    } else {
-                        $lc_button = '<div class="input-group my-2"><div class="input-group-prepend">';
-                        $lc_button .= '<span class="input-group-text">';
-                        $lc_button .= TEXT_PRODUCT_LISTING_MULTIPLE_ADD_TO_CART;
-                        $lc_button .= '</span></div>';
-                        $lc_button .= '<input class="form-control" type="text" name="products_id[' . $record['products_id'] . ']" value="0" size="4" aria-label="' . ARIA_QTY_ADD_TO_CART . '">';
-                        $lc_button .= '</div>';
-                    }
+        $lc_button = '';
+        if (zen_requires_attribute_selection($record['products_id']) || PRODUCT_LIST_PRICE_BUY_NOW === '0') {
+            // more info in place of buy now
+            $lc_button = $more_info_button;
+        } else {
+            if (PRODUCT_LISTING_MULTIPLE_ADD_TO_CART !== '0') {
+                if (
+                    // not a hide qty box product
+                    $record['products_qty_box_status'] !== '0'
+                    &&
+                    // product type can be added to cart
+                    zen_get_products_allow_add_to_cart($record['products_id']) !== 'N'
+                    &&
+                    // product is not call for price
+                    $record['product_is_call'] === '0'
+                    &&
+                    // product is in stock or customers may add it to cart anyway
+                    ($listing_quantity > 0 || SHOW_PRODUCTS_SOLD_OUT_IMAGE === '0')
+                ) {
+                    $how_many++;
+                }
+                // hide quantity box
+                if ($record['products_qty_box_status'] === '0') {
+                    $lc_button = $buy_now_button;
                 } else {
-                    // qty box with add to cart button
-                    if (PRODUCT_LIST_PRICE_BUY_NOW === '2' && $record['products_qty_box_status'] !== '0') {
-                        $lc_button = 
-                            zen_draw_form('cart_quantity', zen_href_link($_GET['main_page'], zen_get_all_get_params(['action']) . 'action=add_product&products_id=' . $record['products_id']), 'post', 'enctype="multipart/form-data"') .
-                            '<input class="mt-2" type="text" name="cart_quantity" value="' . (zen_get_buy_now_qty($record['products_id'])) . '" maxlength="6" size="4" aria-label="' . ARIA_QTY_ADD_TO_CART . '">' .
-                            '<br>' .
-                            zen_draw_hidden_field('products_id', $record['products_id']) .
-                            zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT) .
-                            '</form>';
-                    } else {
-                        $lc_button = $buy_now_button;
-                    }
+                    $lc_button = '<div class="input-group my-2"><div class="input-group-prepend">';
+                    $lc_button .= '<span class="input-group-text">';
+                    $lc_button .= TEXT_PRODUCT_LISTING_MULTIPLE_ADD_TO_CART;
+                    $lc_button .= '</span></div>';
+                    $lc_button .= '<input class="form-control" type="text" name="products_id[' . $record['products_id'] . ']" value="0" size="4" aria-label="' . ARIA_QTY_ADD_TO_CART . '">';
+                    $lc_button .= '</div>';
+                }
+            } else {
+                // qty box with add to cart button
+                if (PRODUCT_LIST_PRICE_BUY_NOW === '2' && $record['products_qty_box_status'] !== '0') {
+                    $lc_button = 
+                        zen_draw_form('cart_quantity', zen_href_link($_GET['main_page'], zen_get_all_get_params(['action']) . 'action=add_product&products_id=' . $record['products_id']), 'post', 'enctype="multipart/form-data"') .
+                        '<input class="mt-2" type="text" name="cart_quantity" value="' . (zen_get_buy_now_qty($record['products_id'])) . '" maxlength="6" size="4" aria-label="' . ARIA_QTY_ADD_TO_CART . '">' .
+                        '<br>' .
+                        zen_draw_hidden_field('products_id', $record['products_id']) .
+                        zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT) .
+                        '</form>';
+                } else {
+                    $lc_button = $buy_now_button;
                 }
             }
-            $zco_notifier->notify('NOTIFY_MODULES_PRODUCT_LISTING_PRODUCTS_BUTTON', [], $record, $lc_button);
-
+        }
+        $zco_notifier->notify('NOTIFY_MODULES_PRODUCT_LISTING_PRODUCTS_BUTTON', [], $record, $lc_button);
+        for ($col = 0, $n = count($column_list); $col < $n; $col++) {
+            $lc_text = '';
             $lc_align = '';
             switch ($column_list[$col]) {
                 case 'PRODUCT_LIST_MODEL':
