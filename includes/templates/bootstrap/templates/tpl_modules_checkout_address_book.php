@@ -2,7 +2,7 @@
 /**
  * tpl_modules_checkout_address_book.php
  * 
- * BOOTSTRAP v3.4.0
+ * BOOTSTRAP v3.5.1
  *
  * @package templateSystem
  * @copyright Copyright 2003-2009 Zen Cart Development Team
@@ -48,7 +48,7 @@ foreach ($addresses as $address) {
     // database fields.  Determine what values to use when formatting previously-registered
     // addresses.
     //
-    $address_details = (zen_get_zcversion() >= '1.5.8') ? $address['address'] : $address->fields;
+    $address_details = (zen_get_zcversion() >= '1.5.8') ? $address['address'] : $address;
 ?>
     <div class="card-body p-3">
         <address><?php echo zen_address_format(zen_get_address_format_id($address['country_id']), $address_details, true, ' ', '<br>'); ?></address>
