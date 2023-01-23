@@ -2,7 +2,7 @@
 // -----
 // Part of the ZCA Bootstrap template, @zcadditions, @lat9, @marco-pm
 //
-// BOOTSTRAP 3.5.0.
+// BOOTSTRAP 3.5.1.
 //
 class ZcaBootstrapObserver extends base
 {
@@ -16,7 +16,8 @@ class ZcaBootstrapObserver extends base
         $button_name,
         $sec_class,
         $parameters,
-        $text;
+        $text,
+        $is_product_info_page;
 
     // -----
     // On construction, watch for various notifications ONLY IF the ZCA Bootstrap template
@@ -45,6 +46,9 @@ class ZcaBootstrapObserver extends base
                     'NOTIFY_ZEN_DRAW_SELECTION_FIELD',
                     'NOTIFY_ZEN_DRAW_TEXTAREA_FIELD',
                     'NOTIFY_ZEN_DRAW_PULL_DOWN_MENU',
+
+                    //- From /includes/functions/functions_general.php
+                    'NOTIFY_ZEN_SOLD_OUT_IMAGE',                //- From zen_get_buy_now_button, zc158+
 
                     //- From /includes/classes/order.php
                     'NOTIFY_ORDER_COUPON_LINK',
@@ -274,6 +278,20 @@ class ZcaBootstrapObserver extends base
                     $field = str_replace('<select ', '<select class="custom-select" ', $field);
                 }
                 $p2 = $field;
+                break;
+
+            case 'NOTIFY_ZEN_SOLD_OUT_IMAGE':
+                if (!isset($this->is_product_info_page)) {
+                    $this->is_product_info_page = ($_GET['main_page'] === zen_get_info_page($p1['products_id']));
+                }
+                if ($this->is_product_info_page === true) {
+                    $sold_out_button_class = 'button_sold_out';
+                    $sold_out_button_name = BUTTON_SOLD_OUT_ALT;
+                } else {
+                    $sold_out_button_class = 'button_sold_out_sm';
+                    $sold_out_button_name = BUTTON_SOLD_OUT_SMALL_ALT;
+                }
+                $p2 = '<button class="btn ' . $sold_out_button_class . '" type="button">' . $sold_out_button_name . '</button>';
                 break;
 
             case 'NOTIFY_NOTIFY_ORDER_COUPON_LINK':
