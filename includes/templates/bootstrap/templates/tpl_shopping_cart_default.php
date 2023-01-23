@@ -76,7 +76,7 @@ if ($flagHasCartContents) {
     foreach ($productArray as $product) {
 ?>
             <tr>
-                <td class="qtyCell">
+                <td class="qtyCell text-center">
 <?php
         if ($product['flagShowFixedQuantity']) {
             echo $product['showFixedQuantityAmount'] . '' . $product['flagStockCheck'] . '' . $product['showMinUnits'];
@@ -84,6 +84,25 @@ if ($flagHasCartContents) {
             echo $product['quantityField'] . '' . $product['flagStockCheck'] . '' . $product['showMinUnits'];
         }
 ?>
+                    <div class="d-md-none">
+<?php
+        if ($product['buttonDelete']) {
+?>
+                    <a href="<?php echo zen_href_link(FILENAME_SHOPPING_CART, 'action=remove_product&product_id=' . $product['id']); ?>" class="btn mt-1" aria-label="<?php echo ICON_TRASH_ALT; ?>" title="<?php echo ICON_TRASH_ALT; ?>"><i aria-hidden="true" class="fas fa-trash-alt"></i></a>
+<?php
+        }
+        if ($product['checkBoxDelete'] ) {
+            $checkbox_field = zen_draw_checkbox_field('cart_delete[]', $product['id'], false, 'id="del-r-' . $product['id'] . '"');
+            $checkbox_field = str_replace('custom-control-input', 'form-check-input', $checkbox_field);
+?>
+                    <div class="form-check">
+                        <?php echo $checkbox_field; ?>
+                        <label class="form-check-label sr-only" for="del-r-<?php echo $product['id']; ?>"><?php echo ARIA_DELETE_ITEM_FROM_CART; ?></label>
+                    </div>
+<?php
+        }
+?>
+                    </div>
                 </td>
                 <td class="qtyUpdateCell text-center d-none d-sm-table-cell"><?php echo (!empty($product['buttonUpdate'])) ? $product['buttonUpdate'] : ''; ?></td>
                 <td class="productsCell">
