@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.5.0
+ * BOOTSTRAP v3.5.1
  *
  * Loaded automatically by index.php?main_page=shopping_cart.<br />
  * Displays shopping-cart contents
@@ -118,7 +118,14 @@ if ($flagHasCartContents) {
 <?php
         }
         if ($product['checkBoxDelete'] ) {
-            echo zen_draw_checkbox_field('cart_delete[]', $product['id'], false, 'aria-label="' . ARIA_DELETE_ITEM_FROM_CART . '"');
+            $checkbox_field = zen_draw_checkbox_field('cart_delete[]', $product['id'], false, 'id="del-' . $product['id'] . '"');
+            $checkbox_field = str_replace('custom-control-input', 'form-check-input', $checkbox_field);
+?>
+                    <div class="form-check">
+                        <?php echo $checkbox_field; ?>
+                        <label class="form-check-label sr-only" for="del-<?php echo $product['id']; ?>"><?php echo ARIA_DELETE_ITEM_FROM_CART; ?></label>
+                    </div>
+<?php
         }
 ?>
                 </td>

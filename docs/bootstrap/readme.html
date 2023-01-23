@@ -288,11 +288,13 @@ img {
             <li>BUGFIX: Move repetitive calculations outside of products' listing loop for efficiency.</li>
             <li>BUGFIX: Customer's existing addresses not rendered (zc157) when changing shipping/payment addresses.</li>
             <li>BUGFIX: Update product icon on <code>shopping_cart</code> page is rendered as an image instead of an FA glyph.</li>
+            <li>BUGFIX: Product-delete checkboxes were not displayed on the <code>shopping_cart</code> page.</li>
             <li>The following files were changed</span>:<ol>
                 <li>/includes/modules/bootstrap/product_listing.php</li>
                 <li>/includes/modules/pages/shopping_cart/header_php_shopping_cart_zca_bootstrap.php</li>
                 <li>/includes/templates/bootstrap/template_info.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_checkout_address_book.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_shopping_cart_default.php</li>
                 <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin.php</li>
              </ol></li>
         </ul></li>
