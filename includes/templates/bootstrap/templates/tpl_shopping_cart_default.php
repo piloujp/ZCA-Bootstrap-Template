@@ -63,7 +63,7 @@ if ($flagHasCartContents) {
     } //endif flagAnyOutOfStock 
 ?> 
     <div class="table-responsive">
-        <table id="shoppingCartDefault-cartTableDisplay" class="cartTableDisplay table table-bordered table-striped">
+        <table id="shoppingCartDefault-cartTableDisplay" class="cartTableDisplay table table-bordered table-striped table-sm">
             <tr>
                 <th scope="col" id="cartTableDisplay-qtyHeading"><?php echo TABLE_HEADING_QUANTITY; ?></th>
                 <th scope="col" class="d-none d-sm-table-cell" id="cartTableDisplay-qtyUpdateHeading">&nbsp;</th>
@@ -84,7 +84,7 @@ if ($flagHasCartContents) {
             echo $product['quantityField'] . '' . $product['flagStockCheck'] . '' . $product['showMinUnits'];
         }
 ?>
-                    <div class="d-md-none">
+                    <div class="d-md-none mt-3">
 <?php
         if ($product['buttonDelete']) {
 ?>
@@ -95,7 +95,7 @@ if ($flagHasCartContents) {
             $checkbox_field = zen_draw_checkbox_field('cart_delete[]', $product['id'], false, 'id="del-r-' . $product['id'] . '"');
             $checkbox_field = str_replace('custom-control-input', 'form-check-input', $checkbox_field);
 ?>
-                    <div class="form-check">
+                    <div class="form-check mt-3">
                         <?php echo $checkbox_field; ?>
                         <label class="form-check-label sr-only" for="del-r-<?php echo $product['id']; ?>"><?php echo ARIA_DELETE_ITEM_FROM_CART; ?></label>
                     </div>
@@ -140,7 +140,7 @@ if ($flagHasCartContents) {
             $checkbox_field = zen_draw_checkbox_field('cart_delete[]', $product['id'], false, 'id="del-' . $product['id'] . '"');
             $checkbox_field = str_replace('custom-control-input', 'form-check-input', $checkbox_field);
 ?>
-                    <div class="form-check">
+                    <div class="form-check mt-3">
                         <?php echo $checkbox_field; ?>
                         <label class="form-check-label sr-only" for="del-<?php echo $product['id']; ?>"><?php echo ARIA_DELETE_ITEM_FROM_CART; ?></label>
                     </div>
