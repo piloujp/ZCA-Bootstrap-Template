@@ -2,77 +2,75 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bootstrap-4 Template for Zen Cart 1.5.7 and Later</title>
-<style type="text/css">
-<!--
-a, a:active, 
-a:visited { 
-    color: #006666; 
+<style>
+a, a:active,
+a:visited {
+    color: #006666;
 }
-a:hover { 
-    color:#00CC99; 
+a:hover {
+    color:#00CC99;
 }
-body, 
-p, 
-h1, 
-h2, 
-h3, 
-h4, 
-li, 
-td { 
-    font-family: Verdana, AvantGarde, Tahoma, Arial, sans-serif; 
-    font-size: 10pt; 
-    color: black; 
-    padding: 0px; 
-    margin: 20px; 
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+li,
+td {
+    font-family: Verdana, AvantGarde, Tahoma, Arial, sans-serif;
+    font-size: 10pt;
+    color: black;
+    padding: 0px;
+    margin: 20px;
 }
-pre { 
-    margin: 20px; 
+pre {
+    margin: 20px;
 }
-H1, 
-H2, 
-H3, 
-H4 { 
-    font-weight: bold 
+h1,
+h2,
+h3,
+h4 {
+    font-weight: bold
 }
-h1 { 
-    font-size: 20px; 
+h1 {
+    font-size: 20px;
 }
-h2 { 
-    font-size: 16px; 
+h2 {
+    font-size: 16px;
     border-top: 1px solid black;
     padding-top: 5px;
 }
-ol li, 
-ul li { 
-    margin: 5px 0; 
+ol li,
+ul li {
+    margin: 5px 0;
 }
-.corefile, 
-.impt { 
-    color: red; 
+.corefile,
+.impt {
+    color: red;
 }
-.added { 
-    color: blue; 
+.added {
+    color: blue;
 }
-img { 
-    margin-left: 20px; 
-    max-width: 95%; 
+img {
+    margin-left: 20px;
+    max-width: 95%;
 }
-.removed { 
-    text-decoration: line-through; 
+.removed {
+    text-decoration: line-through;
 }
 .smaller {
     font-size: smaller;
 }
--->
 </style>
 </head>
 
 <body>
     <h1>Bootstrap-4 Template for Zen Cart v1.5.7 and later</h1>
     <h2>Including Zen Cart v1.5.8!</h2>
-    <h3>Version 3.5.1, by lat9, drbyte, scottcwilson, marco-pm, dbltoe, dennisns7d and brittainmark</h3>
+    <h3>Version 3.5.1, by lat9, drbyte, scottcwilson, marco-pm, dbltoe, dennisns7d, brittainmark and torvista</h3>
     <p>Current Support Thread at Zen Cart Forums: <a href="https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread" target="_blank">https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread</a></p>
     <p>Zen Cart Download Link: <a href="https://www.zen-cart.com/downloads.php?do=file&id=2191" target="_blank">https://www.zen-cart.com/downloads.php?do=file&id=2191</a></p>
     <p>GitHub repository: <a href="https://github.com/lat9/ZCA-Bootstrap-Template" target="_blank">https://github.com/lat9/ZCA-Bootstrap-Template</a>.</p>
@@ -133,7 +131,7 @@ img {
 
     <h2>Upgrading from v2.0.0c</h2>
     <p>As an aid in upgrading from the template's v2.0.0c release, this section identifies the files added, removed or moved in the transition from v2.0.0c of the template to v3.0.0.  They <em>might</em> also apply to upgrades from a previous version, but you'll need to check the <code>CHANGELOG.txt</code> file provided by this template's zip-file for those prior changes.</p>
-    
+
     <h3>Files Removed</h3>
     <ol>
         <li><span class="corefile">/includes/classes/order.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157b version of the file.)</span></li>
@@ -208,7 +206,7 @@ img {
         <li>/includes/templates/bootstrap/templates/tpl_modules_new_shipping_address.php</li>
         <li>/includes/templates/bootstrap/templates/tpl_zc_install_suggested_default.php</li>
     </ol>
-    
+
     <h3>Files Added</h3>
     <ol>
         <li>/includes/classes/zca/zca_site_map.php</li>
@@ -220,7 +218,7 @@ img {
         <li>/includes/templates/bootstrap/templates/tpl_ask_a_question_default.php</li>
         <li>/includes/templates/bootstrap/templates/tpl_modules_common_address_format.php</li>
     </ol>
-    
+
     <h3>Files Moved</h3>
     <ol>
         <li>/includes/modules/centerboxes/*.* moved to /includes/modules/bootstrap/centerboxes/*.*</li>
@@ -245,35 +243,30 @@ img {
     <ol>
         <li>Make a backup copy of that file, using a file extension <b>other than</b> <code>.php</code>, e.g. <code>ot_coupon.php.original</code>.</li>
         <li>Edit <code>ot_coupon.php</code>, find the following section:
-            <code><br>
-    function credit_selection()<br>
-    {<br>
-        global $discount_coupon, $request_type;<br>
-<br>
-        $couponLink = '';<br>
-        if (isset($discount_coupon->fields['coupon_code']) && isset($_SESSION['cc_id'])) {<br>
-            $coupon_code = $discount_coupon->fields['coupon_code'];<br>
-            $couponLink = '<a href="javascript:couponpopupWindow(\'' .
-              zen_href_link(FILENAME_POPUP_COUPON_HELP, 'cID=' . $_SESSION['cc_id'], $request_type) .
-              '\')">' . $coupon_code . '</a>';<br>
-        }<br>
-            </code><br><br>
-            and make the following changes, simply adding the zc158+ notification:<br><br>
-            <code><br>
-    function credit_selection()<br>
-    {<br>
-        global $discount_coupon, $request_type, $zco_notifier;<br>
-<br>
-        $couponLink = '';<br>
-        if (isset($discount_coupon->fields['coupon_code']) && isset($_SESSION['cc_id'])) {<br>
-            $coupon_code = $discount_coupon->fields['coupon_code'];<br>
-            $couponLink = '<a href="javascript:couponpopupWindow(\'' .
-              zen_href_link(FILENAME_POPUP_COUPON_HELP, 'cID=' . $_SESSION['cc_id'], $request_type) .
-              '\')">' . $coupon_code . '</a>';<br>
-<br>
-            $zco_notifier->notify('NOTIFY_OT_COUPON_GENERATE_POPUP_LINK', ['coupon_id' => $_SESSION['cc_id'], 'coupon_code' => $coupon_code], $couponLink);<br>
-        }<br>
-            </code>
+            <pre>
+    function credit_selection()
+    {
+        global $discount_coupon, $request_type;
+
+        $couponLink = '';
+        if (isset($discount_coupon->fields['coupon_code']) && isset($_SESSION['cc_id'])) {
+            ...
+        }
+            </pre>
+            and make the following change, simply adding the zc158+ notification:
+            <pre>
+    function credit_selection()
+    {
+        global $discount_coupon, $request_type, $zco_notifier;
+
+        $couponLink = '';
+        if (isset($discount_coupon->fields['coupon_code']) && isset($_SESSION['cc_id'])) {
+            ...
+
+            $zco_notifier->notify('NOTIFY_OT_COUPON_GENERATE_POPUP_LINK', ['coupon_id' => $_SESSION['cc_id'], 'coupon_code' => $coupon_code], $couponLink);
+        }
+            </pre>
+        </li>
     </ol>
 
     <h2>Upgrading</h2>
@@ -284,7 +277,7 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.5.1-beta3, 2023-01-23 (lat9, brittainmark)<ul>
+        <li>v3.5.1-beta4, 2023-01-26 (lat9, brittainmark, torvista)<ul>
             <li>BUGFIX: Move repetitive calculations outside of products' listing loop for efficiency.</li>
             <li>BUGFIX: Customer's existing addresses not rendered (zc157) when changing shipping/payment addresses.</li>
             <li>BUGFIX: Update product icon on <code>shopping_cart</code> page is rendered as an image instead of an FA glyph.</li>
@@ -292,11 +285,13 @@ img {
             <li>BUGFIX: Show product-delete icons/checkboxes underneath quantity input for small screens.</li>
             <li>BUGFIX: Correct HTML validation error (missing space between attributes) for the shipping-estimator.</li>
             <li>BUGFIX: &quot;Sold Out&quot; buttons displaying as images on Zen Cart 1.5.8+.</li>
+            <li>BUGFIX: Ensure <em>Terms and Conditions</em> are checked prior to continuing on the <code>checkout_payment</code> page.</li>
             <li>The following files were changed</span>:<ol>
                 <li>/includes/classes/observers/ZcaBootstrapObserver.php</li>
                 <li>/includes/modules/bootstrap/product_listing.php</li>
                 <li>/includes/modules/pages/shopping_cart/header_php_shopping_cart_zca_bootstrap.php</li>
                 <li>/includes/templates/bootstrap/template_info.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_checkout_payment_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_checkout_address_book.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_shopping_estimator.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_shopping_cart_default.php</li>
