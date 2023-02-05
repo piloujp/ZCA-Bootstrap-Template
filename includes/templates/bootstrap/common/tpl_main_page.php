@@ -93,12 +93,25 @@ if (defined('BS4_AJAX_SEARCH_ENABLE') && BS4_AJAX_SEARCH_ENABLE === 'true') {
 ?>
 <div class="container-fluid" id="mainWrapper"> 
 <?php
+// -----
+// Define the spacer-div that pushes either the "Header Position 1" banner or
+// the logoWrapper in the header down under the navigation bar .. whichever comes first!
+//
+$navbar_spacer = '<div id="navbar-spacer" class="mt-5 pt-4"></div>';
+
 if (SHOW_BANNERS_GROUP_SET1 !== '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET1)) {
     if ($banner->RecordCount() > 0) {
         $find_banners = zen_build_banners_group(SHOW_BANNERS_GROUP_SET1);
         $banner_group = 1;
+
+        // -----
+        // Output the navbar's spacer div and then set it to an empty string so that
+        // it won't be output a second time by tpl_header.php.
+        //
+        echo $navbar_spacer;
+        $navbar_spacer = '';
 ?>
-    <div class="zca-banner bannerOne rounded mt-5 pt-3 pt-sm-4">
+    <div class="zca-banner bannerOne rounded">
 <?php 
         if (ZCA_ACTIVATE_BANNER_ONE_CAROUSEL === 'true') {
             require $template->get_template_dir('tpl_zca_banner_carousel.php', DIR_WS_TEMPLATE, $current_page_base, 'common') . '/tpl_zca_banner_carousel.php'; 

@@ -87,8 +87,16 @@ require DIR_WS_MODULES . zen_get_module_sidebox_directory('search_header.php');
 <!--eof-navigation display-->
 
 <!--bof-branding display-->
+<?php
+    // -----
+    // Output the div that provides spacing under the navbar.  It's set by
+    // tpl_main_page.php and might be an empty string if it's already been
+    // output in an active 'Header Position 1' banner.
+    //
+    echo $navbar_spacer;
+?>
     <div id="logoWrapper">
-        <div id="logo" class="row align-items-center pr-3 pl-3 pb-3"> 
+        <div id="logo" class="row align-items-center px-3 pb-3"> 
 <?php
 $sales_text_class = (HEADER_SALES_TEXT !== '') ? 'col-sm-4' : 'col-sm-12';
 ?>
