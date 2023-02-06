@@ -277,7 +277,7 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.5.1-beta5, 2023-02-05 (lat9, brittainmark, torvista)<ul>
+        <li>v3.5.1-beta6, 2023-02-06 (lat9, brittainmark, torvista)<ul>
             <li>BUGFIX: Move repetitive calculations outside of products' listing loop for efficiency.</li>
             <li>BUGFIX: Customer's existing addresses not rendered (zc157) when changing shipping/payment addresses.</li>
             <li>BUGFIX: Update product icon on <code>shopping_cart</code> page is rendered as an image instead of an FA glyph.</li>
@@ -287,6 +287,7 @@ img {
             <li>BUGFIX: &quot;Sold Out&quot; buttons displaying as images on Zen Cart 1.5.8+.</li>
             <li>BUGFIX: Ensure <em>Terms and Conditions</em> are checked prior to continuing on the <code>checkout_payment</code> page.</li>
             <li>BUGFIX: Top-most banner (Header Position 1) overlaid with upper navigation bar; unneeded whitespace removed from page header.</li>
+            <li>BUGFIX: Correct display of banner-carousels' indicators and previous-next icons.</li>
             <li>The following files were changed:<ol>
                 <li>/includes/classes/observers/ZcaBootstrapObserver.php</li>
                 <li>/includes/modules/bootstrap/product_listing.php</li>
@@ -294,6 +295,9 @@ img {
                 <li>/includes/templates/bootstrap/template_info.php</li>
                 <li>/includes/templates/bootstrap/common/tpl_header.php</li>
                 <li>/includes/templates/bootstrap/common/tpl_main_page.php</li>
+                <li>/includes/templates/bootstrap/common/tpl_zca_banner_carousel.php</li>
+                <li>/includes/templates/bootstrap/css/stylesheet_bootstrap_carousel.css</li>
+                <li>/includes/templates/bootstrap/css/stylesheet_colors.css</li>
                 <li>/includes/templates/bootstrap/templates/tpl_checkout_payment_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_checkout_address_book.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_shopping_estimator.php</li>
