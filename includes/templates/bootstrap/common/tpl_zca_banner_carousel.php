@@ -30,13 +30,20 @@ if ($banners->EOF) {
     return;
 }
 
-$banner_group = (int)$banner_group;
+$carousel_group_id = 'carouselGroup' . (int)$banner_group;
 ?>
-<div id="carouselGroup<?php echo $banner_group; ?>" class="carousel slide" data-ride="carousel">
+<div id="<?php echo $carousel_group_id; ?>" class="carousel banner-carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselGroup<?php echo $banner_group; ?>" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselGroup<?php echo $banner_group; ?>" data-slide-to="1"></li>
-        <li data-target="#carouselGroup<?php echo $banner_group; ?>" data-slide-to="2"></li>
+<?php
+$num_banners = $banners->RecordCount();
+$slide_to_class = ' class="active"';
+for ($slide_to = 0; $slide_to < $num_banners; $slide_to++) {
+?>
+        <li data-target="#<?php echo $carousel_group_id; ?>" data-slide-to="<?php echo $slide_to; ?>"<?php echo $slide_to_class; ?>></li>
+<?php
+    $slide_to_class = '';
+}
+?>
     </ol>
     <div class="carousel-inner rounded">
 <?php
@@ -56,12 +63,12 @@ foreach ($banners as $row) {
 }
 ?>
     </div>
-    <a class="carousel-control-prev" href="#carouselGroup<?php echo (int)$banner_group; ?>" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <a class="carousel-control-prev" href="#<?php echo $carousel_group_id; ?>" role="button" data-slide="prev">
+        <span><i class="fa fa-lg fa-chevron-left" aria-hidden="true"></i></span>
         <span class="sr-only"><?php echo BUTTON_PREVIOUS_ALT; ?></span>
     </a>
-    <a class="carousel-control-next" href="#carouselGroup<?php echo (int)$banner_group; ?>" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <a class="carousel-control-next" href="#<?php echo $carousel_group_id; ?>" role="button" data-slide="next">
+        <span><i class="fa fa-lg fa-chevron-right" aria-hidden="true"></i></span>
         <span class="sr-only"><?php echo BUTTON_NEXT_ALT; ?></span>
     </a>
 </div>
