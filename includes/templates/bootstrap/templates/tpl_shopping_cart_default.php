@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.5.1
+ * BOOTSTRAP v3.5.2
  *
  * Loaded automatically by index.php?main_page=shopping_cart.<br />
  * Displays shopping-cart contents
@@ -76,7 +76,7 @@ if ($flagHasCartContents) {
     foreach ($productArray as $product) {
 ?>
             <tr>
-                <td class="qtyCell text-center">
+                <td class="qtyCell text-center pb-4">
 <?php
         if ($product['flagShowFixedQuantity']) {
             echo $product['showFixedQuantityAmount'] . '' . $product['flagStockCheck'] . '' . $product['showMinUnits'];
@@ -84,7 +84,7 @@ if ($flagHasCartContents) {
             echo $product['quantityField'] . '' . $product['flagStockCheck'] . '' . $product['showMinUnits'];
         }
 ?>
-                    <div class="d-md-none mt-3">
+                    <div class="d-md-none mt-1">
 <?php
         if ($product['buttonDelete']) {
 ?>
@@ -95,7 +95,7 @@ if ($flagHasCartContents) {
             $checkbox_field = zen_draw_checkbox_field('cart_delete[]', $product['id'], false, 'id="del-r-' . $product['id'] . '"');
             $checkbox_field = str_replace('custom-control-input', 'form-check-input', $checkbox_field);
 ?>
-                    <div class="form-check mt-3">
+                    <div class="form-check mt-1">
                         <?php echo $checkbox_field; ?>
                         <label class="form-check-label sr-only" for="del-r-<?php echo $product['id']; ?>"><?php echo ARIA_DELETE_ITEM_FROM_CART; ?></label>
                     </div>
@@ -140,7 +140,7 @@ if ($flagHasCartContents) {
             $checkbox_field = zen_draw_checkbox_field('cart_delete[]', $product['id'], false, 'id="del-' . $product['id'] . '"');
             $checkbox_field = str_replace('custom-control-input', 'form-check-input', $checkbox_field);
 ?>
-                    <div class="form-check mt-3">
+                    <div class="form-check mt-1">
                         <?php echo $checkbox_field; ?>
                         <label class="form-check-label sr-only" for="del-<?php echo $product['id']; ?>"><?php echo ARIA_DELETE_ITEM_FROM_CART; ?></label>
                     </div>
