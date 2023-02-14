@@ -91,7 +91,8 @@ if (defined('BS4_AJAX_SEARCH_ENABLE') && BS4_AJAX_SEARCH_ENABLE === 'true') {
     require $template->get_template_dir('tpl_ajax_search.php', DIR_WS_TEMPLATE, $current_page_base, 'modalboxes') . '/tpl_ajax_search.php';
 }
 ?>
-<div class="container-fluid" id="mainWrapper"> 
+<div class="container-fluid" id="mainWrapper">
+  <main>
 <?php
 // -----
 // Define the spacer-div that pushes either the "Header Position 1" banner or
@@ -300,5 +301,6 @@ if (SHOW_BANNERS_GROUP_SET6 !== '' && $banner = zen_banner_exists('dynamic', SHO
 $zco_notifier->notify('NOTIFY_FOOTER_END', $current_page);
 ?>
     <a href="#" id="back-to-top" class="btn" title="<?php echo BUTTON_BACK_TO_TOP_TITLE ?>" aria-label="<?php echo BUTTON_BACK_TO_TOP_TITLE ?>" role="button"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></a>
+</main>
 </div>
 </body>
