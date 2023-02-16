@@ -7,7 +7,7 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: Pan2020 2019 Mar 27 Modified in v1.5.6b $
  *
- * BOOTSTRAP v3.4.2
+ * BOOTSTRAP v3.5.2
  */
 if (!defined('IS_ADMIN_FLAG')) {
     die('Illegal Access');

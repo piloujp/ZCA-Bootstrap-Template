@@ -2,7 +2,7 @@
 /**
  * new_products.php module
  * 
- * BOOTSTRAP v3.4.2
+ * BOOTSTRAP v3.5.2
  *
  * @copyright Copyright 2003-2022 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce

@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.5.2
  *
  * Main index page<br />
  * Displays greetings, welcome text (define-page content), and various centerboxes depending on switch settings in Admin<br />

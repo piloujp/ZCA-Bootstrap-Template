@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.4.1
+ * BOOTSTRAP v3.5.2
  *
  * Loaded by main_page=index<br />
  * Displays category/sub-category listing<br />
