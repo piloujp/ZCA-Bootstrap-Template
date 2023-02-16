@@ -27,7 +27,7 @@ if ($show_welcome === true) {
 <?php
     if (SHOW_CUSTOMER_GREETING === '1') {
 ?>
-    <h3 id="indexCategories-greeting" class="greeting"><?php echo zen_customer_greeting(); ?></h3>
+    <h2 id="indexCategories-greeting" class="greeting"><?php echo zen_customer_greeting(); ?></h2>
 <?php
     }
 
