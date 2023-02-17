@@ -150,7 +150,7 @@ switch ($action) {
 
     <!-- body //-->
     <div class="container-fluid">
-        <h1><?php echo HEADING_TITLE; ?></h1>
+        <h1><?php echo HEADING_TITLE; ?> <small><b>(v<?php echo ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION; ?>)</b></small></h1>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 configurationColumnLeft">
                 <table class="table table-hover">
@@ -176,22 +176,30 @@ foreach ($configuration as $item) {
         $cInfo = new objectInfo($item);
     }
 
+    // -----
+    // Any setting containing a <b> in its title indicates the start of a grouping; these have a different
+    // background color for the row.
+    //
+    $is_grouping_row = (strpos($item['configuration_title'], '<b>') !== false);
+
     if ((isset($cInfo) && is_object($cInfo)) && $item['configuration_id'] === $cInfo->configuration_id) {
-        $row_parameters = 'id="defaultSelected" class="dataTableRowSelected"';
+        $row_parameters = 'id="defaultSelected" class="' . (($is_grouping_row === true) ? 'bg-primary' : 'dataTableRowSelected') . '"';
         $cID_value = $cInfo->configuration_id;
     } else {
-        $row_parameters = ' class="dataTableRow"';
+        $row_parameters = 'class="' . (($is_grouping_row === true) ? 'bg-info' : 'dataTableRow') . '"';
         $cID_value = $item['configuration_id'];
     }
+
+
     $cfgValue = htmlspecialchars($item['configuration_value'], ENT_COMPAT, CHARSET, true);
 ?>
                         <tr <?php echo $row_parameters; ?> onclick="document.location.href = '<?php echo zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . $cID_value . '&action=edit'); ?>'">
-                            <td class="dataTableContent"><?php echo $item['configuration_title']; ?></td>
-                            <td class="dataTableContent">
+                            <td><?php echo $item['configuration_title']; ?></td>
+                            <td>
                                 <i class="fa fa-square fa-border" aria-hidden="true" style="font-size: 1.35em;margin-right:.5em;background-color:#ffffff;color:<?php echo $cfgValue; ?>;"></i>
-                                <?php echo $cfgValue; ?>
+                                <span><?php echo $cfgValue; ?></span>
                             </td>
-                            <td class="dataTableContent text-right">
+                            <td class="text-right">
 <?php
     if ((isset($cInfo) && is_object($cInfo)) && $item['configuration_id'] === $cInfo->configuration_id) {
         echo zen_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', '');
