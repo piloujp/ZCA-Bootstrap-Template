@@ -142,6 +142,11 @@ switch ($action) {
 <html <?php echo HTML_PARAMS; ?>>
   <head>
     <?php require DIR_WS_INCLUDES . 'admin_html_head.php'; ?>
+    <style>
+        .table-hover > tbody > tr.bg-primary:hover {
+            color: black;
+        }
+    </style>
   </head>
   <body>
     <!-- header //-->
