@@ -146,6 +146,11 @@ switch ($action) {
         .table-hover > tbody > tr.bg-primary:hover {
             color: black;
         }
+        .fa fa-square fa-border {
+            font-size: 1.35em;
+            margin-right: .5em;
+            background-color: #ffffff;
+        }
     </style>
   </head>
   <body>
@@ -156,13 +161,16 @@ switch ($action) {
     <!-- body //-->
     <div class="container-fluid">
         <h1><?php echo HEADING_TITLE; ?> <small><b>(v<?php echo ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION; ?>)</b></small></h1>
+        <p><?php echo TEXT_INFORMATION; ?></p>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 configurationColumnLeft">
                 <table class="table table-hover">
                     <thead>
                         <tr class="dataTableHeadingRow">
                             <th class="dataTableHeadingContent"><?php echo TABLE_HEADING_CONFIGURATION_TITLE; ?></th>
+                            <th class="dataTableHeadingContent"><?php echo TABLE_HEADING_CONFIGURATION_DEFAULT; ?></th>
                             <th class="dataTableHeadingContent"><?php echo TABLE_HEADING_CONFIGURATION_VALUE; ?></th>
+                            <th class="dataTableHeadingContent text-center"><?php echo TABLE_HEADING_NOT_SET_OK; ?></th>
                             <th class="dataTableHeadingContent text-right"><?php echo TABLE_HEADING_ACTION; ?></th>
                         </tr>
                     </thead>
@@ -195,14 +203,48 @@ foreach ($configuration as $item) {
         $cID_value = $item['configuration_id'];
     }
 
-
+    // -----
+    // The configured value for any color-setting *added* on an upgrade is set to 'not-set', giving
+    // the site to provide coloring that matches their theme.
+    //
     $cfgValue = htmlspecialchars($item['configuration_value'], ENT_COMPAT, CHARSET, true);
+    $cfgValueColor = $cfgValue;
+    if ($cfgValue === 'not-set') {
+        $cfgValue = '<span class="text-danger"><b>' . $cfgValue . '</b></span>';
+    }
+
+    // -----
+    // Determine whether the associated setting was added during v3.5.2 or later.  If so, its value can be set to "not-set"
+    // with no unwanted affect on the storefront; otherwise, not so!
+    //
+    if (strpos($item['configuration_description'], 'Added') !== false) {
+        $not_ok_class = 'text-success';
+        $not_ok_icon = 'fa-check';
+    } else {
+        $not_ok_class = 'text-danger';
+        $not_ok_icon = 'fa-ban';
+    }
+
+    // -----
+    // Determine the color's default value from its description.  The admin's color-install script has formatted the
+    // description as 'Default: {default_color}.[ Added in v{version}.]', so the default color is found by first
+    // stripping 'Default: ' and then grabbing everything left up to the '.' that follows the {default_color}
+    // specification.
+    //
+    $cfg_default_color = strstr(str_replace('Default: ', '', $item['configuration_description']), '.', true);
 ?>
                         <tr <?php echo $row_parameters; ?> onclick="document.location.href = '<?php echo zen_href_link(FILENAME_ZCA_BOOTSTRAP_COLORS, 'cID=' . $cID_value . '&action=edit'); ?>'">
                             <td><?php echo $item['configuration_title']; ?></td>
                             <td>
-                                <i class="fa fa-square fa-border" aria-hidden="true" style="font-size: 1.35em;margin-right:.5em;background-color:#ffffff;color:<?php echo $cfgValue; ?>;"></i>
-                                <span><?php echo $cfgValue; ?></span>
+                                <i class="fa fa-square fa-border" aria-hidden="true" style="color: <?php echo $cfg_default_color; ?>;"></i>
+                                <?php echo $cfg_default_color; ?>
+                            </td>
+                            <td>
+                                <i class="fa fa-square fa-border" aria-hidden="true" style="color: <?php echo $cfgValueColor; ?>;"></i>
+                                <?php echo $cfgValue; ?>
+                            </td>
+                            <td class="text-center">
+                                <span class="<?php echo $not_ok_class; ?>"><i class="fa fa-lg <?php echo $not_ok_icon; ?>" aria-hidden="true"></i></span>
                             </td>
                             <td class="text-right">
 <?php

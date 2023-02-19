@@ -508,7 +508,7 @@ $zca_bc_colors = [
     ],
 ];
 
-//
+// -----
 // Prior to Bootstrap/Bootstrap Colors v3.5.2, there was no versioning for the colors' configuration. The
 // initial 'upgrade' for v3.5.2 will start by applying *all* current color configurations if the
 // Bootstrap Colors' version setting isn't yet defined, implying either a pre-v3.5.2 or initial installation that
@@ -518,10 +518,21 @@ $zca_bc_colors = [
 //
 $zca_bc_installed = false;
 if (!defined('ZCA_BOOTSTRAP_COLORS_VERSION')) {
+    // -----
+    // Further, if this is an _initial_ install of the Bootstrap template and its associated colors, all
+    // current colors' default values are set as their color selection.  If that color-setting *is* defined,
+    // then any colors added on or after v3.5.2 will be added with a 'not-set' value to enable a
+    // site to choose the best color for their store's color-scheme prior to use on the storefront.
+    //
+    if (!defined('ZCA_BODY_TEXT_COLOR')) {
+        $zca_bc_installed = true;
+    }
     $configuration_values = '';
     foreach ($zca_bc_colors as $key => $values) {
         $default_value = $values['configuration_value'];
-        $configuration_values .= "('" . $values['configuration_title'] . "', '$key', '$default_value', 'Default: $default_value', $bccid, " . $values['sort_order'] . ", now()),";
+        $added_version = (isset($values['added']) && $values['added'] >= '3.5.2') ? (' (Added in v'. $values['added'] . '.)') : '';
+        $default_color = ($zca_bc_installed === false && $added_version !== '') ? 'not-set' : $default_value;
+        $configuration_values .= "('" . $values['configuration_title'] . "', '$key', '$default_color', 'Default: $default_value.$added_version', $bccid, " . $values['sort_order'] . ", now()),";
     }
     $configuration_values = rtrim($configuration_values, ',');
     $db->Execute(
@@ -533,18 +544,18 @@ if (!defined('ZCA_BOOTSTRAP_COLORS_VERSION')) {
     unset($configuration_values);
 
     // -----
-    // Create the menu item for the ZCA Bootstrap Colors tool.
+    // Create the menu item for the ZCA Bootstrap Colors tool, if it's not already there.
     //
-    zen_deregister_admin_pages('toolsZCABootstrapColors');
-    zen_register_admin_page('toolsZCABootstrapColors', 'BOX_TOOLS_ZCA_BOOTSTRAP_COLORS', 'FILENAME_ZCA_BOOTSTRAP_COLORS', '', 'tools', 'Y');
+    if (!zen_page_key_exists('toolsZCABootstrapColors')) {
+        zen_register_admin_page('toolsZCABootstrapColors', 'BOX_TOOLS_ZCA_BOOTSTRAP_COLORS', 'FILENAME_ZCA_BOOTSTRAP_COLORS', '', 'tools', 'Y');
+    }
 
     // -----
     // Let the admin know that the initial installation was successfully completed.  The configuration value checked
     // has been there since the initial release, so defer the message output to the upgrade section if it's currently
     // defined.
     //
-    if (!defined('ZCA_BODY_TEXT_COLOR')) {
-        $zca_bc_installed = true;
+    if ($zca_bc_installed === true) {
         $messageStack->add(sprintf(SUCCESS_ZCA_BOOTSTRAP_COLORS_INSTALLED, ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION), 'success');
         $messageStack->add_session(sprintf(SUCCESS_ZCA_BOOTSTRAP_COLORS_INSTALLED, ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION), 'success');
     }
@@ -562,19 +573,22 @@ switch (true) {
     case !defined('ZCA_BOOTSTRAP_COLORS_VERSION'):                      //-Fall-through, essentially v3.5.2 upgrade
     case version_compare(ZCA_BOOTSTRAP_COLORS_VERSION, '3.5.2', '<'):
         foreach ($zca_bc_colors as $key => $values) {
-            $value = $values['configuration_value'];
+            $default_value = $values['configuration_value'];
+            $added_version = (isset($values['added']) && $values['added'] >= '3.5.2') ? (' (Added in v'. $values['added'] . '.)') : '';
+            $default_color = ($zca_bc_installed === false && $added_version !== '') ? 'not-set' : $default_value;
+            $description = "Default: $default_value.$added_version";
             if (isset($values['added']) && $values['added'] === '3.5.2') {
                 $db->Execute(
                     "INSERT IGNORE INTO " . TABLE_CONFIGURATION . "
                         (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added)
                      VALUES
-                        ('" . $values['configuration_title'] . "', '$key', '$value', 'Default: $value', $bccid, " . $values['sort_order'] . ", now()"
+                        ('" . $values['configuration_title'] . "', '$key', '$default_color', '$description', $bccid, " . $values['sort_order'] . ", now()"
                 );
             }
             $db->Execute(
                 "UPDATE " . TABLE_CONFIGURATION . "
                     SET configuration_title = '" . $values['configuration_title'] . "',
-                        configuration_description = 'Default: $value',
+                        configuration_description = '$description',
                         sort_order = " . $values['sort_order'] . "
                   WHERE configuration_key = '$key'"
             );
