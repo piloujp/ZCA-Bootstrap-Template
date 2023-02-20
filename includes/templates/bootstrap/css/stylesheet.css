@@ -81,6 +81,10 @@ table.tabTable td {
 .sideBoxContent select {
     margin-bottom: 1rem;
 }
+#navCatTabs a,
+#navCatTabs a:hover {
+    border: 0.125rem solid #007faf;
+}
 
 /* These CSS media queries control how many columns of cards display on the login, checkout_shipping, checkout_payment & checkout_confirmation pages */
 /* Small devices (landscape phones, 576px and up) */

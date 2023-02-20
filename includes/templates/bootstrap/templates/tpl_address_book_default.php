@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP 3.5.0
+ * BOOTSTRAP 3.5.2
  *
  * Loaded automatically by index.php?main_page=address_book.
  * Allows customer to manage entries in their address book
@@ -30,7 +30,7 @@ if ($messageStack->size('addressbook') > 0) {
                 </div>
 
                 <div id="primaryAddress-defaultAddress" class="defaultAddress col-7 col-sm-5">
-                    <address class="bg-success p-3 text-white"><?php echo zen_address_label($_SESSION['customer_id'], $_SESSION['customer_default_address_id'], true, ' ', '<br>'); ?></address>
+                    <address class="p-3"><?php echo zen_address_label($_SESSION['customer_id'], $_SESSION['customer_default_address_id'], true, ' ', '<br>'); ?></address>
                 </div>
             </div>
         </div>
@@ -46,17 +46,15 @@ if ($messageStack->size('addressbook') > 0) {
  */
 foreach ($addressArray as $addresses) {
     if ($addresses['address_book_id'] == $_SESSION['customer_default_address_id']) {
-        $primary_border = ' border-primary';
-        $primary_background = ' bg-primary text-white';
+        $primary_class = ' primary-address';
         $primary_address = PRIMARY_ADDRESS;
     } else {
-        $primary_border = '';
-        $primary_background = '';
+        $primary_class = '';
         $primary_address = '';
     }
 ?>
-            <div id="addressBookSingleEntryId<?php echo $addresses['address_book_id']; ?>-card" class="card mb-3 <?php echo $primary_border ; ?>">
-                <h4 id="addressBookSingleEntryId<?php echo $addresses['address_book_id']; ?>-card-header" class="card-header <?php echo $primary_background ; ?>">
+            <div id="addressBookSingleEntryId<?php echo $addresses['address_book_id']; ?>-card" class="card mb-3<?php echo $primary_class ; ?>">
+                <h4 id="addressBookSingleEntryId<?php echo $addresses['address_book_id']; ?>-card-header" class="card-header">
                     <?php echo zen_output_string_protected($addresses['firstname'] . ' ' . $addresses['lastname']) . $primary_address ; ?>
                 </h4>
                 <div id="addressBookSingleEntryId<?php echo $addresses['address_book_id']; ?>-card-body" class="card-body p-3">
