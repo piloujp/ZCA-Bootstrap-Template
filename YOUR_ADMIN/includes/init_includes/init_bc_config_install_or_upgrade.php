@@ -110,7 +110,7 @@ $zca_bc_colors = [
     'ZCA_BODY_PRODUCTS_SALE_COLOR' => [
         'configuration_title' => 'Body Products Sale Price',
         'configuration_value' => '#ad0000',
-        'sort_order' => 140,
+        'sort_order' => 240,
     ],
     'ZCA_BODY_PRODUCTS_FREE_COLOR' => [
         'configuration_title' => 'Body Products Free Price',
