@@ -43,7 +43,7 @@ foreach ($box_categories_array as $next_category) {
 
     if (SHOW_COUNTS === 'true') {
         if ((CATEGORIES_COUNT_ZERO === '1' && $next_category['count'] == 0) || $next_category['count'] >= 1) {
-            $content .= '<span class="badge badge-primary badge-pill">' . CATEGORIES_COUNT_PREFIX . $next_category['count'] . CATEGORIES_COUNT_SUFFIX . '</span>';
+            $content .= '<span class="badge badge-pill">' . CATEGORIES_COUNT_PREFIX . $next_category['count'] . CATEGORIES_COUNT_SUFFIX . '</span>';
         }
     }
 
