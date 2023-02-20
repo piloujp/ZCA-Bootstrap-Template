@@ -335,7 +335,7 @@ $zca_bc_colors = [
     ],
     'ZCA_HEADER_EZPAGE_BACKGROUND_COLOR_HOVER' => [
         'configuration_title' => 'Header EZ-Page Bar Background Color on Hover',
-        'configuration_value' => '#ffffff',
+        'configuration_value' => '#363636',
         'sort_order' => 2710,
         'added' => '3.5.2',
     ],
@@ -346,7 +346,7 @@ $zca_bc_colors = [
     ],
     'ZCA_HEADER_EZPAGE_LINK_COLOR_HOVER' => [
         'configuration_title' => 'Header EZ-Page Bar Link Color on Hover',
-        'configuration_value' => '#464646',
+        'configuration_value' => '#cccccc',
         'sort_order' => 2740,
     ],
 
@@ -367,6 +367,12 @@ $zca_bc_colors = [
         'configuration_title' => '<b>Footer EZ-Page Bar</b> Background Color',
         'configuration_value' => '#464646',
         'sort_order' => 3020,
+    ],
+    'ZCA_FOOTER_EZPAGE_BACKGROUND_COLOR_HOVER' => [
+        'configuration_title' => 'Footer EZ-Page Bar Background Color on Hover',
+        'configuration_value' => '#363636',
+        'sort_order' => 3022,
+        'added' => '3.5.2',
     ],
     'ZCA_FOOTER_EZPAGE_LINK_COLOR' => [
         'configuration_title' => 'Footer EZ-Page Bar Link Color',

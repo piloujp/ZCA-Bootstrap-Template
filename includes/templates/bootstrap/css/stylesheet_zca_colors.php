@@ -20,6 +20,7 @@ $zca_bootstrap_colors_added = [
     'ZCA_HEADER_TABS_ACTIVE_COLOR',
     'ZCA_HEADER_TABS_ACTIVE_BORDER_COLOR',
     'ZCA_HEADER_EZPAGE_BACKGROUND_COLOR_HOVER',
+    'ZCA_FOOTER_EZPAGE_BACKGROUND_COLOR_HOVER',
     'ZCA_CHECKOUT_PROGRESS_BAR_BACKGROUND_COLOR',
     'ZCA_CHECKOUT_CONTINUE_BACKGROUND_COLOR',
     'ZCA_CHECKOUT_CONTINUE_BACKGROUND_COLOR_HOVER',
@@ -174,6 +175,7 @@ nav.navbar .navbar-toggler:hover {
 }
 #ezpagesBarFooter a.nav-link:hover {
     color: <?php echo ZCA_FOOTER_EZPAGE_LINK_COLOR_HOVER; ?>;
+    <?php echo ($zca_footer_ezpage_background_color_hover !== '') ? "background-color: $zca_footer_ezpage_background_color_hover;" : ''; ?>
 }
 <?php
 //- Sideboxes

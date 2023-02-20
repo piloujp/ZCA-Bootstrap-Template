@@ -21,9 +21,9 @@ if (!isset($_SESSION['admin_id'])) {
 // The ZCA Bootstrap Colors version doesn't necessarily change on each base
 // Bootstrap template update, only when one or more configuration settings
 // is added, removed or updated.  Initially added for Bootstrap v3.5.2, note that
-// its setting might not "keep up" with the base template's version!
+// its setting might not be the same as the base template's version!
 //
-define('ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION', '3.5.2-beta5');
+define('ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION', '3.5.2-beta6');
 
 // -----
 // If this is an upgrade (or an initial install), load the installation/upgrade script to (at a minimum)
