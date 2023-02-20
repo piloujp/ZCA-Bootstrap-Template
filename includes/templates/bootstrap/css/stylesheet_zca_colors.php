@@ -10,7 +10,10 @@
 //
 $zca_bootstrap_colors_added = [
     // -----
-    // Added in v3.5.2.
+    // Added in v3.5.2.  Note that some of the colors now provided via configuration
+    // settings were, in previous template versions, set to default colors via the
+    // /css/stylesheet_colors.css (no longer distributed).  Those default values
+    // continue to be used if the associated configuration settings are 'not-set'.
     //
     'ZCA_BODY_RATING_STAR_BACKGROUND_COLOR' => '',
     'ZCA_BODY_RATING_STAR_COLOR' => '#efa31d',
@@ -37,6 +40,13 @@ $zca_bootstrap_colors_added = [
     'ZCA_CAROUSEL_PREV_NEXT_COLOR_HOVER' => '#000000',
     'ZCA_CAROUSEL_BANNER_INDICATORS_BACKGROUND_COLOR' => '#000000',
 ];
+// -----
+// Each of the newly-added color values is saved as a lower-case variable
+// of the same name, e.g. ZCA_BODY_RATING_STAR_COLOR becomes $zca_body_rating_star_color)
+// whose value is either the associated constant's value (if the constant's defined and
+// its value is not 'not-set') or the constant's default value as indicated in the
+// array above.
+//
 foreach ($zca_bootstrap_colors_added as $next_color => $default_color) {
     $next_color_varname = strtolower($next_color);
     $$next_color_varname = ((defined($next_color) && constant($next_color) !== 'not-set') ? constant($next_color) : $default_color);
@@ -49,13 +59,9 @@ foreach ($zca_bootstrap_colors_added as $next_color => $default_color) {
 body {color: <?php echo ZCA_BODY_TEXT_COLOR; ?>;background-color: <?php echo ZCA_BODY_BACKGROUND_COLOR; ?>;}
 a {color: <?php echo ZCA_BUTTON_LINK_COLOR; ?>;}
 a:hover {color: <?php echo ZCA_BUTTON_LINK_COLOR_HOVER; ?>;}
-.form-control::-webkit-input-placeholder,
-.form-control::-moz-placeholder,
-.form-control:-ms-input-placeholder,
-.form-control::-ms-input-placeholder,
 .form-control::placeholder,
 .required-info,
-.alert {
+span.alert {
     color: <?php echo ZCA_BODY_PLACEHOLDER; ?>;
 }
 .rating {
@@ -332,7 +338,7 @@ if (defined('ZCA_BUTTON_IN_CART_BACKGROUND_COLOR')) {
     color: <?php echo ZCA_BUTTON_IN_CART_TEXT_COLOR_HOVER; ?>;
 }
 a:hover > .fa-cart-plus {
-    <?php echo ZCA_BUTTON_IN_CART_BACKGROUND_COLOR_HOVER; ?>;
+    color: <?php echo ZCA_BUTTON_IN_CART_BACKGROUND_COLOR_HOVER; ?>;
 }
 <?php
 }
