@@ -10,51 +10,48 @@
 //
 $zca_bootstrap_colors_added = [
     // -----
-    // Added in v3.5.2.  Note that some of the colors now provided via configuration
-    // settings were, in previous template versions, set to default colors via the
-    // /css/stylesheet_colors.css (no longer distributed).  Those default values
-    // continue to be used if the associated configuration settings are 'not-set'.
+    // Added in v3.5.2.
     //
-    'ZCA_BODY_RATING_STAR_BACKGROUND_COLOR' => '',
-    'ZCA_BODY_RATING_STAR_COLOR' => '#efa31d',
-    'ZCA_HEADER_TABS_BORDER_COLOR' => '',
-    'ZCA_HEADER_TABS_BORDER_COLOR_HOVER' => '',
-    'ZCA_HEADER_TABS_ACTIVE_BACKGROUND_COLOR' => '',
-    'ZCA_HEADER_TABS_ACTIVE_COLOR' => '',
-    'ZCA_HEADER_TABS_ACTIVE_BORDER_COLOR' => '',
-    'ZCA_HEADER_EZPAGE_BACKGROUND_COLOR_HOVER' => '',
-    'ZCA_CHECKOUT_PROGRESS_BAR_BACKGROUND_COLOR' => '#28a745',
-    'ZCA_CHECKOUT_CONTINUE_BACKGROUND_COLOR' => '',
-    'ZCA_CHECKOUT_CONTINUE_BACKGROUND_COLOR_HOVER' => '',
-    'ZCA_CHECKOUT_CONTINUE_COLOR' => '',
-    'ZCA_CHECKOUT_CONTINUE_COLOR_HOVER' => '',
-    'ZCA_CHECKOUT_CONTINUE_BORDER_COLOR' => '',
-    'ZCA_CHECKOUT_CONTINUE_BORDER_COLOR_HOVER' => '',
-    'ZCA_CHECKOUT_CONFIRM_BACKGROUND_COLOR' => '',
-    'ZCA_CHECKOUT_CONFIRM_BACKGROUND_COLOR_HOVER' => '',
-    'ZCA_CHECKOUT_CONFIRM_COLOR' => '',
-    'ZCA_CHECKOUT_CONFIRM_COLOR_HOVER' => '',
-    'ZCA_CHECKOUT_CONFIRM_BORDER_COLOR' => '',
-    'ZCA_CHECKOUT_CONFIRM_BORDER_COLOR_HOVER' => '',
-    'ZCA_CAROUSEL_PREV_NEXT_COLOR' => '#000000',
-    'ZCA_CAROUSEL_PREV_NEXT_COLOR_HOVER' => '#000000',
-    'ZCA_CAROUSEL_BANNER_INDICATORS_BACKGROUND_COLOR' => '#000000',
-    'ZCA_PRIMARY_ADDRESS_ADDRESS_BACKGROUND_COLOR' => '#28a745',
-    'ZCA_PRIMARY_ADDRESS_ADDRESS_COLOR' => '#ffffff',
-    'ZCA_PRIMARY_ADDRESS_CARD_HEADER_BACKGROUND_COLOR' => '#007bff',
-    'ZCA_PRIMARY_ADDRESS_CARD_HEADER_COLOR' => '#ffffff',
-    'ZCA_PRIMARY_ADDRESS_CARD_BORDER_COLOR' => '#007bff',
+    'ZCA_BODY_RATING_STAR_BACKGROUND_COLOR',
+    'ZCA_BODY_RATING_STAR_COLOR',
+    'ZCA_HEADER_TABS_BORDER_COLOR',
+    'ZCA_HEADER_TABS_BORDER_COLOR_HOVER',
+    'ZCA_HEADER_TABS_ACTIVE_BACKGROUND_COLOR',
+    'ZCA_HEADER_TABS_ACTIVE_COLOR',
+    'ZCA_HEADER_TABS_ACTIVE_BORDER_COLOR',
+    'ZCA_HEADER_EZPAGE_BACKGROUND_COLOR_HOVER',
+    'ZCA_CHECKOUT_PROGRESS_BAR_BACKGROUND_COLOR',
+    'ZCA_CHECKOUT_CONTINUE_BACKGROUND_COLOR',
+    'ZCA_CHECKOUT_CONTINUE_BACKGROUND_COLOR_HOVER',
+    'ZCA_CHECKOUT_CONTINUE_COLOR',
+    'ZCA_CHECKOUT_CONTINUE_COLOR_HOVER',
+    'ZCA_CHECKOUT_CONTINUE_BORDER_COLOR',
+    'ZCA_CHECKOUT_CONTINUE_BORDER_COLOR_HOVER',
+    'ZCA_CHECKOUT_CONFIRM_BACKGROUND_COLOR',
+    'ZCA_CHECKOUT_CONFIRM_BACKGROUND_COLOR_HOVER',
+    'ZCA_CHECKOUT_CONFIRM_COLOR',
+    'ZCA_CHECKOUT_CONFIRM_COLOR_HOVER',
+    'ZCA_CHECKOUT_CONFIRM_BORDER_COLOR',
+    'ZCA_CHECKOUT_CONFIRM_BORDER_COLOR_HOVER',
+    'ZCA_CAROUSEL_PREV_NEXT_COLOR',
+    'ZCA_CAROUSEL_PREV_NEXT_COLOR_HOVER',
+    'ZCA_CAROUSEL_BANNER_INDICATORS_BACKGROUND_COLOR',
+    'ZCA_PRIMARY_ADDRESS_ADDRESS_BACKGROUND_COLOR',
+    'ZCA_PRIMARY_ADDRESS_ADDRESS_COLOR',
+    'ZCA_PRIMARY_ADDRESS_CARD_HEADER_BACKGROUND_COLOR',
+    'ZCA_PRIMARY_ADDRESS_CARD_HEADER_COLOR',
+    'ZCA_PRIMARY_ADDRESS_CARD_BORDER_COLOR',
 ];
 // -----
 // Each of the newly-added color values is saved as a lower-case variable
 // of the same name, e.g. ZCA_BODY_RATING_STAR_COLOR becomes $zca_body_rating_star_color)
 // whose value is either the associated constant's value (if the constant's defined and
-// its value is not 'not-set') or the constant's default value as indicated in the
-// array above.
+// its value is not 'not-set') or an empty string (for which the associated style will not
+// be included).
 //
-foreach ($zca_bootstrap_colors_added as $next_color => $default_color) {
+foreach ($zca_bootstrap_colors_added as $next_color) {
     $next_color_varname = strtolower($next_color);
-    $$next_color_varname = ((defined($next_color) && constant($next_color) !== 'not-set') ? constant($next_color) : $default_color);
+    $$next_color_varname = ((defined($next_color) && constant($next_color) !== 'not-set') ? constant($next_color) : '');
 }
 ?>
 <style>

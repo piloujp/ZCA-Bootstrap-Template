@@ -51,6 +51,7 @@ if (!$configuration->EOF) {
 // - 'configuration_value' ... The color's default configuration value; its description indicates this default value.
 // - 'sort_order' ............ The sort-order of the color on the display.  Note that different sections use a different sort-order range!
 // - 'added' ................. This (optional) value indicates the version of Bootstrap (prior to v3.5.2) or the Bootstrap Colors (after that) that the color was added.
+// - 'set_default' ........... This (optional) value indicates whether, on an upgrade, a newly-added color should be initialized to its default; otherwise, the value's set to 'not-set'.
 //
 $zca_bc_colors = [
     // -----
@@ -132,6 +133,7 @@ $zca_bc_colors = [
         'configuration_value' => '#efa31d',
         'sort_order' => 510,
         'added' => '3.5.2',
+        'set_default' => true,
     ],
 
     // -----
@@ -563,6 +565,7 @@ $zca_bc_colors = [
         'configuration_value' => '#008a13',
         'sort_order' => 7000,
         'added' => '3.5.2',
+        'set_default' => true,
     ],
     'ZCA_CHECKOUT_CONTINUE_BACKGROUND_COLOR' => [
         'configuration_title' => '<b>Checkout &quot;Continue&quot; Button</b> Background Color',
@@ -645,18 +648,21 @@ $zca_bc_colors = [
         'configuration_value' => '#000000',
         'sort_order' => 8000,
         'added' => '3.5.2',
+        'set_default' => true,
     ],
     'ZCA_CAROUSEL_PREV_NEXT_COLOR_HOVER' => [
         'configuration_title' => 'Carousel Prev/Next Icon Color on Hover',
         'configuration_value' => '#000000',
         'sort_order' => 8100,
         'added' => '3.5.2',
+        'set_default' => true,
     ],
     'ZCA_CAROUSEL_BANNER_INDICATORS_BACKGROUND_COLOR' => [
         'configuration_title' => 'Carousel Indicators Background Color',
         'configuration_value' => '#000000',
         'sort_order' => 8120,
         'added' => '3.5.2',
+        'set_default' => true,
     ],
 
     // -----
@@ -667,30 +673,35 @@ $zca_bc_colors = [
         'configuration_value' => '#28a745',
         'sort_order' => 8500,
         'added' => '3.5.2',
+        'set_default' => true,
     ],
     'ZCA_PRIMARY_ADDRESS_ADDRESS_COLOR' => [
         'configuration_title' => 'Primary Address Address Book Color',
         'configuration_value' => '#ffffff',
         'sort_order' => 8510,
         'added' => '3.5.2',
+        'set_default' => true,
     ],
     'ZCA_PRIMARY_ADDRESS_CARD_HEADER_BACKGROUND_COLOR' => [
         'configuration_title' => 'Primary Address Card Header Background Color',
         'configuration_value' => '#007bff',
         'sort_order' => 8520,
         'added' => '3.5.2',
+        'set_default' => true,
     ],
     'ZCA_PRIMARY_ADDRESS_CARD_HEADER_COLOR' => [
         'configuration_title' => 'Primary Address Card Header Color',
         'configuration_value' => '#ffffff',
         'sort_order' => 8530,
         'added' => '3.5.2',
+        'set_default' => true,
     ],
     'ZCA_PRIMARY_ADDRESS_CARD_BORDER_COLOR' => [
         'configuration_title' => 'Primary Address Card Border Color',
         'configuration_value' => '#007bff',
         'sort_order' => 8540,
         'added' => '3.5.2',
+        'set_default' => true,
     ],
 ];
 
@@ -717,7 +728,7 @@ if (!defined('ZCA_BOOTSTRAP_COLORS_VERSION')) {
     foreach ($zca_bc_colors as $key => $values) {
         $default_value = $values['configuration_value'];
         $added_version = (isset($values['added']) && $values['added'] >= '3.5.2') ? (' (Added in v'. $values['added'] . ')') : '';
-        $default_color = ($zca_bc_installed === false && $added_version !== '') ? 'not-set' : $default_value;
+        $default_color = ($zca_bc_installed === false && $added_version !== '' && empty($values['set_default'])) ? 'not-set' : $default_value;
         $configuration_values .= "('" . $values['configuration_title'] . "', '$key', '$default_color', 'Default: $default_value.$added_version', $bccid, " . $values['sort_order'] . ", now()),";
     }
     $configuration_values = rtrim($configuration_values, ',');
@@ -761,7 +772,7 @@ switch (true) {
         foreach ($zca_bc_colors as $key => $values) {
             $default_value = $values['configuration_value'];
             $added_version = (isset($values['added']) && $values['added'] >= '3.5.2') ? (' (Added in v'. $values['added'] . ')') : '';
-            $default_color = ($zca_bc_installed === false && $added_version !== '') ? 'not-set' : $default_value;
+            $default_color = ($zca_bc_installed === false && $added_version !== '' && empty($values['set_default'])) ? 'not-set' : $default_value;
             $description = "Default: $default_value.$added_version";
             if (isset($values['added']) && $values['added'] === '3.5.2') {
                 $db->Execute(
