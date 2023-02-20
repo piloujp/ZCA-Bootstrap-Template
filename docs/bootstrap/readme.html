@@ -73,10 +73,11 @@ img {
     <h3>Version 3.5.2, by lat9, drbyte, scottcwilson, marco-pm, dbltoe, dennisns7d, brittainmark and torvista</h3>
     <p>Current Support Thread at Zen Cart Forums: <a href="https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread" target="_blank">https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread</a></p>
     <p>Zen Cart Download Link: <a href="https://www.zen-cart.com/downloads.php?do=file&id=2191" target="_blank">https://www.zen-cart.com/downloads.php?do=file&id=2191</a></p>
-    <p>GitHub repository: <a href="https://github.com/lat9/ZCA-Bootstrap-Template" target="_blank">https://github.com/lat9/ZCA-Bootstrap-Template</a>.</p>
+    <p>GitHub repository: <a href="https://github.com/lat9/ZCA-Bootstrap-Template" target="_blank">https://github.com/lat9/ZCA-Bootstrap-Template</a></p>
+    <p>GitHub Wiki: <a href="https://github.com/lat9/ZCA-Bootstrap-Template/wiki" target="_blank">https://github.com/lat9/ZCA-Bootstrap-Template/wiki</a></p>
 
     <h2>What it does</h2>
-    <p>This template uses <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction/" target="_blank">Bootstrap-4.6.2</a> to provide its styling and builds on the base that Raymond Barbour provided over the past few years, supporting Zen Cart versions 1.5.7 and later &mdash; <em>best supported</em> by zc157<b>c</b> and <b>zc158</b>.  If your store is based on either zc157, zc157a or zc157b, be sure that you have applied all the <a href="https://www.zen-cart.com/showthread.php?226872-Known-bugs-(and-fixes)-for-v1-5-7-series" target="_blank">patches</a>!</p>
+    <p>This template uses <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction/" target="_blank">Bootstrap-4.6.2</a> to provide its styling and builds on the base that Raymond Barbour provided over the past few years, supporting Zen Cart versions 1.5.7 and later &mdash; <em>best supported</em> by zc157<b>d</b> and <b>zc158</b>.  If your store is based on either zc157, zc157a or zc157b, be sure that you have applied all the <a href="https://www.zen-cart.com/showthread.php?226872-Known-bugs-(and-fixes)-for-v1-5-7-series" target="_blank">patches</a>!</p>
     <p>Starting with v3.4.0 of the template, the template-related files needed when used with <a href="https://www.zen-cart.com/downloads.php?do=file&id=2095" target="_blank">One-Page Checkout</a> are also provided:</p>
     <ul>
         <li>These changes have been validated with v2.4.3 of <em>OPC</em>, I'll suggest upgrading to that version or later prior to upgrading to v3.4.0 or later of the Bootstrap-4 template.</li>
@@ -120,6 +121,7 @@ img {
         <li>/YOUR_ADMIN/includes/extra_datafiles/zca_bootstrap_colors.php</li>
         <li>/YOUR_ADMIN/includes/functions/extra_functions/zen_cfg_read_only.php <span class="smaller">(Added in v3.2.0)</span></li>
         <li>/YOUR_ADMIN/includes/init_includes/init_bc_config.php</li>
+        <li>/YOUR_ADMIN/includes/init_includes/init_bc_config_install_or_upgrade.php <span class="smaller">(Added in v3.5.2)</span></li>
         <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin.php</li>
         <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin_install.php <span class="smaller">(Added in v3.2.0)</span></li>
         <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin_update.php <span class="smaller">(Added in v3.2.0)</span></li>
@@ -277,22 +279,45 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.5.2-beta2, 2023-02-16 (lat9, dbltoe)<ul>
+        <li>v3.5.2-beta3, 2023-02-20 (lat9, dbltoe, dennisns7d)<ul>
             <li>BUGFIX: Correct shopping-cart display when both icon and checkbox is rendered.</li>
             <li>BUGFIX: Correct heading structure and add landscape for accessibility.</li>
             <li>BUGFIX: Remove unneeded code from the admin's <code>Tools :: ZCA Bootstrap Colors</code> tool.</li>
-            <li>The following files were changed:<ol>
+            <li>BUGFIX: Remove unwanted bootstrap base color classes, so the the &quot;ZCA Bootstrap Colors&quot; control the sections.</li>
+            <li>BUGFIX: Updating/adding various color settings for the &quot;ZCA Bootstrap Colors&quot; tool</li>
+            <li>BUGFIX: Updates to &quot;ZCA Bootstrap Colors&quot; and <code>/css/stylesheet_zca_colors.php</code> to make it easier to add/update colors now and in the future.  Refer to the template's <a href="https://github.com/lat9/ZCA-Bootstrap-Template/wiki" target="_blank">Wiki</a> for additional information.</li>
+            <li>The following files were changed, <span class="added">added</span> or <span class="removed">removed</span>:<ol>
+                <li><span class="added">/docs/bootstrap/uninstall/bootstrap_colors_uninstall.sql</span></li>
                 <li>/includes/modules/bootstrap/centerboxes/also_purchased_products.php</li>
                 <li>/includes/modules/bootstrap/centerboxes/featured_products.php</li>
                 <li>/includes/modules/bootstrap/centerboxes/new_products.php</li>
                 <li>/includes/modules/bootstrap/centerboxes/specials_index.php</li>
                 <li>/includes/templates/bootstrap/template_info.php</li>
                 <li>/includes/templates/bootstrap/common/tpl_main_page.php</li>
+                <li>/includes/templates/bootstrap/css/stylesheet.css</li>
+                <li><span class="removed">/includes/templates/bootstrap/css/stylesheet_colors.css</span></li>
+                <li>/includes/templates/bootstrap/css/stylesheet_zca_colors.php</li>
+                <li>/includes/templates/bootstrap/sideboxes/tpl_document_categories.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_address_book_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_ajax_checkout_confirmation_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_checkout_confirmation_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_checkout_payment_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_checkout_shipping_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_checkout_success_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_create_account_register.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_create_account_success_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_document_general_info_display.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_document_product_info_display.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_index_categories.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_index_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_modules_checkout_address_book.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_shopping_cart_default.php</li>
                 <li>/YOUR_ADMIN/zca_bootstrap_colors.php</li>
+                <li>/YOUR_ADMIN/includes/init_includes/init_bc_config.php</li>
+                <li><span class="added">/YOUR_ADMIN/includes/init_includes/init_bc_config_install_or_upgrade.php</span></li>
                 <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin.php</li>
+                <li>/YOUR_ADMIN/includes/languages/english/zca_bootstrap_colors.php</li>
+                <li>/YOUR_ADMIN/includes/languages/english/extra_definitions/zca_bootstrap_colors.php</li>
              </ol></li>
         </ul></li>
         <li>v3.5.1, 2023-02-09 (lat9, brittainmark, torvista)<ul>
