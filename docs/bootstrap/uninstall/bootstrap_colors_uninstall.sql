@@ -21,7 +21,9 @@ DELETE FROM configuration
     OR configuration_key LIKE 'ZCA_FOOTER_%'
     OR configuration_key LIKE 'ZCA_SIDEBOX_%'
     OR configuration_key LIKE 'ZCA_CENTERBOX_%'
-    OR configuration_key LIKE 'ZCA_ADD_TO_CART_%';
+    OR configuration_key LIKE 'ZCA_ADD_TO_CART_%'
+    OR configuration_key LIKE 'ZCA_CHECKOUT_%'
+    OR configuration_key LIKE 'ZCA_CAROUSEL_%';
 #
 # Remove the overall configuration-group for the color-related settings.
 #

@@ -4,6 +4,43 @@
 //
 // BOOTSTRAP v3.5.2
 //
+// Starting with Bootstrap v3.5.2, any color-specifications defined in that and follow-on
+// versions start out, on an upgrade, with a value of 'not-set' to give the site a chance
+// to define those colors to be compatible with the site's color scheme.
+//
+$zca_bootstrap_colors_added = [
+    // -----
+    // Added in v3.5.2.
+    //
+    'ZCA_BODY_RATING_STAR_BACKGROUND_COLOR' => '',
+    'ZCA_BODY_RATING_STAR_COLOR' => '#efa31d',
+    'ZCA_HEADER_TABS_BORDER_COLOR' => '',
+    'ZCA_HEADER_TABS_BORDER_COLOR_HOVER' => '',
+    'ZCA_HEADER_TABS_ACTIVE_BACKGROUND_COLOR' => '',
+    'ZCA_HEADER_TABS_ACTIVE_COLOR' => '',
+    'ZCA_HEADER_TABS_ACTIVE_BORDER_COLOR' => '',
+    'ZCA_HEADER_EZPAGE_BACKGROUND_COLOR_HOVER' => '',
+    'ZCA_CHECKOUT_PROGRESS_BAR_BACKGROUND_COLOR' => '#28a745',
+    'ZCA_CHECKOUT_CONTINUE_BACKGROUND_COLOR' => '',
+    'ZCA_CHECKOUT_CONTINUE_BACKGROUND_COLOR_HOVER' => '',
+    'ZCA_CHECKOUT_CONTINUE_COLOR' => '',
+    'ZCA_CHECKOUT_CONTINUE_COLOR_HOVER' => '',
+    'ZCA_CHECKOUT_CONTINUE_BORDER_COLOR' => '',
+    'ZCA_CHECKOUT_CONTINUE_BORDER_COLOR_HOVER' => '',
+    'ZCA_CHECKOUT_CONFIRM_BACKGROUND_COLOR' => '',
+    'ZCA_CHECKOUT_CONFIRM_BACKGROUND_COLOR_HOVER' => '',
+    'ZCA_CHECKOUT_CONFIRM_COLOR' => '',
+    'ZCA_CHECKOUT_CONFIRM_COLOR_HOVER' => '',
+    'ZCA_CHECKOUT_CONFIRM_BORDER_COLOR' => '',
+    'ZCA_CHECKOUT_CONFIRM_BORDER_COLOR_HOVER' => '',
+    'ZCA_CAROUSEL_PREV_NEXT_COLOR' => '#000000',
+    'ZCA_CAROUSEL_PREV_NEXT_COLOR_HOVER' => '#000000',
+    'ZCA_CAROUSEL_BANNER_INDICATORS_BACKGROUND_COLOR' => '#000000',
+];
+foreach ($zca_bootstrap_colors_added as $next_color => $default_color) {
+    $next_color_varname = strtolower($next_color);
+    $$next_color_varname = ((defined($next_color) && constant($next_color) !== 'not-set') ? constant($next_color) : $default_color);
+}
 ?>
 <style>
 <?php
@@ -20,6 +57,10 @@ a:hover {color: <?php echo ZCA_BUTTON_LINK_COLOR_HOVER; ?>;}
 .required-info,
 .alert {
     color: <?php echo ZCA_BODY_PLACEHOLDER; ?>;
+}
+.rating {
+    <?php echo ($zca_body_rating_star_background_color !== '') ? "background-color: $zca_body_rating_star_background_color;" : ''; ?>
+    <?php echo ($zca_body_rating_star_color !== '') ? "color: $zca_body_rating_star_color;" : ''; ?>
 }
 <?php
 //- Buttons
@@ -76,6 +117,7 @@ nav.navbar .navbar-toggler:hover {
 }
 #ezpagesBarHeader a.nav-link:hover {
     color: <?php echo ZCA_HEADER_EZPAGE_LINK_COLOR_HOVER; ?>;
+    <?php echo ($zca_header_ezpage_background_color_hover !== '') ? "background-color: $zca_header_ezpage_background_color_hover;" : ''; ?>
 }
 <?php
 //- Header Category Tabs
@@ -83,10 +125,12 @@ nav.navbar .navbar-toggler:hover {
 #navCatTabs a {
     color: <?php echo ZCA_HEADER_TABS_TEXT_COLOR; ?>;
     background-color: <?php echo ZCA_HEADER_TABS_COLOR; ?>;
+    <?php echo ($zca_header_tabs_border_color !== '') ? "border-color: $zca_header_tabs_border_color;" : ''; ?>
 }
 #navCatTabs a:hover {
     color: <?php echo ZCA_HEADER_TABS_TEXT_COLOR_HOVER; ?>;
     background-color: <?php echo ZCA_HEADER_TABS_COLOR_HOVER; ?>;
+    <?php echo ($zca_header_tabs_border_color_hover !== '') ? "border-color: $zca_header_tabs_border_color_hover;" : ''; ?>
 }
 <?php
 //- Breadcrumbs
@@ -278,12 +322,62 @@ if (defined('ZCA_BUTTON_IN_CART_BACKGROUND_COLOR')) {
 .btn.button_in_cart {
     background: <?php echo ZCA_BUTTON_IN_CART_BACKGROUND_COLOR; ?>;
     color: <?php echo ZCA_BUTTON_IN_CART_TEXT_COLOR; ?>;
+
+}
+.fa-cart-plus {
+    color: <?php echo ZCA_BUTTON_IN_CART_BACKGROUND_COLOR; ?>;
 }
 .btn.button_in_cart:hover {
     background: <?php echo ZCA_BUTTON_IN_CART_BACKGROUND_COLOR_HOVER; ?>;
     color: <?php echo ZCA_BUTTON_IN_CART_TEXT_COLOR_HOVER; ?>;
 }
+a:hover > .fa-cart-plus {
+    <?php echo ZCA_BUTTON_IN_CART_BACKGROUND_COLOR_HOVER; ?>;
+}
 <?php
 }
+//- Checkout buttons and progress-bar
 ?>
+button.button_continue_checkout,
+a.button_checkout {
+    <?php echo ($zca_checkout_continue_background_color !== '') ? "background-color: $zca_checkout_continue_background_color;" : ''; ?>
+    <?php echo ($zca_checkout_continue_color !== '') ? "color: $zca_checkout_continue_color;" : ''; ?>
+    <?php echo ($zca_checkout_continue_border_color !== '') ? "border-color: $zca_checkout_continue_border_color;" : ''; ?>
+}
+button.button_continue_checkout:hover,
+a.button_checkout:hover {
+    <?php echo ($zca_checkout_continue_background_color_hover !== '') ? "background-color: $zca_checkout_continue_background_color_hover;" : ''; ?>
+    <?php echo ($zca_checkout_continue_color_hover !== '') ? "color: $zca_checkout_continue_color_hover;" : ''; ?>
+    <?php echo ($zca_checkout_continue_border_color_hover !== '') ? "border-color: $zca_checkout_continue_border_color_hover;" : ''; ?>
+}
+button.button_confirm_order {
+    <?php echo ($zca_checkout_confirm_background_color !== '') ? "background-color: $zca_checkout_continue_background_color;" : ''; ?>
+    <?php echo ($zca_checkout_confirm_color !== '') ? "color: $zca_checkout_continue_color;" : ''; ?>
+    <?php echo ($zca_checkout_confirm_border_color !== '') ? "border-color: $zca_checkout_continue_border_color;" : ''; ?>
+}
+button.button_confirm_order:hover {
+    <?php echo ($zca_checkout_confirm_background_color_hover !== '') ? "background-color: $zca_checkout_confirm_background_color_hover;" : ''; ?>
+    <?php echo ($zca_checkout_confirm_color_hover !== '') ? "color: $zca_checkout_confirm_color_hover;" : ''; ?>
+    <?php echo ($zca_checkout_confirm_border_color_hover !== '') ? "border-color: $zca_checkout_confirm_border_color_hover;" : ''; ?>
+}
+#checkoutShippingDefault .progress-bar,
+#checkoutPayment .progress-bar,
+#checkoutConfirmationDefault .progress-bar,
+#checkoutSuccessDefault .progress-bar {
+    <?php echo ($zca_checkout_progress_bar_background_color !== '') ? "background-color: $zca_checkout_progress_bar_background_color!important;" : ''; ?>
+}
+<?php
+//- Carousel prev/next and indicators
+?>
+a.carousel-control-prev,
+a.carousel-control-next {
+    <?php echo ($zca_carousel_prev_next_color !== '') ? "color: $zca_carousel_prev_next_color;" : ''; ?>
+}
+a.carousel-control-prev:hover,
+a.carousel-control-next:hover {
+    <?php echo ($zca_carousel_prev_next_color_hover !== '') ? "color: $zca_carousel_prev_next_color_hover;" : ''; ?>
+}
+.banner-carousel .carousel-indicators li {
+     <?php echo ($zca_carousel_banner_indicators_background_color !== '') ? "background-color: $zca_carousel_banner_indicators_background_color;" : ''; ?>
+}
 </style>

@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.5.0
+ * BOOTSTRAP v3.5.2
  *
  * Loaded automatically by index.php?main_page=checkout_success.
  * Displays confirmation details after order has been successfully processed.
@@ -16,7 +16,7 @@
 <div id="checkoutSuccessDefault" class="centerColumn">
 
 <div class="progress">
-  <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
 </div>
 
 <h1 id="checkoutSuccessDefault-pageHeading" class="pageHeading"><?php echo HEADING_TITLE; ?></h1>
