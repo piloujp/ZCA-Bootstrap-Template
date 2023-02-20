@@ -39,6 +39,11 @@ $zca_bootstrap_colors_added = [
     'ZCA_CAROUSEL_PREV_NEXT_COLOR' => '#000000',
     'ZCA_CAROUSEL_PREV_NEXT_COLOR_HOVER' => '#000000',
     'ZCA_CAROUSEL_BANNER_INDICATORS_BACKGROUND_COLOR' => '#000000',
+    'ZCA_PRIMARY_ADDRESS_ADDRESS_BACKGROUND_COLOR' => '#28a745',
+    'ZCA_PRIMARY_ADDRESS_ADDRESS_COLOR' => '#ffffff',
+    'ZCA_PRIMARY_ADDRESS_CARD_HEADER_BACKGROUND_COLOR' => '#007bff',
+    'ZCA_PRIMARY_ADDRESS_CARD_HEADER_COLOR' => '#ffffff',
+    'ZCA_PRIMARY_ADDRESS_CARD_BORDER_COLOR' => '#007bff',
 ];
 // -----
 // Each of the newly-added color values is saved as a lower-case variable
@@ -384,6 +389,20 @@ a.carousel-control-next:hover {
     <?php echo ($zca_carousel_prev_next_color_hover !== '') ? "color: $zca_carousel_prev_next_color_hover;" : ''; ?>
 }
 .banner-carousel .carousel-indicators li {
-     <?php echo ($zca_carousel_banner_indicators_background_color !== '') ? "background-color: $zca_carousel_banner_indicators_background_color;" : ''; ?>
+    <?php echo ($zca_carousel_banner_indicators_background_color !== '') ? "background-color: $zca_carousel_banner_indicators_background_color;" : ''; ?>
+}
+<?php
+//- Primary address <address> and cards
+?>
+.defaultAddress address {
+    <?php echo ($zca_primary_address_address_background_color !== '') ? "background-color: $zca_primary_address_address_background_color;" : ''; ?>
+    <?php echo ($zca_primary_address_address_color !== '') ? "color: $zca_primary_address_address_color;" : ''; ?>
+}
+.card.primary-address {
+    <?php echo ($zca_primary_address_card_border_color !== '') ? "border-color: $zca_primary_address_card_border_color;" : ''; ?>
+}
+.card.primary-address > .card-header{
+    <?php echo ($zca_primary_address_card_header_background_color !== '') ? "background-color: $zca_primary_address_card_header_background_color;" : ''; ?>
+    <?php echo ($zca_primary_address_card_header_color !== '') ? "color: $zca_primary_address_card_header_color;" : ''; ?>
 }
 </style>

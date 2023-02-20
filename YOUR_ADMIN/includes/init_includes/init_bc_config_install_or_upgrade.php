@@ -638,7 +638,7 @@ $zca_bc_colors = [
     ],
 
     // -----
-    // Carousel-related colors sort-orders range from 8000-8999
+    // Carousel-related colors sort-orders range from 8000-8499
     //
     'ZCA_CAROUSEL_PREV_NEXT_COLOR' => [
         'configuration_title' => '<b>Carousel</b> Prev/Next Icon Color',
@@ -656,6 +656,40 @@ $zca_bc_colors = [
         'configuration_title' => 'Carousel Indicators Background Color',
         'configuration_value' => '#000000',
         'sort_order' => 8120,
+        'added' => '3.5.2',
+    ],
+
+    // -----
+    // Primary-address-related colors sort-orders range from 8500-8999
+    //
+    'ZCA_PRIMARY_ADDRESS_ADDRESS_BACKGROUND_COLOR' => [
+        'configuration_title' => '<b>Primary Address</b> Address Book Background Color',
+        'configuration_value' => '#28a745',
+        'sort_order' => 8500,
+        'added' => '3.5.2',
+    ],
+    'ZCA_PRIMARY_ADDRESS_ADDRESS_COLOR' => [
+        'configuration_title' => 'Primary Address Address Book Color',
+        'configuration_value' => '#ffffff',
+        'sort_order' => 8510,
+        'added' => '3.5.2',
+    ],
+    'ZCA_PRIMARY_ADDRESS_CARD_HEADER_BACKGROUND_COLOR' => [
+        'configuration_title' => 'Primary Address Card Header Background Color',
+        'configuration_value' => '#007bff',
+        'sort_order' => 8520,
+        'added' => '3.5.2',
+    ],
+    'ZCA_PRIMARY_ADDRESS_CARD_HEADER_COLOR' => [
+        'configuration_title' => 'Primary Address Card Header Color',
+        'configuration_value' => '#ffffff',
+        'sort_order' => 8530,
+        'added' => '3.5.2',
+    ],
+    'ZCA_PRIMARY_ADDRESS_CARD_BORDER_COLOR' => [
+        'configuration_title' => 'Primary Address Card Border Color',
+        'configuration_value' => '#007bff',
+        'sort_order' => 8540,
         'added' => '3.5.2',
     ],
 ];

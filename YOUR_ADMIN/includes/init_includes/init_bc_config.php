@@ -23,7 +23,7 @@ if (!isset($_SESSION['admin_id'])) {
 // is added, removed or updated.  Initially added for Bootstrap v3.5.2, note that
 // its setting might not "keep up" with the base template's version!
 //
-define('ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION', '3.5.2-beta3');
+define('ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION', '3.5.2-beta4');
 
 // -----
 // If this is an upgrade (or an initial install), load the installation/upgrade script to (at a minimum)
