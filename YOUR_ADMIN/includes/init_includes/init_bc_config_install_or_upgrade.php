@@ -311,21 +311,39 @@ $zca_bc_colors = [
         'added' => '3.5.2',
     ],
     'ZCA_HEADER_TABS_ACTIVE_BACKGROUND_COLOR' => [
-        'configuration_title' => 'Header Category Tabs Active Background Color',
-        'configuration_value' => '#ffffff',
+        'configuration_title' => '<b>Header Category Tabs Active</b> Background Color',
+        'configuration_value' => '#ad0000',
         'sort_order' => 2590,
+        'added' => '3.5.2',
+    ],
+    'ZCA_HEADER_TABS_ACTIVE_BACKGROUND_COLOR_HOVER' => [
+        'configuration_title' => 'Header Category Tabs Active Background Color on Hover',
+        'configuration_value' => '#ffffff',
+        'sort_order' => 2592,
         'added' => '3.5.2',
     ],
     'ZCA_HEADER_TABS_ACTIVE_COLOR' => [
         'configuration_title' => 'Header Category Tabs Active Color',
-        'configuration_value' => '#ad0000',
+        'configuration_value' => '#ffffff',
         'sort_order' => 2600,
+        'added' => '3.5.2',
+    ],
+    'ZCA_HEADER_TABS_ACTIVE_COLOR_HOVER' => [
+        'configuration_title' => 'Header Category Tabs Active Color',
+        'configuration_value' => '#ad0000',
+        'sort_order' => 2602,
         'added' => '3.5.2',
     ],
     'ZCA_HEADER_TABS_ACTIVE_BORDER_COLOR' => [
         'configuration_title' => 'Header Category Tabs Active Border Color',
         'configuration_value' => '#ad0000',
         'sort_order' => 2620,
+        'added' => '3.5.2',
+    ],
+    'ZCA_HEADER_TABS_ACTIVE_BORDER_COLOR_HOVER' => [
+        'configuration_title' => 'Header Category Tabs Active Border Color on Hover',
+        'configuration_value' => '#ad0000',
+        'sort_order' => 2622,
         'added' => '3.5.2',
     ],
     'ZCA_HEADER_EZPAGE_BACKGROUND_COLOR' => [

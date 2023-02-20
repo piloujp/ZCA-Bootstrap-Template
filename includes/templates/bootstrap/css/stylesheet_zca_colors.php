@@ -17,8 +17,11 @@ $zca_bootstrap_colors_added = [
     'ZCA_HEADER_TABS_BORDER_COLOR',
     'ZCA_HEADER_TABS_BORDER_COLOR_HOVER',
     'ZCA_HEADER_TABS_ACTIVE_BACKGROUND_COLOR',
+    'ZCA_HEADER_TABS_ACTIVE_BACKGROUND_COLOR_HOVER',
     'ZCA_HEADER_TABS_ACTIVE_COLOR',
+    'ZCA_HEADER_TABS_ACTIVE_COLOR_HOVER',
     'ZCA_HEADER_TABS_ACTIVE_BORDER_COLOR',
+    'ZCA_HEADER_TABS_ACTIVE_BORDER_COLOR_HOVER',
     'ZCA_HEADER_EZPAGE_BACKGROUND_COLOR_HOVER',
     'ZCA_FOOTER_EZPAGE_BACKGROUND_COLOR_HOVER',
     'ZCA_CHECKOUT_PROGRESS_BAR_BACKGROUND_COLOR',
@@ -136,10 +139,20 @@ nav.navbar .navbar-toggler:hover {
     background-color: <?php echo ZCA_HEADER_TABS_COLOR; ?>;
     <?php echo ($zca_header_tabs_border_color !== '') ? "border-color: $zca_header_tabs_border_color;" : ''; ?>
 }
+#navCatTabs a.activeLink {
+    <?php echo ($zca_header_tabs_active_background_color !== '') ? "background-color: $zca_header_tabs_active_background_color;" : ''; ?>
+    <?php echo ($zca_header_tabs_active_color !== '') ? "color: $zca_header_tabs_active_color;" : ''; ?>
+    <?php echo ($zca_header_tabs_active_border_color !== '') ? "border-color: $zca_header_tabs_active_border_color;" : ''; ?>
+}
 #navCatTabs a:hover {
     color: <?php echo ZCA_HEADER_TABS_TEXT_COLOR_HOVER; ?>;
     background-color: <?php echo ZCA_HEADER_TABS_COLOR_HOVER; ?>;
     <?php echo ($zca_header_tabs_border_color_hover !== '') ? "border-color: $zca_header_tabs_border_color_hover;" : ''; ?>
+}
+#navCatTabs a.activeLink:hover {
+    <?php echo ($zca_header_tabs_active_background_color_hover !== '') ? "background-color: $zca_header_tabs_active_background_color_hover;" : ''; ?>
+    <?php echo ($zca_header_tabs_active_color_hover !== '') ? "color: $zca_header_tabs_active_color_hover;" : ''; ?>
+    <?php echo ($zca_header_tabs_active_border_color_hover !== '') ? "border-color: $zca_header_tabs_active_border_color_hover;" : ''; ?>
 }
 <?php
 //- Breadcrumbs
