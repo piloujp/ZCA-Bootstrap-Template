@@ -198,7 +198,6 @@ nav.navbar .navbar-toggler:hover {
     color: <?php echo ZCA_SIDEBOX_TEXT_COLOR; ?>;
     background-color: <?php echo ZCA_SIDEBOX_BACKGROUND_COLOR; ?>;
 }
-
 .leftBoxHeading,
 .rightBoxHeading {
     color: <?php echo ZCA_SIDEBOX_HEADER_TEXT_COLOR; ?>;
@@ -345,7 +344,6 @@ if (defined('ZCA_BUTTON_IN_CART_BACKGROUND_COLOR')) {
 .btn.button_in_cart {
     background: <?php echo ZCA_BUTTON_IN_CART_BACKGROUND_COLOR; ?>;
     color: <?php echo ZCA_BUTTON_IN_CART_TEXT_COLOR; ?>;
-
 }
 .fa-cart-plus {
     color: <?php echo ZCA_BUTTON_IN_CART_BACKGROUND_COLOR; ?>;
