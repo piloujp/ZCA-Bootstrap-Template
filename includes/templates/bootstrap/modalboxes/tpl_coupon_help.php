@@ -2,7 +2,7 @@
 /**
  * Override Template for common/tpl_main_page.php
  *
- * BOOTSTRAP v3.4.0
+ * BOOTSTRAP v3.5.2
  *
  * @package templateSystem
  * @copyright Copyright 2003-2018 Zen Cart Development Team
@@ -123,12 +123,13 @@ if ($get_result->RecordCount() === 1 && $get_result->fields['category_id'] === '
             $cats[] = $result->fields["categories_name"] . $restrict;
         }
     }
-
-    if (count($cats) === 0) {
-        $cats[] = TEXT_NO_CAT_RESTRICTIONS;
-    }
 }
-sort($cats);
+if (count($cats) === 0) {
+    $cats[] = TEXT_NO_CAT_RESTRICTIONS;
+} else {
+    sort($cats);
+}
+
 $text_coupon_help .= '<ul id="couponCatRestrictions">' . '<li>' . implode('</li><li>', $cats) . '</li></ul>';
 
 $text_coupon_help .= TEXT_COUPON_HELP_PRODUCTS;
