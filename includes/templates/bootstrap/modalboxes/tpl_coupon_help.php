@@ -148,7 +148,7 @@ foreach ($get_result as $next_restriction) {
     } else {
         $restrict = TEXT_DENIED;
     }
-    $prods[] = zen_get_products_name($next_restriction['products_id']) . $restrict;
+    $prods[] = zen_get_products_name($next_restriction['product_id']) . $restrict;
 }
 
 if (count($prods) === 0) {
