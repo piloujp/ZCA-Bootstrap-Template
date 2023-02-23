@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.5.1
+ * BOOTSTRAP v3.5.2
  *
  * Loaded automatically by index.php?main_page=checkout_payment.<br />
  * Displays the allowed payment modules, for selection by customer.
@@ -281,9 +281,16 @@ if (!$payment_modules->in_special_checkout()) {
     }
 ?>
         </div>
-
+<?php
+    // -----
+    // Starting with the as-delivered Zen Cart 1.5.8a, styling has been removed from various checkout language
+    // constants.  To keep the same 'look' regardless whether the store's value contains a <strong> tag, strip
+    // that tag and its end-tag from the constant and output the tag here.
+    //
+    $title_continue_checkout = str_replace(['<strong>', '</strong>'], '', TITLE_CONTINUE_CHECKOUT_PROCEDURE);
+?>
         <div id="paymentSubmit" class="btn-toolbar justify-content-between" role="toolbar">
-            <?php echo TITLE_CONTINUE_CHECKOUT_PROCEDURE . '<br>' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
+            <?php echo '<strong>' . $title_continue_checkout . '</strong><br>' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
             <?php echo zen_image_submit(BUTTON_IMAGE_CONTINUE_CHECKOUT, BUTTON_CONTINUE_ALT, 'onclick="submitFunction(' . zen_user_has_gv_account($_SESSION['customer_id']) . ',' . $order->info['total'] . ')"'); ?>
         </div>
     <?php echo '</form>'; ?>

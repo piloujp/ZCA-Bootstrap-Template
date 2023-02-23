@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.5.0
+ * BOOTSTRAP v3.5.2
  *
  * Loaded automatically by index.php?main_page=checkout_shipping_adresss.
  * Allows customer to change the shipping address.
@@ -40,6 +40,13 @@ if ($process == false || $error == true) {
     <div class="row">
 <!--eof shipping address card-->
 <?php
+    // -----
+    // Starting with the as-delivered Zen Cart 1.5.8a, styling has been removed from various checkout language
+    // constants.  To keep the same 'look' regardless whether the store's value contains a <strong> tag, strip
+    // that tag and its end-tag from the constant and output the tag here.
+    //
+    $title_continue_checkout = str_replace(['<strong>', '</strong>'], '', TITLE_CONTINUE_CHECKOUT_PROCEDURE);
+
     if ($addresses_count < MAX_ADDRESS_BOOK_ENTRIES) {
 ?>
         <div class="col-lg-6">
@@ -51,7 +58,7 @@ if ($process == false || $error == true) {
         require $template->get_template_dir('tpl_modules_common_address_format.php', DIR_WS_TEMPLATE, $current_page_base, 'templates') . '/tpl_modules_common_address_format.php'; 
 ?>
                     <div class="btn-toolbar justify-content-between mt-3" role="toolbar">
-                        <?php echo TITLE_CONTINUE_CHECKOUT_PROCEDURE . '<br>' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
+                        <?php echo '<strong>' . $title_continue_checkout . '</strong><br>' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
                         <?php echo zen_draw_hidden_field('action', 'submit') . zen_image_submit(BUTTON_IMAGE_CONTINUE, BUTTON_CONTINUE_ALT); ?>
                     </div>
                 </div>
@@ -71,7 +78,7 @@ if ($process == false || $error == true) {
     require $template->get_template_dir('tpl_modules_checkout_address_book.php', DIR_WS_TEMPLATE, $current_page_base, 'templates') . '/tpl_modules_checkout_address_book.php';
 ?>
                     <div class="btn-toolbar justify-content-between" role="toolbar">
-                        <?php echo TITLE_CONTINUE_CHECKOUT_PROCEDURE . '<br>' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
+                        <?php echo '<strong>' . $title_continue_checkout . '</strong><br>' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
                         <?php echo zen_draw_hidden_field('action', 'submit') . zen_image_submit(BUTTON_IMAGE_CONTINUE, BUTTON_CONTINUE_ALT); ?>
                     </div>
                 </div>
