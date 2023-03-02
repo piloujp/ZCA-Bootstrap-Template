@@ -3,7 +3,7 @@
  * ZCA Banners Carousel
  * Plugin Template
  * 
- * BOOTSTRAP v3.5.1
+ * BOOTSTRAP v3.5.2
  *
  */
 // -----
@@ -64,11 +64,11 @@ foreach ($banners as $row) {
 ?>
     </div>
     <a class="carousel-control-prev" href="#<?php echo $carousel_group_id; ?>" role="button" data-slide="prev">
-        <span><i class="fa fa-lg fa-chevron-left" aria-hidden="true"></i></span>
+        <span><i class="fas fa-lg fa-chevron-left" aria-hidden="true"></i></span>
         <span class="sr-only"><?php echo BUTTON_PREVIOUS_ALT; ?></span>
     </a>
     <a class="carousel-control-next" href="#<?php echo $carousel_group_id; ?>" role="button" data-slide="next">
-        <span><i class="fa fa-lg fa-chevron-right" aria-hidden="true"></i></span>
+        <span><i class="fas fa-lg fa-chevron-right" aria-hidden="true"></i></span>
         <span class="sr-only"><?php echo BUTTON_NEXT_ALT; ?></span>
     </a>
 </div>
