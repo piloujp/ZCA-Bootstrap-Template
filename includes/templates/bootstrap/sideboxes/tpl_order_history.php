@@ -18,7 +18,7 @@ foreach ($customer_orders as $row) {
     $content .= '<li class="list-group-item d-flex justify-content-between align-items-center">';
     $content .= '<a href="' . zen_href_link(zen_get_info_page($row['id']), 'products_id=' . $row['id']) . '">' . $row['name'] . '</a>';
     $content .= '&nbsp;&nbsp;';
-    $content .= '<a href="' . zen_href_link($_GET['main_page'], zen_get_all_get_params(array('action')) . 'action=cust_order&pid=' . $row['id']) . '"><i class="fas fa-cart-plus"></i></a>';
+    $content .= '<a href="' . zen_href_link($_GET['main_page'], zen_get_all_get_params(array('action')) . 'action=cust_order&pid=' . $row['id']) . '"><i class="fas fa-cart-plus" aria-label="History"></i></a>';
     $content .= '</li>' . "\n" ;
 }
 $content .= '</ul>' . "\n" ;
