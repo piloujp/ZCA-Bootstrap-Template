@@ -20,7 +20,7 @@
 if ($process == false || $error == true) {
 ?>
     <div id="billingAddress-card" class="card mb-3">
-        <h4 id="billingAddress-card-header" class="card-header"><?php echo TITLE_PAYMENT_ADDRESS; ?></h4>
+        <h2 id="billingAddress-card-header" class="card-header"><?php echo TITLE_PAYMENT_ADDRESS; ?></h2>
         <div id="billingAddress-card-body" class="card-body p-3">
             <div class="row">
                 <div id="billingAddress-billToAddress" class="billToAddress col-sm-5">
@@ -47,7 +47,7 @@ if ($process == false || $error == true) {
         <div class="col-lg-6">
             <div id="checkoutNewAddress-card" class="card mb-3">
                 <?php echo zen_draw_form('checkout_address', zen_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL'), 'post', 'class="group"'); ?>
-                <h4 id="checkoutNewAddress-card-header" class="card-header"><?php echo TITLE_PLEASE_SELECT; ?></h4>
+                <h2 id="checkoutNewAddress-card-header" class="card-header"><?php echo TITLE_PLEASE_SELECT; ?></h2>
                 <div id="checkoutNewAddress-card-body" class="card-body p-3">
 <?php 
         require $template->get_template_dir('tpl_modules_common_address_format.php', DIR_WS_TEMPLATE, $current_page_base, 'templates') . '/tpl_modules_common_address_format.php'; 
