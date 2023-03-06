@@ -2,7 +2,7 @@
 // -----
 // Part of the ZCA Bootstrap template, @zcadditions, @lat9, @marco-pm
 //
-// BOOTSTRAP 3.5.1.
+// BOOTSTRAP 3.5.2
 //
 class ZcaBootstrapObserver extends base
 {
@@ -294,7 +294,7 @@ class ZcaBootstrapObserver extends base
                 $p2 = '<button class="btn ' . $sold_out_button_class . '" type="button">' . $sold_out_button_name . '</button>';
                 break;
 
-            case 'NOTIFY_NOTIFY_ORDER_COUPON_LINK':
+            case 'NOTIFY_ORDER_COUPON_LINK':
                 $zc_coupon_link = '<a data-toggle="modal" data-id="'. $p1['coupon_id']. '" href="#couponHelpModal">';
                 $p2 = $zc_coupon_link;
                 break;
