@@ -2,7 +2,7 @@
 /**
  * Side Box Template
  * 
- * BOOTSTRAP v3.4.2
+ * BOOTSTRAP v3.5.2
  *
  * @package templateSystem
  * @copyright Copyright 2003-2005 Zen Cart Development Team

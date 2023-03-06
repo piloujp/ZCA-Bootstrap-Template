@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.5.0
+ * BOOTSTRAP v3.5.2
  *
  * Loaded automatically by index.php?main_page=account_notifications.<br />
  * Allows customer to manage product notifications

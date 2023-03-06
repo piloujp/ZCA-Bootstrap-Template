@@ -278,7 +278,7 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.5.2-beta6, 2023-03-02 (lat9, dbltoe, dennisns7d)<ul>
+        <li>v3.5.2-beta7, 2023-03-06 (lat9, dbltoe, dennisns7d)<ul>
             <li>BUGFIX: Correct shopping-cart display when both icon and checkbox is rendered.</li>
             <li>BUGFIX: Correct heading structure and add landscape for accessibility.</li>
             <li>BUGFIX: Remove unneeded code from the admin's <code>Tools :: ZCA Bootstrap Colors</code> tool.</li>
@@ -290,6 +290,7 @@ img {
             <li>BUGFIX: zc158<b>a</b> no longer includes &lt;strong&gt; tags in 3-page checkout guidance language constants.</li>
             <li>BUGFIX: Coupon modal pop-up creates PHP Warning when coupon has product-related restrictions.</li>
             <li>BUGFIX: Use FA-5 classes for FA-icons (some were still using FA-4 'syntax').</li>
+            <li>BUGFIX: Correcting header-tag hierarchy and adding labels for accessibility.</li>
             <li>The following files were changed, <span class="added">added</span> or <span class="removed">removed</span>:<ol>
                 <li><span class="added">/docs/bootstrap/uninstall/bootstrap_colors_uninstall.sql</span></li>
                 <li>/includes/modules/bootstrap/centerboxes/also_purchased_products.php</li>
@@ -302,10 +303,15 @@ img {
                 <li>/includes/templates/bootstrap/css/stylesheet.css</li>
                 <li><span class="removed">/includes/templates/bootstrap/css/stylesheet_colors.css</span></li>
                 <li>/includes/templates/bootstrap/css/stylesheet_zca_colors.php</li>
+                <li>/includes/templates/bootstrap/centerboxes/tpl_modules_no_notifications.php</li>
+                <li>/includes/templates/bootstrap/centerboxes/tpl_modules_yes_notifications.php</li>
                 <li>/includes/templates/bootstrap/modalboxes/tpl_ajax_search.php</li>
                 <li>/includes/templates/bootstrap/modalboxes/tpl_bootstrap_images.php</li>
                 <li>/includes/templates/bootstrap/modalboxes/tpl_coupon_help.php</li>
+                <li>/includes/templates/bootstrap/sideboxes/tpl_ajax_search_header.php</li>
                 <li>/includes/templates/bootstrap/sideboxes/tpl_document_categories.php</li>
+                <li>/includes/templates/bootstrap/sideboxes/tpl_order_history.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_account_notifications_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_address_book_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_ajax_checkout_confirmation_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_checkout_confirmation_default.php</li>
@@ -320,6 +326,9 @@ img {
                 <li>/includes/templates/bootstrap/templates/tpl_document_product_info_display.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_index_categories.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_index_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_login_default.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_login_guest.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_modules_attributes.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_checkout_address_book.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_shopping_cart_default.php</li>
                 <li>/YOUR_ADMIN/zca_bootstrap_colors.php</li>

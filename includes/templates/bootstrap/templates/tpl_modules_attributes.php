@@ -2,7 +2,7 @@
 /**
  * Module Template
  *
- * BOOTSTRAP v3.3.1
+ * BOOTSTRAP v3.5.2
  *
  * Template used to render attribute display/input fields
  *
