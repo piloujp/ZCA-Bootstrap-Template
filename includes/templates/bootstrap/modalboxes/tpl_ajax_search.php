@@ -20,6 +20,7 @@ if (defined('BS4_AJAX_SEARCH_ENABLE') && BS4_AJAX_SEARCH_ENABLE === 'true') {
                     <h5 class="modal-title mb-1" id="search-modal-title"><?php echo TEXT_AJAX_SEARCH_TITLE; ?></h5>
                     <div class="form-group">
                         <form class="search-form">
+                            <label for="search-input">Search:</label>
                             <input type="text" id="search-input" class="form-control" placeholder="<?php echo TEXT_AJAX_SEARCH_PLACEHOLDER; ?>">
                             <input id="search-page" type="hidden" value="<?php echo zen_href_link($search_result_page); ?>">
                         </form>
