@@ -318,7 +318,7 @@ if (isset ($_SESSION['shipping']['extras']) && is_array ($_SESSION['shipping']['
     $title_continue_checkout = str_replace(['<strong>', '</strong>'], '', TITLE_CONTINUE_CHECKOUT_PROCEDURE);
 ?>
 <div id="checkoutConfirmationDefault-btn-toolbar" class="btn-toolbar justify-content-between confirm-order" role="toolbar">
-<?php echo '<strong'> . $title_continue_checkout . '</strong><br>' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
+<?php echo '<strong>' . $title_continue_checkout . '</strong><br>' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
 <?php echo zen_image_submit(BUTTON_IMAGE_CONFIRM_ORDER, BUTTON_CONFIRM_ORDER_ALT, 'name="btn_submit" id="btn_submit"') ;?>
 </div>
 
