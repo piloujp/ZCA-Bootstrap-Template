@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.5.2
+ * BOOTSTRAP v3.5.3
  *
  * Loaded automatically by index.php?main_page=shopping_cart.<br />
  * Displays shopping-cart contents
@@ -239,7 +239,6 @@ if ($flagHasCartContents) {
     //
     if (!empty($extra_content_shopping_cart) && is_array($extra_content_shopping_cart)) {
         foreach ($extra_content_shopping_cart as $extra_content) {
-            trigger_error($extra_content, E_USER_WARNING);
             require $extra_content;
         }
     }
