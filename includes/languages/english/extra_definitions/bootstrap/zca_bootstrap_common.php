@@ -1,6 +1,6 @@
 <?php
 /*
- * BOOTSTRAP v3.4.2
+ * BOOTSTRAP v3.5.3
  */
 // -----
 // Part of the Bootstrap template, defining commonly-used phrases and phrases unique to the bootstrap template.
@@ -88,3 +88,11 @@ define('TEXT_AJAX_SEARCH_VIEW_ALL', 'View All');
 //
 define('TEXT_HEADER_ARIA_LABEL_NAVBAR', 'Navigation Bar');
 define('TEXT_HEADER_ARIA_LABEL_LOGO', 'Site Logo');
+
+// -----
+// ARIA label text, used by /sideboxes/tpl_orders_history.php.
+//
+// NOTE: Not replicated in lang.zca_bootstrap_common.php, since this constant is
+// defined in lang.english.php for zc158 and later.
+//
+define('PAGE_ACCOUNT_HISTORY', 'Order History');
