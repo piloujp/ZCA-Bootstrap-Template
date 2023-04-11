@@ -2,7 +2,7 @@
 /**
  * product_listing module
  * 
- * BOOTSTRAP v3.5.1
+ * BOOTSTRAP v3.5.3
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -290,9 +290,7 @@ if ($num_products_count > 0) {
             $lc_align = '';
             switch ($column_list[$col]) {
                 case 'PRODUCT_LIST_MODEL':
-                    if ($product_listing_layout_style !== 'table') {
-                        $lc_align = 'center';
-                    }
+                    $lc_align = 'center';
                     $lc_text = (isset($record['products_model'])) ? $record['products_model'] : '';
                     break;
 
