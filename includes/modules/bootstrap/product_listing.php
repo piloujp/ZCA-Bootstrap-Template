@@ -343,7 +343,7 @@ if ($num_products_count > 0) {
 
                 case 'PRODUCT_LIST_QUANTITY':
                     $lc_align = ($product_listing_layout_style === 'table') ? 'right' : 'center';
-                    $lc_text = $listing_quantity;
+                    $lc_text = TEXT_PRODUCTS_QUANTITY . $listing_quantity;
                     break;
 
                 case 'PRODUCT_LIST_WEIGHT':
