@@ -2,7 +2,7 @@
 /**
  * Common Template - tpl_main_page.php
  * 
- * BOOTSTRAP v3.5.2
+ * BOOTSTRAP v3.6.0
  *
  * Governs the overall layout of an entire page
  * Normally consisting of a header, left side column. center column. right side column and footer
@@ -299,8 +299,18 @@ if (SHOW_BANNERS_GROUP_SET6 !== '' && $banner = zen_banner_exists('dynamic', SHO
 <!--eof- banner #6 display -->
 <?php /* add any end-of-page code via an observer class */
 $zco_notifier->notify('NOTIFY_FOOTER_END', $current_page);
+
+// -----
+// Don't display the back-to-top control if it's been disabled via a 'soft'
+// setting.  See /includes/extra_datafiles/dist.site-specific-bootstrap-settings.php
+// for additional information.
+//
+if (empty($zca_disable_back_to_top)) {
 ?>
     <a href="#" id="back-to-top" class="btn" title="<?php echo BUTTON_BACK_TO_TOP_TITLE ?>" aria-label="<?php echo BUTTON_BACK_TO_TOP_TITLE ?>" role="button"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></a>
+<?php
+}
+?>
   </main>
 </div>
 </body>
