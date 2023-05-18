@@ -70,6 +70,9 @@ class ZcaBootstrapObserver extends base
     {
         switch ($eventID) {
             case 'NOTIFY_ZEN_GET_PRODUCTS_DISPLAY_PRICE_SALE':
+                if ($p2 === true) {
+                    return;
+                }
                 $this->setVariables(
                     $eventID,
                     $p1,
@@ -104,6 +107,9 @@ class ZcaBootstrapObserver extends base
                 break;
 
             case 'NOTIFY_ZEN_GET_PRODUCTS_DISPLAY_PRICE_SPECIAL':
+                if ($p2 === true) {
+                    return;
+                }
                 $this->setVariables(
                     $eventID,
                     $p1,
@@ -139,6 +145,9 @@ class ZcaBootstrapObserver extends base
                 break;
 
             case 'NOTIFY_ZEN_GET_PRODUCTS_DISPLAY_PRICE_NORMAL':
+                if ($p2 === true) {
+                    return;
+                }
                 $this->setVariables(
                     $eventID,
                     $p1,
@@ -171,6 +180,9 @@ class ZcaBootstrapObserver extends base
                 break;
 
             case 'NOTIFY_ZEN_GET_PRODUCTS_DISPLAY_PRICE_FREE_OR_CALL':
+                if ($p2 === true) {
+                    return;
+                }
                 $this->setVariables(
                     $eventID,
                     $p1,
