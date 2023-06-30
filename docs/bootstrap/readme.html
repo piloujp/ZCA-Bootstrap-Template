@@ -275,6 +275,12 @@ img {
     <p>This readme's <b>Version History</b> section, below, identifies each file changed, <span class="added">added</span> or <span class="removed">removed</span> for each release of the template, starting with v3.0.0.  When you're upgrading, note each of the changes from your currently-installed version to that associated with the upgrade.  Pay specific attention to the files added and removed!</p>
     <p>Unzip the template's package file and use a file-comparision program (like WinMerge or BeyondCompare) to either overwrite (if you've made a <em>clone</em> of the template) or merge the differences into the 'base' <code>bootstrap</code> sub-directories.  If you haven't made a <em>clone</em> of the template, pay specific attention to any changes that you've made to those 'base' files!  If you <b>have</b> made a <em>clone</em>, use your file-comparison program to merge the 'base' template's updates into your cloned copy.  In either case, pay specific attention to the files added and removed!</p>
     <p>Starting with v3.4.0, the template's package file <b>no longer distributes</b> a modified version of <code>/includes/modules/order_total/ot_coupon.php</code>, since that file's changed drastically between the zc157 series and zc158.  Prior versions included a single change-block, updating that module to use a modal popup to view a coupon's help information.  If your site already has that change, it will continue to operate for the zc157 series, but should be overwritten with the zc158 distribution's version when your site is upgraded to use the Zen Cart 1.5.8 file-set.</p>
+    <h3>Version-Specific Upgrade Suggestions</h3>
+    <p>Sometimes, a template-upgrade introduces new language constants and/or color-configuration values. When this occurs, I'll suggest that you place your site into <var>Maintenance Mode</var> until the upgrade is completed.  Otherwise, it's possible that the site's storefront will experience PHP Warnings (at best) or PHP Errors (if the site runs on more strict versions of PHP) due to the template's use of those missing constants.</p>
+    <p>The following version-upgrades apply to this suggestion:</p>
+    <ul>
+        <li>v3.6.0</li>
+    </ul>
 
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
