@@ -2,7 +2,7 @@
 /**
  * product_listing module
  * 
- * BOOTSTRAP v3.5.3
+ * BOOTSTRAP v3.6.0
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -81,7 +81,11 @@ if ($product_listing_layout_style === 'table') {
                 break;
             case 'PRODUCT_LIST_IMAGE':
                 $lc_text = '&nbsp;';
-//                $lc_text = TABLE_HEADING_IMAGE;   //-Uncomment this line if you want the "Products Image" header title
+                if (TABLE_HEADING_IMAGE !== '') {
+                    $lc_text = TABLE_HEADING_IMAGE;
+                } else {
+                    $lc_text = '<span class="sr-only">' . TABLE_HEADING_IMAGE_SCREENREADER . '</span>';
+                }
                 $lc_align = 'center';
                 $zc_col_count_description++;
                 break;

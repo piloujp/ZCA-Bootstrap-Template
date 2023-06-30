@@ -1,6 +1,6 @@
 <?php
 /*
- * BOOTSTRAP v3.4.2
+ * BOOTSTRAP v3.6.0
  */
 // -----
 // Part of the Bootstrap template, defining commonly-used phrases and phrases unique to the bootstrap template.
@@ -54,7 +54,16 @@ $define = [
 // -----
 // Used by various product listing pages, e.g. SNAF.
 //
-    'TABLE_HEADING_IMAGE' => 'Product Image',
+    // -----
+    // The two image-heading constants are used when a site chooses to display listings
+    // in table-mode (PRODUCT_LISTING_COLUMNS_PER_ROW is set to '1').  If your site wants
+    // the image-heading to *always* be displayed, set the TABLE_HEADING_IMAGE value to
+    // the text you desire.  If that value is set to an empty string, then a screen-reader-only
+    // heading is used along with the TABLE_HEADING_IMAGE_SCREENREADER value.
+    //
+    'TABLE_HEADING_IMAGE' => '',
+    'TABLE_HEADING_IMAGE_SCREENREADER' => 'Product Image',
+
     'TABLE_HEADING_PRODUCTS' => 'Product Name',
     'TABLE_HEADING_MANUFACTURER' => 'Manufacturer',
     'TABLE_HEADING_PRICE' => 'Price',
