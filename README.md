@@ -47,4 +47,4 @@ This Zen Cart template uses a [Bootstrap](https://getbootstrap.com/docs/4.5/gett
 
 ## Additional Information:
 
-- [FAQs](./pages/faqs.md).  View the current list of Frequently Asked Questions.
+- [FAQs](https://github.com/lat9/ZCA-Bootstrap-Template/wiki/Frequently-Asked-Questions).  View the current list of Frequently Asked Questions.
