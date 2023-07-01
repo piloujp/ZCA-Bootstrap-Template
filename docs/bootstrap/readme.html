@@ -285,7 +285,7 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.6.0-beta2, 2023-06-30 (lat9, dbltoe, dennisns7d)<ul>
+        <li>v3.6.0-beta2, 2023-07-01 (lat9, dbltoe, dennisns7d)<ul>
             <li>BUGFIX: Simplify page-header processing for featured_products, products_all and products_new pages.</li>
             <li>BUGFIX: Don't provide changes for pricing-related notifications if they've already been handled.</li>
             <li>BUGFIX: &quot;Add Address&quot; button on <code>address_book</code> displays as &quot;Back&quot;.</li>
@@ -293,6 +293,7 @@ img {
             <li>BUGFIX: Ensure accessibility for table-mode product listings images' columns.</li>
             <li>BUGFIX: Add <var>role="button"</var> to AJAX header's search link for SEO improvement.</li>
             <li>BUGFIX: Add spacing for prices and min-max-unit elements for table-based product listings.</li>
+            <li>BUGFIX: AJAX Search jQuery was using undefined constant; use Zen Cart default handling for timeouts.</li>
             <li>The following files were changed or <span class="added">added</span>:<ol>
                 <li>/includes/classes/observers/ZcaBootstrapObserver.php</li>
                 <li><span class="added">/includes/extra_datafiles/dist.site-specific-bootstrap-settings.php</span></li>
@@ -305,6 +306,8 @@ img {
                 <li>/includes/modules/pages/products_new/header_php_products_new_zca_bootstrap.php</li>
                 <li>/includes/templates/bootstrap/template_info.php</li>
                 <li>/includes/templates/bootstrap/common/tpl_main_page.php</li>
+                <li>/includes/templates/bootstrap/jscript/ajax_search.js</li>
+                <li>/includes/templates/bootstrap/jscript/ajax_search.min.js</li>
                 <li>/includes/templates/bootstrap/sideboxes/tpl_ajax_search_header.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_address_book_default.php</li>
                 <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin.php</li>
