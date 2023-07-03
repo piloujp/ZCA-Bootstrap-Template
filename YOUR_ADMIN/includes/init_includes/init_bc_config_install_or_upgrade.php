@@ -271,7 +271,6 @@ $zca_bc_colors = [
         'configuration_value' => '#333333',
         'sort_order' => 2130,
         'added' => '3.6.0',
-        'set_default' => true,
     ],
     'ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR' => [
         'configuration_title' => 'Header Nav Bar Button Text Color',
@@ -303,7 +302,7 @@ $zca_bc_colors = [
         'configuration_value' => '#919aa1',
         'sort_order' => 2200,
     ],
-    'ZCA_HEADER_TABS_BACKGROUND_COLOR' => [    
+    'ZCA_HEADER_TABS_BACKGROUND_COLOR' => [
         'configuration_title' => '<b>Header Category Tabs</b> Background Color',
         'configuration_value' => '#13607c',
         'sort_order' => 2500,
