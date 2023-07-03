@@ -138,7 +138,7 @@ $zca_bc_colors = [
         'configuration_title' => 'Alert Info Border Color',
         'configuration_value' => '#bee5eb',
         'sort_order' => 290,
-        'added' => '3.6.0,
+        'added' => '3.6.0',
     ],
     'ZCA_BODY_RATING_STAR_BACKGROUND_COLOR' => [
         'configuration_title' => '<b>Body Rating Stars</b> Background Color',
