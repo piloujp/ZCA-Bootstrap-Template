@@ -45,7 +45,14 @@ $zca_bootstrap_colors_added = [
     'ZCA_PRIMARY_ADDRESS_CARD_HEADER_BACKGROUND_COLOR',
     'ZCA_PRIMARY_ADDRESS_CARD_HEADER_COLOR',
     'ZCA_PRIMARY_ADDRESS_CARD_BORDER_COLOR',
-];
+    // -----
+    // Added in v3.6.0
+    //
+    'ZCA_ALERT_INFO_COLOR',
+    'ZCA_ALERT_INFO_BACKGROUND_COLOR',
+    'ZCA_ALERT_INFO_BORDER_COLOR',
+    'ZCA_HEADER_NAVBAR_LINK_BACKGROUND_COLOR_HOVER',
+    ];
 // -----
 // Each of the newly-added color values is saved as a lower-case variable
 // of the same name, e.g. ZCA_BODY_RATING_STAR_COLOR becomes $zca_body_rating_star_color)
@@ -70,6 +77,11 @@ a:hover {color: <?php echo ZCA_BUTTON_LINK_COLOR_HOVER; ?>;}
 span.alert {
     color: <?php echo ZCA_BODY_PLACEHOLDER; ?>;
 }
+.alert-info {
+    color: <?php echo ZCA_ALERT_INFO_COLOR; ?>;
+    background-color: <?php echo ZCA_ALERT_INFO_BACKGROUND_COLOR; ?>;
+    border-color: <?php echo ZCA_ALERT_INFO_BORDER_COLOR; ?>;
+}
 .rating {
     <?php echo ($zca_body_rating_star_background_color !== '') ? "background-color: $zca_body_rating_star_background_color;" : ''; ?>
     <?php echo ($zca_body_rating_star_color !== '') ? "color: $zca_body_rating_star_color;" : ''; ?>
@@ -79,12 +91,12 @@ span.alert {
 ?>
 .btn {
     color: <?php echo ZCA_BUTTON_TEXT_COLOR; ?>;
-    background-color: <?php echo ZCA_BUTTON_COLOR; ?>;
+    background-color: <?php echo ZCA_BUTTON_BACKGROUND_COLOR; ?>;
     border-color: <?php echo ZCA_BUTTON_BORDER_COLOR; ?>;
 }
 .btn:hover {
     color: <?php echo ZCA_BUTTON_TEXT_COLOR_HOVER; ?>;
-    background-color: <?php echo ZCA_BUTTON_COLOR_HOVER; ?>;
+    background-color: <?php echo ZCA_BUTTON_BACKGROUND_COLOR_HOVER; ?>;
     border-color: <?php echo ZCA_BUTTON_BORDER_COLOR_HOVER; ?>;
 }
 <?php
@@ -107,15 +119,16 @@ nav.navbar a.nav-link {
 }
 nav.navbar a.nav-link:hover {
     color: <?php echo ZCA_HEADER_NAVBAR_LINK_COLOR_HOVER; ?>;
+    background-color: <?php echo ZCA_HEADER_NAVBAR_LINK_BACKGROUND_COLOR_HOVER; ?>;
 }
 nav.navbar .navbar-toggler {
     color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR; ?>;
-    background-color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_COLOR; ?>;
+    background-color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR; ?>;
     border-color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_BORDER_COLOR; ?>;
 }
 nav.navbar .navbar-toggler:hover {
     color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR_HOVER; ?>;
-    background-color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_COLOR_HOVER; ?>;
+    background-color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR_HOVER; ?>;
     border-color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_BORDER_COLOR_HOVER; ?>;
 }
 <?php
@@ -136,7 +149,7 @@ nav.navbar .navbar-toggler:hover {
 ?>
 #navCatTabs a {
     color: <?php echo ZCA_HEADER_TABS_TEXT_COLOR; ?>;
-    background-color: <?php echo ZCA_HEADER_TABS_COLOR; ?>;
+    background-color: <?php echo ZCA_HEADER_TABS_BACKGROUND_COLOR; ?>;
     <?php echo ($zca_header_tabs_border_color !== '') ? "border-color: $zca_header_tabs_border_color;" : ''; ?>
 }
 #navCatTabs a.activeLink {
@@ -146,7 +159,7 @@ nav.navbar .navbar-toggler:hover {
 }
 #navCatTabs a:hover {
     color: <?php echo ZCA_HEADER_TABS_TEXT_COLOR_HOVER; ?>;
-    background-color: <?php echo ZCA_HEADER_TABS_COLOR_HOVER; ?>;
+    background-color: <?php echo ZCA_HEADER_TABS_BACKGROUND_COLOR_HOVER; ?>;
     <?php echo ($zca_header_tabs_border_color_hover !== '') ? "border-color: $zca_header_tabs_border_color_hover;" : ''; ?>
 }
 #navCatTabs a.activeLink:hover {
