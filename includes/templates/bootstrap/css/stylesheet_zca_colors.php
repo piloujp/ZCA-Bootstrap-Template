@@ -2,7 +2,7 @@
 // -----
 // Part of the Bootstrap template, assigning colors based on those configured.
 //
-// BOOTSTRAP v3.5.2
+// BOOTSTRAP v3.6.0
 //
 // Starting with Bootstrap v3.5.2, any color-specifications defined in that and follow-on
 // versions start out, on an upgrade, with a value of 'not-set' to give the site a chance
@@ -45,6 +45,7 @@ $zca_bootstrap_colors_added = [
     'ZCA_PRIMARY_ADDRESS_CARD_HEADER_BACKGROUND_COLOR',
     'ZCA_PRIMARY_ADDRESS_CARD_HEADER_COLOR',
     'ZCA_PRIMARY_ADDRESS_CARD_BORDER_COLOR',
+
     // -----
     // Added in v3.6.0
     //
@@ -52,7 +53,32 @@ $zca_bootstrap_colors_added = [
     'ZCA_ALERT_INFO_BACKGROUND_COLOR',
     'ZCA_ALERT_INFO_BORDER_COLOR',
     'ZCA_HEADER_NAVBAR_LINK_BACKGROUND_COLOR_HOVER',
-    ];
+];
+
+// -----
+// There are a couple of "mis-named" color-configuration settings (these are 'legacy'
+// and won't be changed in the database).  For the purists amongst us, set definitions
+// that are used below (as of v3.6.0) that make more sense.
+//
+if (!defined('ZCA_BUTTON_BACKGROUND_COLOR')) {
+    define('ZCA_BUTTON_BACKGROUND_COLOR', ZCA_BUTTON_COLOR);
+}
+if (!defined('ZCA_BUTTON_BACKGROUND_COLOR_HOVER')) {
+    define('ZCA_BUTTON_BACKGROUND_COLOR_HOVER', ZCA_BUTTON_COLOR_HOVER);
+}
+if (!defined('ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR')) {
+    define('ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR', ZCA_HEADER_NAVBAR_BUTTON_COLOR);
+}
+if (!defined('ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR_HOVER')) {
+    define('ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR_HOVER', ZCA_HEADER_NAVBAR_BUTTON_COLOR_HOVER);
+}
+if (!defined('ZCA_HEADER_TABS_BACKGROUND_COLOR')) {
+    define('ZCA_HEADER_TABS_BACKGROUND_COLOR', ZCA_HEADER_TABS_COLOR);
+}
+if (!defined('ZCA_HEADER_TABS_BACKGROUND_COLOR_HOVER')) {
+    define('ZCA_HEADER_TABS_BACKGROUND_COLOR_HOVER', ZCA_HEADER_TABS_COLOR_HOVER);
+}
+
 // -----
 // Each of the newly-added color values is saved as a lower-case variable
 // of the same name, e.g. ZCA_BODY_RATING_STAR_COLOR becomes $zca_body_rating_star_color)
@@ -69,18 +95,25 @@ foreach ($zca_bootstrap_colors_added as $next_color) {
 <?php
 //- Body
 ?>
-body {color: <?php echo ZCA_BODY_TEXT_COLOR; ?>;background-color: <?php echo ZCA_BODY_BACKGROUND_COLOR; ?>;}
-a {color: <?php echo ZCA_BUTTON_LINK_COLOR; ?>;}
-a:hover {color: <?php echo ZCA_BUTTON_LINK_COLOR_HOVER; ?>;}
+body {
+    color: <?php echo ZCA_BODY_TEXT_COLOR; ?>;
+    background-color: <?php echo ZCA_BODY_BACKGROUND_COLOR; ?>;
+}
+a {
+    color: <?php echo ZCA_BUTTON_LINK_COLOR; ?>;
+}
+a:hover {
+    color: <?php echo ZCA_BUTTON_LINK_COLOR_HOVER; ?>;
+}
 .form-control::placeholder,
 .required-info,
 span.alert {
     color: <?php echo ZCA_BODY_PLACEHOLDER; ?>;
 }
 .alert-info {
-    color: <?php echo ZCA_ALERT_INFO_COLOR; ?>;
-    background-color: <?php echo ZCA_ALERT_INFO_BACKGROUND_COLOR; ?>;
-    border-color: <?php echo ZCA_ALERT_INFO_BORDER_COLOR; ?>;
+    <?php echo ($zca_alert_info_color !== '') ? "color: $zca_alert_info_color;" : ''; ?>
+    <?php echo ($zca_alert_info_background_color !== '') ? "background-color: $zca_alert_info_background_color;" : ''; ?>
+    <?php echo ($zca_alert_info_border_color !== '') ? "border-color: $zca_alert_info_border_color;" : ''; ?>
 }
 .rating {
     <?php echo ($zca_body_rating_star_background_color !== '') ? "background-color: $zca_body_rating_star_background_color;" : ''; ?>
@@ -119,7 +152,7 @@ nav.navbar a.nav-link {
 }
 nav.navbar a.nav-link:hover {
     color: <?php echo ZCA_HEADER_NAVBAR_LINK_COLOR_HOVER; ?>;
-    background-color: <?php echo ZCA_HEADER_NAVBAR_LINK_BACKGROUND_COLOR_HOVER; ?>;
+    <?php echo ($zca_header_navbar_link_background_color_hover !== '') ? "background-color: $zca_header_navbar_link_background_color_hover;" : ''; ?>
 }
 nav.navbar .navbar-toggler {
     color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR; ?>;
