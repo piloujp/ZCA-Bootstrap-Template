@@ -66,17 +66,35 @@ if (!defined('ZCA_BUTTON_BACKGROUND_COLOR')) {
 if (!defined('ZCA_BUTTON_BACKGROUND_COLOR_HOVER')) {
     define('ZCA_BUTTON_BACKGROUND_COLOR_HOVER', ZCA_BUTTON_COLOR_HOVER);
 }
-if (!defined('ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR')) {
-    define('ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR', ZCA_HEADER_NAVBAR_BUTTON_COLOR);
-}
-if (!defined('ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR_HOVER')) {
-    define('ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR_HOVER', ZCA_HEADER_NAVBAR_BUTTON_COLOR_HOVER);
-}
 if (!defined('ZCA_HEADER_TABS_BACKGROUND_COLOR')) {
     define('ZCA_HEADER_TABS_BACKGROUND_COLOR', ZCA_HEADER_TABS_COLOR);
 }
 if (!defined('ZCA_HEADER_TABS_BACKGROUND_COLOR_HOVER')) {
     define('ZCA_HEADER_TABS_BACKGROUND_COLOR_HOVER', ZCA_HEADER_TABS_COLOR_HOVER);
+}
+
+// -----
+// Ditto for some of the color-settings that affect *only* the hamburger-menu-icon used
+// on the mobile display.  Define aliases for use in the CSS-generating portion of this
+// script for clarity.
+//
+if (!defined('ZCA_HEADER_NAVBAR_TOGGLER_COLOR')) {
+    define('ZCA_HEADER_NAVBAR_TOGGLER_COLOR', ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR);
+}
+if (!defined('ZCA_HEADER_NAVBAR_TOGGLER_COLOR_HOVER')) {
+    define('ZCA_HEADER_NAVBAR_TOGGLER_COLOR_HOVER', ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR_HOVER);
+}
+if (!defined('ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR')) {
+    define('ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR', ZCA_HEADER_NAVBAR_BUTTON_COLOR);
+}
+if (!defined('ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR_HOVER')) {
+    define('ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR_HOVER', ZCA_HEADER_NAVBAR_BUTTON_COLOR_HOVER);
+}
+if (!defined('ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR')) {
+    define('ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR', ZCA_HEADER_NAVBAR_BUTTON_BORDER_COLOR);
+}
+if (!defined('ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR_HOVER')) {
+    define('ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR_HOVER', ZCA_HEADER_NAVBAR_BUTTON_BORDER_COLOR_HOVER);
 }
 
 // -----
@@ -155,14 +173,14 @@ nav.navbar a.nav-link:hover {
     <?php echo ($zca_header_navbar_link_background_color_hover !== '') ? "background-color: $zca_header_navbar_link_background_color_hover;" : ''; ?>
 }
 nav.navbar .navbar-toggler {
-    color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR; ?>;
-    background-color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR; ?>;
-    border-color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_BORDER_COLOR; ?>;
+    color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_COLOR; ?>;
+    background-color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR; ?>;
+    border-color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR; ?>;
 }
 nav.navbar .navbar-toggler:hover {
-    color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR_HOVER; ?>;
-    background-color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR_HOVER; ?>;
-    border-color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_BORDER_COLOR_HOVER; ?>;
+    color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_COLOR_HOVER; ?>;
+    background-color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR_HOVER; ?>;
+    border-color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR_HOVER; ?>;
 }
 <?php
 //- Header EZ-Pages Bar
