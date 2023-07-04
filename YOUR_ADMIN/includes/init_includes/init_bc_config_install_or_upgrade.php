@@ -167,12 +167,12 @@ $zca_bc_colors = [
         'configuration_value' => '#0056b3',
         'sort_order' => 1010,
     ],
-    'ZCA_BUTTON_BACKGROUND_COLOR' => [
+    'ZCA_BUTTON_COLOR' => [         //- Note, mis-named, should "really" be ZCA_BUTTON_BACKGROUND_COLOR; aliased on the storefront
         'configuration_title' => 'Button Background Color',
         'configuration_value' => '#13607c',
         'sort_order' => 1030,
     ],
-    'ZCA_BUTTON_BACKGROUND_COLOR_HOVER' => [
+    'ZCA_BUTTON_COLOR_HOVER' => [   //- Note, mis-named, should "really" be ZCA_BUTTON_BACKGROUND_COLOR_HOVER; aliased on the storefront
         'configuration_title' => 'Button Background Color on Hover',
         'configuration_value' => '#ffffff',
         'sort_order' => 1040,
@@ -282,12 +282,12 @@ $zca_bc_colors = [
         'configuration_value' => '#cccccc',
         'sort_order' => 2160,
     ],
-    'ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR' => [
+    'ZCA_HEADER_NAVBAR_BUTTON_COLOR' => [       //- Note, mis-named, should "really" be ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR; aliased on the storefront
         'configuration_title' => 'Header Nav Bar Button Background Color',
         'configuration_value' => '#343a40',
         'sort_order' => 2170,
     ],
-    'ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR_HOVER' => [
+    'ZCA_HEADER_NAVBAR_BUTTON_COLOR_HOVER' => [  //- Note, mis-named, should "really" be ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR_HOVER; aliased on the storefront
         'configuration_title' => 'Header Nav Bar Button Background Color on Hover',
         'configuration_value' => '#919aa1',
         'sort_order' => 2180,
@@ -302,12 +302,12 @@ $zca_bc_colors = [
         'configuration_value' => '#919aa1',
         'sort_order' => 2200,
     ],
-    'ZCA_HEADER_TABS_BACKGROUND_COLOR' => [
+    'ZCA_HEADER_TABS_COLOR' => [        //- Note, mis-named, should "really" be ZCA_HEADER_TABS_BACKGROUND_COLOR; aliased on the storefront
         'configuration_title' => '<b>Header Category Tabs</b> Background Color',
         'configuration_value' => '#13607c',
         'sort_order' => 2500,
     ],
-    'ZCA_HEADER_TABS_BACKGROUND_COLOR_HOVER' => [
+    'ZCA_HEADER_TABS_COLOR_HOVER' => [  //- Note, mis-named, should "really" be ZCA_HEADER_TABS_BACKGROUND_COLOR_HOVER; aliased on the storefront
         'configuration_title' => 'Header Category Tabs Background Color on Hover',
         'configuration_value' => '#ffffff',
         'sort_order' => 2510,
@@ -811,18 +811,26 @@ if (!defined('ZCA_BOOTSTRAP_COLORS_VERSION')) {
 //
 switch (true) {
     // -----
-    // v3.5.2: Major restructuring of the colors' titles and sort-orders.  The initialization section above has recorded
-    // all of the newly-added color settings.  Now, go back through each, updating each setting to use the now-current
-    // version of the colors' settings.
+    // If this was an *initial* installation, these updates have already been applied; nothing further to do.
     //
-    case !defined('ZCA_BOOTSTRAP_COLORS_VERSION'):                      //-Fall-through, essentially v3.5.2 upgrade
-    case version_compare(ZCA_BOOTSTRAP_COLORS_VERSION, '3.5.2', '<'):
+    case ($zca_bc_installed === true):
+        break;
+
+    // -----
+    // v3.5.2+: Major restructuring of the colors' titles and sort-orders.  The initialization section above has recorded
+    // all of the newly-added color settings for an initial installation.
+    //
+    // Go back through each, updating each setting to use the now-current version of the colors' settings.
+    //
+    // Note: Left as a 'case' statement just in case some future version needs to remove a setting.
+    //
+    case true:
         foreach ($zca_bc_colors as $key => $values) {
             $default_value = $values['configuration_value'];
             $added_version = (isset($values['added']) && $values['added'] >= '3.5.2') ? (' (Added in v'. $values['added'] . ')') : '';
             $default_color = ($zca_bc_installed === false && $added_version !== '' && empty($values['set_default'])) ? 'not-set' : $default_value;
             $description = "Default: $default_value.$added_version";
-            if (isset($values['added']) && $values['added'] === '3.5.2') {
+            if (isset($values['added'])) {
                 $db->Execute(
                     "INSERT IGNORE INTO " . TABLE_CONFIGURATION . "
                         (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added)
@@ -835,7 +843,8 @@ switch (true) {
                     SET configuration_title = '" . $values['configuration_title'] . "',
                         configuration_description = '$description',
                         sort_order = " . $values['sort_order'] . "
-                  WHERE configuration_key = '$key'"
+                  WHERE configuration_key = '$key'
+                  LIMIT 1"
             );
         }
     default:                                                            //-Fall-through from above.
@@ -860,13 +869,15 @@ if (!defined('ZCA_BOOTSTRAP_COLORS_VERSION')) {
          VALUES
             ('Bootstrap Colors Version', 'ZCA_BOOTSTRAP_COLORS_VERSION', '" . ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION . "', 'Displays the current version of the <em>ZCA Bootstrap Colors</em> tool.', 6, now(), 0, 'zen_cfg_read_only(')"
     );
+} else {
+    $db->Execute(
+        "UPDATE " . TABLE_CONFIGURATION . "
+            SET configuration_value = '" . ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION . "',
+                last_modified = now()
+          WHERE configuration_key = 'ZCA_BOOTSTRAP_COLORS_VERSION'
+          LIMIT 1"
+    );
 }
-$db->Execute(
-    "UPDATE " . TABLE_CONFIGURATION . "
-        SET configuration_value = '" . ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION . "',
-            last_modified = now()
-      WHERE configuration_key = 'ZCA_BOOTSTRAP_COLORS_VERSION'"
-);
 
 // -----
 // If an initial installation wasn't also run, let the admin know that the upgrade was successfully completed.
