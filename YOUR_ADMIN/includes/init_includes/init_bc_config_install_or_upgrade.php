@@ -302,6 +302,42 @@ $zca_bc_colors = [
         'configuration_value' => '#919aa1',
         'sort_order' => 2200,
     ],
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_TEXT_COLOR' => [
+        'configuration_title' => '<b>Header Nav Bar Extra Button</b> Text Color',
+        'configuration_value' => '#ffffff',
+        'sort_order' => 2300,
+        'added' => '3.6.0',
+    ],
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_TEXT_COLOR_HOVER' => [
+        'configuration_title' => 'Header Nav Bar Extra Button Text Color on Hover',
+        'configuration_value' => '#0056b3',
+        'sort_order' => 2310,
+        'added' => '3.6.0',
+    ],
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BACKGROUND_COLOR' => [
+        'configuration_title' => 'Header Nav Bar Extra Button Background Color',
+        'configuration_value' => '#13607c',
+        'sort_order' => 2330,
+        'added' => '3.6.0',
+    ],
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BACKGROUND_COLOR_HOVER' => [
+        'configuration_title' => 'Header Nav Bar Extra Button Background Color on Hover',
+        'configuration_value' => '#ffffff',
+        'sort_order' => 2340,
+        'added' => '3.6.0',
+    ],
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BORDER_COLOR' => [
+        'configuration_title' => 'Header Nav Bar Extra Button Border Color',
+        'configuration_value' => '#13607c',
+        'sort_order' => 2350,
+        'added' => '3.6.0',
+    ],
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BORDER_COLOR_HOVER' => [
+        'configuration_title' => 'Header Nav Bar Extra Button Border Color on Hover',
+        'configuration_value' => '#a80000',
+        'sort_order' => 2360,
+        'added' => '3.6.0',
+    ],
     'ZCA_HEADER_TABS_COLOR' => [                        //- Note, mis-named, should "really" be ZCA_HEADER_TABS_BACKGROUND_COLOR; aliased on the storefront
         'configuration_title' => '<b>Header Category Tabs</b> Background Color',
         'configuration_value' => '#13607c',

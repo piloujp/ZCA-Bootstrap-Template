@@ -53,6 +53,12 @@ $zca_bootstrap_colors_added = [
     'ZCA_ALERT_INFO_BACKGROUND_COLOR',
     'ZCA_ALERT_INFO_BORDER_COLOR',
     'ZCA_HEADER_NAVBAR_LINK_BACKGROUND_COLOR_HOVER',
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_TEXT_COLOR',
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_TEXT_COLOR_HOVER',
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BACKGROUND_COLOR',
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BACKGROUND_COLOR_HOVER',
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BORDER_COLOR',
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BORDER_COLOR_HOVER',
 ];
 
 // -----
@@ -181,6 +187,16 @@ nav.navbar .navbar-toggler:hover {
     color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_COLOR_HOVER; ?>;
     background-color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR_HOVER; ?>;
     border-color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR_HOVER; ?>;
+}
+nav.navbar .btn {
+    <?php echo ($zca_header_navbar_extra_button_text_color !== '') ? "color: $zca_header_navbar_extra_button_text_color;" : ''; ?>
+    <?php echo ($zca_header_navbar_extra_button_background_color !== '') ? "background-color: $zca_header_navbar_extra_button_background_color;" : ''; ?>
+    <?php echo ($zca_header_navbar_extra_button_border_color !== '') ? "border-color: $zca_header_navbar_extra_button_border_color;" : ''; ?>
+}
+nav.navbar .btn:hover {
+    <?php echo ($zca_header_navbar_extra_button_text_color_hover !== '') ? "color: $zca_header_navbar_extra_button_text_color_hover;" : ''; ?>
+    <?php echo ($zca_header_navbar_extra_button_background_color_hover !== '') ? "background-color: $zca_header_navbar_extra_button_background_color_hover;" : ''; ?>
+    <?php echo ($zca_header_navbar_extra_button_border_color_hover !== '') ? "border-color: $zca_header_navbar_extra_button_border_color_hover;" : ''; ?>
 }
 <?php
 //- Header EZ-Pages Bar
