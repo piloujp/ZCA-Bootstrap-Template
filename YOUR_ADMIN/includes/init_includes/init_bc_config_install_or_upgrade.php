@@ -43,7 +43,7 @@ if (!$configuration->EOF) {
 // -----
 // This array identifies the current "Bootstrap Colors" configuration elements.
 // These values are used by the processing below on an initial installation or upgrade
-// of the ZCA Bootstrap template and/or its 'coloring'.
+// of the ZCA Bootstrap template's 'coloring'.
 //
 // Each entry, keyed by the color's 'configuration_key' contains:
 //
@@ -257,7 +257,7 @@ $zca_bc_colors = [
         'sort_order' => 2100,
     ],
     'ZCA_HEADER_NAVBAR_LINK_COLOR' => [
-        'configuration_title' => 'Header Nav Bar Link Color',
+        'configuration_title' => '<b>Header Nav Bar Link</b> Color',
         'configuration_value' => '#ffffff',
         'sort_order' => 2110,
     ],
@@ -272,42 +272,78 @@ $zca_bc_colors = [
         'sort_order' => 2130,
         'added' => '3.6.0',
     ],
-    'ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR' => [
-        'configuration_title' => 'Header Nav Bar Button Text Color',
+    'ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR' => [          //- Note, mis-named, should "really" be ZCA_HEADER_NAVBAR_TOGGLER_COLOR; aliased on the storefront
+        'configuration_title' => '<b>Header Nav Bar Toggler</b> Text Color',
         'configuration_value' => '#ffffff',
         'sort_order' => 2140,
     ],
-    'ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR_HOVER' => [
-        'configuration_title' => 'Header Nav Bar Button Text Color on Hover',
+    'ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR_HOVER' => [    //- Note, mis-named, should "really" be ZCA_HEADER_NAVBAR_TOGGLER_COLOR_HOVER; aliased on the storefront
+        'configuration_title' => 'Header Nav Bar Toggler Text Color on Hover',
         'configuration_value' => '#cccccc',
         'sort_order' => 2160,
     ],
-    'ZCA_HEADER_NAVBAR_BUTTON_COLOR' => [       //- Note, mis-named, should "really" be ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR; aliased on the storefront
-        'configuration_title' => 'Header Nav Bar Button Background Color',
+    'ZCA_HEADER_NAVBAR_BUTTON_COLOR' => [               //- Note, mis-named, should "really" be ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR; aliased on the storefront
+        'configuration_title' => 'Header Nav Bar Toggler Background Color',
         'configuration_value' => '#343a40',
         'sort_order' => 2170,
     ],
-    'ZCA_HEADER_NAVBAR_BUTTON_COLOR_HOVER' => [  //- Note, mis-named, should "really" be ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR_HOVER; aliased on the storefront
-        'configuration_title' => 'Header Nav Bar Button Background Color on Hover',
+    'ZCA_HEADER_NAVBAR_BUTTON_COLOR_HOVER' => [         //- Note, mis-named, should "really" be ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR_HOVER; aliased on the storefront
+        'configuration_title' => 'Header Nav Bar Toggler Background Color on Hover',
         'configuration_value' => '#919aa1',
         'sort_order' => 2180,
     ],
-    'ZCA_HEADER_NAVBAR_BUTTON_BORDER_COLOR' => [
-        'configuration_title' => 'Header Nav Bar Button Border Color',
+    'ZCA_HEADER_NAVBAR_BUTTON_BORDER_COLOR' => [        //- Note, mis-named, should "really" be ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR; aliased on the storefront
+        'configuration_title' => 'Header Nav Bar Toggler Border Color',
         'configuration_value' => '#343a40',
         'sort_order' => 2190,
     ],
-    'ZCA_HEADER_NAVBAR_BUTTON_BORDER_COLOR_HOVER' => [
-        'configuration_title' => 'Header Nav Bar Border Color on Hover',
+    'ZCA_HEADER_NAVBAR_BUTTON_BORDER_COLOR_HOVER' => [  //- Note, mis-named, should "really" be ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR_HOVER; aliased on the storefront
+        'configuration_title' => 'Header Nav Bar Toggler Border Color on Hover',
         'configuration_value' => '#919aa1',
         'sort_order' => 2200,
     ],
-    'ZCA_HEADER_TABS_COLOR' => [        //- Note, mis-named, should "really" be ZCA_HEADER_TABS_BACKGROUND_COLOR; aliased on the storefront
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_TEXT_COLOR' => [
+        'configuration_title' => '<b>Header Nav Bar Extra Button</b> Text Color',
+        'configuration_value' => '#ffffff',
+        'sort_order' => 2300,
+        'added' => '3.6.0',
+    ],
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_TEXT_COLOR_HOVER' => [
+        'configuration_title' => 'Header Nav Bar Extra Button Text Color on Hover',
+        'configuration_value' => '#0056b3',
+        'sort_order' => 2310,
+        'added' => '3.6.0',
+    ],
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BACKGROUND_COLOR' => [
+        'configuration_title' => 'Header Nav Bar Extra Button Background Color',
+        'configuration_value' => '#13607c',
+        'sort_order' => 2330,
+        'added' => '3.6.0',
+    ],
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BACKGROUND_COLOR_HOVER' => [
+        'configuration_title' => 'Header Nav Bar Extra Button Background Color on Hover',
+        'configuration_value' => '#ffffff',
+        'sort_order' => 2340,
+        'added' => '3.6.0',
+    ],
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BORDER_COLOR' => [
+        'configuration_title' => 'Header Nav Bar Extra Button Border Color',
+        'configuration_value' => '#13607c',
+        'sort_order' => 2350,
+        'added' => '3.6.0',
+    ],
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BORDER_COLOR_HOVER' => [
+        'configuration_title' => 'Header Nav Bar Extra Button Border Color on Hover',
+        'configuration_value' => '#a80000',
+        'sort_order' => 2360,
+        'added' => '3.6.0',
+    ],
+    'ZCA_HEADER_TABS_COLOR' => [                        //- Note, mis-named, should "really" be ZCA_HEADER_TABS_BACKGROUND_COLOR; aliased on the storefront
         'configuration_title' => '<b>Header Category Tabs</b> Background Color',
         'configuration_value' => '#13607c',
         'sort_order' => 2500,
     ],
-    'ZCA_HEADER_TABS_COLOR_HOVER' => [  //- Note, mis-named, should "really" be ZCA_HEADER_TABS_BACKGROUND_COLOR_HOVER; aliased on the storefront
+    'ZCA_HEADER_TABS_COLOR_HOVER' => [                  //- Note, mis-named, should "really" be ZCA_HEADER_TABS_BACKGROUND_COLOR_HOVER; aliased on the storefront
         'configuration_title' => 'Header Category Tabs Background Color on Hover',
         'configuration_value' => '#ffffff',
         'sort_order' => 2510,

@@ -53,6 +53,12 @@ $zca_bootstrap_colors_added = [
     'ZCA_ALERT_INFO_BACKGROUND_COLOR',
     'ZCA_ALERT_INFO_BORDER_COLOR',
     'ZCA_HEADER_NAVBAR_LINK_BACKGROUND_COLOR_HOVER',
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_TEXT_COLOR',
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_TEXT_COLOR_HOVER',
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BACKGROUND_COLOR',
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BACKGROUND_COLOR_HOVER',
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BORDER_COLOR',
+    'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BORDER_COLOR_HOVER',
 ];
 
 // -----
@@ -66,17 +72,35 @@ if (!defined('ZCA_BUTTON_BACKGROUND_COLOR')) {
 if (!defined('ZCA_BUTTON_BACKGROUND_COLOR_HOVER')) {
     define('ZCA_BUTTON_BACKGROUND_COLOR_HOVER', ZCA_BUTTON_COLOR_HOVER);
 }
-if (!defined('ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR')) {
-    define('ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR', ZCA_HEADER_NAVBAR_BUTTON_COLOR);
-}
-if (!defined('ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR_HOVER')) {
-    define('ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR_HOVER', ZCA_HEADER_NAVBAR_BUTTON_COLOR_HOVER);
-}
 if (!defined('ZCA_HEADER_TABS_BACKGROUND_COLOR')) {
     define('ZCA_HEADER_TABS_BACKGROUND_COLOR', ZCA_HEADER_TABS_COLOR);
 }
 if (!defined('ZCA_HEADER_TABS_BACKGROUND_COLOR_HOVER')) {
     define('ZCA_HEADER_TABS_BACKGROUND_COLOR_HOVER', ZCA_HEADER_TABS_COLOR_HOVER);
+}
+
+// -----
+// Ditto for some of the color-settings that affect *only* the hamburger-menu-icon used
+// on the mobile display.  Define aliases for use in the CSS-generating portion of this
+// script for clarity.
+//
+if (!defined('ZCA_HEADER_NAVBAR_TOGGLER_COLOR')) {
+    define('ZCA_HEADER_NAVBAR_TOGGLER_COLOR', ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR);
+}
+if (!defined('ZCA_HEADER_NAVBAR_TOGGLER_COLOR_HOVER')) {
+    define('ZCA_HEADER_NAVBAR_TOGGLER_COLOR_HOVER', ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR_HOVER);
+}
+if (!defined('ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR')) {
+    define('ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR', ZCA_HEADER_NAVBAR_BUTTON_COLOR);
+}
+if (!defined('ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR_HOVER')) {
+    define('ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR_HOVER', ZCA_HEADER_NAVBAR_BUTTON_COLOR_HOVER);
+}
+if (!defined('ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR')) {
+    define('ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR', ZCA_HEADER_NAVBAR_BUTTON_BORDER_COLOR);
+}
+if (!defined('ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR_HOVER')) {
+    define('ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR_HOVER', ZCA_HEADER_NAVBAR_BUTTON_BORDER_COLOR_HOVER);
 }
 
 // -----
@@ -155,14 +179,24 @@ nav.navbar a.nav-link:hover {
     <?php echo ($zca_header_navbar_link_background_color_hover !== '') ? "background-color: $zca_header_navbar_link_background_color_hover;" : ''; ?>
 }
 nav.navbar .navbar-toggler {
-    color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR; ?>;
-    background-color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR; ?>;
-    border-color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_BORDER_COLOR; ?>;
+    color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_COLOR; ?>;
+    background-color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR; ?>;
+    border-color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR; ?>;
 }
 nav.navbar .navbar-toggler:hover {
-    color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_TEXT_COLOR_HOVER; ?>;
-    background-color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_BACKGROUND_COLOR_HOVER; ?>;
-    border-color: <?php echo ZCA_HEADER_NAVBAR_BUTTON_BORDER_COLOR_HOVER; ?>;
+    color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_COLOR_HOVER; ?>;
+    background-color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_BACKGROUND_COLOR_HOVER; ?>;
+    border-color: <?php echo ZCA_HEADER_NAVBAR_TOGGLER_BORDER_COLOR_HOVER; ?>;
+}
+nav.navbar .btn {
+    <?php echo ($zca_header_navbar_extra_button_text_color !== '') ? "color: $zca_header_navbar_extra_button_text_color;" : ''; ?>
+    <?php echo ($zca_header_navbar_extra_button_background_color !== '') ? "background-color: $zca_header_navbar_extra_button_background_color;" : ''; ?>
+    <?php echo ($zca_header_navbar_extra_button_border_color !== '') ? "border-color: $zca_header_navbar_extra_button_border_color;" : ''; ?>
+}
+nav.navbar .btn:hover {
+    <?php echo ($zca_header_navbar_extra_button_text_color_hover !== '') ? "color: $zca_header_navbar_extra_button_text_color_hover;" : ''; ?>
+    <?php echo ($zca_header_navbar_extra_button_background_color_hover !== '') ? "background-color: $zca_header_navbar_extra_button_background_color_hover;" : ''; ?>
+    <?php echo ($zca_header_navbar_extra_button_border_color_hover !== '') ? "border-color: $zca_header_navbar_extra_button_border_color_hover;" : ''; ?>
 }
 <?php
 //- Header EZ-Pages Bar
