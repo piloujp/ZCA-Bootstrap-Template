@@ -59,6 +59,9 @@ $zca_bootstrap_colors_added = [
     'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BACKGROUND_COLOR_HOVER',
     'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BORDER_COLOR',
     'ZCA_HEADER_NAVBAR_EXTRA_BUTTON_BORDER_COLOR_HOVER',
+    'ZCA_SOLD_OUT_BACKGROUND_COLOR',
+    'ZCA_SOLD_OUT_COLOR',
+    'ZCA_SOLD_OUT_BORDER_COLOR',
 ];
 
 // -----
@@ -466,6 +469,14 @@ button.button_confirm_order:hover {
 #checkoutConfirmationDefault .progress-bar,
 #checkoutSuccessDefault .progress-bar {
     <?php echo ($zca_checkout_progress_bar_background_color !== '') ? "background-color: $zca_checkout_progress_bar_background_color!important;" : ''; ?>
+}
+<?php
+//- "Sold Out" button colors (it's not a hoverable/clickable button).
+?>
+button.button_sold_out_sm, button.button_sold_out_sm:hover, button.button_sold_out, button.button_sold_out:hover {
+    <?php echo ($zca_sold_out_background_color !== '') ? "background-color: $zca_sold_out_background_color;" : ''; ?>
+    <?php echo ($zca_sold_out_color !== '') ? "color: $zca_sold_out_color;" : ''; ?>
+    <?php echo ($zca_sold_out_border_color !== '') ? "border-color: $zca_sold_out_border_color;" : ''; ?>
 }
 <?php
 //- Carousel prev/next and indicators
