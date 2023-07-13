@@ -642,7 +642,7 @@ $zca_bc_colors = [
     ],
 
     // -----
-    // Checkout-related colors sort-orders range from 7000-7999
+    // Checkout-related colors sort-orders range from 7000-7499
     //
     'ZCA_CHECKOUT_PROGRESS_BAR_BACKGROUND_COLOR' => [
         'configuration_title' => '<b>Checkout 3-Page</b> Progress Bar Background Color',
@@ -722,6 +722,28 @@ $zca_bc_colors = [
         'configuration_value' => '#f2c200',
         'sort_order' => 7400,
         'added' => '3.5.2',
+    ],
+
+    // -----
+    // "Sold Out" button coloring sort-orders range from 7500-7519
+    //
+    'ZCA_SOLD_OUT_BACKGROUND_COLOR' => [
+        'configuration_title' => '<b>Sold Out Button</b> Background Color',
+        'configuration_value' => '#a80000',
+        'sort_order' => 7500,
+        'added' => '3.6.0',
+    ],
+    'ZCA_SOLD_OUT_COLOR' => [
+        'configuration_title' => 'Sold Out Button Color',
+        'configuration_value' => '#ffffff',
+        'sort_order' => 7505,
+        'added' => '3.6.0',
+    ],
+    'ZCA_SOLD_OUT_BORDER_COLOR' => [
+        'configuration_title' => 'Sold Out Button Border Color',
+        'configuration_value' => '#a80000',
+        'sort_order' => 7510,
+        'added' => '3.6.0',
     ],
 
     // -----
@@ -837,7 +859,6 @@ if (!defined('ZCA_BOOTSTRAP_COLORS_VERSION')) {
     // defined.
     //
     if ($zca_bc_installed === true) {
-        $messageStack->add(sprintf(SUCCESS_ZCA_BOOTSTRAP_COLORS_INSTALLED, ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION), 'success');
         $messageStack->add_session(sprintf(SUCCESS_ZCA_BOOTSTRAP_COLORS_INSTALLED, ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION), 'success');
     }
 }
@@ -919,6 +940,5 @@ if (!defined('ZCA_BOOTSTRAP_COLORS_VERSION')) {
 // If an initial installation wasn't also run, let the admin know that the upgrade was successfully completed.
 //
 if ($zca_bc_installed === false) {
-    $messageStack->add(sprintf(SUCCESS_ZCA_BOOTSTRAP_COLORS_UPDATED, ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION), 'success');
     $messageStack->add_session(sprintf(SUCCESS_ZCA_BOOTSTRAP_COLORS_UPDATED, ZCA_BOOTSTRAP_COLORS_CURRENT_VERSION), 'success');
 }

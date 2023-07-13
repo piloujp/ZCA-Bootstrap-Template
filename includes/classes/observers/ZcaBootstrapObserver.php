@@ -2,7 +2,7 @@
 // -----
 // Part of the ZCA Bootstrap template, @zcadditions, @lat9, @marco-pm
 //
-// BOOTSTRAP 3.5.2
+// BOOTSTRAP 3.6.0
 //
 class ZcaBootstrapObserver extends base
 {
@@ -31,7 +31,7 @@ class ZcaBootstrapObserver extends base
 
         if (zca_bootstrap_active()) {
             $this->attach(
-                $this, 
+                $this,
                 [
                     //- From /includes/functions/functions_prices.php (zen_get_products_display)
                     'NOTIFY_ZEN_GET_PRODUCTS_DISPLAY_PRICE_SALE',
@@ -303,7 +303,7 @@ class ZcaBootstrapObserver extends base
                     $sold_out_button_class = 'button_sold_out_sm';
                     $sold_out_button_name = BUTTON_SOLD_OUT_SMALL_ALT;
                 }
-                $p2 = '<button class="btn ' . $sold_out_button_class . '" type="button">' . $sold_out_button_name . '</button>';
+                $p2 = '<button class="btn ' . $sold_out_button_class . '" type="button" disabled>' . $sold_out_button_name . '</button>';
                 break;
 
             case 'NOTIFY_ORDER_COUPON_LINK':
