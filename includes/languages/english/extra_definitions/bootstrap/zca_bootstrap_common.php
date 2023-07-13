@@ -29,9 +29,10 @@ define('TABLE_HEADING_ADDRESS_BOOK_ENTRIES', 'Choose From Your Address Book Entr
 define('TEXT_MULTIPLE_IMAGES', ' Additional Images ');
 define('TEXT_SINGLE_IMAGE', ' Larger Image ');
 define('PREV_NEXT_FROM', ' from ');
-define('IMAGE_BUTTON_PREVIOUS','Previous Item');
-define('IMAGE_BUTTON_NEXT','Next Item');
-define('IMAGE_BUTTON_RETURN_TO_PRODUCT_LIST','Back to Product List');
+define('IMAGE_BUTTON_PREVIOUS', 'Previous Item');
+define('IMAGE_BUTTON_NEXT', 'Next Item');
+define('IMAGE_BUTTON_RETURN_TO_PRODUCT_LIST', 'Back to Product List');
+define('MODAL_ADDL_IMAGE_PLACEHOLDER_ALT', 'Modal Additional Images for %s');   //- %s is filled in with the product's name
 
 // -----
 // Used on the product_music_info page.

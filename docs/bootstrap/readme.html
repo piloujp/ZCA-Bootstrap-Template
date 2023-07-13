@@ -285,7 +285,7 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.6.0-beta3, 2023-07-04 (lat9, dbltoe, dennisns7d)<ul>
+        <li>v3.6.0-beta4, 2023-07-04 (lat9, dbltoe, dennisns7d)<ul>
             <li>BUGFIX: Simplify page-header processing for featured_products, products_all and products_new pages.</li>
             <li>BUGFIX: Don't provide changes for pricing-related notifications if they've already been handled.</li>
             <li>BUGFIX: &quot;Add Address&quot; button on <code>address_book</code> displays as &quot;Back&quot;.</li>
@@ -298,6 +298,8 @@ img {
             <li>CHANGE: Colors added (and some defaults changed) for <em>Advanced Accessibility Standards</em>.</li>
             <li>CHANGE: <var>Header Nav Bar Button</var> settings' titles and descriptions renamed to <var>Header Nav Bar Toggler</var>, since that's all they apply to.</li>
             <li>CHANGE: Adding text/background/border color-constants for extra <var>navbar</var> buttons, like that used by the <var>search_header.php</var> sidebox.</li>
+            <li>BUGFIX: Adding text/background/border color-constants for the <var>Sold Out</var> button and disable that button so it doesn't appear clickable (which it isn't).</li>
+            <li>BUGFIX: Correcting HTML validation error on additional images' modal pop-up.</li>
             <li>The following files were changed or <span class="added">added</span>:<ol>
                 <li>/includes/classes/ajax/zcAjaxBootstrapSearch.php</li>
                 <li>/includes/classes/observers/ZcaBootstrapObserver.php</li>
@@ -314,6 +316,7 @@ img {
                 <li>/includes/templates/bootstrap/css/stylesheet_zca_colors.php</li>
                 <li>/includes/templates/bootstrap/jscript/ajax_search.js</li>
                 <li>/includes/templates/bootstrap/jscript/ajax_search.min.js</li>
+                <li>/includes/templates/bootstrap/modalboxes/tpl_image_additional.php</li>
                 <li>/includes/templates/bootstrap/sideboxes/tpl_ajax_search_header.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_address_book_default.php</li>
                 <li>/YOUR_ADMIN/includes/init_includes/init_bc_config.php</li>

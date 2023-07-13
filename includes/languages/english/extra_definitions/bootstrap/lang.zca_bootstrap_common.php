@@ -33,6 +33,7 @@ $define = [
     'IMAGE_BUTTON_PREVIOUS' => 'Previous Item',
     'IMAGE_BUTTON_NEXT' => 'Next Item',
     'IMAGE_BUTTON_RETURN_TO_PRODUCT_LIST' => 'Back to Product List',
+    'MODAL_ADDL_IMAGE_PLACEHOLDER_ALT' => 'Modal Additional Images for %s',   //- %s is filled in with the product's name
 
 // -----
 // Used on the product_music_info page.
