@@ -96,6 +96,8 @@ img {
         <li>/includes/extra_datafiles/dist.site-specific-bootstrap-settings.php <span class="smaller">(Added in v3.6.0)</span></li>
         <li>/includes/functions/zca_bootstrap_functions.php</li>
         <li>/includes/init_includes/init_zca_bootstrap.php</li>
+        <li>/includes/languages/english/bootstrap/account_history_info.php <span class="smaller">(Added in v3.6.0)</span></li>
+        <li>/includes/languages/english/bootstrap/lang.account_history_info.php <span class="smaller">(Added in v3.6.0)</span></li>
         <li>/includes/languages/english/bootstrap/extra_definitions/*.php</li>
         <li>/includes/modules/bootstrap/*.php</li>
         <li>/includes/modules/bootstrap/centerboxes/*.php</li>
@@ -285,7 +287,7 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.6.0-beta4, 2023-07-04 (lat9, dbltoe, dennisns7d)<ul>
+        <li>v3.6.0-beta5, 2023-07-13 (lat9, dbltoe, dennisns7d, brittainmark)<ul>
             <li>BUGFIX: Simplify page-header processing for featured_products, products_all and products_new pages.</li>
             <li>BUGFIX: Don't provide changes for pricing-related notifications if they've already been handled.</li>
             <li>BUGFIX: &quot;Add Address&quot; button on <code>address_book</code> displays as &quot;Back&quot;.</li>
@@ -301,11 +303,14 @@ img {
             <li>BUGFIX: Adding text/background/border color-constants for the <var>Sold Out</var> button and disable that button so it doesn't appear clickable (which it isn't).</li>
             <li>BUGFIX: Correcting HTML validation error on additional images' modal pop-up.</li>
             <li>CHANGE: Supporting zc158+ call-for-price product's interaction with ask-a-question.</li>
+            <li>CHANGE: Supporting zc158a+ newly defined constant for the <var>account_history_info</var> page.
             <li>The following files were changed or <span class="added">added</span>:<ol>
                 <li>/includes/classes/ajax/zcAjaxBootstrapSearch.php</li>
                 <li>/includes/classes/observers/ZcaBootstrapObserver.php</li>
                 <li><span class="added">/includes/extra_datafiles/dist.site-specific-bootstrap-settings.php</span></li>
                 <li>/includes/functions/zca_bootstrap_functions.php</li>
+                <li><span class="added">/includes/languages/english/bootstrap/account_history_info.php</span></li>
+                <li><span class="added">/includes/languages/english/bootstrap/lang.account_history_info.php</span></li>
                 <li>/includes/languages/english/extra_definitions/bootstrap/lang.zca_bootstrap_common.php</li>
                 <li>/includes/languages/english/extra_definitions/bootstrap/zca_bootstrap_common.php</li>
                 <li>/includes/modules/bootstrap/product_listing.php</li>
@@ -319,6 +324,7 @@ img {
                 <li>/includes/templates/bootstrap/jscript/ajax_search.min.js</li>
                 <li>/includes/templates/bootstrap/modalboxes/tpl_image_additional.php</li>
                 <li>/includes/templates/bootstrap/sideboxes/tpl_ajax_search_header.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_account_history_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_address_book_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_ask_a_question_default.php</li>
                 <li>/YOUR_ADMIN/includes/init_includes/init_bc_config.php</li>

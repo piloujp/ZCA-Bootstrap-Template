@@ -1,3 +1,8 @@
 <?php
-// define missing shipping info for bootstrap zc 1.5.7
+// -----
+// Part of the Bootstrap template, defining a language constant introduced
+// post-zc158a, used for zc157 installations.
+//
+// Bootstrap 3.6.0.
+//
 define('TEXT_MISSING_SHIPPING_INFO','WARNING: missing shipping details');
