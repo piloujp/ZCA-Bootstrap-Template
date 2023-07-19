@@ -2,7 +2,7 @@
 /**
  * Module Template
  * 
- * BOOTSTRAP v3.1.6
+ * BOOTSTRAP v3.6.0
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -13,8 +13,11 @@ require DIR_WS_MODULES . zen_get_module_directory(FILENAME_PRODUCT_LISTING);
 ?>
 <div id="productsListing" class="listingCenterColumn">
 <?php
-// only show when there is something to submit and enabled
-if ($show_top_submit_button == true) {
+// -----
+// v3.6.0: Adding float-button class so it's always visible whether top or bottom
+// location is specified via configuration.
+//
+if ($show_top_submit_button === true || $show_bottom_submit_button === true) {
 ?>
     <div id="productsListing-btn-toolbarTop" class="btn-toolbar justify-content-end my-3" role="toolbar">
         <?php echo zen_image_submit(BUTTON_IMAGE_ADD_PRODUCTS_TO_CART, BUTTON_ADD_PRODUCTS_TO_CART_ALT, 'id="submit1" name="submit1"'); ?>
@@ -57,8 +60,10 @@ if ($listing_split->number_of_rows && (PREV_NEXT_BAR_LOCATION == '2' || PREV_NEX
 }
 ?>
 <?php
-// only show when there is something to submit and enabled
-if ($show_bottom_submit_button == true) {
+// -----
+// v3.6.0; "Add Selected to Cart" button now floats, this'll be removed in the next release.
+//
+if (false && $show_bottom_submit_button == true) {
 ?>
     <div id="productsListing-btn-toolbarBottom" class="btn-toolbar justify-content-end my-3" role="toolbar">
         <?php echo zen_image_submit(BUTTON_IMAGE_ADD_PRODUCTS_TO_CART, BUTTON_ADD_PRODUCTS_TO_CART_ALT, 'id="submit2" name="submit1"'); ?>
