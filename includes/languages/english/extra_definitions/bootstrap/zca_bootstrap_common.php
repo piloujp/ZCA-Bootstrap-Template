@@ -1,6 +1,6 @@
 <?php
 /*
- * BOOTSTRAP v3.6.0
+ * BOOTSTRAP v3.6.1
  */
 // -----
 // Part of the Bootstrap template, defining commonly-used phrases and phrases unique to the bootstrap template.
@@ -106,3 +106,11 @@ define('TEXT_HEADER_ARIA_LABEL_LOGO', 'Site Logo');
 // defined in lang.english.php for zc158 and later.
 //
 define('PAGE_ACCOUNT_HISTORY', 'Order History');
+
+// -----
+// <h1> text for index pages where the 'normal' heading-text isn't provided by a
+// store ... for accessibility.
+//
+// Note: For zc200, this constant will be in /includes/languages/english/lang.index.php.
+//
+define('HEADING_TITLE_SCREENREADER', 'See Additional Content Below');
