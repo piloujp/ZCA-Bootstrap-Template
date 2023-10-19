@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.5.3
+ * BOOTSTRAP v3.6.1
  *
  * Loaded automatically by index.php?main_page=shopping_cart.<br />
  * Displays shopping-cart contents
@@ -79,9 +79,9 @@ if ($flagHasCartContents) {
                 <td class="qtyCell text-center pb-4">
 <?php
         if ($product['flagShowFixedQuantity']) {
-            echo $product['showFixedQuantityAmount'] . '' . $product['flagStockCheck'] . '' . $product['showMinUnits'];
+            echo $product['showFixedQuantityAmount'] . ' ' . $product['flagStockCheck'] . ' ' . $product['showMinUnits'];
         } else {
-            echo $product['quantityField'] . '' . $product['flagStockCheck'] . '' . $product['showMinUnits'];
+            echo $product['quantityField'] . ' ' . $product['flagStockCheck'] . ' ' . $product['showMinUnits'];
         }
 ?>
                     <div class="d-md-none mt-1">
