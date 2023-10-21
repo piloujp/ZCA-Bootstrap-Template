@@ -18,7 +18,8 @@ if (!isset($productArray) || !is_array($productArray)) {
 for ($i = 0, $n = count($productArray); $i < $n; $i++) {
     $productArray[$i]['buttonUpdate'] = preg_replace(
         '/(<input type="image".*?\/?>)(.*)/',
-        '<button type="submit" class="btn" aria-label="' . ICON_UPDATE_ALT . '" title="' . ICON_UPDATE_ALT . '"><i aria-hidden="true" class="fas fa-sync-alt"></i></button>$2',
+        '<button type="submit" class="btn btn-sm" aria-label="' . ICON_UPDATE_ALT . '" title="' . ICON_UPDATE_ALT . '"><i aria-hidden="true" class="fas fa-sm fa-sync-alt"></i></button>$2',
         $productArray[$i]['buttonUpdate']
     );
+    $productArray[$i]['quantityField'] = str_replace('form-control', 'form-control mx-auto text-center p-0', $productArray[$i]['quantityField']);
 }

@@ -88,7 +88,7 @@ if ($flagHasCartContents) {
 <?php
         if ($product['buttonDelete']) {
 ?>
-                    <a href="<?php echo zen_href_link(FILENAME_SHOPPING_CART, 'action=remove_product&product_id=' . $product['id']); ?>" class="btn mt-1" aria-label="<?php echo ICON_TRASH_ALT; ?>" title="<?php echo ICON_TRASH_ALT; ?>"><i aria-hidden="true" class="fas fa-trash-alt"></i></a>
+                    <a href="<?php echo zen_href_link(FILENAME_SHOPPING_CART, 'action=remove_product&product_id=' . $product['id']); ?>" class="btn btn-sm mt-1" aria-label="<?php echo ICON_TRASH_ALT; ?>" title="<?php echo ICON_TRASH_ALT; ?>"><i aria-hidden="true" class="fas fa-sm fa-trash-alt"></i></a>
 <?php
         }
         if ($product['checkBoxDelete'] ) {
@@ -106,7 +106,10 @@ if ($flagHasCartContents) {
                 </td>
                 <td class="qtyUpdateCell text-center d-none d-sm-table-cell"><?php echo (!empty($product['buttonUpdate'])) ? $product['buttonUpdate'] : ''; ?></td>
                 <td class="productsCell">
-                    <a href="<?php echo $product['linkProductsName']; ?>"><span class="d-none d-sm-block"><?php echo $product['productsImage']; ?></span><?php echo $product['productsName'] . '' . $product['flagStockCheck'] . ''; ?></a>
+                    <a href="<?php echo $product['linkProductsName']; ?>">
+                        <span class="d-none d-sm-block float-left mr-3"><?php echo $product['productsImage']; ?></span>
+                        <?php echo $product['productsName'] . ' ' . $product['flagStockCheck']; ?>
+                    </a>
 
 <?php
         echo $product['attributeHiddenField'];
@@ -133,7 +136,7 @@ if ($flagHasCartContents) {
 <?php
         if ($product['buttonDelete']) {
 ?>
-                    <a href="<?php echo zen_href_link(FILENAME_SHOPPING_CART, 'action=remove_product&product_id=' . $product['id']); ?>" class="btn" aria-label="<?php echo ICON_TRASH_ALT; ?>" title="<?php echo ICON_TRASH_ALT; ?>"><i aria-hidden="true" class="fas fa-trash-alt"></i></a>
+                    <a href="<?php echo zen_href_link(FILENAME_SHOPPING_CART, 'action=remove_product&product_id=' . $product['id']); ?>" class="btn btn-sm" aria-label="<?php echo ICON_TRASH_ALT; ?>" title="<?php echo ICON_TRASH_ALT; ?>"><i aria-hidden="true" class="fas fa-sm fa-trash-alt"></i></a>
 <?php
         }
         if ($product['checkBoxDelete'] ) {
@@ -160,7 +163,7 @@ if ($flagHasCartContents) {
     if (SHOW_SHOPPING_CART_UPDATE === '2' || SHOW_SHOPPING_CART_UPDATE === '3') {
 ?>
                     <div id="cartUpdate" class="text-center">
-                        <button type="submit" class="btn" aria-label="<?php echo BUTTON_UPDATE_ALT; ?>"><i class="fas fa-sync-alt"></i></button>
+                        <button type="submit" class="btn btn-sm" aria-label="<?php echo BUTTON_UPDATE_ALT; ?>"><i class="fas fa-sm fa-sync-alt"></i></button>
                     </div>
 <?php
     }

@@ -85,7 +85,8 @@ table.tabTable td {
 #navCatTabs a:hover {
     border: 0.125rem solid #007faf;
 }
-#shippingEstimatorContent {
+#shippingEstimatorContent,
+#shoppingcartBody .qtyCell input {
     width: fit-content;
 }
 
