@@ -22,7 +22,7 @@ for ($i = 0, $n = count($productArray); $i < $n; $i++) {
     // to be displayed.  If that's the case, just don't include the button.
     //
     if ($productArray[$i]['flagShowFixedQuantity'] === true) {
-        $productArray[$i]['buttonUpdate'] = '&nbsp;';
+        $productArray[$i]['buttonUpdate'] = '&nbsp;' . zen_draw_hidden_field('products_id[]', $productArray[$i]['id']);
 
         // -----
         // When a product's set to show a fixed-quantity, the 'assumption' is that the incoming
