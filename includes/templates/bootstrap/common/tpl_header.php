@@ -2,7 +2,7 @@
 /**
  * Common Template - tpl_header.php
  * 
- * BOOTSTRAP v3.5.1
+ * BOOTSTRAP v3.6.1
  *
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
@@ -98,17 +98,18 @@ require DIR_WS_MODULES . zen_get_module_sidebox_directory('search_header.php');
     <div id="logoWrapper">
         <div id="logo" class="row align-items-center px-3 pb-3"> 
 <?php
-$sales_text_class = (HEADER_SALES_TEXT !== '') ? 'col-sm-4' : 'col-sm-12';
+$tagline_banner_section_present = ((SHOW_BANNERS_GROUP_SET2 !== '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET2)) || HEADER_SALES_TEXT !== '');
+$sales_text_class = ($tagline_banner_section_present === true) ? 'col-sm-4' : 'col-sm-12';
 ?>
             <div class="<?php echo $sales_text_class; ?>">
-                <a href="<?php echo zen_href_link(FILENAME_DEFAULT); ?>" aria-label="<?php echo TEXT_HEADER_ARIA_LABEL_LOGO; ?>">
+                <a id="hdr-img" class="d-block" href="<?php echo zen_href_link(FILENAME_DEFAULT); ?>" aria-label="<?php echo TEXT_HEADER_ARIA_LABEL_LOGO; ?>">
                     <?php echo zen_image($template->get_template_dir(HEADER_LOGO_IMAGE, DIR_WS_TEMPLATE, $current_page_base, 'images') . '/' . HEADER_LOGO_IMAGE, HEADER_ALT_TEXT, HEADER_LOGO_WIDTH, HEADER_LOGO_HEIGHT); ?>
-                </a><br>
+                </a>
             </div>
 <?php
-if ((SHOW_BANNERS_GROUP_SET2 !== '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET2)) || HEADER_SALES_TEXT !== '') {
+if ($tagline_banner_section_present === true) {
 ?>
-            <div id="taglineWrapper" class="col-sm-12 text-center">
+            <div id="taglineWrapper" class="col-sm-8 text-center">
 <?php
     if (HEADER_SALES_TEXT !== '') {
 ?>
