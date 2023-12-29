@@ -243,7 +243,7 @@ img {
     </ol>
     <p>As a suggestion, keep the as-distributed <code>bootstrap</code> template's files unmodified so that you can easily revert to see if your custom changes have affected the template's output.  Once you have installed the template and customized its sidebox use, you can <a href="https://www.zen-cart.com/downloads.php?do=file&id=2087" target="_blank">clone the template</a> for use on your site.</p>
     <p><b>Note:</b> If you've made an initial installation of the template &mdash; as you <em>should</em> &mdash; in a test version of your live site, you've most likely customized the coloring to match your site. You can use the template's admin &quot;Tools :: ZCA Bootstrap Colors&quot; tool to download a CSV format of your coloring (see the bottom of that tool) and then upload that CSV once you're ready to enable the template on your live site!</p>
-    <p>For an initial installation running on the zc157-series, if you want the template to display any popup coupon-help in a modal instead of a javascript popup, you'll need to make a hand-edit to your site's <code>/includes/modules/order_totals/ot_coupon.php</code> file.</p>
+    <p>For an initial installation running on the zc157-series, if you want the template to display any popup coupon-help in a modal instead of a javascript popup, you'll need to make a hand-edit to your site's <code>/includes/modules/order_total/ot_coupon.php</code> file.</p>
     <ol>
         <li>Make a backup copy of that file, using a file extension <b>other than</b> <code>.php</code>, e.g. <code>ot_coupon.php.original</code>.</li>
         <li>Edit <code>ot_coupon.php</code>, find the following section:
@@ -275,7 +275,7 @@ img {
 
     <h2>Upgrading</h2>
     <p>This readme's <b>Version History</b> section, below, identifies each file changed, <span class="added">added</span> or <span class="removed">removed</span> for each release of the template, starting with v3.0.0.  When you're upgrading, note each of the changes from your currently-installed version to that associated with the upgrade.  Pay specific attention to the files added and removed!</p>
-    <p>Unzip the template's package file and use a file-comparision program (like WinMerge or BeyondCompare) to either overwrite (if you've made a <em>clone</em> of the template) or merge the differences into the 'base' <code>bootstrap</code> sub-directories.  If you haven't made a <em>clone</em> of the template, pay specific attention to any changes that you've made to those 'base' files!  If you <b>have</b> made a <em>clone</em>, use your file-comparison program to merge the 'base' template's updates into your cloned copy.  In either case, pay specific attention to the files added and removed!</p>
+    <p>Unzip the template's package file and use a file-comparison program (like WinMerge or BeyondCompare) to either overwrite (if you've made a <em>clone</em> of the template) or merge the differences into the 'base' <code>bootstrap</code> sub-directories.  If you haven't made a <em>clone</em> of the template, pay specific attention to any changes that you've made to those 'base' files!  If you <b>have</b> made a <em>clone</em>, use your file-comparison program to merge the 'base' template's updates into your cloned copy.  In either case, pay specific attention to the files added and removed!</p>
     <p>Starting with v3.4.0, the template's package file <b>no longer distributes</b> a modified version of <code>/includes/modules/order_total/ot_coupon.php</code>, since that file's changed drastically between the zc157 series and zc158.  Prior versions included a single change-block, updating that module to use a modal popup to view a coupon's help information.  If your site already has that change, it will continue to operate for the zc157 series, but should be overwritten with the zc158 distribution's version when your site is upgraded to use the Zen Cart 1.5.8 file-set.</p>
     <h3>Version-Specific Upgrade Suggestions</h3>
     <p>Sometimes, a template-upgrade introduces new language constants and/or color-configuration values. When this occurs, I'll suggest that you place your site into <var>Maintenance Mode</var> until the upgrade is completed.  Otherwise, it's possible that the site's storefront will experience PHP Warnings (at best) or PHP Errors (if the site runs on more strict versions of PHP) due to the template's use of those missing constants.</p>
@@ -288,7 +288,7 @@ img {
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
         <li>v3.6.1, 2023-11-13 (lat9, scottcwilson, brittainmark, torvista)<ul>
-            <li>BUGFIX: Adding <var>title</var> attributes to storefront Previous/Next navigation buttions (accessibility).</li>
+            <li>BUGFIX: Adding <var>title</var> attributes to storefront Previous/Next navigation buttons (accessibility).</li>
             <li>BUGFIX: Correct spelling of <var>cursor</var> in <var>checkout_one.css</var>; was <var>curser</var>.</li>
             <li>BUGFIX: Correct empty level-1 headings (accessibility issue) on index pages.</li>
             <li>BUGFIX: Don't let the on-page shipping-estimator's fields expand to 100%, use fit-to-content instead.</li>
@@ -381,7 +381,7 @@ img {
             <li>BUGFIX: Correct shopping-cart display when both icon and checkbox is rendered.</li>
             <li>BUGFIX: Correct heading structure and add landscape for accessibility.</li>
             <li>BUGFIX: Remove unneeded code from the admin's <code>Tools :: ZCA Bootstrap Colors</code> tool.</li>
-            <li>BUGFIX: Remove unwanted bootstrap base color classes, so the the &quot;ZCA Bootstrap Colors&quot; control the sections.</li>
+            <li>BUGFIX: Remove unwanted bootstrap base color classes, so the &quot;ZCA Bootstrap Colors&quot; control the sections.</li>
             <li>BUGFIX: Updating/adding various color settings for the &quot;ZCA Bootstrap Colors&quot; tool</li>
             <li>BUGFIX: Updates to &quot;ZCA Bootstrap Colors&quot; and <code>/css/stylesheet_zca_colors.php</code> to make it easier to add/update colors now and in the future.  Refer to the template's <a href="https://github.com/lat9/ZCA-Bootstrap-Template/wiki" target="_blank">Wiki</a> for additional information.</li>
             <li>BUGFIX: Coupon modal pop-up not displaying <em>any</em> text when there are no category-related restrictions.</li>
