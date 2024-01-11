@@ -7,7 +7,7 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: init_bc_config.php
  *
- * BOOTSTRAP v3.6.0
+ * BOOTSTRAP v3.6.2
  */
 // -----
 // Brought in by /admin/init_includes/init_bc_config.php for an initial installation or upgrade to the colors. 
@@ -142,13 +142,13 @@ $zca_bc_colors = [
     ],
     'ZCA_BODY_RATING_STAR_BACKGROUND_COLOR' => [
         'configuration_title' => '<b>Body Rating Stars</b> Background Color',
-        'configuration_value' => '#322424',
+        'configuration_value' => '#ffffff',
         'sort_order' => 500,
         'added' => '3.5.2',
     ],
     'ZCA_BODY_RATING_STAR_COLOR' => [
         'configuration_title' => 'Body Rating Stars Color',
-        'configuration_value' => '#efa31d',
+        'configuration_value' => '#987000',
         'sort_order' => 510,
         'added' => '3.5.2',
         'set_default' => true,
