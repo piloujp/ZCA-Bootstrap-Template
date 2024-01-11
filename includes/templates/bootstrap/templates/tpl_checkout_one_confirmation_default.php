@@ -233,7 +233,7 @@ if ($confirmation_required === true) {
 // -----
 // Now, display the form that actually submits this order.
 //
-echo zen_draw_form('checkout_confirmation', $form_action_url, 'post', 'id="checkout_confirmation"' . ($confirmation_required) ? ' onsubmit="submitonce();"' : '');
+echo zen_draw_form('checkout_confirmation', $form_action_url, 'post', 'id="checkout_confirmation"' . ($confirmation_required ? ' onsubmit="submitonce();"' : ''));
 ?>
     <div id="checkoutOneConfirmationButtons">
 <?php
