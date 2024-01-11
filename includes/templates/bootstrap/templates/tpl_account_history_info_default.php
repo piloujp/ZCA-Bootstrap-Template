@@ -74,7 +74,7 @@ foreach ($order->products as $product) {
     // it's defined via the 'NOTIFY_ACCOUNT_HISTORY_INFO_EXTRA_COLUMN_HEADING' notification.
     //
     $extra_data = [];
-    $zco_notifier->notify('NOTIFY_ACCOUNT_HISTORY_INFO_EXTRA_COLUMN_DATA', ['order' => $order, 'orders_product' => $op], $extra_data);
+    $zco_notifier->notify('NOTIFY_ACCOUNT_HISTORY_INFO_EXTRA_COLUMN_DATA', ['order' => $order, 'orders_product' => $product], $extra_data);
 ?>
                     <tr>
                         <td class="qtyCell"><?php echo $product['qty'] . $quantity_suffix; ?></td>
