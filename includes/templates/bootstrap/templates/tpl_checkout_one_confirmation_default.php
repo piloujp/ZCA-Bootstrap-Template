@@ -1,9 +1,9 @@
 <?php
 // -----
 // Part of the One-Page Checkout plugin, provided under GPL 2.0 license by lat9 (cindy@vinosdefrutastropicales.com).
-// Copyright (C) 2013-2022, Vinos de Frutas Tropicales.  All rights reserved.
+// Copyright (C) 2013-2024, Vinos de Frutas Tropicales.  All rights reserved.
 //
-// Last updated: OPC v2.4.2/Bootstrap v3.5.0
+// Last updated: OPC v2.4.7/Bootstrap v3.6.2
 //
 // -----
 // The "display: none;" on the loading icon enables that to "not display" if javascript is disabled in the customer's browser.  The
