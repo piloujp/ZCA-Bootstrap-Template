@@ -95,7 +95,7 @@ if ($current_page === (FILENAME_TEMPLATE_SELECT . '.php') && isset($_GET['action
         $zca_bootstrap_configs = array(
             'IMAGE_USE_CSS_BUTTONS' => 'Yes',
             'MAX_DISPLAY_PAGE_LINKS' => '3',
-            'BREAD_CRUMBS_SEPARATOR' => '<li>&nbsp;/&nbsp;</li>',
+            'BREAD_CRUMBS_SEPARATOR' => '&nbsp;/&nbsp;',
             'CATEGORIES_SEPARATOR_SUBS' => '&vdash;&nbsp;',
             'CATEGORIES_COUNT_PREFIX' => '',
             'CATEGORIES_COUNT_SUFFIX' => '',
@@ -115,7 +115,7 @@ if ($current_page === (FILENAME_TEMPLATE_SELECT . '.php') && isset($_GET['action
         $sql_update = '';
         $zca_table_configuration = preg_replace('/' . DB_PREFIX . '/', '', TABLE_CONFIGURATION, 1);
         foreach ($zca_bootstrap_configs as $key => $value) {
-            if (constant($key) != $value) {
+            if (constant($key) !== $value) {
                 $sql_update .= ("UPDATE " . $zca_table_configuration . " SET configuration_value = '$value', last_modified = now() WHERE configuration_key = '$key' LIMIT 1;" . PHP_EOL);
             }
         }
