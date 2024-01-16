@@ -2,7 +2,7 @@
 /**
  * Template Information File
  * 
- * BOOTSTRAP v3.6.2
+ * BOOTSTRAP v3.6.3
  * @package templateSystem
  * @copyright Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
