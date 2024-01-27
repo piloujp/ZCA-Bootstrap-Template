@@ -2,7 +2,7 @@
 /**
  * products_all  header_php.php
  * 
- * BOOTSTRAP v3.6.0
+ * BOOTSTRAP v3.6.3
  *
  * @package page
  * @copyright Copyright 2003-2007 Zen Cart Development Team
@@ -12,9 +12,13 @@
  *
  */
 // -----
-// all_products: Provide updated processing **ONLY IF** the ZCA bootstrap is the active template.
+// all_products: Provide updated processing **ONLY IF** the ZCA bootstrap is the active template and the
+// all-products' raw SQL query is present (it no longer is in zc200).
 //
-if (!(function_exists('zca_bootstrap_active') && zca_bootstrap_active() === true)) {
+// Note: Once support is dropped for Zen Cart versions less than v2.0.0, this file can be
+// removed in its entirety.
+//
+if (!(function_exists('zca_bootstrap_active') && zca_bootstrap_active() === true && isset($products_all_query_raw))) {
     return;
 }
 

@@ -2,7 +2,7 @@
 /**
  * Featured Products
  * 
- * BOOTSTRAP v3.6.0
+ * BOOTSTRAP v3.6.3
  *
  * @package page
  * @copyright Copyright 2003-2006 Zen Cart Development Team
@@ -12,9 +12,13 @@
  *
  */
 // -----
-// featured_products: Provide updated processing **ONLY IF** the ZCA bootstrap is the active template.
+// featured_products: Provide updated processing **ONLY IF** the ZCA bootstrap is the active template and the
+// featured-products' raw SQL query is present (it no longer is in zc200).
 //
-if (!(function_exists('zca_bootstrap_active') && zca_bootstrap_active() === true)) {
+// Note: Once support is dropped for Zen Cart versions less than v2.0.0, this file can be
+// removed in its entirety.
+//
+if (!(function_exists('zca_bootstrap_active') && zca_bootstrap_active() === true && isset($featured_products_query_raw))) {
     return;
 }
 
