@@ -2,7 +2,7 @@
 /**
  * product_listing module
  * 
- * BOOTSTRAP v3.6.0
+ * BOOTSTRAP v3.6.3
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -28,7 +28,7 @@ $product_listing_layout_style = (int)$columns_per_row > 1 ? 'columns' : 'table';
 if (empty($columns_per_row)) $product_listing_layout_style = 'fluid';
 if ($columns_per_row === 'fluid') $product_listing_layout_style = 'fluid';
 
-$max_results = (int)MAX_DISPLAY_PRODUCTS_LISTING;
+$max_results = (int)($product_listing_max_results ?? MAX_DISPLAY_PRODUCTS_LISTING);
 if ($product_listing_layout_style === 'columns' && $columns_per_row > 1) {
     $max_results = ($columns_per_row * (int)($max_results / $columns_per_row));
 }

@@ -16,12 +16,20 @@
 // -----
 // specials: Provide updated processing **ONLY IF** the ZCA bootstrap is the active template.
 //
-// Note: Once support is dropped for Zen Cart versions less than v2.0.0, this file can be
-// removed in its entirety.
-//
 if (!(function_exists('zca_bootstrap_active') && zca_bootstrap_active())) {
     return;
 }
+
+// -----
+// Set the maximum number of products in a page's listing to that defined for
+// the 'specials' page.
+//
+$product_listing_max_results = MAX_DISPLAY_SPECIAL_PRODUCTS;
+
+// ------
+// Note: Once support is dropped for Zen Cart versions less than v2.0.0, all the following
+// code can be removed.
+//
 
 //Removed call to define page & sorter dropdown. not included in this template
 $listing_sql =

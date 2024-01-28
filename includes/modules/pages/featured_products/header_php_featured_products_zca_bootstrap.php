@@ -12,13 +12,22 @@
  *
  */
 // -----
-// featured_products: Provide updated processing **ONLY IF** the ZCA bootstrap is the active template and the
-// featured-products' raw SQL query is present (it no longer is in zc200).
+// featured_products: Provide updated processing **ONLY IF** the ZCA bootstrap is the active template.
 //
-// Note: Once support is dropped for Zen Cart versions less than v2.0.0, this file can be
-// removed in its entirety.
+if (!(function_exists('zca_bootstrap_active') && zca_bootstrap_active() === true)) {
+    return;
+}
+
+// -----
+// Set the maximum number of products in a page's listing to that defined for
+// the 'featured_products' page.
 //
-if (!(function_exists('zca_bootstrap_active') && zca_bootstrap_active() === true && isset($featured_products_query_raw))) {
+$product_listing_max_results = MAX_DISPLAY_PRODUCTS_FEATURED_PRODUCTS;
+
+// -----
+// Nothing further to do if the featured-products' raw SQL query is present (it no longer is in zc200).
+//
+if (!isset($featured_products_query_raw)) {
     return;
 }
 
