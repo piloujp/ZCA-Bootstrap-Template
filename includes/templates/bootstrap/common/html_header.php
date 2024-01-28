@@ -2,7 +2,7 @@
 /**
  * Common Template
  *
- * BOOTSTRAP v3.6.1
+ * BOOTSTRAP v3.6.3
  *
  * outputs the html header. i,e, everything that comes before the </head> tag.
  *
@@ -74,7 +74,7 @@ if (!empty($bs4_no_preloading)) {
 ?>
     <meta charset="<?php echo CHARSET; ?>">
     <title><?php echo META_TAG_TITLE; ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no">
     <meta name="keywords" content="<?php echo META_TAG_KEYWORDS; ?>">
     <meta name="description" content="<?php echo META_TAG_DESCRIPTION; ?>">
     <meta name="author" content="<?php echo STORE_NAME ?>">
