@@ -36,12 +36,15 @@ foreach ($addresses as $address) {
     <div class="card-header">
         <div class="custom-control custom-radio custom-control-inline">
             <?php echo zen_draw_radio_field('address', $address_book_id, $selected, 'id="name-' . $address_book_id . '"'); ?>
-            <label for="name-<?php echo $address_book_id; ?>" class="custom-control-label"><?php echo zen_output_string_protected($address['firstname'] . ' ' . $address['lastname']) . $primary_address; ?></label>
+            <label for="name-<?php echo $address_book_id; ?>" class="custom-control-label"><?php echo ($_SESSION['language'] == 'japanese') ? zen_output_string_protected($address['lastname'] . ' ' . $address['firstname']) . $primary_address : zen_output_string_protected($address['firstname'] . ' ' . $address['lastname']) . $primary_address; ?></label>
         </div>
     </div>
 
     <div class="card-body p-3">
-        <address><?php echo zen_address_format(zen_get_address_format_id($address['country_id']), $address['address'], true, ' ', '<br>'); ?></address>
+        <address><?php echo zen_address_format(zen_get_address_format_id($address['country_id']), $address_details, true, ' ', '<br>');
+		echo !empty($address['telephone']) ? '<br><small>' . ENTRY_TELEPHONE_NUMBER . $address['telephone'] . '</small>' : '';
+		echo !empty($address['fax']) ? '<br><small>' . ENTRY_FAX_NUMBER . $address['fax'] . '</small>' : '';
+        ?></address>
     </div>
 </div>
 <!--eof address book single entry card-->

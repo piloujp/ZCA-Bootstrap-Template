@@ -106,7 +106,7 @@ if ($_SESSION['sendto'] != false) {
                     <div id="shippingMethod-card" class="card">
                         <h4 id="shippingMethod-card-header" class="card-header"><?php echo HEADING_SHIPPING_METHOD; ?></h4>
                         <div id="shippingMethod-card-body" class="card-body">
-                            <h4><?php echo $order->info['shipping_method']; ?></h4>
+                            <h4><?php echo $order->info['shipping_method'] . (!empty($order->delivery['timespec']) ? '<br>' . TEXT_TIME_SPECIFY . $order->delivery['timespec'] :''); ?></h4>
 
                         </div>
                     </div>
