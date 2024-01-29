@@ -205,7 +205,7 @@ if (!empty($order->info['shipping_method'])) {
                         <div id="shippingMethod-card" class="card">
                             <h4 id="shippingMethod-card-header" class="card-header"><?php echo HEADING_SHIPPING_METHOD; ?></h4>
                             <div id="shippingMethod-card-body" class="card-body">
-                                <div><?php echo $order->info['shipping_method']; ?></div>
+                                <div><?php echo $order->info['shipping_method'] . (!empty($order->delivery['timespec']) ? '<br>' . TEXT_TIME_SPECIFY . $order->delivery['timespec'] :''); ?></div>
                             </div>
                         </div>
 <?php

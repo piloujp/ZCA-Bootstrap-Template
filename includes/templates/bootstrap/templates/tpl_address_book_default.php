@@ -55,10 +55,12 @@ foreach ($addressArray as $addresses) {
 ?>
             <div id="addressBookSingleEntryId<?php echo $addresses['address_book_id']; ?>-card" class="card mb-3<?php echo $primary_class ; ?>">
                 <h4 id="addressBookSingleEntryId<?php echo $addresses['address_book_id']; ?>-card-header" class="card-header">
-                    <?php echo zen_output_string_protected($addresses['firstname'] . ' ' . $addresses['lastname']) . $primary_address ; ?>
+                    <?php echo($_SESSION['language'] == 'japanese') ? zen_output_string_protected($addresses['lastname'] . ' ' . $addresses['firstname']) : zen_output_string_protected($addresses['firstname'] . ' ' . $addresses['lastname']); ?><?php if ($addresses['address_book_id'] == $_SESSION['customer_default_address_id']) echo '&nbsp;' . $primary_address ; ?>
                 </h4>
                 <div id="addressBookSingleEntryId<?php echo $addresses['address_book_id']; ?>-card-body" class="card-body p-3">
-                    <address><?php echo zen_address_format($addresses['format_id'], $addresses['address'], true, ' ', '<br>'); ?></address>
+                    <address><?php echo zen_address_format($addresses['format_id'], $addresses['address'], true, ' ', '<br>');
+					echo !empty($addresses['telephone']) ? '<br><small>' . ENTRY_TELEPHONE_NUMBER . $addresses['telephone'] . '</small>' : '';
+					echo !empty($addresses['fax']) ? '<br><small>' . ENTRY_FAX_NUMBER . $addresses['fax'] . '</small>' : ''; ?></address>
                     <div class="btn-toolbar justify-content-between" role="toolbar">
                         <?php echo zca_button_link(zen_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'edit=' . $addresses['address_book_id'], 'SSL'), BUTTON_EDIT_SMALL_ALT, 'small_edit'); ?>
                         <?php echo zca_button_link(zen_href_link(FILENAME_ADDRESS_BOOK_PROCESS, 'delete=' . $addresses['address_book_id'], 'SSL'), BUTTON_DELETE_SMALL_ALT, 'button_delete_small'); ?>
