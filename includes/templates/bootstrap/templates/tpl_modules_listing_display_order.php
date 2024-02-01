@@ -31,11 +31,11 @@ if ($disp_order !== $disp_order_default) {
     array_unshift($display_order_options, ['id' => $disp_order_default, 'text' => PULL_DOWN_ALL_RESET]);
 }
 ?>
-<div id="listingDisplayOrderSorter" class="mb-3">
-    <label for="disp-order-sorter"><?php echo TEXT_INFO_SORT_BY; ?></label>
+<div id="listingDisplayOrderSorter" class="row mb-3">
+    <label for="disp-order-sorter" class="mx-2"><?php echo TEXT_INFO_SORT_BY; ?></label>
 <?php
 echo
-    zen_draw_form('sorter_form', zen_href_link($_GET['main_page']), 'get') .
+    zen_draw_form('sorter_form', zen_href_link($_GET['main_page']), 'get', 'class="form-inline"') .
     zen_draw_hidden_field('main_page', $_GET['main_page']) .
     zen_hide_session_id();
 if (isset($_GET['cPath'], $cPath)) {
