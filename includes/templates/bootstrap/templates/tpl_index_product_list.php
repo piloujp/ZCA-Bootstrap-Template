@@ -2,9 +2,9 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.0.0
+ * BOOTSTRAP v3.6.3
  *
- * Loaded by main_page=index<br />
+ * Loaded by main_page=index
  * Displays product-listing when a particular category/subcategory is selected for browsing
  *
  * @package templateSystem
@@ -19,7 +19,7 @@
 
     <div id="indexProductList-cat-wrap">
 <?php
-if (PRODUCT_LIST_CATEGORIES_IMAGE_STATUS == 'true') {
+if (PRODUCT_LIST_CATEGORIES_IMAGE_STATUS === 'true') {
 // categories_image
     if ($categories_image = zen_get_categories_image($current_category_id)) {
 ?>
@@ -42,8 +42,8 @@ if ($current_categories_description != '') {
 $check_for_alpha = $listing_sql;
 $check_for_alpha = $db->Execute($check_for_alpha);
 
-if ($do_filter_list || isset($_GET['alpha_filter_id']) || ($check_for_alpha->RecordCount() > 0 && PRODUCT_LIST_ALPHA_SORTER == 'true')) {
-    $form = zen_draw_form('filter', zen_href_link(FILENAME_DEFAULT), 'get') . '<label class="inputLabel">' .TEXT_SHOW . '</label>';
+if ($do_filter_list || isset($_GET['alpha_filter_id']) || (PRODUCT_LIST_ALPHA_SORTER === 'true' && $check_for_alpha->RecordCount() > 0)) {
+    $form = zen_draw_form('filter', zen_href_link(FILENAME_DEFAULT), 'get') . '<label class="inputLabel">' . TEXT_SHOW . '</label>';
 ?>
 
 <?php
@@ -80,7 +80,9 @@ if ($do_filter_list || isset($_GET['alpha_filter_id']) || ($check_for_alpha->Rec
     }
 
     // draw sort
-    echo zen_draw_hidden_field('sort', $_GET['sort']);
+    if (!empty($_GET['sort'])) {
+        echo zen_draw_hidden_field('sort', $_GET['sort']);
+    }
 
     echo '<div id="indexProductList-filterRow" class="row">';
     // draw filter_id (ie: category/mfg depending on $options)
