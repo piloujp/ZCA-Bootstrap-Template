@@ -287,7 +287,7 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.6.3, 2024-xx-yy (lat9, dennisns7d, daphilli224)<ul>
+        <li>v3.6.3, 2024-xx-yy (lat9, dennisns7d, daphilli224, drbyte)<ul>
             <li>BUGFIX: Correct template's <var>template_info.php</var> to report the current version.</li>
             <li>BUGFIX: Two trashcan icons displayed on <var>shopping_cart</var> page when viewing on a 'small' screen.</li>
             <li>INTROP: Add support for zc200's <em>Wholesale Pricing</em> pricing displays.</li>
@@ -298,8 +298,10 @@ img {
             <li>BUGFIX: Correct PHP Warning on index listing when no sort is selected.</li>
             <li>BUGFIX: Add alpha-filter to <var>products_all</var> page, if enabled.</li>
             <li>BUGFIX: Upgrade from very old version winds up missing configuration settings.</li>
+            <li>BUGFIX: Enabling a fluid display on category listings.</li>
             <li>The following files were changed:<ol>
                 <li>/includes/classes/observers/ZcaBootstrapObserver.php</li>
+                <li>/includes/modules/bootstrap/category_row.php</li>
                 <li>/includes/modules/bootstrap/product_listing.php</li>
                 <li>/includes/modules/pages/featured_products/header_php_featured_products_zca_bootstrap.php</li>
                 <li>/includes/modules/pages/products_all/header_php_products_all_zca_bootstrap.php</li>
@@ -308,6 +310,7 @@ img {
                 <li>/includes/templates/bootstrap/template_info.php</li>
                 <li>/includes/templates/bootstrap/common/html_header.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_index_product_list.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_modules_category_row.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_listing_display_order.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_products_all_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_shopping_cart_default.php</li>
