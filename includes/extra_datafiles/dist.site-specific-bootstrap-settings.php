@@ -22,4 +22,4 @@
 // This control, used at the bottom of tpl_main_page.php, indicates whether (false, the default) or not
 // (true) to disable the back-to-top control on each page.
 //
-$zca_disable_back_to_top = true;
+//$zca_disable_back_to_top = false;
