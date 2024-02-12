@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.6.3
+ * BOOTSTRAP v3.6.4
  *
  * Loaded by main_page=index
  * Displays product-listing when a particular category/subcategory is selected for browsing
