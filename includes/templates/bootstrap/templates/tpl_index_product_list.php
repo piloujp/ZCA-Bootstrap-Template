@@ -79,6 +79,11 @@ if ($do_filter_list || isset($_GET['alpha_filter_id']) || (PRODUCT_LIST_ALPHA_SO
         echo zen_draw_hidden_field('manufacturers_id', $_GET['manufacturers_id']);
     }
 
+    // draw disp_order
+    if (!empty($_GET['disp_order'])) {
+        echo zen_draw_hidden_field('disp_order', $_GET['disp_order']);
+    }
+
     // draw sort
     if (!empty($_GET['sort'])) {
         echo zen_draw_hidden_field('sort', $_GET['sort']);
