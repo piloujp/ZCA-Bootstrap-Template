@@ -84,14 +84,6 @@ if (isset($_SESSION['customer_guest_id'])) {
     </div>
 <!--eof card deck-->
 
-<!--bof customer service card--> 
-    <div id="customerService-card" class="card mb-3">
-        <div id="customerService-card-body" class="card-body p-3">
-            <?php echo TEXT_CONTACT_STORE_OWNER;?>
-        </div>
-    </div>
-<!--eof customer service card-->
-
 <!--bof order number card--> 
     <div id="orderNumber-card" class="card mb-3">
         <div id="orderNumber-card-body" class="card-body p-3">
