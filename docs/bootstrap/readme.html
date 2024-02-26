@@ -112,6 +112,7 @@ img {
         <li>/includes/modules/pages/products_all/header_php_products_all_zca_bootstrap.php</li>
         <li>/includes/modules/pages/products_new/header_php_products_new_zca_bootstrap.php</li>
         <li>/includes/modules/pages/shopping_cart/header_php_shopping_cart_zca_bootstrap.php</li>
+        <li>/includes/modules/pages/shopping_cart/jscript_addr_pulldowns_bootstrap.php <span class="smaller">(Added in v3.6.4)</span></li>
         <li>/includes/modules/pages/site_map/header_php_site_map_zca_bootstrap.php</li>
         <li>/includes/modules/pages/specials/header_php_specials_zca_bootstrap.php</li>
         <li>/includes/modules/sideboxes/bootstrap/*.php</li>
@@ -131,101 +132,6 @@ img {
         <li>/YOUR_ADMIN/includes/languages/english/zca_bootstrap_colors.php</li>
         <li>/YOUR_ADMIN/includes/languages/english/extra_definitions/zca_bootstrap_colors.php</li>
         <li>/YOUR_ADMIN/includes/languages/english/extra_definitions/zca_bootstrap_messages.php</li>
-    </ol>
-
-    <h2>Upgrading from v2.0.0c</h2>
-    <p>As an aid in upgrading from the template's v2.0.0c release, this section identifies the files added, removed or moved in the transition from v2.0.0c of the template to v3.0.0.  They <em>might</em> also apply to upgrades from a previous version, but you'll need to check the <code>CHANGELOG.txt</code> file provided by this template's zip-file for those prior changes.</p>
-
-    <h3>Files Removed</h3>
-    <ol>
-        <li><span class="corefile">/includes/classes/order.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157b version of the file.)</span></li>
-        <li><span class="corefile">/includes/classes/site_map.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157b version of the file.)</span></li>
-        <li><span class="corefile">/includes/classes/ajax/zcAjaxPayment.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157b version of the file.)</span></li>
-        <li>/includes/classes/zca/zca_breadcrumb.php</li>
-        <li>/includes/classes/zca_photoswipe/autoload_default.php</li>
-        <li>/includes/classes/zca_photoswipe/jquery_photoswipe.php</li>
-        <li>/includes/functions/extra_functions/zen_photoswipe.php</li>
-        <li>/includes/init_includes/init_zca_listing_style.php</li>
-        <li>/includes/languages/english/bootstrap/button_names.php</li>
-        <li>/includes/languages/english/bootstrap/checkout_payment_address.php</li>
-        <li>/includes/languages/english/bootstrap/checkout_shipping_address.php</li>
-        <li>/includes/languages/english/bootstrap/create_account.php</li>
-        <li>/includes/languages/english/bootstrap/create_account_success.php</li>
-        <li>/includes/languages/english/bootstrap/document_general_info.php</li>
-        <li>/includes/languages/english/bootstrap/document_product_info.php</li>
-        <li>/includes/languages/english/bootstrap/featured_products.php</li>
-        <li>/includes/languages/english/bootstrap/info_shopping_cart.php</li>
-        <li>/includes/languages/english/bootstrap/login.php</li>
-        <li>/includes/languages/english/bootstrap/popup_coupon_help.php</li>
-        <li>/includes/languages/english/bootstrap/popup_cvv_help.php</li>
-        <li>/includes/languages/english/bootstrap/popup_search_help.php</li>
-        <li>/includes/languages/english/bootstrap/products_all.php</li>
-        <li>/includes/languages/english/bootstrap/products_new.php</li>
-        <li>/includes/languages/english/bootstrap/product_free_shipping.php</li>
-        <li>/includes/languages/english/bootstrap/product_free_shipping_info.php</li>
-        <li>/includes/languages/english/bootstrap/product_info.php</li>
-        <li>/includes/languages/english/bootstrap/product_music_info.php</li>
-        <li>/includes/languages/english/bootstrap/product_reviews_info.php</li>
-        <li>/includes/languages/english/bootstrap/product_reviews_write.php</li>
-        <li>/includes/languages/english/bootstrap/shopping_cart.php</li>
-        <li>/includes/languages/english/bootstrap/specials.php</li>
-        <li>/includes/languages/english/extra_definitions/zca_photoswipe.php</li>
-        <li><span class="corefile">/includes/modules/order_total/ot_gv.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157b version of the file.)</span></li>
-        <li>/includes/modules/bootstrap/additional_images.php</li>
-        <li>/includes/modules/bootstrap/bootstrap_main_image.php</li>
-        <li>/includes/modules/pages/address_book_process/jscript_addr_pulldowns_zca_bootstrap.php</li>
-        <li>/includes/modules/pages/checkout_payment_address/jscript_addr_pulldowns_zca_bootstrap.php</li>
-        <li>/includes/modules/pages/checkout_shipping_address/jscript_addr_pulldowns_zca_bootstrap.php</li>
-        <li>/includes/modules/pages/create_account/jscript_addr_pulldowns_zca_bootstrap.php</li>
-        <li>/includes/modules/pages/document_general_info/jscript_zca_photoswipe.php</li>
-        <li>/includes/modules/pages/document_product_info/jscript_zca_photoswipe.php</li>
-        <li>/includes/modules/pages/login/jscript_addr_pulldowns_zca_bootstrap.php</li>
-        <li>/includes/modules/pages/page/jscript_zca_photoswipe.php</li>
-        <li>/includes/modules/pages/popup_shipping_estimator/jscript_addr_pulldowns_zca_bootstrap.php</li>
-        <li>/includes/modules/pages/product_free_shipping_info/jscript_zca_photoswipe.php</li>
-        <li>/includes/modules/pages/product_info/jscript_zca_photoswipe.php</li>
-        <li>/includes/modules/pages/product_music_info/jscript_zca_photoswipe.php</li>
-        <li>/includes/modules/pages/product_reviews/jscript_zca_photoswipe.php</li>
-        <li>/includes/modules/pages/product_reviews_info/jscript_zca_photoswipe.php</li>
-        <li>/includes/modules/pages/product_reviews_write/jscript_zca_photoswipe.php</li>
-        <li><span class="corefile">/includes/modules/pages/specials/main_template_vars.php</span> <span class="smaller">(Removed from this distribution <em>only</em>.  Use the zc157b version of the file.)</span></li>
-        <li>/includes/templates/bootstrap/template_readme.html</li>
-        <li>/includes/templates/bootstrap/css/stylesheet_photoswipe.css</li>
-        <li>/includes/templates/bootstrap/jscript/jscript_zca_bootstrap.php</li>
-        <li>/includes/templates/bootstrap/sideboxes/tpl_banner_box.php</li>
-        <li>/includes/templates/bootstrap/sideboxes/tpl_banner_box_all.php</li>
-        <li>/includes/templates/bootstrap/sideboxes/tpl_banner_box2.php</li>
-        <li>/includes/templates/bootstrap/sideboxes/tpl_currencies.php</li>
-        <li>/includes/templates/bootstrap/sideboxes/tpl_languages.php</li>
-        <li>/includes/templates/bootstrap/sideboxes/tpl_manufacturer_info.php</li>
-        <li>/includes/templates/bootstrap/sideboxes/tpl_music_genres_select.php</li>
-        <li>/includes/templates/bootstrap/sideboxes/tpl_no_notifications.php</li>
-        <li>/includes/templates/bootstrap/sideboxes/tpl_record_company_select.php</li>
-        <li>/includes/templates/bootstrap/sideboxes/tpl_reviews_none.php</li>
-        <li>/includes/templates/bootstrap/sideboxes/tpl_reviews_write.php</li>
-        <li>/includes/templates/bootstrap/sideboxes/tpl_whos_online.php</li>
-        <li>/includes/templates/bootstrap/sideboxes/tpl_yes_notifications.php</li>
-        <li>/includes/templates/bootstrap/templates/tpl_modules_checkout_new_address.php</li>
-        <li>/includes/templates/bootstrap/templates/tpl_modules_new_payment_address.php</li>
-        <li>/includes/templates/bootstrap/templates/tpl_modules_new_shipping_address.php</li>
-        <li>/includes/templates/bootstrap/templates/tpl_zc_install_suggested_default.php</li>
-    </ol>
-
-    <h3>Files Added</h3>
-    <ol>
-        <li>/includes/classes/zca/zca_site_map.php</li>
-        <li>/includes/languages/english/extra_definitions/bootstrap/zca_bootstrap_common.php</li>
-        <li>/includes/modules/pages/page_not_found/header_php_page_not_found_zca_bootstrap.php</li>
-        <li>/includes/templates/bootstrap/common/tpl_tabular_display.php</li>
-        <li>/includes/templates/bootstrap/jscript/jscript_addr_pulldowns_zca_bootstrap.php</li>
-        <li>/includes/templates/bootstrap/jscript/jscript_zca_bootstrap.js</li>
-        <li>/includes/templates/bootstrap/templates/tpl_ask_a_question_default.php</li>
-        <li>/includes/templates/bootstrap/templates/tpl_modules_common_address_format.php</li>
-    </ol>
-
-    <h3>Files Moved</h3>
-    <ol>
-        <li>/includes/modules/centerboxes/*.* moved to /includes/modules/bootstrap/centerboxes/*.*</li>
     </ol>
 
     <h2>Initial Installation</h2>
@@ -292,8 +198,10 @@ img {
             <li>BUGFIX: Preserve listing's <var>disp_order</var>, if present.</li>
             <li>BUGFIX: Remove redundant section from <var>checkout_success</var> page's template.</li>
             <li>BUGFIX: Use new-product-specific image width/height in new product's centerbox.</li>
-            <li>The following files were changed:<ol>
+            <li>BUGFIX: Address-pulldown jscript no loaded when shipping-estimator is used as a modal pop-up.</li>
+            <li>The following files were changed or <span class="added">added</span>:<ol>
                 <li>/includes/modules/bootstrap/centerboxes/new_products.php</li>
+                <li><span class="added">/includes/modules/pages/shopping_cart/jscript_addr_pulldowns_bootstrap.php</span></li>
                 <li>/includes/templates/bootstrap/css/dist-site_specific_styles.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_checkout_success_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_index_product_list.php</li>
