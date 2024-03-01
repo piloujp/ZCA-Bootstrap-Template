@@ -193,16 +193,18 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.6.4-beta3, 2024-02-26 (lat9, drbyte)<ul>
+        <li>v3.6.4-beta4, 2024-03-01 (lat9, drbyte, scottcwilson)<ul>
             <li>BUGFIX: Correct &quot;dead&quot; link in stylesheet's comments.</li>
             <li>BUGFIX: Preserve listing's <var>disp_order</var>, if present.</li>
             <li>BUGFIX: Remove redundant section from <var>checkout_success</var> page's template.</li>
             <li>BUGFIX: Use new-product-specific image width/height in new product's centerbox.</li>
             <li>BUGFIX: Address-pulldown jscript no loaded when shipping-estimator is used as a modal pop-up.</li>
+            <li>BUGFIX: Increase Lighthouse score by styling links with an underline.</li>
             <li>The following files were changed or <span class="added">added</span>:<ol>
                 <li>/includes/modules/bootstrap/centerboxes/new_products.php</li>
                 <li><span class="added">/includes/modules/pages/shopping_cart/jscript_addr_pulldowns_bootstrap.php</span></li>
                 <li>/includes/templates/bootstrap/css/dist-site_specific_styles.php</li>
+                <li><span class="added">/includes/templates/bootstrap/css/stylesheet_364.css</span></li>
                 <li>/includes/templates/bootstrap/templates/tpl_checkout_success_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_index_product_list.php</li>
                 <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin.php</li>
