@@ -13,12 +13,25 @@
  */
 $title = $title ?? '';
 $zco_notifier->notify('NOTIFY_TPL_COLUMNAR_DISPLAY_START', $current_page_base, $list_box_contents, $title);
+
+$card_main_id = $card_main_id ?? '';
+if ($card_main_id !== '') {
+    $card_main_id = ' id="' . trim($card_main_id) . '"';
+}
+$card_main_class = $card_main_class ?? '';
+if ($card_main_class !== '') {
+    $card_main_class = ' ' . trim($card_main_class);
+}
+$card_body_id = $card_body_id ?? '';
+if ($card_body_id !== '') {
+    $card_body_id = ' id="' . $card_body_id . '"';
+}
 ?>
-<div class="card mb-3">
+<div class="card mb-3<?= $card_main_class ?>"<?= $card_main_id ?>>
 <?php
 echo $title;
 ?>
-    <div class="card-body text-center">
+    <div class="card-body text-center"<?= $card_body_id ?>>
 <?php
 if (is_array($list_box_contents)) {
     foreach ($list_box_contents as $row => $cols) {
@@ -31,7 +44,7 @@ if (is_array($list_box_contents)) {
                 continue; // a $cols index named 'params' is only display-instructions ($r_params above) for the row, no data, so skip this iteration
             }
 
-            if (!empty($col['wrap_with_classes')) {
+            if (!empty($col['wrap_with_classes'])) {
 ?>
             <div class="<?= $col['wrap_with_classes'] ?>">
 <?php

@@ -18,32 +18,9 @@ require DIR_WS_MODULES . zen_get_module_directory('centerboxes/' . FILENAME_ALSO
 if ($zc_show_also_purchased === false) {
     return;
 }
-?>
-<div id="also-purchased" class="card mb-3 centerBoxWrapper">
-<?php
-    if (!empty($title)) {
-        echo $title;
-    }
-?>
-    <div id="also-purchased-card-body" class="card-body text-center">
-<?php
-    if (is_array($list_box_contents)) {
-        for ($row = 0, $n = count($list_box_contents); $row < $n; $row++) {
-            $params = '';
-?>
-        <div class="card-deck text-center">
-<?php
-            for ($col = 0, $j = count($list_box_contents[$row]); $col < $j; $col++) {
-                $r_params = $list_box_contents[$row][$col]['params'];
-                if (isset($list_box_contents[$row][$col]['text'])) {
-                    echo '<div ' . $r_params . '>' . $list_box_contents[$row][$col]['text'] . '</div>';
-                }
-            }
-?>
-        </div>
-<?php
-        }
-    }
-?>
-    </div>
-</div>
+
+$card_main_id = 'also-purchased';
+$card_main_class = 'centerBoxWrapper';
+$card_body_id = 'also-purchased-card-body';
+
+require $template->get_template_dir('tpl_columnar_display.php', DIR_WS_TEMPLATE, $current_page_base, 'common') . '/tpl_columnar_display.php';
