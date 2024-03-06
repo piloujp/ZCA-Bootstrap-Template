@@ -76,7 +76,7 @@ img {
     <p>GitHub Wiki: <a href="https://github.com/lat9/ZCA-Bootstrap-Template/wiki" target="_blank">https://github.com/lat9/ZCA-Bootstrap-Template/wiki</a></p>
 
     <h2>What it does</h2>
-    <p>This template uses <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction/" target="_blank">Bootstrap-4.6.2</a> to provide its styling and builds on the base that Raymond Barbour provided over the past few years, supporting Zen Cart versions 1.5.7 and later &mdash; <em>best supported</em> by zc157<b>d</b> and <b>zc158</b>.  If your store is based on either zc157, zc157a or zc157b, be sure that you have applied all the <a href="https://www.zen-cart.com/showthread.php?226872-Known-bugs-(and-fixes)-for-v1-5-7-series" target="_blank">patches</a>!</p>
+    <p>This template uses <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction/" target="_blank">Bootstrap-4.6.2</a> to provide its styling and builds on the base that Raymond Barbour provided over the past few years, supporting Zen Cart versions 1.5.7 and later &mdash; <em>best supported</em> by zc158<b>a</b> and <b>zc200</b>.  If your store is based on either zc157, zc157a or zc157b, be sure that you have applied all the <a href="https://www.zen-cart.com/showthread.php?226872-Known-bugs-(and-fixes)-for-v1-5-7-series" target="_blank">patches</a>!</p>
     <p>Starting with v3.4.0 of the template, the template-related files needed when used with <a href="https://www.zen-cart.com/downloads.php?do=file&id=2095" target="_blank">One-Page Checkout</a> are also provided:</p>
     <ul>
         <li>These changes have been validated with v2.4.6 of <em>OPC</em>, I'll suggest upgrading to that version or later prior to upgrading to v3.4.0 or later of the Bootstrap-4 template.</li>
@@ -193,7 +193,7 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.6.4-beta5, 2024-03-04 (lat9, drbyte, scottcwilson)<ul>
+        <li>v3.6.4-beta6, 2024-03-06 (lat9, drbyte, scottcwilson)<ul>
             <li>BUGFIX: Correct &quot;dead&quot; link in stylesheet's comments.</li>
             <li>BUGFIX: Preserve listing's <var>disp_order</var>, if present.</li>
             <li>BUGFIX: Remove redundant section from <var>checkout_success</var> page's template.</li>
@@ -201,9 +201,13 @@ img {
             <li>BUGFIX: Address-pulldown jscript no loaded when shipping-estimator is used as a modal pop-up.</li>
             <li>BUGFIX: Increase Lighthouse score by styling links with an underline.</li>
             <li>INTROP: Add a link to the zc200 <code>accessibility</code>, if present and enabled.</li>
+            <li>BUGFIX: Centerboxes now use an <code>h3</code> class instead of a tag for accessibility.</li>
             <li>The following files were changed or <span class="added">added</span>:<ol>
                 <li>/includes/modules/sideboxes/bootstrap/information.php</li>
+                <li>/includes/modules/bootstrap/centerboxes/also_purchased_products.php</li>
+                <li>/includes/modules/bootstrap/centerboxes/featured_products.php</li>
                 <li>/includes/modules/bootstrap/centerboxes/new_products.php</li>
+                <li>/includes/modules/bootstrap/centerboxes/specials_index.php</li>
                 <li><span class="added">/includes/modules/pages/shopping_cart/jscript_addr_pulldowns_bootstrap.php</span></li>
                 <li>/includes/templates/bootstrap/css/dist-site_specific_styles.php</li>
                 <li><span class="added">/includes/templates/bootstrap/css/stylesheet_364.css</span></li>
