@@ -1,6 +1,6 @@
 <?php
 /**
- * BOOTSTRAP v3.6.3
+ * BOOTSTRAP v3.6.4
  *
  * index category_row.php
  *
@@ -79,8 +79,10 @@ foreach ($categories as $next_category) {
     }
 
     $style = '';
+    $wrap_class = 'col';
     if ($category_row_layout_style === 'columns') {
         $style = ' style="width:' . $col_width . '%;"';
+        $wrap_class = '';
     }
     $list_box_contents[$rows][] = [
         'params' => 'class="categoryListBoxContents card mb-3 p-3 text-center"' . $style,
@@ -90,7 +92,7 @@ foreach ($categories as $next_category) {
                 '<br>' .
                 $next_category['categories_name'] .
             '</a>',
-        'wrap_with_classes' => 'col',
+        'wrap_with_classes' => $wrap_class,
         'card_type' => $category_row_layout_style,
     ];
 
