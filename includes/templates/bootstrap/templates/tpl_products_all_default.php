@@ -22,7 +22,7 @@ if (PRODUCT_LIST_ALPHA_SORTER === 'true') {
     // -----
     // Search-results page is different for zc157 vs. zc158+.
     //
-    echo zen_draw_form('filter', zen_href_link((defined('FILENAME_SEARCH_RESULT') ? FILENAME_SEARCH_RESULT : FILENAME_ADVANCED_SEARCH_RESULT), 'get', 'class="form-inline"');
+    echo zen_draw_form('filter', zen_href_link((defined('FILENAME_SEARCH_RESULT') ? FILENAME_SEARCH_RESULT : FILENAME_ADVANCED_SEARCH_RESULT)), 'get', 'class="form-inline"');
     echo '<label class="inputLabel mx-2">' . TEXT_SHOW . '</label>';
 
     /* Redisplay all $_GET variables, except currency */
