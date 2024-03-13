@@ -2,7 +2,7 @@
 /**
  * Template Information File
  * 
- * BOOTSTRAP v3.6.3
+ * BOOTSTRAP v3.6.4
  * @package templateSystem
  * @copyright Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -12,7 +12,7 @@
 $template_name = 'ZCA Bootstrap-4';
 $template_version = 'Version ' . (defined('ZCA_BOOTSTRAP_CURRENT_VERSION') ? ZCA_BOOTSTRAP_CURRENT_VERSION : '3.6.2');
 $template_author = 'rbarbour (zcadditions.com), lat9 (vinosdefrutastropicales.com), drbyte (zen-cart.com)';
-$template_description = 'A responsive Zen Cart template built for <em>Zen Cart <b>1.5.7</b> and later</em>, including <em>Zen Cart <b>1.5.8 and 1.5.8a</b></em>, and PHP 8.2.  The template uses Bootstrap 4.6.2 and Font Awesome 5.15.4.  Additional documentation is available on the template\'s <a href="https://github.com/lat9/ZCA-Bootstrap-Template" target="_blank" rel="noopener">GitHub repository</a>.';
+$template_description = 'A responsive Zen Cart template built for <em>Zen Cart <b>1.5.7, 1.5.8, 1.5.8a and v2.0.0</b></em>, and PHP versions 7.4 through 8.3.  The template uses Bootstrap 4.6.2 and Font Awesome 5.15.4.  Additional documentation is available on the template\'s <a href="https://github.com/lat9/ZCA-Bootstrap-Template" target="_blank" rel="noreferrer noopener">GitHub repository</a>.';
 $template_screenshot = 'ZCA_BOOTSTRAP_TEMPLATE.png';
 
 // -----
