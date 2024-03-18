@@ -16,6 +16,14 @@ if (!defined('IS_ADMIN_FLAG')) {
     die('Illegal Access');
 }
 
+// -----
+// Since the template still supports zc157, set the following definition if
+// not already available.
+//
+if (!defined('TOPMOST_CATEGORY_PARENT_ID')) {
+    define('TOPMOST_CATEGORY_PARENT_ID', '0');
+}
+
 $num_categories = $categories->RecordCount();
 
 $rows = 0;
