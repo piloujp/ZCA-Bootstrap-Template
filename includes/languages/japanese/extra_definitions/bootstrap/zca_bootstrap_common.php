@@ -1,6 +1,6 @@
 <?php
 /*
- * BOOTSTRAP v3.6.1
+ * BOOTSTRAP v3.6.4
  */
 // -----
 // Part of the Bootstrap template, defining commonly-used phrases and phrases unique to the bootstrap template.
@@ -12,6 +12,12 @@ define('BOOTSTRAP_CURRENT_ADDRESS', ' （現在選択中）');
 // Additional buttons.
 //
 define('BUTTON_BACK_TO_TOP_TITLE', 'トップに戻る');
+
+// -----
+// Used on the products_all and product listing for the alpha-filter dropdown.
+// Note: Defined in multiple language files for zc158 and zc200!
+//
+define('TEXT_SHOW', 'フィルタリング条件:');
 
 // -----
 // Used during checkout and on various address-rendering pages.
