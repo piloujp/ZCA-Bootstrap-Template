@@ -47,7 +47,7 @@ function zca_js_zone_list($varname = 'c2z')
 				$states = $db->Execute(
 					"SELECT zone_name, zone_id, zone_code
 					   FROM " . TABLE_ZONES . "
-					  WHERE zone_country_id = " . (int)$current_country_id . " AND (zone_name regexp '^[\\\P{Hani}]')
+					  WHERE zone_country_id = " . (int)$current_country_id . " AND (zone_name regexp '^[一-龠]')
 				   ORDER BY zone_name"
 				);
 			}
