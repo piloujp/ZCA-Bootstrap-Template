@@ -2,13 +2,12 @@
 /**
  * Module Template
  * 
- * BOOTSTRAP 3.6.3
+ * BOOTSTRAP 3.6.5
  *
- * @package templateSystem
- * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @copyright Copyright 2003-2024 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: tpl_modules_listing_display_order.php 3369 2006-04-03 23:09:13Z drbyte $
+ * @version $Id: Scott Wilson 2024 Mar 09 Modified in v2.0.0-rc2 $
  */
 $disp_order = (int)($disp_order ?? 0);
 if ($disp_order <= 0 || $disp_order > 8) {
@@ -34,19 +33,20 @@ $display_order_options = [
     ['id' => '7', 'text' => TEXT_INFO_SORT_BY_PRODUCTS_DATE],
 ];
 ?>
-<div id="listingDisplayOrderSorter" class="row mb-3">
-    <label for="disp-order-sorter" class="mx-2"><?php echo TEXT_INFO_SORT_BY; ?></label>
+<div id="listingDisplayOrderSorter" class="row">
+    <label for="disp-order-sorter" class="mb-0 mt-1 mx-2"><?= TEXT_INFO_SORT_BY ?></label>
 <?php
+$excluded_get_params = [
+    'disp_order',
+];
+if (!isset($_GET['cPath'], $cPath)) {
+    $excluded_get_params[] = 'cPath';
+}
 echo
     zen_draw_form('sorter_form', zen_href_link($_GET['main_page']), 'get', 'class="form-inline"') .
-    zen_draw_hidden_field('main_page', $_GET['main_page']) .
-    zen_hide_session_id();
-if (isset($_GET['cPath'], $cPath)) {
-    echo zen_draw_hidden_field('cPath', $cPath);
-}
-
-echo
-    zen_draw_pull_down_menu('disp_order', $display_order_options, $disp_order, 'id="disp-order-sorter" onchange="this.form.submit();"') .
+        zen_post_all_get_params($excluded_get_params) .
+        zen_hide_session_id() .
+        zen_draw_pull_down_menu('disp_order', $display_order_options, $disp_order, 'id="disp-order-sorter" onchange="this.form.submit();"') .
     '</form>';
 ?>
 </div>
