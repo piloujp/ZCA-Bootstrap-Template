@@ -2,7 +2,7 @@
 /**
  * Specials
  * 
- * BOOTSTRAP v3.6.3
+ * BOOTSTRAP v3.6.5
  *
  * @package page
  * @copyright Copyright 2003-2006 Zen Cart Development Team
@@ -14,9 +14,10 @@
  *
  */
 // -----
-// specials: Provide updated processing **ONLY IF** the ZCA bootstrap is the active template.
+// specials: Provide updated processing **ONLY IF** the ZCA bootstrap is the active template and
+// running on a Zen Cart version < 2.0.0.
 //
-if (!(function_exists('zca_bootstrap_active') && zca_bootstrap_active())) {
+if (!(function_exists('zca_bootstrap_active') && zca_bootstrap_active()) || PROJECT_VERSION_MAJOR > 1) {
     return;
 }
 

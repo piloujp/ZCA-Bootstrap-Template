@@ -2,16 +2,15 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.6.4
+ * BOOTSTRAP v3.6.5
  *
  * Loaded by main_page=index
  * Displays product-listing when a particular category/subcategory is selected for browsing
  *
- * @package templateSystem
- * @copyright Copyright 2003-2019 Zen Cart Development Team
+ * @copyright Copyright 2003-2024 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: mc12345678 2019 Apr 07 Modified in v1.5.6b $
+ * @version $Id: Scott Wilson 2024 Mar 09 Modified in v2.0.0-rc2 $
  */
 ?>
 <div id="indexProductList" class="centerColumn">
@@ -35,18 +34,24 @@ if (PRODUCT_LIST_CATEGORIES_IMAGE_STATUS === 'true') {
 // categories_description
 if ($current_categories_description != '') {
 ?>
-        <div id="indexProductList-content" class="content"><?= $current_categories_description ?></div>
+        <div id="indexProductList-content" class="content">
+            <?= $current_categories_description ?>
+        </div>
 <?php 
 } // categories_description
 ?>
     </div>
+
+    <div id="indexProductList-filterRow" class="row">
 <?php
 $check_for_alpha = $listing_sql;
 $check_for_alpha = $db->Execute($check_for_alpha);
 
 if ($do_filter_list || isset($_GET['alpha_filter_id']) || (PRODUCT_LIST_ALPHA_SORTER === 'true' && !$check_for_alpha->EOF)) {
-    echo zen_draw_form('filter', zen_href_link(FILENAME_DEFAULT), 'get') . '<label class="inputLabel">' . TEXT_SHOW . '</label>';
-    echo zen_draw_hidden_field('main_page', FILENAME_DEFAULT);
+    echo
+        zen_draw_form('filter', zen_href_link(FILENAME_DEFAULT), 'get', 'class="form-inline"') .
+        '<label class="inputLabel">' . TEXT_SHOW . '</label>' .
+        zen_draw_hidden_field('main_page', FILENAME_DEFAULT);
 ?>
 <?php
   // draw cPath if known
@@ -87,22 +92,41 @@ if ($do_filter_list || isset($_GET['alpha_filter_id']) || (PRODUCT_LIST_ALPHA_SO
         echo zen_draw_hidden_field('sort', $_GET['sort']);
     }
 
-    echo '<div id="indexProductList-filterRow" class="row">';
     // draw filter_id (ie: category/mfg depending on $options)
     if ($do_filter_list) {
-        echo '<div class="col">';
-        echo zen_draw_pull_down_menu('filter_id', $options, (isset($_GET['filter_id']) ? $_GET['filter_id'] : ''), 'aria-label="' . TEXT_SHOW . '" onchange="this.form.submit()"');
-        echo '</div>';
-    } 
-    echo '<div class="col">';
+?>
+        <div class="col">
+            <?= zen_draw_pull_down_menu('filter_id', $options, (isset($_GET['filter_id']) ? $_GET['filter_id'] : ''), 'aria-label="' . TEXT_SHOW . '" onchange="this.form.submit()"') ?>
+        </div>
+<?php
+    }
+?>
+        <div class="col">
+<?php
     // draw alpha sorter
     require DIR_WS_MODULES . zen_get_module_directory(FILENAME_PRODUCT_LISTING_ALPHA_SORTER);
-    echo '</div>';
-    echo '</div>';
-    echo '</form>';
+?>
+        </div>
+    <?= '</form>'; ?>
+<?php
+}
+
+// -----
+// Zen Cart versions prior to 2.0.0 don't include the display-order sort, so neither
+// does this template when run on an earlier version.
+//
+if (PROJECT_VERSION_MAJOR > 1) {
+?>
+        <div class="col">
+<?php
+    require $template->get_template_dir('/tpl_modules_listing_display_order.php', DIR_WS_TEMPLATE, $current_page_base, 'templates') . '/tpl_modules_listing_display_order.php';
+?>
+        </div>
+<?php
 }
 ?>
-<div class="p-3"></div>
+    </div>
+    <div class="p-3"></div>
 <?php
 /**
  * require the code for listing products
