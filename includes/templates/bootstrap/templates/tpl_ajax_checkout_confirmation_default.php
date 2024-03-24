@@ -18,7 +18,7 @@
       <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
     </div>
 
-    <h1 id="checkoutConfirmationDefault-pageHeading" class="pageHeading"><?php echo HEADING_TITLE; ?></h1>
+    <h1 id="checkoutConfirmationDefault-pageHeading" class="pageHeading"><?= HEADING_TITLE ?></h1>
 <?php
 if ($messageStack->size('redemptions') > 0) {
     echo $messageStack->output('redemptions');
@@ -33,7 +33,7 @@ if ($messageStack->size('checkout') > 0) {
     <div class="card-columns">
         <div id="billingAddress-card" class="card mb-3">
             <h4 id="billingAddress-card-header" class="card-header">
-                <?php echo HEADING_BILLING_ADDRESS; ?>
+                <?= HEADING_BILLING_ADDRESS ?>
             </h4>
 
             <div id="billingAddress-card-body" class="card-body p-3">
@@ -41,13 +41,13 @@ if ($messageStack->size('checkout') > 0) {
                     <div id="billToAddress-card" class="card">
                         <div id="billToAddress-card-body" class="card-body">
                             <address>
-                                <?php echo zen_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br>'); ?>
+                                <?= zen_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br>') ?>
                             </address>
 <?php
 if (!$flagDisablePaymentAddressChange) {
 ?>
                             <div id="billToAddress-btn-toolbar" class="btn-toolbar justify-content-end mt-3" role="toolbar">
-                                <?php echo zca_button_link(zen_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'), BUTTON_EDIT_SMALL_ALT, 'small_edit'); ?>
+                                <?= zca_button_link(zen_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'), BUTTON_EDIT_SMALL_ALT, 'small_edit') ?>
                             </div>
 <?php
 }
@@ -60,18 +60,18 @@ if (!$flagDisablePaymentAddressChange) {
   $class = &$_SESSION['payment'];
 ?>
                         <h4 id="paymentMethod-card-header" class="card-header">
-                            <?php echo HEADING_PAYMENT_METHOD; ?>
+                            <?= HEADING_PAYMENT_METHOD ?>
                         </h4>
                         <div id="paymentMethod-card-body" class="card-body">
                             <h4 id="paymentMethod-paymentTitle">
-                                <?php echo $GLOBALS[$class]->title; ?>
+                                <?= $GLOBALS[$class]->title ?>
                             </h4>
 <?php
 if (is_array($payment_modules->modules)) {
     if ($confirmation = $payment_modules->confirmation()) {
 ?>
                             <div id="paymentMethod-content" class="content">
-                                <?php echo $confirmation['title']; ?>
+                                <?= $confirmation['title'] ?>
                             </div>
 <?php
     }
@@ -81,8 +81,8 @@ if (is_array($payment_modules->modules)) {
 <?php
         for ($i = 0, $n = count($confirmation['fields']); $i < $n; $i++) {
 ?>
-                                <div><?php echo $confirmation['fields'][$i]['title']; ?></div>
-                                <div><?php echo $confirmation['fields'][$i]['field']; ?></div>
+                                <div><?= $confirmation['fields'][$i]['title'] ?></div>
+                                <div><?= $confirmation['fields'][$i]['field'] ?></div>
 <?php
         }
 ?>
@@ -101,18 +101,18 @@ if ($_SESSION['sendto'] != false) {
 ?>
         <div id="deliveryAddress-card" class="card mb-3">
             <h4 id="deliveryAddress-card-header" class="card-header">
-                <?php echo HEADING_DELIVERY_ADDRESS; ?>
+                <?= HEADING_DELIVERY_ADDRESS ?>
             </h4>
             <div id="deliveryAddress-card-body" class="card-body p-3">
                 <div class="card-deck">
                     <div id="shipToAddress-card" class="card">
                         <div id="shipToAddress-card-body" class="card-body">
                             <address>
-                                <?php echo zen_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br>'); ?>
+                                <?= zen_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br>') ?>
                             </address>
     
                             <div id="shipToAddress-btn-toolbar" class="btn-toolbar justify-content-end mt-3" role="toolbar">
-                                <?php echo zca_button_link($editShippingButtonLink, BUTTON_EDIT_SMALL_ALT, 'small_edit'); ?>
+                                <?= zca_button_link($editShippingButtonLink, BUTTON_EDIT_SMALL_ALT, 'small_edit') ?>
                             </div>
                         </div>
                     </div>
@@ -121,10 +121,10 @@ if ($_SESSION['sendto'] != false) {
 ?>
                     <div id="shippingMethod-card" class="card">
                         <h4 id="shippingMethod-card-header" class="card-header">
-                            <?php echo HEADING_SHIPPING_METHOD; ?>
+                            <?= HEADING_SHIPPING_METHOD ?>
                         </h4>
                         <div id="shippingMethod-card-body" class="card-body">
-                            <h4><?php echo $order->info['shipping_method']; ?></h4>
+                            <h4><?= $order->info['shipping_method'] ?></h4>
                         </div>
                     </div>
 <?php
@@ -138,31 +138,31 @@ if ($_SESSION['sendto'] != false) {
 ?>
         <div id="orderComment-card" class="card mb-3">
             <h4 id="orderComment-card-header" class="card-header">
-                <?php echo HEADING_ORDER_COMMENTS; ?>
+                <?= HEADING_ORDER_COMMENTS ?>
             </h4>
             <div id="orderComment-card-body" class="card-body p-3">
-                <?php echo (empty($order->info['comments']) ? NO_COMMENTS_TEXT : nl2br(zen_output_string_protected($order->info['comments'])) . zen_draw_hidden_field('comments', $order->info['comments'])); ?>
+                <?= (empty($order->info['comments']) ? NO_COMMENTS_TEXT : nl2br(zen_output_string_protected($order->info['comments'])) . zen_draw_hidden_field('comments', $order->info['comments'])) ?>
 
                 <div id="orderComment-btn-toolbar" class="btn-toolbar justify-content-end mt-3" role="toolbar">
-                    <?php echo zca_button_link(zen_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'), BUTTON_EDIT_SMALL_ALT, 'small_edit'); ?>
+                    <?= zca_button_link(zen_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'), BUTTON_EDIT_SMALL_ALT, 'small_edit') ?>
                 </div>
             </div>
         </div>
 
         <div id="cartContents-card" class="card mb-3">
             <h4 id="cartContents-card-header" class="card-header">
-                <?php echo HEADING_PRODUCTS; ?>
+                <?= HEADING_PRODUCTS ?>
             </h4>
             <div id="cartContents-card-body" class="card-body p-3">
 <?php
 if ($flagAnyOutOfStock) {
     if (STOCK_ALLOW_CHECKOUT === 'true') {
 ?>
-                <div class="alert alert-danger" role="alert"><?php echo OUT_OF_STOCK_CAN_CHECKOUT; ?></div>
+                <div class="alert alert-danger" role="alert"><?= OUT_OF_STOCK_CAN_CHECKOUT ?></div>
 <?php
     } else {
 ?>
-                <div class="alert alert-danger" role="alert"><?php echo OUT_OF_STOCK_CANT_CHECKOUT; ?></div>
+                <div class="alert alert-danger" role="alert"><?= OUT_OF_STOCK_CANT_CHECKOUT ?></div>
 <?php
     }
 }
@@ -178,25 +178,25 @@ $products_colspan = ($tax_column_present) ? '' : ' colspan="2"';
 ?>
                     <table id="shoppingCartDefault-cartTableDisplay" class="cartTableDisplay table table-bordered table-striped">
                         <tr>
-                            <th scope="col" id="cartTableDisplay-qtyHeading"><?php echo TABLE_HEADING_QUANTITY; ?></th>
-                            <th scope="col" id="cartTableDisplay-productsHeading"<?php echo $products_colspan; ?>><?php echo TABLE_HEADING_PRODUCTS; ?></th>
+                            <th scope="col" id="cartTableDisplay-qtyHeading"><?= TABLE_HEADING_QUANTITY ?></th>
+                            <th scope="col" id="cartTableDisplay-productsHeading"<?= $products_colspan ?>><?= TABLE_HEADING_PRODUCTS ?></th>
 <?php
 // If there are tax groups, display the tax columns for price breakdown
 if ($tax_column_present) {
 ?>
-                            <th scope="col" id="cartTableDisplay-taxHeading"><?php echo HEADING_TAX; ?></th>
+                            <th scope="col" id="cartTableDisplay-taxHeading"><?= HEADING_TAX ?></th>
 <?php
 }
 ?>
-                            <th scope="col" id="cartTableDisplay-totalHeading"><?php echo TABLE_HEADING_TOTAL; ?></th>
+                            <th scope="col" id="cartTableDisplay-totalHeading"><?= TABLE_HEADING_TOTAL ?></th>
                         </tr>
 <?php
 // now loop thru all products to display quantity and price
 for ($i = 0, $n = count($order->products); $i < $n; $i++) {
 ?>
                         <tr>
-                            <td  class="qtyCell"><?php echo $order->products[$i]['qty']; ?>&nbsp;x</td>
-                            <td class="productsCell"<?php echo $products_colspan; ?>><?php echo $order->products[$i]['name']; ?>
+                            <td class="qtyCell"><?= $order->products[$i]['qty'] ?>&nbsp;x</td>
+                            <td class="productsCell"<?= $products_colspan ?>><?= $order->products[$i]['name'] ?>
 <?php
     if (!empty($stock_check[$i])) {
         echo $stock_check[$i];
@@ -211,7 +211,7 @@ for ($i = 0, $n = count($order->products); $i < $n; $i++) {
         foreach ($order->products[$i]['attributes'] as $next_attrib) {
 ?>
                                         <li>
-                                            <?php echo $next_attrib['option'] . ': ' . nl2br(zen_output_string_protected($next_attrib['value'])); ?>
+                                            <?= $next_attrib['option'] . ': ' . nl2br(zen_output_string_protected($next_attrib['value'])) ?>
                                         </li>
 <?php
         } // end loop
@@ -227,7 +227,7 @@ for ($i = 0, $n = count($order->products); $i < $n; $i++) {
     if ($tax_column_present === true) {
 ?>
                             <td class="taxCell">
-                                <?php echo zen_display_tax_value($order->products[$i]['tax']); ?>%
+                                <?= zen_display_tax_value($order->products[$i]['tax']) ?>%
                             </td>
 <?php
     }
@@ -253,14 +253,14 @@ if (MODULE_ORDER_TOTAL_INSTALLED) {
                 </div>
 
                 <div id="cartContents-btn-toolbar" class="btn-toolbar justify-content-end mt-3" role="toolbar">
-                    <?php echo zca_button_link(zen_href_link(FILENAME_SHOPPING_CART, '', 'SSL'), BUTTON_EDIT_SMALL_ALT, 'small_edit'); ?>
+                    <?= zca_button_link(zen_href_link(FILENAME_SHOPPING_CART, '', 'SSL'), BUTTON_EDIT_SMALL_ALT, 'small_edit') ?>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <?php echo zen_draw_form('checkout_confirmation', $form_action_url, 'post', 'id="checkout_confirmation" onsubmit="submitonce();"'); ?>
+    <?= zen_draw_form('checkout_confirmation', $form_action_url, 'post', 'id="checkout_confirmation" onsubmit="submitonce();"') ?>
     <div id="processButtonHolder"></div>
 <?php
 if (is_array($payment_modules->modules)) {
@@ -272,7 +272,7 @@ if (is_array($payment_modules->modules)) {
 ?>
 <script>
 $(document).ready(function () {
-    $(":input[name='<?php echo $newField; ?>']").val($(":input[name='<?php echo $oldField; ?>']").val());
+    $(":input[name='<?= $newField ?>']").val($(":input[name='<?= $oldField ?>']").val());
 });
 </script>
 <?php
@@ -280,8 +280,8 @@ $(document).ready(function () {
 ?>
 <script>
     $(document).ready(function () {
-     var oldField = window['<?php echo $oldField['name']; ?>'](<?php echo $oldField['args']; ?>);
-     $(":input[name='<?php echo $newField; ?>']").val(oldField);
+     var oldField = window['<?= $oldField['name'] ?>'](<?= $oldField['args'] ?>);
+     $(":input[name='<?= $newField ?>']").val(oldField);
     });
 </script>
 <?php
@@ -311,9 +311,9 @@ if (isset($_SESSION['shipping']['extras']) && is_array ($_SESSION['shipping']['e
 $title_continue_checkout = str_replace(['<strong>', '</strong>'], '', TITLE_CONTINUE_CHECKOUT_PROCEDURE);
 ?>
     <div id="checkoutConfirmationDefault-btn-toolbar" class="btn-toolbar justify-content-between confirm-order" role="toolbar">
-        <strong><?php echo $title_continue_checkout; ?></strong><br><?php echo TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
-        <?php echo zen_image_submit(BUTTON_IMAGE_CONFIRM_ORDER, BUTTON_CONFIRM_ORDER_ALT, 'name="btn_submit" id="btn_submit"'); ?>
+        <strong><?= $title_continue_checkout ?></strong><br><?= TEXT_CONTINUE_CHECKOUT_PROCEDURE ?>
+        <?= zen_image_submit(BUTTON_IMAGE_CONFIRM_ORDER, BUTTON_CONFIRM_ORDER_ALT, 'name="btn_submit" id="btn_submit"') ?>
     </div>
 
-    <?php echo '</form>'; ?>
+    <?= '</form>' ?>
 </div>
