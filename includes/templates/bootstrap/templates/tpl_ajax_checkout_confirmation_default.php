@@ -194,7 +194,7 @@ for ($i = 0, $n = count($order->products); $i < $n; $i++) {
 ?>
                         <tr>
                             <td class="qtyCell"><?= $order->products[$i]['qty'] ?>&nbsp;x</td>
-                            <td class="productsCell"<?= $products_colspan ?>><?= $order->products[$i]['name'] ?>
+                            <td class="productsCell"><?= $order->products[$i]['name'] ?>
 <?php
     if (!empty($stock_check[$i])) {
         echo $stock_check[$i];
