@@ -170,16 +170,14 @@ if ($flagAnyOutOfStock) {
                 <div class="table-responsive">
 <?php
 // -----
-// Determine if more than one 'tax_group' is associated with the order.  If not, display
-// the 'Products' column in two columns to ensure alignment of the order-totals' values.
+// Determine if more than one 'tax_group' is associated with the order. 
 //
 $tax_column_present = (count($order->info['tax_groups']) > 1);
-$products_colspan = ($tax_column_present) ? '' : ' colspan="2"';
 ?>
                     <table id="shoppingCartDefault-cartTableDisplay" class="cartTableDisplay table table-bordered table-striped">
                         <tr>
                             <th scope="col" id="cartTableDisplay-qtyHeading"><?= TABLE_HEADING_QUANTITY ?></th>
-                            <th scope="col" id="cartTableDisplay-productsHeading"<?= $products_colspan ?>><?= TABLE_HEADING_PRODUCTS ?></th>
+                            <th scope="col" id="cartTableDisplay-productsHeading"><?= TABLE_HEADING_PRODUCTS ?></th>
 <?php
 // If there are tax groups, display the tax columns for price breakdown
 if ($tax_column_present) {
@@ -245,6 +243,7 @@ for ($i = 0, $n = count($order->products); $i < $n; $i++) {
 }  // end for loopthru all products
 
 if (MODULE_ORDER_TOTAL_INSTALLED) {
+    $_SESSION['zca_bootstrap_ot_colspan'] = ($tax_column_present === true) ? '3' : '2';
     $order_totals = $order_total_modules->process();
     $order_total_modules->output();
 }
