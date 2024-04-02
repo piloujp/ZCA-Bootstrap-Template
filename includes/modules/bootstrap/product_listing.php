@@ -2,7 +2,7 @@
 /**
  * product_listing module
  * 
- * BOOTSTRAP v3.6.3
+ * BOOTSTRAP v3.6.5
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -230,11 +230,11 @@ if ($num_products_count > 0) {
 
 
         $href = zen_href_link(zen_get_info_page($record['products_id']), 'cPath=' . zen_get_generated_category_path_rev($linkCpath) . '&products_id=' . $record['products_id']);
-        $listing_product_name = (isset($record['products_name'])) ? $record['products_name'] : '';
+        $listing_product_name = zen_get_products_name((int)$record['products_id');
 
-        $listing_quantity = (isset($record['products_quantity'])) ? $record['products_quantity'] : 0;
+        $listing_quantity = $record['products_quantity'] ?? 0;
 
-        $listing_mfg_name = (isset($record['manufacturers_name'])) ? $record['manufacturers_name'] : '';
+        $listing_mfg_name = $record['manufacturers_name'] ?? '';
 
         $more_info_button = '<a class="moreinfoLink" href="' . $href . '">' . MORE_INFO_TEXT . '</a>';
 
