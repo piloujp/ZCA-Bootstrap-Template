@@ -230,7 +230,7 @@ if ($num_products_count > 0) {
 
 
         $href = zen_href_link(zen_get_info_page($record['products_id']), 'cPath=' . zen_get_generated_category_path_rev($linkCpath) . '&products_id=' . $record['products_id']);
-        $listing_product_name = zen_get_products_name((int)$record['products_id');
+        $listing_product_name = zen_get_products_name((int)$record['products_id']);
 
         $listing_quantity = $record['products_quantity'] ?? 0;
 
