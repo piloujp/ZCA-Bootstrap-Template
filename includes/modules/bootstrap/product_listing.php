@@ -302,9 +302,9 @@ if ($num_products_count > 0) {
                     if ($product_listing_layout_style !== 'table') {
                         $lc_align = 'center';
                     }
-                    $lc_text = '<h5 class="itemTitle">
+                    $lc_text = '<p class="itemTitle h5">
                         <a class="" href="' . $href . '">' . $listing_product_name . '</a>
-                        </h5>';
+                        </p>';
 
                     if ((int)PRODUCT_LIST_DESCRIPTION > 0) {
                         $listing_description = zen_trunc_string(zen_clean_html(stripslashes(zen_get_products_description($record['products_id'], $_SESSION['languages_id']))), PRODUCT_LIST_DESCRIPTION);
