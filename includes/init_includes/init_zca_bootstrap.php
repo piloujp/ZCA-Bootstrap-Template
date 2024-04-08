@@ -1,7 +1,8 @@
 <?php
 /**
- * 
  * init_zca_bootstrap.php
+ *
+ * BOOTSTRAP v3.6.5
  *
  * @package initSystem
  * @copyright Copyright 2003-2016 Zen Cart Development Team
@@ -30,19 +31,23 @@ if (!zca_bootstrap_active()) {
 
 // -----
 // Next, load the modified message_stack class and replace the $messageStack
-// instantiation with that version.
+// instantiation with the bootstrap version.
 //
 require DIR_WS_CLASSES . 'zca/zca_message_stack.php';
-if (isset($messageStack)) {
-  $messages = $messageStack->messages;
-  unset($messageStack);
-  $messageStack = new zca_messageStack();
-  $messageStack->messages = $messages; 
-} else { 
-  $messageStack = new zca_messageStack();
+if (!isset($messageStack)) {
+    $messageStack = new zca_messageStack();
+} else {
+    $messages = $messageStack->messages;
+    unset($messageStack);
+    $messageStack = new zca_messageStack();
+    $messageStack->messages = $messages; 
 }
+
 // -----
 // Next, load the modified version of the splitPagesResult class adapted for
-// use by this template.
+// use by the bootstrap template, if the associated class doesn't
+// already exist.
 //
-require DIR_WS_CLASSES . 'zca/zca_split_page_results.php';
+if (!class_exists('zca_splitPageResults')) {
+    require DIR_WS_CLASSES . 'zca/zca_split_page_results.php';
+}
