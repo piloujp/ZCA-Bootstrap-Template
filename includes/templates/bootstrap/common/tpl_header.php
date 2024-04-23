@@ -2,7 +2,7 @@
 /**
  * Common Template - tpl_header.php
  *
- * BOOTSTRAP v3.6.1
+ * BOOTSTRAP v3.6.5
  *
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
@@ -10,9 +10,17 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: DrByte 2020 May 19 Modified in v1.5.7 $
  */
-?>
-<!--bof-header logo and navigation display-->
-<?php
+// Display all header alerts via messageStack:
+if ($messageStack->size('header') > 0) {
+    echo $messageStack->output('header');
+}
+if (!empty($_GET['error_message'])) {
+    echo zen_output_string_protected(urldecode($_GET['error_message']));
+}
+if (!empty($_GET['info_message'])) {
+    echo zen_output_string_protected($_GET['info_message']);
+}
+
 // -----
 // Quick return if the header's been disabled.
 //
@@ -20,43 +28,39 @@ if (!empty($flag_disable_header)) {
     return;
 }
 ?>
+<!--bof-header logo and navigation display-->
 <div id="headerWrapper" class="mt-2">
 <!--bof-navigation display-->
     <div id="navMainWrapper">
         <div id="navMain">
-            <nav class="navbar fixed-top mx-3 navbar-expand-lg rounded-bottom" aria-label="<?php echo TEXT_HEADER_ARIA_LABEL_NAVBAR; ?>">
+            <nav class="navbar fixed-top mx-3 navbar-expand-lg rounded-bottom" aria-label="<?= TEXT_HEADER_ARIA_LABEL_NAVBAR ?>">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-<?php
-if (!$this_is_home_page) {
-?>
-                        <li class="nav-item" title="<?php echo HEADER_TITLE_CATALOG; ?>">
-                            <a class="nav-link" href="<?php echo zen_href_link(FILENAME_DEFAULT); ?>">
-                                <i class="fas fa-home"></i> <?php echo HEADER_TITLE_CATALOG; ?>
+                        <li id="nav-home" class="nav-item" title="<?= HEADER_TITLE_CATALOG ?>">
+                            <a class="nav-link" href="<?= zen_href_link(FILENAME_DEFAULT) ?>">
+                                <i class="fas fa-home"></i> <?= HEADER_TITLE_CATALOG ?>
                             </a>
                         </li>
 <?php
-}
-
 if (zen_is_logged_in() && !zen_in_guest_checkout()) {
 ?>
-                        <li class="nav-item" title="<?php echo HEADER_TITLE_LOGOFF; ?>">
-                            <a class="nav-link" href="<?php echo zen_href_link(FILENAME_LOGOFF, '', 'SSL'); ?>"><?php echo HEADER_TITLE_LOGOFF; ?></a>
+                        <li class="nav-item" title="<?= HEADER_TITLE_LOGOFF ?>">
+                            <a class="nav-link" href="<?= zen_href_link(FILENAME_LOGOFF, '', 'SSL') ?>"><?= HEADER_TITLE_LOGOFF ?></a>
                         </li>
-                        <li class="nav-item" title="<?php echo HEADER_TITLE_MY_ACCOUNT; ?>">
-                            <a class="nav-link" href="<?php echo zen_href_link(FILENAME_ACCOUNT, '', 'SSL'); ?>"><?php echo HEADER_TITLE_MY_ACCOUNT; ?></a>
+                        <li class="nav-item" title="<?= HEADER_TITLE_MY_ACCOUNT ?>">
+                            <a class="nav-link" href="<?= zen_href_link(FILENAME_ACCOUNT, '', 'SSL') ?>"><?= HEADER_TITLE_MY_ACCOUNT ?></a>
                         </li>
 <?php
 } else {
     if (STORE_STATUS === '0') {
 ?>
-                        <li class="nav-item" title="<?php echo HEADER_TITLE_LOGIN; ?>">
-                            <a class="nav-link" href="<?php echo zen_href_link(FILENAME_LOGIN, '', 'SSL'); ?>">
-                                <i class="fas fa-sign-in-alt"></i> <?php echo HEADER_TITLE_LOGIN; ?>
+                        <li class="nav-item" title="<?= HEADER_TITLE_LOGIN ?>">
+                            <a class="nav-link" href="<?= zen_href_link(FILENAME_LOGIN, '', 'SSL') ?>">
+                                <i class="fas fa-sign-in-alt"></i> <?= HEADER_TITLE_LOGIN ?>
                             </a>
                         </li>
 <?php
@@ -65,11 +69,11 @@ if (zen_is_logged_in() && !zen_in_guest_checkout()) {
 
 if ($_SESSION['cart']->count_contents() > 0) {
 ?>
-                        <li class="nav-item" title="<?php echo HEADER_TITLE_CART_CONTENTS; ?>">
-                            <a class="nav-link" href="<?php echo zen_href_link(FILENAME_SHOPPING_CART, '', 'NONSSL'); ?>"><?php echo HEADER_TITLE_CART_CONTENTS; ?></a>
+                        <li class="nav-item" title="<?= HEADER_TITLE_CART_CONTENTS ?>">
+                            <a class="nav-link" href="<?= zen_href_link(FILENAME_SHOPPING_CART, '', 'NONSSL') ?>"><?= HEADER_TITLE_CART_CONTENTS ?></a>
                         </li>
-                        <li class="nav-item" title="<?php echo HEADER_TITLE_CHECKOUT; ?>">
-                            <a class="nav-link" href="<?php echo zen_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'); ?>"><?php echo HEADER_TITLE_CHECKOUT; ?></a>
+                        <li class="nav-item" title="<?= HEADER_TITLE_CHECKOUT ?>">
+                            <a class="nav-link" href="<?= zen_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL') ?>"><?= HEADER_TITLE_CHECKOUT ?></a>
                         </li>
 <?php
 }
@@ -101,9 +105,9 @@ require DIR_WS_MODULES . zen_get_module_sidebox_directory('search_header.php');
 $tagline_banner_section_present = ((SHOW_BANNERS_GROUP_SET2 !== '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET2)) || HEADER_SALES_TEXT !== '');
 $sales_text_class = ($tagline_banner_section_present === true) ? 'col-sm-4' : 'col-sm-12';
 ?>
-            <div class="<?php echo $sales_text_class; ?>">
-                <a id="hdr-img" class="d-block" href="<?php echo zen_href_link(FILENAME_DEFAULT); ?>" aria-label="<?php echo TEXT_HEADER_ARIA_LABEL_LOGO; ?>">
-                    <?php echo zen_image($template->get_template_dir(HEADER_LOGO_IMAGE, DIR_WS_TEMPLATE, $current_page_base, 'images') . '/' . HEADER_LOGO_IMAGE, HEADER_ALT_TEXT, HEADER_LOGO_WIDTH, HEADER_LOGO_HEIGHT); ?>
+            <div class="<?= $sales_text_class ?>">
+                <a id="hdr-img" class="d-block" href="<?= zen_href_link(FILENAME_DEFAULT) ?>" aria-label="<?= TEXT_HEADER_ARIA_LABEL_LOGO ?>">
+                    <?= zen_image($template->get_template_dir(HEADER_LOGO_IMAGE, DIR_WS_TEMPLATE, $current_page_base, 'images') . '/' . HEADER_LOGO_IMAGE, HEADER_ALT_TEXT, HEADER_LOGO_WIDTH, HEADER_LOGO_HEIGHT) ?>
                 </a>
             </div>
 <?php
@@ -113,7 +117,7 @@ if ($tagline_banner_section_present === true) {
 <?php
     if (HEADER_SALES_TEXT !== '') {
 ?>
-                <div id="tagline" class="text-center"><?php echo HEADER_SALES_TEXT;?></div>
+                <div id="tagline" class="text-center"><?= HEADER_SALES_TEXT ?></div>
 <?php
     }
 
@@ -144,18 +148,7 @@ if ($tagline_banner_section_present === true) {
         </div>
     </div>
 <!--eof-branding display-->
-<?php
-// Display all header alerts via messageStack:
-if ($messageStack->size('header') > 0) {
-    echo $messageStack->output('header');
-}
-if (isset($_GET['error_message']) && zen_not_null($_GET['error_message'])) {
-    echo zen_output_string_protected(urldecode($_GET['error_message']));
-}
-if (isset($_GET['info_message']) && zen_not_null($_GET['info_message'])) {
-    echo zen_output_string_protected($_GET['info_message']);
-}
-?>
+
 <!--eof-header logo and navigation display-->
 
 <!--bof-optional categories tabs navigation display-->
