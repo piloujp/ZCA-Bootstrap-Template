@@ -67,7 +67,7 @@ if ($category_row_layout_style === 'columns') {
 // Starting with v3.7.0 of the template, categories with no products
 // can be excluded from the display.
 //
-$includeAllCategories = $zca_include_zero_product_categories ?? false;
+$includeAllCategories = $zca_include_zero_product_categories ?? true;
 
 foreach ($categories as $next_category) {
     if ($includeAllCategories === false && zen_products_in_category_count($next_category['categories_id']) === 0) {

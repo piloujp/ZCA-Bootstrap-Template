@@ -24,8 +24,9 @@
 //
 //$zca_disable_back_to_top = false;
 
-// this control eliminates categories from displaying if they have 0 products in them.  Change to true for displaying all categories
-// despite not having any products in them.
+// -----
+// This control can eliminate categories from displaying if they have no products in them.
+// Change to false if you don't want categories with no products to be displayed.
 // @proseLA
 //
-//$zca_include_zero_product_categories = false;
+//$zca_include_zero_product_categories = true;

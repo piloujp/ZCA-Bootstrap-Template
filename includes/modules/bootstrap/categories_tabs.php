@@ -14,7 +14,7 @@ if (!defined('IS_ADMIN_FLAG')) {
 
 $order_by = " ORDER BY c.sort_order, cd.categories_name ";
 
-$includeAllCategories = $zca_include_zero_product_categories ?? false;
+$includeAllCategories = $zca_include_zero_product_categories ?? true;
 
 $categories_tab_query =
     "SELECT c.sort_order, c.categories_id, cd.categories_name
