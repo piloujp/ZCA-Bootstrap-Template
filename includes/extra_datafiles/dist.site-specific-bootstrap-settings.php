@@ -23,3 +23,8 @@
 // (true) to disable the back-to-top control on each page.
 //
 //$zca_disable_back_to_top = false;
+
+    // this control eliminates categories from displaying if they have 0 products in them.  change to true for displaying all categories
+    // despite not having any products in them.
+    // @proseLA
+    // $zca_include_zero_product_categories = false;
