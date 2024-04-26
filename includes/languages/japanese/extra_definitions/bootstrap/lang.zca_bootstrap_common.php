@@ -1,6 +1,6 @@
 <?php
 /*
- * BOOTSTRAP v3.6.1
+ * BOOTSTRAP v3.6.5
  */
 // -----
 // Part of the Bootstrap template, defining commonly-used phrases and phrases unique to the bootstrap template.
@@ -13,6 +13,12 @@ $define = [
 // Additional buttons.
 //
     'BUTTON_BACK_TO_TOP_TITLE' => 'トップに戻る',
+
+// -----
+// Used on the products_all and product listing for the alpha-filter dropdown.
+// Note: Defined in multiple language files for zc158 and zc200!
+//
+    'TEXT_SHOW' => 'フィルタリング条件:',
 
 // -----
 // Used during checkout and on various address-rendering pages.
