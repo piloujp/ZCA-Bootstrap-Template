@@ -25,14 +25,20 @@ $show_submit = zen_run_normal();
 
 $columns_per_row = defined('PRODUCT_LISTING_COLUMNS_PER_ROW') ? PRODUCT_LISTING_COLUMNS_PER_ROW : 1;
 $product_listing_layout_style = (int)$columns_per_row > 1 ? 'columns' : 'table';
-if (empty($columns_per_row)) $product_listing_layout_style = 'fluid';
-if ($columns_per_row === 'fluid') $product_listing_layout_style = 'fluid';
+if (empty($columns_per_row)) {
+    $product_listing_layout_style = 'fluid';
+}
+if ($columns_per_row === 'fluid') {
+    $product_listing_layout_style = 'fluid';
+}
 
 $max_results = (int)($product_listing_max_results ?? MAX_DISPLAY_PRODUCTS_LISTING);
 if ($product_listing_layout_style === 'columns' && $columns_per_row > 1) {
     $max_results = ($columns_per_row * (int)($max_results / $columns_per_row));
 }
-if ($max_results < 1) $max_results = 1;
+if ($max_results < 1) {
+    $max_results = 1;
+}
 
 $listing_split = new zca_splitPageResults($listing_sql, $max_results, 'p.products_id', 'page');
 $zco_notifier->notify('NOTIFY_MODULE_PRODUCT_LISTING_RESULTCOUNT', $listing_split->number_of_rows);
@@ -132,22 +138,25 @@ if ($num_products_count > 0) {
 
     // Retrieve all records into an array to allow for sorting and insertion of additional data if needed
     $records = [];
-    while (!$listing->EOF) {
-        $category_id = !empty($listing->fields['categories_id']) ? $listing->fields['categories_id'] : $listing->fields['master_categories_id'];
+    foreach ($listing as $next_product) {
+        $category_id = !empty($next_product['categories_id']) ? $next_product['categories_id'] : $next_product['master_categories_id'];
         $parent_category_name = trim(zen_get_categories_parent_name($category_id));
         $category_name = trim(zen_get_category_name($category_id, (int)$_SESSION['languages_id']));
-        $records[] = array_merge($listing->fields,
+        $records[] = array_merge(
+            $next_product,
             [
                 'parent_category_name' => (!empty($parent_category_name)) ? $parent_category_name : $category_name,
                 'category_name' => $category_name,
-//                'products_name' => $listing->fields['products_name'],
-//                'master_categories_id' => $listing->fields['master_categories_id'],
-//                'products_sort_order' => $listing->fields['products_sort_order'],
-            ]);
-        $listing->MoveNext();
+//                'products_name' => $next_product['products_name'],
+//                'master_categories_id' => $next_product['master_categories_id'],
+//                'products_sort_order' => $next_product['products_sort_order'],
+            ]
+        );
     }
 
-    if (!empty($_GET['keyword'])) $skip_sort = true;
+    if (!empty($_GET['keyword'])) {
+        $skip_sort = true;
+    }
     // add additional criteria for sort exclusions here if needed
 
     // SORT ACCORDING TO SPECIAL NEEDS
@@ -388,12 +397,9 @@ if ($num_products_count > 0) {
 
         if ($product_listing_layout_style === 'columns' || $product_listing_layout_style === 'fluid') {
             $lc_text = implode('<br>', $product_contents);
-            $style = '';
-            if ($product_listing_layout_style === 'columns') {
-                $style = ' style="width:' . $col_width . '%;"';
-            }
+
             $list_box_contents[$rows][] = [
-                'params' => 'class="card mb-3 p-3 centerBoxContentsListing text-center h-100 "' . $style,
+                'params' => 'class="card mb-3 p-3 centerBoxContentsListing text-center h-100"',
                 'text' => $lc_text,
                 'wrap_with_classes' => 'col mb-4',
                 'card_type' => $product_listing_layout_style,

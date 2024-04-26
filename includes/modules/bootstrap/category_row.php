@@ -100,14 +100,9 @@ foreach ($categories as $next_category) {
         $list_box_contents[$rows]['params'] = 'class="row ' . $grid_cards_classes . ' text-center"';
     }
 
-    $style = '';
-    $wrap_class = 'col';
-    if ($category_row_layout_style === 'columns') {
-        $style = ' style="width:' . $col_width . '%;"';
-        $wrap_class = '';
-    }
+    $wrap_class = ($category_row_layout_style === 'columns') ? '' : 'col';
     $list_box_contents[$rows][] = [
-        'params' => 'class="categoryListBoxContents card mb-3 p-3 text-center"' . $style,
+        'params' => 'class="categoryListBoxContents card mb-3 p-3 text-center"',
         'text' =>
             '<a href="' . zen_href_link(FILENAME_DEFAULT, $cPath_new) . '">' .
                 zen_image(DIR_WS_IMAGES . $next_category['categories_image'], $next_category['categories_name'], SUBCATEGORY_IMAGE_WIDTH, SUBCATEGORY_IMAGE_HEIGHT, 'loading="lazy"') .
