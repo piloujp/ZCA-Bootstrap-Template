@@ -2,15 +2,15 @@
 /**
  * attributes module
  *
- * BOOTSTRAP v3.5.0
+ * BOOTSTRAP v3.7.0
  *
  * Prepares attributes content for rendering in the template system
  * Prepares HTML for input fields with required uniqueness so template can display them as needed and keep collected data in proper fields
  *
- * @copyright Copyright 2003-2020 Zen Cart Development Team
+ * @copyright Copyright 2003-2023 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: lat9 2020 Oct 06 Modified in v1.5.7a $
+ * @version $Id: nickwhaley 2022 Dec 12 Modified in v1.5.8a $
  */
 if (!defined('IS_ADMIN_FLAG')) {
     die('Illegal Access');
@@ -52,13 +52,13 @@ if (PRODUCTS_OPTIONS_SORT_ORDER == '0') {
 }
 
 $sql = "SELECT DISTINCT popt.products_options_id, popt.products_options_name, popt.products_options_sort_order,
-            popt.products_options_type, popt.products_options_length, popt.products_options_comment,
+            popt.products_options_type, popt.products_options_length, popt.products_options_comment, popt.products_options_comment_position,
             popt.products_options_size,
             popt.products_options_images_per_row,
             popt.products_options_images_style,
             popt.products_options_rows
         FROM " . TABLE_PRODUCTS_OPTIONS . " popt
-        LEFT JOIN " . TABLE_PRODUCTS_ATTRIBUTES . " patrib ON (patrib.options_id = popt.products_options_id) 
+        LEFT JOIN " . TABLE_PRODUCTS_ATTRIBUTES . " patrib ON (patrib.options_id = popt.products_options_id)
         WHERE patrib.products_id= :products_id
         AND popt.language_id = :language_id " .
         $options_order_by;
@@ -120,10 +120,6 @@ while (!$products_options_names->EOF) {
 
     $zco_notifier->notify('NOTIFY_ATTRIBUTES_MODULE_START_OPTION', $products_options_names->fields);
 
-    if (!isset($products_options_names->fields['products_options_comment_position'])) {
-        $products_options_names->fields['products_options_comment_position'] = '0';
-    }
-
     // loop through each Attribute
     while (!$products_options->EOF) {
         $products_options_value_id = $products_options->fields['products_options_values_id'];
@@ -170,12 +166,12 @@ while (!$products_options_names->EOF) {
             // collect price information if it exists
             if ($products_options->fields['attributes_discounted'] == 1) {
                 // apply product discount to attributes if discount is on
-                $new_attributes_price = zen_get_attributes_price_final($products_options->fields["products_attributes_id"], 1, '', 'false', $products_price_is_priced_by_attributes);
+                $new_attributes_price = zen_get_attributes_price_final($products_options->fields["products_attributes_id"], 1, '', false, $products_price_is_priced_by_attributes);
                 //$new_attributes_price = zen_get_discount_calc((int)$_GET['products_id'], true, $new_attributes_price);
             } else {
                 // discount is off do not apply
                 $new_attributes_price = $products_options->fields['options_values_price'];
-                
+
                 // -----
                 // If the attribute's price is 0, set it to an (int) 0 so that follow-on checks
                 // using empty() will find that value 'empty'.
@@ -553,7 +549,7 @@ while (!$products_options_names->EOF) {
 
 
         // default
-        // find default attribute if set. Intended for dropdown's default
+        // find default attribute if set for default dropdown
         if ($products_options->fields['attributes_default'] == '1') {
             $selected_dropdown_attribute = $products_options_value_id;
         }
