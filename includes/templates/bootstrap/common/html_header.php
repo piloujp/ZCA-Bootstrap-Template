@@ -55,14 +55,14 @@ $preloads = [
         'link' => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/solid.min.css',
         'integrity' => 'sha512-Hp+WwK4QdKZk9/W0ViDvLunYjFrGJmNDt6sCflZNkjgvNq9mY+0tMbd6tWMiAlcf1OQyqL4gn2rYp7UsfssZPA==',
         'type' => 'style',
-        ],
+    ],
 ];
 if (empty($disableFontAwesomeV4Compatibility)) {
     $preloads['fa-4shim'] = [
         'link' => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/v4-shims.css',
         'integrity' => 'sha512-veZLkufL0qjcloU3GqyNh2cOqjduXLgni09I72g783Fyudzxcm2A7lxj6Qxn4YrnhJdD8rB9vkR+rOtfF4TZ1g==',
         'type' => 'style',
-        ];
+    ];
 } 
 ?>
 <!DOCTYPE html>
