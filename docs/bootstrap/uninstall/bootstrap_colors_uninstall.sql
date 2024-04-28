@@ -1,7 +1,7 @@
 #
 # ZCA Bootstrap Colors, uninstall MySQL database changes
 #
-# Bootstrap Colors: v3.5.2
+# Bootstrap Colors: v3.7.0
 #
 # Note: If you are using phpMyAdmin and use a DB_PREFIX, you will need to add that prefix
 # to each of the MySQL tables referenced below!  If you are copying and pasting into the
@@ -15,16 +15,18 @@ DELETE FROM admin_pages WHERE page_key = 'toolsZCABootstrapColors' LIMIT 1;
 #
 DELETE FROM configuration
  WHERE configuration_key = 'ZCA_BOOTSTRAP_COLORS_VERSION'
-    OR configuration_key LIKE 'ZCA_BODY_%'
-    OR configuration_key LIKE 'ZCA_BUTTON_%'
-    OR configuration_key LIKE 'ZCA_HEADER_%'
-    OR configuration_key LIKE 'ZCA_FOOTER_%'
-    OR configuration_key LIKE 'ZCA_SIDEBOX_%'
-    OR configuration_key LIKE 'ZCA_CENTERBOX_%'
-    OR configuration_key LIKE 'ZCA_ADD_TO_CART_%'
-    OR configuration_key LIKE 'ZCA_CHECKOUT_%'
-    OR configuration_key LIKE 'ZCA_CAROUSEL_%'
-    OR configuration_key LIKE 'ZCA_PRIMARY_ADDRESS_%';
+    OR configuration_key LIKE 'ZCA\_BODY\_%'
+    OR configuration_key LIKE 'ZCA\_BUTTON\_%'
+    OR configuration_key LIKE 'ZCA\_HEADER\_%'
+    OR configuration_key LIKE 'ZCA\_FOOTER\_%'
+    OR configuration_key LIKE 'ZCA\_SIDEBOX\_%'
+    OR configuration_key LIKE 'ZCA\_CENTERBOX\_%'
+    OR configuration_key LIKE 'ZCA\_ADD\_TO\_CART\_%'
+    OR configuration_key LIKE 'ZCA\_CHECKOUT\_%'
+    OR configuration_key LIKE 'ZCA\_CAROUSEL\_%'
+    OR configuration_key LIKE 'ZCA\_PRIMARY\_ADDRESS\_%'
+    OR configuration_key LIKE 'ZCA\_SOLD\_OUT\_%'
+    OR configuration_key LIKE 'ZCA\_ALERT\_INFO\_%';
 #
 # Remove the overall configuration-group for the color-related settings.
 #
