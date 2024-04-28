@@ -48,7 +48,7 @@ $preloads = [
     ],
     'fa' => [
         'link' => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css',
-        'integrity' => 'sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==',
+        'integrity' => 'sha512-UuQ/zJlbMVAw/UU8vVBhnI4op+/tFOpQZVT+FormmIEhRSCnJWyHiBbEVgM4Uztsht41f3FzVWgLuwzUqOObKw==',
         'type' => 'style',
     ],
     'fa-solid' => [
@@ -57,13 +57,6 @@ $preloads = [
         'type' => 'style',
     ],
 ];
-if (empty($disableFontAwesomeV4Compatibility)) {
-    $preloads['fa-4shim'] = [
-        'link' => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/v4-shims.css',
-        'integrity' => 'sha512-veZLkufL0qjcloU3GqyNh2cOqjduXLgni09I72g783Fyudzxcm2A7lxj6Qxn4YrnhJdD8rB9vkR+rOtfF4TZ1g==',
-        'type' => 'style',
-    ];
-} 
 ?>
 <!DOCTYPE html>
 <html <?php echo HTML_PARAMS; ?>>
@@ -78,7 +71,7 @@ $zco_notifier->notify('NOTIFY_HTML_HEAD_TAG_START', $current_page_base);
 // Provide an easy way for a site to disable the preload, if they want to ensure
 // that it's working properly.  If  includes/extra_datafiles/site-specific-bootstrap-settings.php does not exist 
 // copy dist.site-specific-bootstrap-settings.php to site-specific-bootstrap-settings.php 
-// and uncomment "// $zca_no_preloading = true;".
+// and uncomment "// $zca_no_preloading = false;" and change that variable's value to (bool)true.
 //
 if (empty($zca_no_preloading)) {
     foreach ($preloads as $load) {
