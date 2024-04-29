@@ -92,7 +92,6 @@ if (defined('BS4_AJAX_SEARCH_ENABLE') && BS4_AJAX_SEARCH_ENABLE === 'true') {
 }
 ?>
 <div class="container-fluid" id="mainWrapper">
-  <main>
 <?php
 // -----
 // Define the spacer-div that pushes either the "Header Position 1" banner or
@@ -201,7 +200,9 @@ if (SHOW_BANNERS_GROUP_SET3 !== '' && $banner = zen_banner_exists('dynamic', SHO
 <?php
     }
 }
-
+?>
+            <main>
+<?php
 if ($messageStack->size('upload') > 0) {
     echo $messageStack->output('upload');
 }
@@ -214,7 +215,9 @@ if ($messageStack->size('main_content') > 0) {
  *
  */
 require $body_code;
-
+?>
+            </main>
+<?php
 if (SHOW_BANNERS_GROUP_SET4 !== '' && $banner = zen_banner_exists('dynamic', SHOW_BANNERS_GROUP_SET4)) {
     if ($banner->RecordCount() > 0) {
         $find_banners = zen_build_banners_group(SHOW_BANNERS_GROUP_SET4);
@@ -311,6 +314,5 @@ if (empty($zca_disable_back_to_top)) {
 <?php
 }
 ?>
-  </main>
 </div>
 </body>
