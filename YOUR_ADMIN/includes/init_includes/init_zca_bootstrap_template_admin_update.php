@@ -6,7 +6,7 @@
 // The $cgi value contains the configuration_group_id associated with the template's configuration.
 // settings.
 //
-// Bootstrap v3.6.4
+// Bootstrap v3.7.0
 //
 switch (true) {
     // -----
@@ -45,6 +45,29 @@ switch (true) {
                 (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, date_added, sort_order, use_function, set_function)
              VALUES
                 ('Float the <em>Add Selected to Cart</em> button?', 'BS4_FLOAT_ADD_SELECTED', 'Always', 'Should the positioning of this button override the setting in <code>Product Listing :: Display Product Add to Cart Button</code>, so that the button is always visible?<br><br>Choose <em>Always</em> (the default), <em>Small Devices Only</em> to override only on small devices or <em>Never</em>.', $cgi, now(), 205, NULL, 'zen_cfg_select_option([\'Always\', \'Small Devices Only\', \'Never\'],')"
+        );
+    // -----
+    // v3.7.0:
+    //
+    // - Add settings associated with the incorporation of the Bootstrap Home Slider
+    // - Add settings to control the type of "container" used for the header, main-content and footer.
+    //
+    case version_compare(ZCA_BOOTSTRAP_VERSION, '3.7.0', '<'):  //- Fall through from above
+        $db->Execute(
+            "INSERT IGNORE INTO " . TABLE_CONFIGURATION . "
+                (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, date_added, sort_order, use_function, set_function)
+             VALUES
+                ('Header Container Type', 'BS4_HEADER_CONTAINER', 'container-fluid', 'Choose the type of <samp>container</samp> used to display the site\'s header. Refer to <a href=\"https://www.w3schools.com/bootstrap4/bootstrap_containers.asp\" target=\"_blank\" rel=\"noreferrer noopener\">this</a> W<sup>3</sup>Schools article about the differences between the two types.', $cgi, now(), 100, NULL, 'zen_cfg_select_option([\'container-fluid\', \'container\',],'),
+
+                ('Main Content Container Type', 'BS4_MAIN_CONTAINER', 'container-fluid', 'Choose the type of <samp>container</samp> used to display the site\'s main content, i.e. the sideboxes and main-page.', $cgi, now(), 102, NULL, 'zen_cfg_select_option([\'container-fluid\', \'container\',],'),
+
+                ('Footer Container Type', 'BS4_FOOTER_CONTAINER', 'container-fluid', 'Choose the type of <samp>container</samp> used to display the site\'s footer.', $cgi, now(), 104, NULL, 'zen_cfg_select_option([\'container-fluid\', \'container\',],'),
+
+                ('Home Slider: &quot;Banner Manager&quot; Group', 'BS4_SLIDER_BANNER_GROUP', 'HomeSlider', 'Identify the <em>Banner Manager</em> group containing the home-page slider images. Refer to <a href=\"https://github.com/lat9/ZCA-Bootstrap-Template/wiki/Using-the-Home%E2%80%90Page-Slider-Feature\" target=\"_blank\" rel=\"noreferrer noopener\">this</a> GitHub Wiki article for additional information about the <em>Home Slider</em> settings.', $cgi, now(), 1100, NULL, NULL),
+
+                ('Home Slider: Image Width', 'BS4_SLIDER_WIDTH', '1170!', 'What image-width should be applied to the home-page slider images?', $cgi, now(), 1110, NULL, NULL),
+
+                ('Home Slider: Image Height', 'BS4_SLIDER_HEIGHT', '400!', 'What image-height should be applied to the home-page slider images?', $cgi, now(), 1115, NULL, NULL)"
         );
     default:                                                    //- Fall through from above
         break;

@@ -2,7 +2,7 @@
 /**
  * Common Template - tpl_main_page.php
  * 
- * BOOTSTRAP v3.6.0
+ * BOOTSTRAP v3.7.0
  *
  * Governs the overall layout of an entire page
  * Normally consisting of a header, left side column. center column. right side column and footer
@@ -91,7 +91,7 @@ if (defined('BS4_AJAX_SEARCH_ENABLE') && BS4_AJAX_SEARCH_ENABLE === 'true') {
     require $template->get_template_dir('tpl_ajax_search.php', DIR_WS_TEMPLATE, $current_page_base, 'modalboxes') . '/tpl_ajax_search.php';
 }
 ?>
-<div class="container-fluid" id="mainWrapper">
+<div class="<?= BS4_HEADER_CONTAINER ?>" id="header-wrapper">
 <?php
 // -----
 // Define the spacer-div that pushes either the "Header Position 1" banner or
@@ -139,7 +139,9 @@ require $template->get_template_dir('tpl_header.php', DIR_WS_TEMPLATE, $current_
 
         </div>
     </div>
+</div>
 
+<div class="<?= BS4_MAIN_CONTAINER ?>" id="mainWrapper">
     <div class="row">
 <?php
 if (COLUMN_LEFT_STATUS === '0' || (CUSTOMERS_APPROVAL === '1' && !zen_is_logged_in()) || (CUSTOMERS_APPROVAL_AUTHORIZATION == 1 && CUSTOMERS_AUTHORIZATION_COLUMN_LEFT_OFF === 'true' && ($_SESSION['customers_authorization'] != 0 || !zen_is_logged_in()))) {
@@ -257,7 +259,9 @@ if (empty($flag_disable_right)) {
 }
 ?>
     </div>
+</div>
 
+<div class="<?= BS4_FOOTER_CONTAINER ?>" id="footer-wrapper">
     <div class="row mt-3">
         <div class="col">
 <?php
