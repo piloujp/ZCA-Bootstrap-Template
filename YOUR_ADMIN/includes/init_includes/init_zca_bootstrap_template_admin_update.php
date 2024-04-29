@@ -51,6 +51,7 @@ switch (true) {
     //
     // - Add settings associated with the incorporation of the Bootstrap Home Slider
     // - Add settings to control the type of "container" used for the header, main-content and footer.
+    // - Add setting to control location(s) of product pricing when attributes are present.
     //
     case version_compare(ZCA_BOOTSTRAP_VERSION, '3.7.0', '<'):  //- Fall through from above
         $db->Execute(
@@ -62,6 +63,8 @@ switch (true) {
                 ('Main Content Container Type', 'BS4_MAIN_CONTAINER', 'container-fluid', 'Choose the type of <samp>container</samp> used to display the site\'s main content, i.e. the sideboxes and main-page.', $cgi, now(), 102, NULL, 'zen_cfg_select_option([\'container-fluid\', \'container\',],'),
 
                 ('Footer Container Type', 'BS4_FOOTER_CONTAINER', 'container-fluid', 'Choose the type of <samp>container</samp> used to display the site\'s footer.', $cgi, now(), 104, NULL, 'zen_cfg_select_option([\'container-fluid\', \'container\',],'),
+
+                ('Product Info Pricing Location', 'BS4_PRICING_LOCATION', 'Both', 'When a product has attributes, where should a product\'s pricing be displayed relative to the attributes\' display? Default: <samp>Both</samp>.', $cgi, now(), 400, NULL, 'zen_cfg_select_option([\'Both\', \'Above Only\', \'Below Only\'],'),
 
                 ('Home Slider: &quot;Banner Manager&quot; Group', 'BS4_SLIDER_BANNER_GROUP', 'HomeSlider', 'Identify the <em>Banner Manager</em> group containing the home-page slider images. Refer to <a href=\"https://github.com/lat9/ZCA-Bootstrap-Template/wiki/Using-the-Home%E2%80%90Page-Slider-Feature\" target=\"_blank\" rel=\"noreferrer noopener\">this</a> GitHub Wiki article for additional information about the <em>Home Slider</em> settings.', $cgi, now(), 1100, NULL, NULL),
 

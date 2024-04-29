@@ -178,11 +178,18 @@ if (isset($product_info_display_extra)) {
             <!--bof Attributes Module -->
 <?php
 $one_time = '';
+$display_price_bottom = true;
 if ($pr_attr->fields['total'] > 0) {
+    if ($show_onetime_charges_description === true) {
+        $one_time = '<small>' . TEXT_ONETIME_CHARGE_SYMBOL . TEXT_ONETIME_CHARGE_DESCRIPTION . '</small><br>';
+    }
+
+    $display_price_top = (BS4_PRICING_LOCATION === 'Both' || BS4_PRICING_LOCATION === 'Above Only');
+    $display_price_bottom = (BS4_PRICING_LOCATION === 'Both' || BS4_PRICING_LOCATION === 'Below Only');
 ?>
             <!--bof Product Price block above Attributes -->
 <?php
-    if (zen_get_products_display_price((int)$_GET['products_id']) > 0) {
+    if ($display_price_top === true && zen_get_products_display_price((int)$_GET['products_id']) > 0) {
 ?>
             <!--bof products price top card-->
             <div id="productsPriceTop-card" class="card mb-3">
@@ -190,9 +197,6 @@ if ($pr_attr->fields['total'] > 0) {
                     <h2 id="productsPriceTop-productPriceTopPrice" class="productPriceTopPrice">
   <?php
 // base price
-        if ($show_onetime_charges_description === true) {
-            $one_time = '<small>' . TEXT_ONETIME_CHARGE_SYMBOL . TEXT_ONETIME_CHARGE_DESCRIPTION . '</small><br>';
-        }
         echo
             $one_time .
             ((zen_has_product_attributes_values((int)$_GET['products_id']) && $flag_show_product_info_starting_at == 1) ? TEXT_BASE_PRICE : '') . zen_get_products_display_price((int)$_GET['products_id']);
@@ -234,7 +238,7 @@ if ($products_discount_type !== '0') {
 <?php
 }
 
-if (zen_get_products_display_price((int)$_GET['products_id']) > 0) {
+if ($display_price_bottom === true && zen_get_products_display_price((int)$_GET['products_id']) > 0) {
 ?>
             <!--bof products price bottom card-->
             <div id="productsPriceBottom-card" class="card mb-3">
