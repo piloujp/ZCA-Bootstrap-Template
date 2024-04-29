@@ -61,6 +61,7 @@ $preloads = [
 <!DOCTYPE html>
 <html <?php echo HTML_PARAMS; ?>>
   <head>
+    <meta charset="<?php echo CHARSET; ?>">
 <?php
 // -----
 // Provide a notification that the <head> tag has been rendered for the current page.
@@ -81,7 +82,6 @@ if (empty($zca_no_preloading)) {
     }
 }
 ?>
-    <meta charset="<?php echo CHARSET; ?>">
     <title><?php echo META_TAG_TITLE; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no">
     <meta name="keywords" content="<?php echo META_TAG_KEYWORDS; ?>">
