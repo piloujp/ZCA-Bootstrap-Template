@@ -16,7 +16,7 @@ $content =
         zen_hide_session_id() .
         '<div class="input-group">' .
             zen_draw_input_field('keyword', '', 'placeholder="' . HEADER_SEARCH_DEFAULT_TEXT . '" aria-label="' . HEADER_SEARCH_DEFAULT_TEXT . '" ') .
-            '<div class="input-group-append">';
+            '<div class="input-group-append">' .
                 zen_image_submit(BUTTON_IMAGE_SEARCH, HEADER_SEARCH_BUTTON) .
             '</div>' .
         '</div>' .
