@@ -2,9 +2,9 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.6.1
+ * BOOTSTRAP v3.7.0
  *
- * Main index page<br />
+ * Main index page
  * Displays greetings, welcome text (define-page content), and various centerboxes depending on switch settings in Admin<br />
  * Centerboxes are called as necessary
  *
@@ -32,6 +32,15 @@ if ($heading_title === '') {
 <?php if (SHOW_CUSTOMER_GREETING == 1) { ?>
 <h2 id="indexDefault-greeting" class="greeting"><?php echo zen_customer_greeting(); ?></h2>
 <?php } ?>
+
+<?php
+// -----
+// Load the home-page slider.
+//
+?>
+<div id="home-slider">
+    <?php require $template->get_template_dir('tpl_index_slider.php', DIR_WS_TEMPLATE, $current_page_base, 'templates') . '/tpl_index_slider.php'; ?>
+</div>
 
 <?php if (DEFINE_MAIN_PAGE_STATUS >= 1 and DEFINE_MAIN_PAGE_STATUS <= 2) { ?>
 <?php

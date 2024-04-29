@@ -37,6 +37,14 @@ if ($show_welcome === true) {
 <?php
     }
 
+// -----
+// Load the home-page slider.
+//
+?>
+    <div id="home-slider">
+        <?php require $template->get_template_dir('tpl_index_slider.php', DIR_WS_TEMPLATE, $current_page_base, 'templates') . '/tpl_index_slider.php'; ?>
+    </div>
+<?php
     if (DEFINE_MAIN_PAGE_STATUS === '1' || DEFINE_MAIN_PAGE_STATUS === '2') {
 ?>
     <div id="indexCategories-defineContent" class="defineContent">

@@ -81,7 +81,7 @@ img {
     <ul>
         <li>These changes have been validated with v2.4.6 and v2.5.0 of <em>OPC</em>, I'll suggest upgrading to that version or later prior to upgrading to v3.4.0 or later of the Bootstrap-4 template.</li>
         <li>The <a href="https://www.zen-cart.com/downloads.php?do=file&id=2305" target="_blank">previously-distributed</a> (and separate) BS4/OPC integration is no longer supported.</li>
-        <li>If you have <em>OPC</em> installed, its <b>Order Total: jQuery Selector</b> configuration setting should be set to <code>#ottotal > .ot-text</code> for the Bootstrap template's use.</li>
+        <li>If you have <em>OPC</em> <em>prior to v2.5.0</em> installed, its <b>Order Total: jQuery Selector</b> configuration setting should be set to <code>#ottotal > .ot-text</code> for the Bootstrap template's use.</li>
     </ul>
 
     <h2>Bootstrap Template, Files List</h2>
@@ -156,12 +156,13 @@ img {
     <p>The following version-upgrades apply to this suggestion:</p>
     <ul>
         <li>v3.6.0</li>
+        <li>v3.7.0</li>
     </ul>
 
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.7.0-beta1, 2024-04-26 (lat9, proseLA, brittainmark)<ul>
+        <li>v3.7.0-beta2, 2024-04-28 (lat9, proseLA, brittainmark)<ul>
             <li>CHANGE: Add 'soft' configuration setting to exclude categories with no products from the display.</li>
             <li>BUGFIX: Correct layout for products' listings and category-row when displaying in 'columns'.</li>
             <li>BUGFIX: Incorporate Zen Cart base changes for attributes' module.</li>
@@ -171,6 +172,7 @@ img {
             <li>CHANGE: Drop support for Zen Cart versions <em>prior to</em> 1.5.8.</li>
             <li>CHANGE: Make <code>tpl_product_info_display.php</code> the default for <b>all</b> product-types.</li>
             <li>BUGFIX: Corrections the 'Bootstrap Colors' tool's SQL uninstall script.</li>
+            <li>CHANGE: Incorporate the <a href="https://github.com/lat9/bs4_home_slider" target="_blank">Home Page Slider</a> feature.</li>
             <li>The following files were changed, <span class="added">added</span> or <span class="removed">removed</span>:<ol>
                 <li>/docs/bootstrap/uninstall/bootstrap_colors_uninstall.sql</li>
                 <li>/includes/extra_datafiles/dist.site-specific-bootstrap-settings.php</li>
@@ -199,6 +201,8 @@ img {
                 <li>/includes/templates/bootstrap/templates/tpl_gv_faq_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_gv_send_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_index_categories.php</li>
+                <li>/includes/templates/bootstrap/templates/tpl_index_default.php</li>
+                <li><span class="added">/includes/templates/bootstrap/templates/tpl_index_slider.php</span></li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_checkout_address_book.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_common_address_format.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_create_account.php</li>
@@ -214,6 +218,7 @@ img {
                 <li>/includes/templates/bootstrap/templates/tpl_site_map_default.php</li>
                 <li><span class="removed">/YOUR_ADMIN/includes/functions/extra_functions/zen_cfg_read_only.php</span></li>
                 <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin.php</li>
+                <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin_update.php</li>
             </ol></li>
         </ul></li>
         <li>v3.6.5, 2024-04-23 (lat9, brittainmark, torvista)<ul>
