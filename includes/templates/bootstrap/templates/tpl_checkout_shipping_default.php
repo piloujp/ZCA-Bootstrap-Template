@@ -154,14 +154,33 @@ $comments = (isset($comments)) ? $comments : '';
         <div id="orderComments-card" class="card mb-3">
             <h2 class="card-header"><?php echo HEADING_ORDER_COMMENTS; ?></h2>
             <div class="card-body p-3">
-                <?php echo zen_draw_textarea_field('comments', '45', '3', $comments, 'aria-label="' . $comments_heading . '"'); ?>
+                <?php echo zen_draw_textarea_field('comments', '45', '3', $comments, 'aria-label="' . HEADING_ORDER_COMMENTS . '"'); ?>
             </div>
         </div>
-    </div>  
-
+    </div>
+<?php
+// -----
+// Determine what messaging to give the customer, in case there are no shipping methods
+// available for the order.  The $zca_show_contact_us_instead_of_continue variable
+// can be overridden via extra_datafiles/site-specific-bootstrap-settings.php.
+//
+$show_contact_us_instead_of_continue = $zca_show_contact_us_instead_of_continue ?? false;
+if (empty($show_contact_us_instead_of_continue) || zen_count_shipping_modules() > 0) {
+    $action_button = zen_image_submit(BUTTON_IMAGE_CONTINUE_CHECKOUT, BUTTON_CONTINUE_ALT);
+    $instruction_title = TITLE_CONTINUE_CHECKOUT_PROCEDURE;
+    $instruction_text = TEXT_CONTINUE_CHECKOUT_PROCEDURE;
+} else {
+    $action_button =
+        '<a href="' . zen_href_link(FILENAME_CONTACT_US, '', 'SSL') . '" id="linkContactUs">' .
+            zen_image_button(BUTTON_IMAGE_CONTACT_US , BUTTON_CONTACT_US_TEXT) .
+        '</a>';
+    $instruction_title = TITLE_NO_SHIPPING_AVAILABLE;
+    $instruction_text = TEXT_NO_SHIPPING_AVAILABLE;
+}
+?>
     <div id="checkoutShippingDefault-btn-toolbar1" class="btn-toolbar justify-content-between" role="toolbar">
-        <?php echo '<strong>' . TITLE_CONTINUE_CHECKOUT_PROCEDURE . '</strong><br>' . TEXT_CONTINUE_CHECKOUT_PROCEDURE; ?>
-        <?php echo zen_image_submit(BUTTON_IMAGE_CONTINUE_CHECKOUT, BUTTON_CONTINUE_ALT); ?>
+        <?php echo '<strong>' . $instruction_title . '</strong><br>' . $instruction_text; ?>
+        <?php echo $action_button; ?>
     </div>
     <?php echo '</form>'; ?>
 </div>

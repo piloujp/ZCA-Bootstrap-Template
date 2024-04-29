@@ -37,3 +37,11 @@
 // change the variable's value to (bool)true.
 //
 //$zca_no_preloading = false;
+
+// -----
+// Checkout Shipping: when no shipping method is available, i.e. Checkout cannot proceed to Payment
+//
+// true .... Replace the "Continue" button with a "Contact Us" button/link.
+// false ... Maintain the "Continue" button, which redirects back to Checkout Shipping; this is the default.
+//
+//$zca_show_contact_us_instead_of_continue = false;
