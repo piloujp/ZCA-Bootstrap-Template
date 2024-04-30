@@ -178,9 +178,11 @@ img {
             <li>BUGFIX: Show 'Contact Us' instead of 'Continue' when no shipping methods are available; added <em>soft</em> configuration setting.</li>
             <li>CHANGE: Add configuration setting to control pricing location(s) when a product has attributes.</li>
             <li>BUGFIX: Move <samp>charset=</samp> meta-tag to top of &lt;head&gt;, HTML validation issue.</li>
+            <li>BUGFIX: Correct <code>zca_rating_stars</code> output; it was always creating 5 stars.</li>
             <li>The following files were changed, <span class="added">added</span> or <span class="removed">removed</span>:<ol>
                 <li>/docs/bootstrap/uninstall/bootstrap_colors_uninstall.sql</li>
                 <li>/includes/extra_datafiles/dist.site-specific-bootstrap-settings.php</li>
+                <li>/includes/functions/zca_bootstrap_functions.php</li>
                 <li><span class="removed">/includes/languages/english/bootstrap/account_history_info.php</span></li>
                 <li><span class="removed">/includes/languages/english/extra_definitions/bootstrap/zca_bootstrap_common.php</span></li>
                 <li>/includes/modules/bootstrap/attributes.php</li>

@@ -2,7 +2,7 @@
 /**
  * @author ZCAdditions.com, ZCA Bootstrap Template
  *
- * BOOTSTRAP v3.6.0
+ * BOOTSTRAP v3.7.0
  *
 */
  
@@ -96,7 +96,7 @@ function zca_get_rating_stars($rating, $size = '')
     
     $rating_stars = '<span class="sr-only">' . $rating . ' ' . (($rating === 1) ? ARIA_REVIEW_STAR : ARIA_REVIEW_STARS) . '</span>';
     $size = ($size != '') ? " fa-$size" : '';
-    for ($i = 1; $i <= 5; $i++) {
+    for ($i = 1; $i <= $rating; $i++) {
         $fa_class = ($i <= $rating) ? 'fas' : 'far';
         $rating_stars .= '<i class="' . $fa_class . ' fa-star' . $size . '"></i>';
     }
