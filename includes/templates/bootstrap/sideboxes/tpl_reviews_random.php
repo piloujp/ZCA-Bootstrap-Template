@@ -30,7 +30,7 @@ while (!$random_review_sidebox_product->EOF) {
     $content .=
         $carousel_start .
         '<div class="card mb-3 p-3 sideBoxContentItem">' .
-            '<a href="' . zen_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id=' . $current_review['products_id'] . '&reviews_id=' . $current_view['reviews_id']) . '" title="' . zen_output_string_protected($current_review['products_name']) . '">' .
+            '<a href="' . zen_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id=' . $current_review['products_id'] . '&reviews_id=' . $current_review['reviews_id']) . '" title="' . zen_output_string_protected($current_review['products_name']) . '">' .
                 zen_image(DIR_WS_IMAGES . $random_review_sidebox_product->fields['products_image'], $current_review['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) .
                 '<br>' .
                 nl2br(zen_trunc_string(zen_output_string_protected(stripslashes($current_review['reviews_text'])), 60), true) .
