@@ -110,13 +110,13 @@ foreach ($list_box_contents as $row => $cols) {
 }
 ?>
             </div>
-            <a class="carousel-control-prev" href="#centerbox-carousel-<?= $centerbox_carousel_count?>" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+            <a class="carousel-control-prev d-inline-block text-left" href="#centerbox-carousel-<?= $centerbox_carousel_count?>" role="button" data-slide="prev">
+                <span><i class="fas fa-lg fa-chevron-left" aria-hidden="true"></i></span>
+                <span class="sr-only"><?= BUTTON_PREVIOUS_ALT ?></span>
             </a>
-            <a class="carousel-control-next" href="#centerbox-carousel-<?= $centerbox_carousel_count?>" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+            <a class="carousel-control-next d-inline-block text-right" href="#centerbox-carousel-<?= $centerbox_carousel_count?>" role="button" data-slide="next">
+                <span><i class="fas fa-lg fa-chevron-right" aria-hidden="true"></i></span>
+                <span class="sr-only"><?= BUTTON_NEXT_ALT ?></span>
             </a>
         </div>
     </div>
@@ -142,7 +142,7 @@ function multiCarousel<?= $centerbox_carousel_count ?>()
         do {
             $('#<?= $centerbox_carousel_wrapper_id ?> .carousel-inner').children('.carousel-grid:lt(<?= $products_per_row_large ?>)').wrapAll('<div class="carousel-item"><div class="row"></div></div>');
             $('#<?= $centerbox_carousel_wrapper_id ?> .carousel-inner .carousel-item:first').addClass('active');
-        } while ( $( '#<?= $centerbox_carousel_wrapper_id ?> .carousel-inner' ).children( '.carousel-grid' ).length );
+        } while ($('#<?= $centerbox_carousel_wrapper_id ?> .carousel-inner' ).children( '.carousel-grid' ).length);
     } else if ($('#md').is(':visible') ) {
         do {
             $('#<?= $centerbox_carousel_wrapper_id ?> .carousel-inner').children('.carousel-grid:lt(<?= $products_per_row_medium ?>)').wrapAll('<div class="carousel-item"><div class="row"></div></div>');
@@ -154,6 +154,7 @@ function multiCarousel<?= $centerbox_carousel_count ?>()
             $('#<?= $centerbox_carousel_wrapper_id ?> .carousel-inner .carousel-item:first').addClass('active');
         } while ($('#<?= $centerbox_carousel_wrapper_id ?> .carousel-inner').children('.carousel-grid').length);
     }
+    $('#<?= $centerbox_carousel_wrapper_id ?> .carousel-item').matchHeight();
 }
 
 $(window).on('load resize', function() {
