@@ -31,9 +31,10 @@ if ($is_carousel === false) {
 // -----
 // Carousel rendering ...
 //
+$carousel_fade = in_array('best_sellers', $sidebox_carousels_to_fade) ? 'carousel-fade' : '';
 $content =
     '<div id="' . str_replace('_', '-', $box_id . 'Content') . '" class="sideBoxContent text-center p-3">' .
-        '<div class="carousel slide" data-ride="carousel"> .
+        '<div class="carousel slide ' . $carousel_fade . '" data-ride="carousel"> .
             <div class="carousel-inner">' .
                 '<div class="card-deck h-100">';
 

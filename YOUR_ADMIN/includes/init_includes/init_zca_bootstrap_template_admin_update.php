@@ -52,6 +52,8 @@ switch (true) {
     // - Add settings associated with the incorporation of the Bootstrap Home Slider
     // - Add settings to control the type of "container" used for the header, main-content and footer.
     // - Add setting to control location(s) of product pricing when attributes are present.
+    // - Add settings to enable/control various sidebox carousels.
+    // - Add settings to enable/control various centerbox carousels.
     //
     case version_compare(ZCA_BOOTSTRAP_VERSION, '3.7.0', '<'):  //- Fall through from above
         $db->Execute(
@@ -67,6 +69,8 @@ switch (true) {
                 ('Product Info Pricing Location', 'BS4_PRICING_LOCATION', 'Both', 'When a product has attributes, where should a product\'s pricing be displayed relative to the attributes\' display? Default: <samp>Both</samp>.', $cgi, now(), 400, NULL, 'zen_cfg_select_option([\'Both\', \'Above Only\', \'Below Only\'],'),
 
                 ('Sideboxes as Carousels', 'BS4_SIDEBOXES_DISPLAY_CAROUSEL', '', 'Choose which sideboxes to display using a carousel, using a comma-separated list.  Currently supported: <samp>best_sellers</samp>, <samp>featured</samp>, <samp>reviews</samp>, <samp>specials</samp> and <samp>whats_new</samp>.<br>', $cgi, now(), 500, NULL, 'zen_cfg_textarea_small('),
+
+                ('Sideboxes Carousels to Fade', 'BS4_SIDEBOXES_FADE_CAROUSEL', '', 'Of the sideboxes chosen above, which should <em>fade</em> to the next instead of <em>sliding</em>?  Use a comma-separated list.<br>', $cgi, now(), 502, NULL, 'zen_cfg_textarea_small('),
 
                 ('Featured Centerbox as Carousel?', 'BS4_FEATURED_CENTERBOX_CAROUSEL', '', 'If the <em>Featured Products</em> centerbox is to be displayed as a carousel, enter the number of products to be displayed in the large and medium viewports as a comma-separated list with <code>;fade</code> at the end to <em>fade</em> the carousel instead of sliding, e.g. <code>3, 2</code> or <code>3, 2;fade</code>.  Leave this setting blank (the default) to display the centerbox based on <code>Index Listing :: Featured Products Columns per Row</code>.<br>', $cgi, now(), 520, NULL, NULL),
 

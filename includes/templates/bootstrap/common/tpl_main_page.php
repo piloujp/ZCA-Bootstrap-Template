@@ -84,11 +84,12 @@ $center_column = '12'; // This value should not be altered
 $center_column_width = $center_column - $side_columns_total;
 
 // -----
-// Added in v3.7.0, create an array from the configured list of sideboxes
-// to be displayed in 'carousel' mode.  This array is used by the
+// Added in v3.7.0, create arrays from the configured list of sideboxes
+// to be displayed in 'carousel' mode.  These arrays are used by the
 // supported sideboxes to determine the mode in which they display.
 //
 $sidebox_carousels = explode(',', str_replace([' ', "\n", "\r"], '', BS4_SIDEBOXES_DISPLAY_CAROUSEL));
+$sidebox_carousels_to_fade = explode(',', str_replace([' ', "\n", "\r"], '', BS4_SIDEBOXES_FADE_CAROUSEL));
 
 $body_id = ($this_is_home_page) ? 'indexHome' : str_replace('_', '', $_GET['main_page']);
 ?>
