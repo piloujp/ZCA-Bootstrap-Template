@@ -162,7 +162,7 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.7.0-beta2, 2024-05-03 (lat9, proseLA, brittainmark)<ul>
+        <li>v3.7.0-beta3, 2024-05-06 (lat9, proseLA, brittainmark)<ul>
             <li>CHANGE: Add 'soft' configuration setting to exclude categories with no products from the display.</li>
             <li>BUGFIX: Correct layout for products' listings and category-row when displaying in 'columns'.</li>
             <li>BUGFIX: Incorporate Zen Cart base changes for attributes' module.</li>
@@ -182,6 +182,7 @@ img {
             <li>CHANGE: Add configuration settings to enable various sideboxes to 'scroll' or 'fade' via a Bootstrap <em>carousel</em>.</li>
             <li>CHANGE: Add <code>jquery.matchHeight.js</code> to deal with various sidebox and centerbox carousels.</li>
             <li>CHANGE: Enable centerboxes to be rendered via carousels.</li>
+            <li>BUGFIX: Correct <code>checkout_confirm</code> coloring; was using those for <code>checkout_continue</code>.</li>
             <li>The following files were changed, <span class="added">added</span> or <span class="removed">removed</span>:<ol>
                 <li>/docs/bootstrap/uninstall/bootstrap_colors_uninstall.sql</li>
                 <li>/includes/extra_datafiles/dist.site-specific-bootstrap-settings.php</li>
@@ -198,6 +199,7 @@ img {
                 <li>/includes/templates/bootstrap/common/html_header.php</li>
                 <li><span class="added">/includes/templates/bootstrap/common/tpl_columnar_display_carousel.php</span></li>
                 <li>/includes/templates/bootstrap/common/tpl_main_page.php</li>
+                <li>/includes/templates/bootstrap/css/stylesheet_zca_colors.php</li>
                 <li><span class="added">/includes/templates/bootstrap/jscript/jquery.matchHeight.js</span></li>
                 <li><span class="added">/includes/templates/bootstrap/jscript/jquery.matchHeight.min.js</span></li>
                 <li><span class="removed">/includes/templates/bootstrap/jscript/jscript_addr_pulldowns_zca_bootstrap.php</span></li>
