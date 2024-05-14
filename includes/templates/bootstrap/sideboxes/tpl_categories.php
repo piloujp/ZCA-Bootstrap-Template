@@ -18,7 +18,10 @@ foreach ($box_categories_array as $next_box_cat) {
     // If 0-product categories are not to be displayed (see /extra_datafiles/site-specific-bootstrap-settings.php)
     // don't include if no products.
     //
-    if ($includeAllCategories === false && $next_box_cat['count'] === 0) {
+    // Note: The 'soft setting' applies **only when** Configuration :: My Store :: Show Category Counts
+    // is set to 'true'; otherwise, the 'count' element is not available!
+    //
+    if ($includeAllCategories === false && isset($next_box_cat['count']) && $next_box_cat['count'] === 0) {
         continue;
     }
 

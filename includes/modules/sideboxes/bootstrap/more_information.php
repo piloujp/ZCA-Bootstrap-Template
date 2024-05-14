@@ -2,7 +2,7 @@
 /**
  * more_information sidebox - displays list of links to additional pages on the site.  Must separately build those pages' content.
  *
- * BOOTSTRAP v3.2.0
+ * BOOTSTRAP v3.7.0
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -36,6 +36,11 @@ if (DEFINE_PAGE_4_STATUS <= 1) {
 // insert additional links below to add to the more_information box
 // Example:
 //    $more_information[] = '<a href="' . zen_href_link(FILENAME_DEFAULT) . '">' . 'TESTING' . '</a>';
+
+// -----
+// ... or create an observer-class file that monitors the following notification.
+//
+$zco_notifier->notify('NOTIFY_MORE_INFORMATION_SIDEBOX_ADDITIONS', [], $more_information);
 
 // only show if links are active
 if (count($more_information) > 0 && empty($more_information_sidebox_class)) {

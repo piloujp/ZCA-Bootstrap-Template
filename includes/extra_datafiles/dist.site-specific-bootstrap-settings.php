@@ -29,6 +29,9 @@
 // Change to false if you don't want categories with no products to be displayed.
 // @proseLA
 //
+// Note: Setting this to (bool)false has effect **only if** Configuration :: My Store :: Show Category Counts
+// is set to 'true'!
+//
 //$zca_include_zero_product_categories = true;
 
 // ----
