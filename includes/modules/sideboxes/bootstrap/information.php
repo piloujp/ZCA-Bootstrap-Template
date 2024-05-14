@@ -2,7 +2,7 @@
 /**
  * information sidebox - displays list of general info links, as defined in this file
  *
- * BOOTSTRAP v3.6.4
+ * BOOTSTRAP v3.7.0
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -92,6 +92,8 @@ if (DEFINE_DISCOUNT_COUPON_STATUS <= 1 && defined('MODULE_ORDER_TOTAL_COUPON_STA
 if (SHOW_NEWSLETTER_UNSUBSCRIBE_LINK === 'true') {
     $information[] = '<a class="' . $information_classes . '" href="' . zen_href_link(FILENAME_UNSUBSCRIBE) . '">' . BOX_INFORMATION_UNSUBSCRIBE . '</a>';
 }
+
+$zco_notifier->notify('NOTIFY_INFORMATION_SIDEBOX_ADDITIONS', [], $information);
 
 // -----
 // If the information sidebox's class name hasn't been overridden, then the display is for the non-mobile
