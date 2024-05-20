@@ -2,7 +2,7 @@
 /**
  * Common Template - tpl_header.php
  *
- * BOOTSTRAP v3.6.5
+ * BOOTSTRAP v3.7.0
  *
  *
  * @copyright Copyright 2003-2020 Zen Cart Development Team
@@ -10,17 +10,6 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: DrByte 2020 May 19 Modified in v1.5.7 $
  */
-// Display all header alerts via messageStack:
-if ($messageStack->size('header') > 0) {
-    echo $messageStack->output('header');
-}
-if (!empty($_GET['error_message'])) {
-    echo zen_output_string_protected(urldecode($_GET['error_message']));
-}
-if (!empty($_GET['info_message'])) {
-    echo zen_output_string_protected($_GET['info_message']);
-}
-
 // -----
 // Quick return if the header's been disabled.
 //
@@ -148,7 +137,18 @@ if ($tagline_banner_section_present === true) {
         </div>
     </div>
 <!--eof-branding display-->
-
+<?php
+// Display all header alerts via messageStack:
+if ($messageStack->size('header') > 0) {
+    echo $messageStack->output('header');
+}
+if (!empty($_GET['error_message'])) {
+    echo zen_output_string_protected(urldecode($_GET['error_message']));
+}
+if (!empty($_GET['info_message'])) {
+    echo zen_output_string_protected($_GET['info_message']);
+}
+?>
 <!--eof-header logo and navigation display-->
 
 <!--bof-optional categories tabs navigation display-->
