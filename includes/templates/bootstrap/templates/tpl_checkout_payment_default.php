@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.7.0
+ * BOOTSTRAP v3.7.1
  *
  * Loaded automatically by index.php?main_page=checkout_payment.<br />
  * Displays the allowed payment modules, for selection by customer.
@@ -248,7 +248,7 @@ if (!$payment_modules->in_special_checkout()) {
             <div id="orderComments-card" class="card mb-3">
                 <h4 class="card-header"><?php echo HEADING_ORDER_COMMENTS; ?></h4>
                 <div class="card-body p-3">
-                    <?php echo zen_draw_textarea_field('comments', '45', '3', (isset($comments) ? $comments : ''), 'aria-label="' . $comments_heading . '"'); ?>
+                    <?php echo zen_draw_textarea_field('comments', '45', '3', (isset($comments) ? $comments : ''), 'aria-label="' . HEADING_ORDER_COMMENTS . '"'); ?>
                 </div>
             </div>
 <?php
