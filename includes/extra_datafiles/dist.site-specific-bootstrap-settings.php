@@ -48,4 +48,3 @@
 // false ... Maintain the "Continue" button, which redirects back to Checkout Shipping; this is the default.
 //
 //$zca_show_contact_us_instead_of_continue = false;
-$zca_disable_back_to_top = true;
