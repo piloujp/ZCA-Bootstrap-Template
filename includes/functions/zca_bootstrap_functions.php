@@ -57,6 +57,7 @@ function zca_js_zone_list($varname = 'c2z')
 	        }
 	    } else {
 			if ($_SESSION['language'] == "japanese" && (int)$country_id === 107) {
+				$states = $db->Execute(
 		            "SELECT zone_id, zone_code, zone_name
 		               FROM " . TABLE_ZONES . "
 		              WHERE zone_country_id = $current_country_id
