@@ -2,7 +2,7 @@
 /**
  * Page Template
  * 
- * BOOTSTRAP v3.5.0
+ * BOOTSTRAP v3.7.1
  *
  * Loaded automatically by index.php?main_page=account.<br />
  * Displays previous orders and options to change various Customer Account settings
@@ -37,7 +37,7 @@
                 </ul>
             </div>
         </div>
-<!--eof my account card links-->  
+<!--eof my account card links-->
 <?php
 if ((int)ACCOUNT_NEWSLETTER_STATUS > 0 || CUSTOMERS_PRODUCTS_NOTIFICATION_STATUS !== '0') {
 ?>
@@ -55,29 +55,29 @@ if ((int)ACCOUNT_NEWSLETTER_STATUS > 0 || CUSTOMERS_PRODUCTS_NOTIFICATION_STATUS
 <?php 
     } //endif newsletter unsubscribe
 
-    if (CUSTOMERS_PRODUCTS_NOTIFICATION_STATUS == '1') {
+    if (CUSTOMERS_PRODUCTS_NOTIFICATION_STATUS === '1') {
 ?>
                     <li class="list-group-item">
                         <?php echo zca_button_link(zen_href_link(FILENAME_ACCOUNT_NOTIFICATIONS, '', 'SSL'), EMAIL_NOTIFICATIONS_PRODUCTS); ?>
                     </li>
 <?php 
-    } //endif product notification 
+    } //endif product notification
 ?>
                 </ul>
             </div>
         </div>
 <!--bof email notifications card links-->
 <?php 
-} // endif don't show unsubscribe or notification 
+} // endif don't show unsubscribe or notification
 ?>
     </div>
 <?php
 // only show when there is a GV balance
-if ($customer_has_gv_balance ) {
+if ($customer_has_gv_balance) {
     require $template->get_template_dir('tpl_modules_send_or_spend.php', DIR_WS_TEMPLATE, $current_page_base, 'templates') . '/tpl_modules_send_or_spend.php';
 }
 
-if (zen_count_customer_orders() > 0) {
+if (count($ordersArray) !== 0) {
 ?>
 <!--bof previous orders card -->
     <div id="previousOrders-card" class="card mb-3">
@@ -115,6 +115,6 @@ if (zen_count_customer_orders() > 0) {
     </div>
 <!--eof previous orders card -->
 <?php
-  }
+}
 ?>
 </div>
