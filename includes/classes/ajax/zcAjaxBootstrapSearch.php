@@ -69,6 +69,7 @@ class zcAjaxBootstrapSearch extends base
 
                         $products_search[] = $next_search_result;
                     }
+                    $search_results_count = count($products_search);
 
                     // get html
                     ob_start();
