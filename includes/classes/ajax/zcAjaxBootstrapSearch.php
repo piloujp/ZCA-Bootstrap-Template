@@ -2,7 +2,7 @@
 // -----
 // AJAX Search for the Zen Cart Bootstrap Template.
 //
-// Bootstrap v3.7.1
+// Bootstrap v3.7.2
 //
 class zcAjaxBootstrapSearch extends base
 {
@@ -46,8 +46,10 @@ class zcAjaxBootstrapSearch extends base
                 //
                 $this->notify('NOTIFY_AJAX_BOOTSTRAP_SEARCH_CLAUSES', $search_keywords, $select_clause, $from_clause, $where_clause, $order_by_clause, $limit_clause);
 
-                $results = $db->Execute($select_clause . $from_clause . $where_clause . $order_by_clause . $limit_clause);
-                if (!$results->EOF) {
+                $results = $db->Execute("SELECT COUNT(*) AS count FROM ($select_clause $from_clause $where_clause) AS items");
+                $search_results_count = (int)$results->fields['count'];
+                if ($search_results_count !== 0) {
+                    $results = $db->Execute($select_clause . $from_clause . $where_clause . $order_by_clause . $limit_clause);
                     $products_search = [];
                     foreach ($results as $next_item) {
                         $products_id = $next_item['products_id'];
@@ -69,7 +71,6 @@ class zcAjaxBootstrapSearch extends base
 
                         $products_search[] = $next_search_result;
                     }
-                    $search_results_count = count($products_search);
 
                     // get html
                     ob_start();
