@@ -2,7 +2,7 @@
 // -----
 // Part of the Bootstrap template, displaying a modal shipping-estimator on the shopping-cart page.
 //
-// BOOTSTRAP v3.1.0.
+// BOOTSTRAP v3.7.2
 //
 ?>
 <div class="modal fade" id="shippingEstimatorModal" tabindex="-1" role="dialog" aria-labelledby="shippingEstimatorModalLabel" aria-hidden="true">
