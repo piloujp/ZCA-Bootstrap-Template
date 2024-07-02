@@ -32,7 +32,7 @@ class zcAjaxBootstrapSearch extends base
                 $where_clause =
                     ' WHERE p.products_status = 1 ';
                 if (function_exists('zen_build_keyword_where_clause')) {
-                    $where_clause .= zen_build_keyword_where_clause(['pd.products_name', 'p.products_model'], $keywords);
+                    $where_clause .= zen_build_keyword_where_clause(['pd.products_name', 'pd.products_description', 'p.products_model'], $keywords);
                 } else {
                     $where_clause .= 'AND (' . $this->buildWhereClause($search_keywords) . ' )';
                 }
@@ -106,7 +106,12 @@ class zcAjaxBootstrapSearch extends base
                     break;
 
                 default:
-                    $where_clause .= $db->bindVars("(pd.products_name LIKE '%:keywords%' OR p.products_model LIKE '%:keywords%')", ':keywords', $current_keyword, 'noquotestring');
+                    $where_clause .= $db->bindVars(
+                        "(pd.products_name LIKE '%:keywords%' OR pd.products_description LIKE '%:keywords%' OR p.products_model LIKE '%:keywords%')",
+                        ':keywords',
+                        $current_keyword,
+                        'noquotestring'
+                    );
                     break;
             }
         }
