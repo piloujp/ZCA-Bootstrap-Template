@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.6.3
+ * BOOTSTRAP v3.7.2
  *
  * Loaded automatically by index.php?main_page=shopping_cart.<br />
  * Displays shopping-cart contents
@@ -70,9 +70,13 @@ if ($flagHasCartContents) {
         <table id="shoppingCartDefault-cartTableDisplay" class="cartTableDisplay table table-bordered table-striped table-sm">
             <tr>
                 <th scope="col" id="cartTableDisplay-qtyHeading"><?php echo TABLE_HEADING_QUANTITY; ?></th>
-<?php if (SHOW_SHOPPING_CART_UPDATE == 1 || SHOW_SHOPPING_CART_UPDATE == 3) { ?>
+<?php
+    if (SHOW_SHOPPING_CART_UPDATE === '1' || SHOW_SHOPPING_CART_UPDATE === '3') {
+?>
                 <th scope="col" class="d-none d-sm-table-cell" id="cartTableDisplay-qtyUpdateHeading"><span aria-label="<?php echo TEXT_CART_ARIA_HEADING_UPDATE_COLUMN; ?>">&nbsp;</span></th>
-<?php } ?>
+<?php
+    }
+?>
                 <th scope="col" id="cartTableDisplay-productsHeading"><?php echo TABLE_HEADING_PRODUCTS; ?></th>
                 <th scope="col" id="cartTableDisplay-priceHeading"><?php echo TABLE_HEADING_PRICE; ?></th>
                 <th scope="col" id="cartTableDisplay-totalsHeading"><?php echo TABLE_HEADING_TOTAL; ?></th>
@@ -111,9 +115,13 @@ if ($flagHasCartContents) {
 ?>
                     </div>
                 </td>
-<?php if (SHOW_SHOPPING_CART_UPDATE == 1 || SHOW_SHOPPING_CART_UPDATE == 3) { ?>
+<?php
+        if (SHOW_SHOPPING_CART_UPDATE === '1' || SHOW_SHOPPING_CART_UPDATE === '3') {
+?>
                 <td class="qtyUpdateCell text-center d-none d-sm-table-cell"><?php echo (!empty($product['buttonUpdate'])) ? $product['buttonUpdate'] : ''; ?></td>
-<?php } ?>
+<?php
+        }
+?>
                 <td class="productsCell">
                     <a href="<?php echo $product['linkProductsName']; ?>">
                         <span class="d-none d-sm-block float-left mr-3"><?php echo $product['productsImage']; ?></span>
