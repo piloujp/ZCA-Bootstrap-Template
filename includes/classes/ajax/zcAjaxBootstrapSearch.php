@@ -38,11 +38,7 @@ class zcAjaxBootstrapSearch extends base
                 if (defined('BS4_AJAX_SEARCH_INC_DESC') && BS4_AJAX_SEARCH_INC_DESC === 'true') {
                     $search_fields[] = 'pd.products_description';
                 }
-                if (function_exists('zen_build_keyword_where_clause')) {
-                    $where_clause .= zen_build_keyword_where_clause($search_fields, $keywords);
-                } else {
-                    $where_clause .= 'AND (' . $this->buildWhereClause($search_keywords) . ' )';
-                }
+                $where_clause .= zen_build_keyword_where_clause($search_fields, $keywords);
 
                 $select_clause = 'SELECT DISTINCT p.products_image, p.products_id, p.products_sort_order, pd.products_name, p.master_categories_id, p.products_model';
                 $order_by_clause = ' ORDER BY p.products_sort_order, pd.products_name';
@@ -94,34 +90,5 @@ class zcAjaxBootstrapSearch extends base
         return [
             'searchHtml' => $search_html,
         ];
-    }
-
-    protected function buildWhereClause($search_keywords)
-    {
-        global $db;
-
-        $where_clause = '';
-        foreach ($search_keywords as $current_keyword) {
-            switch ($current_keyword) {
-                case '(':
-                case ')':
-                    break;
-
-                case 'and':
-                case 'or':
-                    $where_clause .= " $current_keyword ";
-                    break;
-
-                default:
-                    $where_clause .= $db->bindVars(
-                        "(pd.products_name LIKE '%:keywords%' OR pd.products_description LIKE '%:keywords%' OR p.products_model LIKE '%:keywords%')",
-                        ':keywords',
-                        $current_keyword,
-                        'noquotestring'
-                    );
-                    break;
-            }
-        }
-        return $where_clause;
     }
 }
