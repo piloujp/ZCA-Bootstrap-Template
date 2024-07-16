@@ -2,7 +2,7 @@
 /**
  * Page Template
  *
- * BOOTSTRAP v3.7.0
+ * BOOTSTRAP v3.7.2
  *
  * Loaded automatically by index.php?main_page=product_info.
  * Displays details of a typical product
@@ -189,7 +189,7 @@ if ($pr_attr->fields['total'] > 0) {
 ?>
             <!--bof Product Price block above Attributes -->
 <?php
-    if ($display_price_top === true && zen_get_products_display_price((int)$_GET['products_id']) > 0) {
+    if ($display_price_top === true) {
 ?>
             <!--bof products price top card-->
             <div id="productsPriceTop-card" class="card mb-3">
@@ -199,7 +199,8 @@ if ($pr_attr->fields['total'] > 0) {
 // base price
         echo
             $one_time .
-            ((zen_has_product_attributes_values((int)$_GET['products_id']) && $flag_show_product_info_starting_at == 1) ? TEXT_BASE_PRICE : '') . zen_get_products_display_price((int)$_GET['products_id']);
+            ((zen_has_product_attributes_values((int)$_GET['products_id']) && $flag_show_product_info_starting_at == 1) ? TEXT_BASE_PRICE : '') .
+            zen_get_products_display_price((int)$_GET['products_id']);
 ?>
                     </h2>
                 </div>
@@ -238,7 +239,7 @@ if ($products_discount_type !== '0') {
 <?php
 }
 
-if ($display_price_bottom === true && zen_get_products_display_price((int)$_GET['products_id']) > 0) {
+if ($display_price_bottom === true) {
 ?>
             <!--bof products price bottom card-->
             <div id="productsPriceBottom-card" class="card mb-3">
