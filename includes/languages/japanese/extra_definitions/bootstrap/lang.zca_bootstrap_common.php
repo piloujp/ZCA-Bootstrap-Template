@@ -52,6 +52,8 @@ $define = [
 //
     'TEXT_CART_MODAL_HELP' => '[ヘルプ （？）]',
     'HEADING_TITLE_CART_MODAL' => 'ビジターカート / メンバーカート',
+    'TEXT_CART_ARIA_HEADING_DELETE_COLUMN' => 'この列のアイコンをクリックすると、カートから削除されます。',
+    'TEXT_CART_ARIA_HEADING_UPDATE_COLUMN' => 'この列のアイコンをクリックすると、カート内の数量が更新されます。',
 
 // -----
 // Used on various pages that display the cart's contents.
