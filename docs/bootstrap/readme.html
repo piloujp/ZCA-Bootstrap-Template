@@ -69,7 +69,7 @@ img {
 
 <body>
     <h1>Bootstrap-4 Template for Zen Cart v1.5.8 and v2.0.x</h1>
-    <p>Version 3.7.2, by lat9, drbyte, scottcwilson, marco-pm, dbltoe, dennisns7d, brittainmark, torvista, proseLA, daphilli224 and retched</p>
+    <p>Version 3.7.3, by lat9, drbyte, scottcwilson, marco-pm, dbltoe, dennisns7d, brittainmark, torvista, proseLA, daphilli224 and retched</p>
     <p>Current Support Thread at Zen Cart Forums: <a href="https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread" target="_blank">https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread</a></p>
     <p>Zen Cart Download Link: <a href="https://www.zen-cart.com/downloads.php?do=file&id=2191" target="_blank">https://www.zen-cart.com/downloads.php?do=file&id=2191</a></p>
     <p>GitHub repository: <a href="https://github.com/lat9/ZCA-Bootstrap-Template" target="_blank">https://github.com/lat9/ZCA-Bootstrap-Template</a></p>
@@ -162,6 +162,13 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
+        <li>v3.7.3-beta1, 2024-08-12 (lat9)<ul>
+            <li>BUGFIX: AJAX search's keywords submitted must be of type <samp>string</samp>.</li>
+            <li>The following files were changed:<ol>
+                <li>/includes/classes/ajax/zcAjaxBootstrapSearch.php</li>
+                <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin.php</li>
+            </ol></li>
+        </ul></li>
         <li>v3.7.2, 2024-07-17 (lat9, retched)<ul>
             <li>BUGFIX: AJAX search's product count can be 'off' (again); variant-managed products might again 'explode' the count!</li>
             <li>BUGFIX: Correct HTML <samp>id</samp> parameter in shipping-estimator modal.</li>
