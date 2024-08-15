@@ -61,37 +61,35 @@ if (zen_is_logged_in() && !zen_in_guest_checkout()) {
             <div class="font-weight-bold" id="seShipTo"><?= CART_SHIPPING_METHOD_TO ?></div>
             <address><?= zen_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br>') ?></address>
 <?php
-} else {
-    if ($_SESSION['cart']->get_content_type() !== 'virtual') {
-        $flag_show_pulldown_states = (ACCOUNT_STATE_DRAW_INITIAL_DROPDOWN === 'true');
+} elseif ($_SESSION['cart']->get_content_type() !== 'virtual') {
+    $flag_show_pulldown_states = (ACCOUNT_STATE_DRAW_INITIAL_DROPDOWN === 'true');
 ?>
             <label class="inputLabel" for="country"><?= ENTRY_COUNTRY ?></label>
             <?= zen_get_country_list('zone_country_id', $selected_country, 'id="country"' . (($flag_show_pulldown_states === true) ? ' onchange="update_zone(this.form);"' : '')) ?>
             <div class="p-2"></div>
 <?php
-        if ($flag_show_pulldown_states === true) {
+    if ($flag_show_pulldown_states === true) {
 ?>
             <label class="inputLabel" for="stateZone" id="zoneLabel"><?= ENTRY_STATE ?></label>
             <?= zen_draw_pull_down_menu('zone_id', zen_prepare_country_zones_pull_down($selected_country), $state_zone_id, 'id="stateZone"') ?>
             <div class="p-2" id="stBreak"></div>
 <?php
-        }
+    }
 ?>
             <label class="inputLabel" for="state" id="stateLabel"><?= $state_field_label ?? '' ?></label>
             <?= zen_draw_input_field('state', $selectedState, zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state"') ?>
             <div class="p-2"></div>
 <?php
-        if (CART_SHIPPING_METHOD_ZIP_REQUIRED === 'true') {
+    if (CART_SHIPPING_METHOD_ZIP_REQUIRED === 'true') {
 ?>
             <label class="inputLabel" for="postcode"><?= ENTRY_POST_CODE ?></label>
             <?= zen_draw_input_field('postcode', $postcode, 'size="7" id="postcode"') ?>
             <div class="p-2"></div>
 <?php
-        }
+    }
 ?>
             <div class="text-right mt-2 mb-2"><?= zen_image_submit(BUTTON_IMAGE_UPDATE, BUTTON_UPDATE_ALT) ?></div>
 <?php
-    }
 }
 ?>
             <?= '</form>' ?>
@@ -138,7 +136,7 @@ if ($_SESSION['cart']->get_content_type() === 'virtual') {
                         <td colspan="2">
                             <?= $next_module['module'] ?>
                             <?= !empty($next_module['icon']) ? $next_module['icon'] : '' ?>
-                            &nbsp<?= $next_module['error'] ?>
+                            &nbsp;<?= $next_module['error'] ?>
                         </td>
                     </tr>
 <?php
