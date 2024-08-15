@@ -2,7 +2,7 @@
 // -----
 // AJAX Search for the Zen Cart Bootstrap Template.
 //
-// Bootstrap v3.7.2
+// Bootstrap v3.7.3
 //
 class zcAjaxBootstrapSearch extends base
 {
@@ -20,7 +20,7 @@ class zcAjaxBootstrapSearch extends base
         // -----
         // First, check that the supplied keywords aren't empty (if so, there's nothing to be returned).
         //
-        if (!empty($_POST['keywords']) && !empty(trim($_POST['keywords']))) {
+        if (!empty($_POST['keywords']) && is_string($_POST['keywords']) && !empty(trim($_POST['keywords']))) {
             $keywords = trim($_POST['keywords']);
             if (zen_parse_search_string(stripslashes($keywords), $search_keywords)) {
                 $from_clause =

@@ -2,7 +2,7 @@
 /**
  * Module Template - for shipping-estimator display
  *
- * BOOTSTRAP v3.7.2
+ * BOOTSTRAP v3.7.3
  *
  * @copyright Copyright 2003-2022 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
@@ -61,37 +61,35 @@ if (zen_is_logged_in() && !zen_in_guest_checkout()) {
             <div class="font-weight-bold" id="seShipTo"><?= CART_SHIPPING_METHOD_TO ?></div>
             <address><?= zen_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br>') ?></address>
 <?php
-} else {
-    if ($_SESSION['cart']->get_content_type() !== 'virtual') {
-        $flag_show_pulldown_states = (ACCOUNT_STATE_DRAW_INITIAL_DROPDOWN === 'true');
+} elseif ($_SESSION['cart']->get_content_type() !== 'virtual') {
+    $flag_show_pulldown_states = (ACCOUNT_STATE_DRAW_INITIAL_DROPDOWN === 'true');
 ?>
             <label class="inputLabel" for="country"><?= ENTRY_COUNTRY ?></label>
             <?= zen_get_country_list('zone_country_id', $selected_country, 'id="country"' . (($flag_show_pulldown_states === true) ? ' onchange="update_zone(this.form);"' : '')) ?>
             <div class="p-2"></div>
 <?php
-        if ($flag_show_pulldown_states === true) {
+    if ($flag_show_pulldown_states === true) {
 ?>
             <label class="inputLabel" for="stateZone" id="zoneLabel"><?= ENTRY_STATE ?></label>
             <?= zen_draw_pull_down_menu('zone_id', zen_prepare_country_zones_pull_down($selected_country), $state_zone_id, 'id="stateZone"') ?>
             <div class="p-2" id="stBreak"></div>
 <?php
-        }
+    }
 ?>
             <label class="inputLabel" for="state" id="stateLabel"><?= $state_field_label ?? '' ?></label>
             <?= zen_draw_input_field('state', $selectedState, zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state"') ?>
             <div class="p-2"></div>
 <?php
-        if (CART_SHIPPING_METHOD_ZIP_REQUIRED === 'true') {
+    if (CART_SHIPPING_METHOD_ZIP_REQUIRED === 'true') {
 ?>
             <label class="inputLabel" for="postcode"><?= ENTRY_POST_CODE ?></label>
             <?= zen_draw_input_field('postcode', $postcode, 'size="7" id="postcode"') ?>
             <div class="p-2"></div>
 <?php
-        }
+    }
 ?>
             <div class="text-right mt-2 mb-2"><?= zen_image_submit(BUTTON_IMAGE_UPDATE, BUTTON_UPDATE_ALT) ?></div>
 <?php
-    }
 }
 ?>
             <?= '</form>' ?>
@@ -126,54 +124,45 @@ if ($_SESSION['cart']->get_content_type() === 'virtual') {
                 </thead>
                 <tbody>
 <?php
-    for ($i = 0, $n = count($quotes); $i < $n; $i++) {
+    foreach ($quotes as $next_module) {
         $thisquoteid = '';
-        if (isset($quotes[$i]['id'], $quotes[$i]['methods'][0]['id']) && count($quotes[$i]['methods']) === 1) {
-            // simple shipping method (e.g. 'flat')
-            $thisquoteid = $quotes[$i]['id'] . '_' . $quotes[$i]['methods'][0]['id'];
-?>
-                    <tr<?= $extra ?>>
-<?php
-            if (!empty($quotes[$i]['error'])) {
-?>
-                        <td colspan="2"><?= $quotes[$i]['module'] ?>&nbsp;(<?= $quotes[$i]['error'] ?>)</td>
-<?php
-            } else {
-                $extra_class = ($selected_shipping['id'] == $thisquoteid) ? 'font-weight-bold' : '';
-?>
-                        <td class="<?= $extra_class ?>"><?= $quotes[$i]['module'] ?>&nbsp;(<?= $quotes[$i]['methods'][0]['title'] ?>)</td>
-                        <td class="cartTotalDisplay text-right <?= $extra_class ?>"><?= $currencies->format(zen_add_tax($quotes[$i]['methods'][0]['cost'], $quotes[$i]['tax'] ?? 0)) ?></td>
-<?php
-            }
-?>
-                    </tr>
-<?php
-        } else {
-            // shipping method with sub methods (e.g. UPS, USPS, multipickup, etc)
-            for ($j = 0, $n2 = (empty($quotes[$i]['methods']) ? 0 : count($quotes[$i]['methods'])); $j < $n2; $j++) {
-                $thisquoteid = '';
-                if (isset($quotes[$i]['id'], $quotes[$i]['methods'][$j]['id'])) {
-                    $thisquoteid = $quotes[$i]['id'] . '_' . $quotes[$i]['methods'][$j]['id'];
-                }
-?>
-                    <tr<?= $extra ?>>
-<?php
-               if (!empty($quotes[$i]['error'])) {
-?>
-                        <td colspan="2"><?= $quotes[$i]['module'] ?>&nbsp;(<?= $quotes[$i]['error'] ?>)</td>
-<?php
-                } else {
-                    $extra_class = ($selected_shipping['id'] == $thisquoteid) ? 'font-weight-bold' : '';
-?>
-                        <td class="<?= $extra_class ?>"><?= $quotes[$i]['module'] ?>&nbsp;(<?= $quotes[$i]['methods'][$j]['title'] ?>)</td>
-                        <td class="cartTotalDisplay text-right <?= $extra_class ?>"><?= $currencies->format(zen_add_tax($quotes[$i]['methods'][$j]['cost'], $quotes[$i]['tax'] ?? 0)) ?></td>
-<?php
-                }
-?>
-                    </tr>
-<?php
-            }
+        if (empty($next_module['module'])) {
+            continue;
         }
+
+        if (!empty($next_module['error'])) {
+?>
+                    <tr<?= $extra ?>>
+                        <td colspan="2">
+                            <?= $next_module['module'] ?>
+                            <?= !empty($next_module['icon']) ? $next_module['icon'] : '' ?>
+                            &nbsp;<?= $next_module['error'] ?>
+                        </td>
+                    </tr>
+<?php
+            continue;
+        }
+
+        if (empty($next_module['methods']) || !is_array($next_module['methods'])) {
+            continue;
+        }
+
+        foreach ($next_module['methods'] as $next_method) {
+            $thisquoteid = $next_module['id'] . '_' . $next_method['id'];
+            $extra_class = ($selected_shipping['id'] === $thisquoteid) ? 'font-weight-bold' : '';
+?>
+                    <tr<?= $extra ?>>
+                        <td class="<?= $extra_class ?>">
+                            <?= $next_module['module'] ?>&nbsp;(<?= $next_method['title'] ?>)
+                        </td>
+                        <td class="cartTotalDisplay text-right <?= $extra_class ?>">
+                            <?= $currencies->format(zen_add_tax($next_method['cost'], $next_module['tax'] ?? 0)) ?>
+                        </td>
+<?php
+        }
+?>
+                    </tr>
+<?php
     }
 ?>
                 </tbody>
