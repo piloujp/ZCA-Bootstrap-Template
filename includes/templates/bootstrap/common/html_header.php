@@ -2,7 +2,7 @@
 /**
  * Common Template
  *
- * BOOTSTRAP v3.7.0
+ * BOOTSTRAP v3.7.3
  *
  * outputs the html header. i,e, everything that comes before the </head> tag.
  *
@@ -184,11 +184,23 @@ if (empty($zca_no_preloading)) {
 
     require($template->get_template_dir('stylesheet_zca_colors.php', DIR_WS_TEMPLATE, $current_page_base, 'css') . '/stylesheet_zca_colors.php');
 
-    // User defined styles come last 
-    $user_styles = DIR_WS_TEMPLATE . 'css/site_specific_styles.php'; 
+// -----
+// Site-specific styles come last. For Zen Cart versions *prior to* v2.0.1, continue
+// to look *specifically* in the current template; for v2.0.1 and later, use the $template
+// class to locate that file.
+//
+$zca_zcversion = zen_get_zcversion();
+if (substr($zca_zcversion, 0, 1) === '1' || version_compare($zca_zcversion, '2.0.1', '<')) {
+    $user_styles = DIR_WS_TEMPLATE . 'css/site_specific_styles.php';
     if (file_exists($user_styles)) {
-        require $user_styles; 
+        require $user_styles;
     }
+} else {
+    $user_styles = $template->get_template_dir('^site_specific_styles.php', DIR_WS_TEMPLATE, $current_page_base, 'css') . '/site_specific_styles.php';
+    if (file_exists($user_styles)) {
+        require $user_styles;
+    }
+}
 
     /** CDN for jQuery core * */
     foreach ($preloads as $load) {
