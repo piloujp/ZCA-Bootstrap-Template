@@ -68,7 +68,7 @@ img {
 </head>
 
 <body>
-    <h1>Bootstrap-4 Template for Zen Cart v1.5.8 and v2.0.x</h1>
+    <h1>Bootstrap-4 Template for Zen Cart v1.5.8, v2.0.x and v2.1.x</h1>
     <p>Version 3.7.3, by lat9, drbyte, scottcwilson, marco-pm, dbltoe, dennisns7d, brittainmark, torvista, proseLA, daphilli224 and retched</p>
     <p>Current Support Thread at Zen Cart Forums: <a href="https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread" target="_blank">https://www.zen-cart.com/showthread.php?223910-ZCA-Bootstrap-4-Template-Support-Thread</a></p>
     <p>Zen Cart Download Link: <a href="https://www.zen-cart.com/downloads.php?do=file&id=2191" target="_blank">https://www.zen-cart.com/downloads.php?do=file&id=2191</a></p>
@@ -76,7 +76,7 @@ img {
     <p>GitHub Wiki: <a href="https://github.com/lat9/ZCA-Bootstrap-Template/wiki" target="_blank">https://github.com/lat9/ZCA-Bootstrap-Template/wiki</a></p>
 
     <h2>What it does</h2>
-    <p>This template uses <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction/" target="_blank">Bootstrap-4.6.2</a> to provide its styling and builds on the base that Raymond Barbour provided over the past few years, supporting Zen Cart versions 1.5.8 and later &mdash; <em>best supported</em> by zc158<b>a</b> and <b>zc200</b>.</p>
+    <p>This template uses <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction/" target="_blank">Bootstrap-4.6.2</a> to provide its styling and builds on the base that Raymond Barbour provided over the past few years, supporting Zen Cart versions 1.5.8 and later &mdash; <em>best supported</em> by zc158<b>a</b> and later.</p>
     <p>Starting with v3.4.0 of the template, the template-related files needed when used with <a href="https://www.zen-cart.com/downloads.php?do=file&id=2095" target="_blank">One-Page Checkout</a> are also provided:</p>
     <ul>
         <li>These changes have been validated with v2.4.6 and v2.5.0 of <em>OPC</em>, I'll suggest upgrading to that version or later prior to upgrading to v3.4.0 or later of the Bootstrap-4 template.</li>
@@ -162,11 +162,18 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.7.3-beta2, 2024-08-15 (lat9)<ul>
+        <li>v3.7.3-beta3, 2024-08-20 (lat9)<ul>
             <li>BUGFIX: AJAX search's keywords submitted must be of type <samp>string</samp>.</li>
             <li>BUGFIX: Display shipping-module errors in the shipping-estimator.</li>
-            <li>The following files were changed:<ol>
+            <li>INTROP: Use <code>$template</code> class to locate 'site_specific_styles.php' (zc201+ <em>only</em>)</li>
+            <li>INTROP: Use Zen Cart 'base' CSS/JS loading, when available (i.e. zc210+).</li>
+            <li>INTROP: Add notification added to <samp>account_history_info</samp> page's template in zc210.</li>
+            <li>The following files were changed or <span class="added">added</span>:<ol>
                 <li>/includes/classes/ajax/zcAjaxBootstrapSearch.php</li>
+                <li>/includes/templates/bootstrap/common/html_header.php</li>
+                <li><span class="added">/includes/templates/bootstrap/common/html_header_css_loader.php</span></li>
+                <li><span class="added">/includes/templates/bootstrap/common/html_header_js_loader.php</span></li>
+                <li>/includes/templates/bootstrap/templates/tpl_account_history_info_default.php</li>
                 <li>/includes/templates/bootstrap/templates/tpl_modules_shipping_estimator.php</li>
                 <li>/YOUR_ADMIN/includes/init_includes/init_zca_bootstrap_template_admin.php</li>
             </ol></li>
