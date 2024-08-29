@@ -180,16 +180,22 @@ if (EZPAGES_STATUS_SIDEBOX === '1' || (EZPAGES_STATUS_SIDEBOX === '2' && zen_is_
         unset($var_linksList);
     }
 
-    $page_query = $db->Execute(
-        "SELECT e.*, ec.*
-           FROM " . TABLE_EZPAGES . " e
+    $sql = "SELECT e.*, ec.*
+            FROM " . TABLE_EZPAGES . " e
                 INNER JOIN " . TABLE_EZPAGES_CONTENT . " ec
                     ON ec.pages_id = e.pages_id
-                   AND ec.languages_id = " . (int)$_SESSION['languages_id'] . "
-          WHERE e.status_sidebox = 1
-            AND e.sidebox_sort_order > 0
-          ORDER BY e.sidebox_sort_order, ec.pages_title"
-    );
+                   AND ec.languages_id = " . (int)$_SESSION['languages_id'];
+
+    $where_clause = " WHERE e.status_sidebox = 1
+                AND e.sidebox_sort_order > 0
+              ORDER BY e.sidebox_sort_order, ec.pages_title";
+
+    if ($sniffer->field_exists(TABLE_EZPAGES, 'status_mobile')) {
+        $where_clause = " WHERE e.status_mobile = 1
+              ORDER BY e.mobile_sort_order, e.sidebox_sort_order, ec.pages_title";
+    }
+
+    $page_query = $db->Execute($sql . $where_clause);
 
     if (!$page_query->EOF) {
         $page_query_list_sidebox = [];
