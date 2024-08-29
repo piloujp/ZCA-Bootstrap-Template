@@ -162,7 +162,7 @@ img {
     <h2>Version History</h2>
     <p>This section identifies the template's version history and changes, starting with its v2.0.0c release.  Prior version changes can be found in the root of the template's distribution zip-file (<code>CHANGELOG.txt</code>).</p>
     <ul>
-        <li>v3.7.3-beta4, 2024-08-27 (lat9)<ul>
+        <li>v3.7.3-beta4, 2024-08-27 (lat9, drbyte)<ul>
             <li>BUGFIX: AJAX search's keywords submitted must be of type <samp>string</samp>.</li>
             <li>BUGFIX: Display shipping-module errors in the shipping-estimator.</li>
             <li>INTROP: Use <code>$template</code> class to locate 'site_specific_styles.php' (zc201+ <em>only</em>)</li>
@@ -171,6 +171,7 @@ img {
             <li>INTROP: Replace usage of <code>ezpages::page_is_ssl</code> with <code>'SSL'</code>; the field's being removed in zc210.</li>
             <li>BUGFIX: Don't display back-to-top on small/medium screens; those devices <em>normally</em> have a touchscreen.</li>
             <li>BUGFIX: Correct layout inconsistencies between the notifications and manufacturers_info centerboxes.</li>
+            <li>INTROP: Recognize mobile-menu settings for EZ-Pages, added in zc210.</li>
             <li>The following files were changed or <span class="added">added</span>:<ol>
                 <li>/includes/classes/ajax/zcAjaxBootstrapSearch.php</li>
                 <li>/includes/templates/bootstrap/centerboxes/tpl_modules_manufacturer_info.php</li>
