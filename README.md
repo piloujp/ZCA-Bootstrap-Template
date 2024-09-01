@@ -13,6 +13,7 @@ This Zen Cart template uses a [Bootstrap](https://getbootstrap.com/docs/4.5/gett
 - [Bootstrap 4.6.2](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
 - [Font Awesome 6.5.2](https://fontawesome.com/)
 - [jQuery 3.7.1](https://jquery.com/download/)
+- [TinyColor](https://bgrins.github.io/TinyColor/), used by the admin `zca_bootstrap_colors.php` tool.
 
 ## Features:
 
