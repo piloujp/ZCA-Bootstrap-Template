@@ -127,6 +127,8 @@ foreach ($preloads as $load) {
     }
 }
 
+$zco_notifier->notify('NOTIFY_HTML_HEAD_CSS_BEGIN', $current_page_base);
+
 /**
  * Load all template-specific stylesheets, via the common CSS loader.
  */
@@ -140,6 +142,8 @@ foreach ($preloads as $load) {
 <?php
     }
 }
+
+$zco_notifier->notify('NOTIFY_HTML_HEAD_JS_BEGIN', $current_page_base);
 
 /**
  * Load all template-specific jscript files, via the common jscript loader.
