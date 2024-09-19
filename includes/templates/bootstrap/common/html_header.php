@@ -2,7 +2,7 @@
 /**
  * Common Template
  *
- * BOOTSTRAP v3.7.3
+ * BOOTSTRAP v3.7.4
  *
  * outputs the html header. i,e, everything that comes before the </head> tag.
  *
