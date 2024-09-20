@@ -29,7 +29,7 @@ if (!$configuration->EOF) {
         "INSERT INTO " . TABLE_CONFIGURATION_GROUP . "
             (configuration_group_title, configuration_group_description, sort_order, visible)
          VALUES
-            ('$bc_menu_title', '$bc_menu_title', 1, 1)"
+            ('$bc_menu_title', '$bc_menu_title', 1, 0)"
     );
     $bccid = $db->Insert_ID();
     $db->Execute(
