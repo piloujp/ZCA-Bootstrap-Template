@@ -7,7 +7,7 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: init_bc_config.php
  *
- * BOOTSTRAP v3.6.2
+ * BOOTSTRAP v3.7.4
  */
 // -----
 // Brought in by /admin/init_includes/init_bc_config.php for an initial installation or upgrade to the colors. 
@@ -24,6 +24,12 @@ $configuration = $db->Execute(
 );
 if (!$configuration->EOF) {
     $bccid = $configuration->fields['configuration_group_id'];
+    $db->Execute(
+        "UPDATE " . TABLE_CONFIGURATION_GROUP . "
+            SET visible = 0
+          WHERE configuration_group_id = $bccid
+          LIMIT 1"
+    );
 } else {
     $db->Execute(
         "INSERT INTO " . TABLE_CONFIGURATION_GROUP . "
