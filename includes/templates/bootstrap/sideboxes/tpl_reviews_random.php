@@ -2,7 +2,7 @@
 /**
  * Side Box Template
  * 
- * BOOTSTRAP v1.0.BETA
+ * BOOTSTRAP v3.7.0
  *
  * @package templateSystem
  * @copyright Copyright 2003-2016 Zen Cart Development Team
@@ -10,14 +10,48 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: Author: DrByte  Sat Oct 17 21:00:46 2015 -0400 Modified in v1.5.5 $
  */
-  $content = "";
-  $review_box_counter = 0;
-  while (!$random_review_sidebox_product->EOF) {
-    $review_box_counter++;
-    $content .= '<div class="' . str_replace('_', '-', $box_id . 'Content') . ' sideBoxContent text-center p-3">';
-    $content .= "\n" . '  <div class="card mb-3 p-3 sideBoxContentItem">';
-    $content .= '<a href="' . zen_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id=' . $random_review_sidebox_product->fields['products_id'] . '&reviews_id=' . $random_review_sidebox_product->fields['reviews_id']) . '">' . zen_image(DIR_WS_IMAGES . $random_review_sidebox_product->fields['products_image'], $random_review_sidebox_product->fields['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '<br />' . nl2br(zen_trunc_string(zen_output_string_protected(stripslashes($random_review_sidebox_product->fields['reviews_text'])), 60)) . '</a><div class="p-3 text-center">' . zen_image(DIR_WS_TEMPLATE_IMAGES . 'stars_' . $random_review_sidebox_product->fields['reviews_rating'] . '.gif' , sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, $random_review_sidebox_product->fields['reviews_rating'])) . '</div>';
-    $content .= '</div>';
-    $content .= '</div>';
+$is_carousel = in_array('reviews', $sidebox_carousels);
+
+$content = '<div id="' . str_replace('_', '-', $box_id . 'Content') . '" class="sideBoxContent text-center p-3">';
+if ($is_carousel === true) {
+    $carousel_fade = in_array('reviews', $sidebox_carousels_to_fade) ? 'carousel-fade' : '';
+    $content .=
+        '<div class="carousel slide ' . $carousel_fade . '" data-ride="carousel">
+            <div class="carousel-inner">' .
+                '<div class="card-deck h-100">';
+}
+
+$active_class = 'active';
+while (!$random_review_sidebox_product->EOF) {
+    $current_review = $random_review_sidebox_product->fields;
+
+    $carousel_start = ($is_carousel === true) ? '<div class="carousel-item h-100 ' . $active_class . '">' : '';
+    $carousel_end = ($is_carousel === true) ? '</div>' : '';
+
+    $content .=
+        $carousel_start .
+        '<div class="card mb-3 p-3 sideBoxContentItem">' .
+            '<a href="' . zen_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id=' . $current_review['products_id'] . '&reviews_id=' . $current_review['reviews_id']) . '" title="' . zen_output_string_protected($current_review['products_name']) . '">' .
+                zen_image(DIR_WS_IMAGES . $random_review_sidebox_product->fields['products_image'], $current_review['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) .
+                '<br>' .
+                nl2br(zen_trunc_string(zen_output_string_protected(stripslashes($current_review['reviews_text'])), 60), true) .
+            '</a>' .
+            '<div class="p-3 text-center rating">' .
+                zca_get_rating_stars($random_review_sidebox_product->fields['reviews_rating'], 'xs') .
+            '</div>' .
+        '</div>' .
+        $carousel_end;
+
+    $active_class = '';
     $random_review_sidebox_product->MoveNextRandom();
-  }
+}
+
+if ($is_carousel === true) {
+    $content .=
+        '       </div>
+            </div>
+        </div>';
+}
+
+$content .= "</div>\n";
+

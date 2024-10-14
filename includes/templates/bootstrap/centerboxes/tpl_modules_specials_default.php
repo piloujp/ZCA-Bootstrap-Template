@@ -2,61 +2,37 @@
 /**
  * Module Template
  * 
- * BOOTSTRAP v1.0.BETA
+ * BOOTSTRAP v3.7.0
  *
- * @package templateSystem
  * @copyright Copyright 2003-2005 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: tpl_modules_specials_default.php 2935 2006-02-01 11:12:40Z birdbrain $
  */
-  $zc_show_special_products = false;
-  include(DIR_WS_MODULES . zen_get_module_directory('centerboxes/' . FILENAME_SPECIALS_INDEX));
-?>
+$zc_show_special_products = false;
+require DIR_WS_MODULES . zen_get_module_directory('centerboxes/' . FILENAME_SPECIALS_INDEX);
 
-<!-- bof: specials -->
-<?php if ($zc_show_special_products == true) { ?>
-
-<div class="card mb-3">
-  
-<?php
-  if ($title) {
-  ?>
-
-<?php echo $title; ?>
-
-<?php
- }
- ?>
-<div id="specialsCenterbox-card-body" class="card-body text-center">
-<?php
-if (is_array($list_box_contents) > 0 ) {
- for($row=0, $n=sizeof($list_box_contents); $row<$n; $row++) {
-    $params = "";
-    //if (isset($list_box_contents[$row]['params'])) $params .= ' ' . $list_box_contents[$row]['params'];
-?>
-
-<div class="card-deck text-center">
-<?php
-    for($col=0, $j=sizeof($list_box_contents[$row]); $col<$j; $col++) {
-      $r_params = "";
-      if (isset($list_box_contents[$row][$col]['params'])) $r_params .= ' ' . (string)$list_box_contents[$row][$col]['params'];
-     if (isset($list_box_contents[$row][$col]['text'])) {
-?>
-    <?php echo '<div' . $r_params . '>' . $list_box_contents[$row][$col]['text'] .  '</div>'; ?>
-<?php
-      }
-    }
-?>
-</div>
-
-
-<?php
-  }
+if ($zc_show_special_products === false) {
+    return;
 }
- ?>
-</div>
-</div>
 
-<?php } ?>
+$card_main_id = 'specialsDefault';
+$card_main_class = 'centerBoxWrapper';
+$card_body_id = 'specialsCenterbox-card-body';
+?>
+<!-- bof: specials -->
+<?php
+if (BS4_SPECIALS_CENTERBOX_CAROUSEL === '') {
+    // -----
+    // If not rendering as a carousel, output the columnar display.
+    //
+    require $template->get_template_dir('tpl_columnar_display.php', DIR_WS_TEMPLATE, $current_page_base, 'common') . '/tpl_columnar_display.php';
+} else {
+    // -----
+    // Otherwise, rendering as a carousel.
+    //
+    $carousel_config = BS4_SPECIALS_CENTERBOX_CAROUSEL;
+    require $template->get_template_dir('tpl_columnar_display_carousel.php', DIR_WS_TEMPLATE, $current_page_base, 'common') . '/tpl_columnar_display_carousel.php';
+}
+?>
 <!-- eof: specials -->

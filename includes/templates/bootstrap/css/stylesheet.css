@@ -1,26 +1,38 @@
 /**
  * Main Template CSS Stylesheet
  * 
- * BOOTSTRAP v1.0.BETA
+ * BOOTSTRAP v3.4.0
  *
- * @package templateSystem
- * @copyright Copyright 2003-2016 Zen Cart Development Team
- * @copyright Portions Copyright 2003 osCommerce
- * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  */
+.clearBoth {
+   clear: both;
+}
+.forward {
+    float: right;
+}
+.back {
+    float: left;
+}
 
 /* This is used to re-size images */
-img{max-width:100%;height:auto;border:0;}
+img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+}
 
+.qmix > br {
+    display: none;
+}
 
 .normalprice, .productSpecialPriceSale {
-	text-decoration: line-through;
-	}
+    text-decoration: line-through;
+}
 
 #back-to-top {
     position: fixed;
-    bottom: 40px;
-    right: 40px;
+    bottom: 5rem;
+    right: 1rem;
     z-index: 1;
     text-align: center;
     cursor: pointer;
@@ -33,6 +45,47 @@ img{max-width:100%;height:auto;border:0;}
     z-index: 1;
 }
 
+/* set height of scrollable area in mobile menu */
+div#navbarSupportedContent {
+    max-height:90vh;
+    overflow-y:auto;
+}
+
+.zca-banner {
+    text-align: center;
+}
+
+.ot-title {
+    text-align: right;
+}
+.ot-text,
+.totalCell {
+    text-align: right;
+}
+
+.centeredContent {
+    text-align: center;
+    padding: 1rem;
+}
+
+table.tabTable td {
+    padding: 0.5rem;
+}
+#indexProductList-cat-wrap {
+    margin-bottom: 1rem;
+}
+#productsListing-bottomRow {
+    margin-top: 1rem;
+}
+
+.sideBoxContent select {
+    margin-bottom: 1rem;
+}
+#navCatTabs a,
+#navCatTabs a:hover {
+    border: 0.125rem solid #007faf;
+}
+
 /* These CSS media queries control how many columns of cards display on the login, checkout_shipping, checkout_payment & checkout_confirmation pages */
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
@@ -40,7 +93,7 @@ img{max-width:100%;height:auto;border:0;}
   -webkit-column-count: 1;
   -moz-column-count: 1;
   column-count: 1;
-}   
+}
 }
 
 /*  Medium devices (tablets, 768px and up) */
@@ -49,7 +102,7 @@ img{max-width:100%;height:auto;border:0;}
   -webkit-column-count: 1;
   -moz-column-count: 1;
   column-count: 1;
-}  
+}
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -58,7 +111,7 @@ img{max-width:100%;height:auto;border:0;}
   -webkit-column-count: 2;
   -moz-column-count: 2;
   column-count: 2;
-}  
+}
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -67,5 +120,6 @@ img{max-width:100%;height:auto;border:0;}
   -webkit-column-count: 2;
   -moz-column-count:2;
   column-count: 2;
-}   
 }
+}
+
