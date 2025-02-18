@@ -35,7 +35,7 @@ $define = [
 //
     'TEXT_MULTIPLE_IMAGES' => ' 追加画像 ',
     'TEXT_SINGLE_IMAGE' => ' 拡大画像 ',
-    'PREV_NEXT_FROM' => ' from ',
+    'PREV_NEXT_FROM' => 'から',
     'IMAGE_BUTTON_PREVIOUS' => '前',
     'IMAGE_BUTTON_NEXT' => '次',
     'IMAGE_BUTTON_RETURN_TO_PRODUCT_LIST' => '商品リストに戻る',
