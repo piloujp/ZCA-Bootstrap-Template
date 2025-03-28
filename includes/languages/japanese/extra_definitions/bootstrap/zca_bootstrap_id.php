@@ -16,4 +16,4 @@
 // identify the current template as a "bootstrap" one, if the definition is
 // present.
 //
-define('IS_ZCA_BOOTSTRAP_TEMPLATE', 'true');
+define('IS_ZCA_BOOTSTRAP_TEMPLATE', '真');
