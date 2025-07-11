@@ -44,9 +44,21 @@ if (zen_config('ACCOUNT_GENDER') === 'true') {
             <?= zen_draw_input_field('firstname', $account->fields['customers_firstname'], 'id="firstname" placeholder="' . ENTRY_FIRST_NAME_TEXT . '"' . ((int)zen_config('ENTRY_FIRST_NAME_MIN_LENGTH ')> 0 ? ' required' : '')) ?>
             <div class="p-2"></div>
 
+<?php if ($_SESSION['language'] === 'japanese') { ?>
+            <label class="inputLabel" for="firstname_kana"><?= ENTRY_FIRST_NAME_KANA ?></label>
+            <?= zen_draw_input_field('firstname_kana', $account->fields['customers_firstname_kana'], 'id="firstname_kana" placeholder="' . ENTRY_FIRST_NAME_KANA_TEXT . '"' . ((int)zen_config('ENTRY_FIRST_NAME_MIN_LENGTH') > 0 ? ' required' : '')) ?>
+            <br class="clearBoth">
+<?php } ?>
             <label class="inputLabel" for="lastname"><?= ENTRY_LAST_NAME ?></label>
             <?= zen_draw_input_field('lastname', $account->fields['customers_lastname'], 'id="lastname" placeholder="' . ENTRY_LAST_NAME_TEXT . '"' . ((int)zen_config('ENTRY_LAST_NAME_MIN_LENGTH') > 0 ? ' required' : '')) ?>
             <div class="p-2"></div>
+
+<?php if ($_SESSION['language'] === 'japanese') { ?>
+            <label class="inputLabel" for="lastname_kana"><?= ENTRY_LAST_NAME_KANA ?></label>
+            <?= zen_draw_input_field('lastname_kana', $account->fields['customers_lastname_kana'], 'id="lastname_kana" placeholder="' . ENTRY_LAST_NAME_KANA_TEXT . '"' . ((int)zen_config('ENTRY_LAST_NAME_MIN_LENGTH') > 0 ? ' required' : '')) ?>
+            <br class="clearBoth">
+<?php } ?>
+
 <?php
 if (zen_config('ACCOUNT_DOB') === 'true') {
 ?>

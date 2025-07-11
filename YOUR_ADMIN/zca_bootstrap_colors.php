@@ -307,7 +307,7 @@ foreach ($configuration as $item) {
 ?>
         <div class="row dataTableRow row-hover align-items-center py-2">
             <div class="col-sm-4 bc-title">
-                <?= $item['configuration_title'] ?>
+                <?= zen_lookup_admin_menu_language_override('configuration_key_title', $item['configuration_key'], $item['configuration_title']) ?>
 <?php
     if (!empty(zen_config('ADMIN_CONFIGURATION_KEY_ON'))) {
 ?>

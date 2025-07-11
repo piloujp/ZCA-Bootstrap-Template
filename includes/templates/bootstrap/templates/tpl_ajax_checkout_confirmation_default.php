@@ -110,7 +110,7 @@ if ($_SESSION['sendto'] != false) {
                             <address>
                                 <?= zen_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br>') ?>
                             </address>
-    
+
                             <div id="shipToAddress-btn-toolbar" class="btn-toolbar justify-content-end mt-3" role="toolbar">
                                 <?= zca_button_link($editShippingButtonLink, BUTTON_EDIT_SMALL_ALT, 'small_edit') ?>
                             </div>
@@ -124,7 +124,7 @@ if ($_SESSION['sendto'] != false) {
                             <?= HEADING_SHIPPING_METHOD ?>
                         </h4>
                         <div id="shippingMethod-card-body" class="card-body">
-                            <h4><?= $order->info['shipping_method'] ?></h4>
+                            <h4><?= $order->info['shipping_method'] . (!empty($order->delivery['timespec']) ? '<br>' . TEXT_TIME_SPECIFY . $order->delivery['timespec'] :'') ?></h4>
                         </div>
                     </div>
 <?php
@@ -257,7 +257,6 @@ if (zen_config('MODULE_ORDER_TOTAL_INSTALLED')) {
             </div>
         </div>
     </div>
-
 
     <?= zen_draw_form('checkout_confirmation', $form_action_url, 'post', 'id="checkout_confirmation" onsubmit="submitonce();"') ?>
     <div id="processButtonHolder"></div>
