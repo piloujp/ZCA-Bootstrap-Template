@@ -5,7 +5,7 @@
  * BOOTSTRAP v3.7.0
  *
 */
- 
+
 // -----
 // This function returns a boolean value indicating whether (true) or not (false)
 // the ZCA bootstrap template is the currently-active template.  The definition is
@@ -35,15 +35,50 @@ function zca_js_zone_list($varname = 'c2z')
         $current_country_id = $country['zone_country_id'];
         $c2z[$current_country_id] = [];
 
-        $states = $db->Execute(
-            "SELECT zone_name, zone_id, zone_code
-               FROM " . TABLE_ZONES . "
-              WHERE zone_country_id = $current_country_id
-           ORDER BY zone_name"
-        );
-        foreach ($states as $state) {
-            $zone_key = ($use_zone_code === true) ? $state['zone_code'] : $state['zone_id'];
-            $c2z[$current_country_id][$zone_key] = $state['zone_name'];
+        if (zen_get_zcversion() < '2.0.0') {
+            if ($_SESSION['language'] == "japanese" && (int)$current_country_id == 107) {
+                $states = $db->Execute(
+                    "SELECT zone_name, zone_id, zone_code
+                    FROM " . TABLE_ZONES . "
+                    WHERE zone_country_id = " . (int)$current_country_id . "  AND  (zone_name REGEXP '^[一-龠]')
+                    ORDER BY zone_id"
+                );
+            } else {
+                $states = $db->Execute(
+                    "SELECT zone_name, zone_id, zone_code
+                       FROM " . TABLE_ZONES . "
+                      WHERE zone_country_id = " . (int)$current_country_id . " AND (zone_name regexp '^[一-龠]')
+                   ORDER BY zone_name"
+                );
+            }
+            foreach ($states as $state) {
+                $zone_key = ($use_zone_code === true) ? $state['zone_code'] : $state['zone_id'];
+                $c2z[$current_country_id][$zone_key] = $state['zone_name'];
+            }
+        } else {
+            if ($_SESSION['language'] == "japanese" && (int)$country_id === jp_country_id()) {
+                $states = $db->Execute(
+                    "SELECT zone_id, zone_code, zone_name
+                       FROM " . TABLE_ZONES . "
+                      WHERE zone_country_id = $current_country_id
+                    ORDER BY zone_id"
+                );
+                foreach ($states as $state) {
+                    $zone_key = ($use_zone_code === true) ? $state['zone_code'] : $state['zone_id'];
+                    $c2z[$current_country_id][$zone_key] = $state['zone_code'];
+                }
+            } else {
+                $states = $db->Execute(
+                    "SELECT zone_name, zone_id, zone_code
+                       FROM " . TABLE_ZONES . "
+                      WHERE zone_country_id = $current_country_id
+                    ORDER BY zone_name"
+                );
+                foreach ($states as $state) {
+                    $zone_key = ($use_zone_code === true) ? $state['zone_code'] : $state['zone_id'];
+                    $c2z[$current_country_id][$zone_key] = $state['zone_name'];
+                }
+            }
         }
     }
 
@@ -93,7 +128,7 @@ function zca_get_rating_stars($rating, $size = '')
     $rating = (int)$rating;
     $rating = ($rating < 0) ? 0 : $rating;
     $rating = ($rating > 5) ? 5 : $rating;
-    
+
     $rating_stars = '<span class="sr-only">' . $rating . ' ' . (($rating === 1) ? ARIA_REVIEW_STAR : ARIA_REVIEW_STARS) . '</span>';
     $size = ($size != '') ? " fa-$size" : '';
     for ($i = 1; $i <= $rating; $i++) {
