@@ -1,5 +1,5 @@
 # ZCA Bootstrap Template v3.7.9 for zc158, zc20x, zc210 and zc22x
-# Modified version of ZCA Bootstrap Template v3.7.9 to be used with ZC Japanese Language Pack ZC v1.3.x (zc v1.5.8) to v2.x.x (zc v2.x.x)
+# Modified version of ZCA Bootstrap Template v3.7.9 to be used with ZC Japanese Language Pack v2.1.0 and above (Zen Cart v2.1.0 and above)
 
 This Zen Cart template uses a [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/) foundation to provide an updated look-and-feel to your Zen Cart.  Since the template is standards-based, it's easier to make layout changes to your store.
 
