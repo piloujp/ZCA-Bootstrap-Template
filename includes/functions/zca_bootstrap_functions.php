@@ -36,7 +36,7 @@ function zca_js_zone_list(string $varname = 'c2z'): string
         $c2z[$current_country_id] = [];
 
         if (zen_get_zcversion() < '2.0.0') {
-            if ($_SESSION['language'] == "japanese" && (int)$current_country_id == 107) {
+            if ($_SESSION['language'] === "japanese" && (int)$current_country_id === 107) {
                 $states = $db->Execute(
                     "SELECT zone_name, zone_id, zone_code
                     FROM " . TABLE_ZONES . "
@@ -56,7 +56,7 @@ function zca_js_zone_list(string $varname = 'c2z'): string
                 $c2z[$current_country_id][$zone_key] = $state['zone_name'];
             }
         } else {
-            if ($_SESSION['language'] == "japanese" && (int)$country_id === jp_country_id()) {
+            if ($_SESSION['language'] === "japanese" && (int)$country_id === zen_country_iso_to_id('JP')) {
                 $states = $db->Execute(
                     "SELECT zone_id, zone_code, zone_name
                        FROM " . TABLE_ZONES . "
