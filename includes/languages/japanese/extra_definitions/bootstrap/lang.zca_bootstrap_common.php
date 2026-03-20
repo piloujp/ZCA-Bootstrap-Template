@@ -78,7 +78,6 @@ $define = [
     'TABLE_HEADING_PRICE' => '価格',
     'TABLE_HEADING_WEIGHT' => '重さ',
     'TABLE_HEADING_BUY_NOW' => '今すぐ購入',
-    'TEXT_NO_PRODUCTS' => 'このカテゴリには商品がありません。',
     'TEXT_NO_PRODUCTS2' => 'このメーカーから入手可能な商品はありません。',
 
 // -----
@@ -105,7 +104,7 @@ $define = [
 // -----
 // ARIA label text, used in the common header.
 //
-    'TEXT_HEADER_ARIA_LABEL_NAVBAR' =>'ナビゲーションバー',
+    'TEXT_HEADER_ARIA_LABEL_NAVBAR' => 'ナビゲーションバー',
     'TEXT_HEADER_ARIA_LABEL_LOGO' => 'サイトのロゴ',
 
 // -----
