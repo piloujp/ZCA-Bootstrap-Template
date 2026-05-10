@@ -1,7 +1,7 @@
 <?php
 /**
  * Page Template
- * 
+ *
  * BOOTSTRAP 3.8.0
  *
  * Loaded automatically by index.php?main_page=address_book.

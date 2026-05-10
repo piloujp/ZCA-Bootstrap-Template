@@ -268,7 +268,7 @@ if (zen_config('ACCOUNT_NEWSLETTER_STATUS') !== '0') {
 }
 ?>
             <div class="custom-control custom-radio custom-control-inline">
-                <?= zen_draw_radio_field('email_format', 'HTML', ($email_format === 'HTML'),'id="email-format-html"') . '<label class="custom-control-label" for="email-format-html">' . ENTRY_EMAIL_HTML_DISPLAY . '</label>' ?> 
+                <?= zen_draw_radio_field('email_format', 'HTML', ($email_format === 'HTML'),'id="email-format-html"') . '<label class="custom-control-label" for="email-format-html">' . ENTRY_EMAIL_HTML_DISPLAY . '</label>' ?>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
                 <?= zen_draw_radio_field('email_format', 'TEXT', ($email_format === 'TEXT'), 'id="email-format-text"') . '<label class="custom-control-label" for="email-format-text">' . ENTRY_EMAIL_TEXT_DISPLAY . '</label>' ?>

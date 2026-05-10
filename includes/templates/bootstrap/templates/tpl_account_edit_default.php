@@ -1,7 +1,7 @@
 <?php
 /**
  * Page Template
- * 
+ *
  * BOOTSTRAP v3.8.0
  *
  * Loaded automatically by index.php?main_page=account_edit.

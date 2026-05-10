@@ -1,7 +1,7 @@
 <?php
 /**
  * Module Template
- * 
+ *
  * BOOTSTRAP v3.8.0
  *
  * Displays address-book details/selection
