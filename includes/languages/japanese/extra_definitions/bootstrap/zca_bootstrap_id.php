@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ *
  * zca_bootstrap_id.php
  *
  * @copyright Copyright 2018 zcadditions.com/vinosdefrutastropicales.com
@@ -19,3 +19,4 @@
 // present.
 //
 define('IS_ZCA_BOOTSTRAP_TEMPLATE', '真');
+
