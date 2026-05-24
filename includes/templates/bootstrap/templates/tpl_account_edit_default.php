@@ -38,7 +38,7 @@ if (zen_config('ACCOUNT_GENDER') === 'true') {
             </div>
             <div class="p-2"></div>
 <?php
- }
+}
 ?>
             <label class="inputLabel" for="firstname"><?= ENTRY_FIRST_NAME ?></label>
             <?= zen_draw_input_field('firstname', $account->fields['customers_firstname'], 'id="firstname" placeholder="' . ENTRY_FIRST_NAME_TEXT . '"' . ((int)zen_config('ENTRY_FIRST_NAME_MIN_LENGTH ')> 0 ? ' required' : '')) ?>
