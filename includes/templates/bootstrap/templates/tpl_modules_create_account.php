@@ -63,7 +63,7 @@ if (zen_config('ACCOUNT_GENDER') === 'true') {
             <div class="p-2"></div>
 <?php
 }
-if ($_SESSION['language'] == 'japanese') { ?>
+if ($_SESSION['language'] === 'japanese') { ?>
             <label class="inputLabel" for="lastname"><?= ENTRY_LAST_NAME ?></label>
             <?= zen_draw_input_field('lastname', '', zen_set_field_length(TABLE_CUSTOMERS, 'customers_lastname', '40') . ' id="lastname" placeholder="' . ENTRY_LAST_NAME_TEXT . '"'. ((int)zen_config('ENTRY_LAST_NAME_MIN_LENGTH') > 0 ? ' required' : '')) ?>
             <div class="p-2"></div>
