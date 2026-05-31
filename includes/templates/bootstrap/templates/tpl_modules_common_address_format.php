@@ -82,7 +82,7 @@ if (zen_config('ACCOUNT_GENDER') === 'true') {
 <div class="p-2"></div>
 
 <?php
-if (ACCOUNT_COMPANY === 'true') {
+if (zen_config('ACCOUNT_COMPANY') === 'true') {
 ?>
 <label class="inputLabel" for="company"><?= ENTRY_COMPANY ?></label>
 <?= zen_draw_input_field('company', $entry->fields['entry_company'], zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_company', '40') . ' id="company" autocomplete="organization" placeholder="' . ENTRY_COMPANY_TEXT . '"' . ((int)zen_config('ENTRY_COMPANY_MIN_LENGTH') !== 0 ? ' required' : '')) ?>
@@ -100,7 +100,7 @@ if (ACCOUNT_COMPANY === 'true') {
 <div class="p-2"></div>
 
 <?php
-if (ACCOUNT_STATE === 'true') {
+if (zen_config('ACCOUNT_STATE') === 'true') {
     if ($flag_show_pulldown_states === true) {
 ?>
 <label class="inputLabel" for="stateZone" id="zoneLabel"><?= ENTRY_STATE ?></label><span class="alert"><?= ((!empty(ENTRY_STATE_TEXT) && (int)zen_config('ENTRY_STATE_MIN_LENGTH') > 0) ? ENTRY_STATE_TEXT : '') ?></span>
@@ -128,7 +128,7 @@ if (ACCOUNT_STATE === 'true') {
 <div class="p-2"></div>
 
 <?php
-if (ACCOUNT_SUBURB === 'true') {
+if (zen_config('ACCOUNT_SUBURB') === 'true') {
 ?>
 <label class="inputLabel" for="suburb"><?= ENTRY_SUBURB ?></label>
 <?= zen_draw_input_field('suburb', $entry->fields['entry_suburb'], zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_suburb', '40') . ' id="suburb" autocomplete="address-line2" placeholder="' . ENTRY_SUBURB_TEXT . '"') ?>
@@ -213,10 +213,10 @@ if (zen_config('ACCOUNT_STATE') === 'true') {
 <?php } ?>
 
 <label class="inputLabel" for="telephone"><?php echo ENTRY_TELEPHONE_NUMBER; ?></label>
-<?php echo zen_draw_input_field('entry_telephone', $entry->fields['entry_telephone'], zen_set_field_length(TABLE_CUSTOMERS, 'customers_telephone', '40') . ' id="telephone" placeholder="' . ENTRY_TELEPHONE_NUMBER_TEXT . '"' . ((int)ENTRY_TELEPHONE_MIN_LENGTH > 0 ? ' required' : ''), 'tel'); ?>
+<?php echo zen_draw_input_field('entry_telephone', $entry->fields['entry_telephone'], zen_set_field_length(TABLE_CUSTOMERS, 'customers_telephone', '40') . ' id="telephone" placeholder="' . ENTRY_TELEPHONE_NUMBER_TEXT . '"' . ((int)zen_config('ENTRY_TELEPHONE_MIN_LENGTH') > 0 ? ' required' : ''), 'tel'); ?>
 <br class="clearBoth">
 
-<?php  if (ACCOUNT_FAX_NUMBER == 'true') { ?>
+<?php  if (zen_config('ACCOUNT_FAX_NUMBER') == 'true') { ?>
 <label class="inputLabel" for="fax"><?php echo ENTRY_FAX_NUMBER; ?></label>
 <?php echo zen_draw_input_field('entry_fax', $entry->fields['entry_fax'], 'id="fax" placeholder="' . ENTRY_FAX_NUMBER_TEXT . '"', 'tel'); ?>
 <br class="clearBoth">
