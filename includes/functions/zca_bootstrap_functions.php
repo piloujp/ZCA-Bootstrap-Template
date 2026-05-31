@@ -35,50 +35,19 @@ function zca_js_zone_list(string $varname = 'c2z'): string
         $current_country_id = $country['zone_country_id'];
         $c2z[$current_country_id] = [];
 
-        if (zen_get_zcversion() < '2.0.0') {
-            if ($_SESSION['language'] === "japanese" && (int)$current_country_id === 107) {
-                $states = $db->Execute(
-                    "SELECT zone_name, zone_id, zone_code
-                    FROM " . TABLE_ZONES . "
-                    WHERE zone_country_id = " . (int)$current_country_id . "  AND  (zone_name REGEXP '^[一-龠]')
-                    ORDER BY zone_id"
-                );
-            } else {
-                $states = $db->Execute(
-                    "SELECT zone_name, zone_id, zone_code
-                       FROM " . TABLE_ZONES . "
-                      WHERE zone_country_id = " . (int)$current_country_id . " AND (zone_name regexp '^[一-龠]')
-                   ORDER BY zone_name"
-                );
-            }
-            foreach ($states as $state) {
-                $zone_key = ($use_zone_code === true) ? $state['zone_code'] : $state['zone_id'];
-                $c2z[$current_country_id][$zone_key] = $state['zone_name'];
-            }
-        } else {
-            if ($_SESSION['language'] === "japanese" && (int)$country_id === zen_country_iso_to_id('JP')) {
-                $states = $db->Execute(
-                    "SELECT zone_id, zone_code, zone_name
-                       FROM " . TABLE_ZONES . "
-                      WHERE zone_country_id = $current_country_id
-                    ORDER BY zone_id"
-                );
-                foreach ($states as $state) {
-                    $zone_key = ($use_zone_code === true) ? $state['zone_code'] : $state['zone_id'];
-                    $c2z[$current_country_id][$zone_key] = $state['zone_code'];
-                }
-            } else {
-                $states = $db->Execute(
-                    "SELECT zone_name, zone_id, zone_code
-                       FROM " . TABLE_ZONES . "
-                      WHERE zone_country_id = $current_country_id
-                    ORDER BY zone_name"
-                );
-                foreach ($states as $state) {
-                    $zone_key = ($use_zone_code === true) ? $state['zone_code'] : $state['zone_id'];
-                    $c2z[$current_country_id][$zone_key] = $state['zone_name'];
-                }
-            }
+        $andRegex = (zen_get_zcversion() < '2.0.0') ? " AND  (zone_name REGEXP '^[一-龠]') " : '';
+        $japanCountryCode = (zen_get_zcversion() >= '2.0.0' && function_existszen_country_iso_to_id('')) ? zen_country_iso_to_id('JP') : 107;
+        $zoneOrder = ($_SESSION['language'] === 'japanese' && (int)$country_id === $japanCountryCode) ? 'zone_id' : 'zone_name';
+        $zoneData = (zen_get_zcversion() >= '2.0.0' && $_SESSION['language'] === "japanese" && (int)$country_id === $japanCountryCode) ? 'zone_code' : 'zone_name';
+        $states = $db->Execute(
+            "SELECT zone_name, zone_id, zone_code
+              FROM " . TABLE_ZONES . "
+              WHERE zone_country_id = " . (int)$current_country_id . $andRegex
+              . "ORDER BY " . $zoneOrder
+        );
+        foreach ($states as $state) {
+            $zone_key = ($use_zone_code === true) ? $state['zone_code'] : $state['zone_id'];
+            $c2z[$current_country_id][$zone_key] = $state[$zoneData];
         }
     }
 
