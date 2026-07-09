@@ -5,7 +5,7 @@
  * BOOTSTRAP v3.8.0
  *
 */
- 
+
 // -----
 // This function returns a boolean value indicating whether (true) or not (false)
 // the ZCA bootstrap template is the currently-active template.  The definition is
@@ -35,15 +35,18 @@ function zca_js_zone_list(string $varname = 'c2z'): string
         $current_country_id = $country['zone_country_id'];
         $c2z[$current_country_id] = [];
 
+        $japanCountryCode = zen_country_iso_to_id('JP');
+        $zoneOrder = ($_SESSION['language'] === 'japanese' && (int)$country_id === $japanCountryCode) ? 'zone_id' : 'zone_name';
+        $zoneData = ($_SESSION['language'] === 'japanese' && (int)$country_id === $japanCountryCode) ? 'zone_code' : 'zone_name';
         $states = $db->Execute(
             "SELECT zone_name, zone_id, zone_code
-               FROM " . TABLE_ZONES . "
-              WHERE zone_country_id = $current_country_id
-           ORDER BY zone_name"
+              FROM " . TABLE_ZONES . "
+              WHERE zone_country_id = " . (int)$current_country_id
+              . "ORDER BY " . $zoneOrder
         );
         foreach ($states as $state) {
             $zone_key = ($use_zone_code === true) ? $state['zone_code'] : $state['zone_id'];
-            $c2z[$current_country_id][$zone_key] = $state['zone_name'];
+            $c2z[$current_country_id][$zone_key] = $state[$zoneData];
         }
     }
 
@@ -79,7 +82,7 @@ function zca_get_rating_stars(int|string $rating, string $size = ''): string
     $rating = (int)$rating;
     $rating = ($rating < 0) ? 0 : $rating;
     $rating = ($rating > 5) ? 5 : $rating;
-    
+
     $rating_stars = '<span class="sr-only">' . $rating . ' ' . (($rating === 1) ? ARIA_REVIEW_STAR : ARIA_REVIEW_STARS) . '</span>';
     $size = ($size != '') ? " fa-$size" : '';
     for ($i = 1; $i <= $rating; $i++) {

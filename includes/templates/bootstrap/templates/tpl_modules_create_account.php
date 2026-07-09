@@ -63,7 +63,82 @@ if (zen_config('ACCOUNT_GENDER') === 'true') {
             <div class="p-2"></div>
 <?php
 }
+if ($_SESSION['language'] === 'japanese') { ?>
+            <label class="inputLabel" for="lastname"><?= ENTRY_LAST_NAME ?></label>
+            <?= zen_draw_input_field('lastname', '', zen_set_field_length(TABLE_CUSTOMERS, 'customers_lastname', '40') . ' id="lastname" placeholder="' . ENTRY_LAST_NAME_TEXT . '"'. ((int)zen_config('ENTRY_LAST_NAME_MIN_LENGTH') > 0 ? ' required' : '')) ?>
+            <div class="p-2"></div>
+
+            <label class="inputLabel" for="lastname_kana"><?= ENTRY_LAST_NAME_KANA ?></label>
+            <?= zen_draw_input_field('lastname_kana', '', zen_set_field_length(TABLE_CUSTOMERS, 'customers_lastname', '40') . ' id="lastname_kana" placeholder="' . ENTRY_LAST_NAME_TEXT . '"'. ((int)zen_config('ENTRY_LAST_NAME_MIN_LENGTH') > 0 ? ' required' : '')) ?>
+            <div class="p-2"></div>
+
+            <label class="inputLabel" for="firstname"><?= ENTRY_FIRST_NAME ?></label>
+            <?= zen_draw_input_field('firstname', '', zen_set_field_length(TABLE_CUSTOMERS, 'customers_firstname', '40') . ' id="firstname" placeholder="' . ENTRY_FIRST_NAME_TEXT . '"' . ((int)zen_config('ENTRY_FIRST_NAME_MIN_LENGTH') > 0 ? ' required' : '')) ?>
+            <div class="p-2"></div>
+
+            <label class="inputLabel" for="firstname_kana"><?= ENTRY_FIRST_NAME_KANA ?></label>
+            <?= zen_draw_input_field('firstname_kana', '', zen_set_field_length(TABLE_CUSTOMERS, 'customers_firstname', '40') . ' id="firstname_kana" placeholder="' . ENTRY_FIRST_NAME_TEXT . '"' . ((int)zen_config('ENTRY_FIRST_NAME_MIN_LENGTH') > 0 ? ' required' : '')) ?>
+            <div class="p-2"></div>
+
+            <label class="inputLabel" for="country"><?= ENTRY_COUNTRY ?></label><?php if (zen_not_null(ENTRY_COUNTRY_TEXT)) echo '<span class="alert">' . ENTRY_COUNTRY_TEXT . '</span>'; ?>
+            <?= zen_get_country_list('zone_country_id', $selected_country, 'id="country"' . (($flag_show_pulldown_states === true && zen_get_zcversion() >= '1.5.8') ? ' onchange="update_zone(this.form);"' : '')) ?>
+            <div class="p-2"></div>
+            <br>
+
+            <label class="inputLabel" for="postcode"><?= ENTRY_POST_CODE; ?></label>
+            <?= zen_draw_input_field('postcode', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_postcode', '40') . ' id="postcode" placeholder="' . ENTRY_POST_CODE_TEXT . '"' . ((int)zen_config('ENTRY_POSTCODE_MIN_LENGTH') > 0 ? ' required' : '')) ?>
+            <div class="p-2"></div>
+
+<?php
+// -----
+// Adding a (hidden) span to contain a 'stBreak' identifier, to keep the 'base' Zen Cart
+// jscript_addr_pulldowns.php from throwing a javascript error for that missing 'id'.
+//
 ?>
+            <span class="d-none" id="stBreak">&nbsp;</span>
+<?php
+if (zen_config('ACCOUNT_STATE') === 'true') {
+    if ($flag_show_pulldown_states === true) {
+?>
+            <label class="inputLabel" for="stateZone" id="zoneLabel"><?= ENTRY_STATE ?></label><span class="alert"><?= ((!empty(ENTRY_STATE_TEXT) && (int)zen_config('ENTRY_STATE_MIN_LENGTH') > 0) ? ENTRY_STATE_TEXT : '') ?></span>
+            <?= zen_draw_pull_down_menu('zone_id', zen_prepare_country_zones_pull_down($selected_country), $zone_id, 'id="stateZone"') ?>
+            <div class="clearfix"></div>
+<?php
+    }
+?>
+            <label class="inputLabel" for="state" id="stateLabel"><?= $state_field_label ?></label>
+<?php
+    echo zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state" class="form-control"' . ((int)zen_config('ENTRY_STATE_MIN_LENGTH') > 0 ? ' placeholder="' . ENTRY_STATE_TEXT . '"' : ''));
+    if ($flag_show_pulldown_states === false) {
+        echo zen_draw_hidden_field('zone_id', $zone_name, ' ');
+    }
+}
+?>
+            <div class="p-2"></div>
+
+            <label class="inputLabel" for="city"><?= ENTRY_CITY ?></label>
+            <?= zen_draw_input_field('city', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_city', '40') . ' id="city" placeholder="' . ENTRY_CITY_TEXT . '"'. ((int)zen_config('ENTRY_CITY_MIN_LENGTH') > 0 ? ' required' : '')) ?>
+            <div class="p-2"></div>
+
+            <label class="inputLabel" for="street-address"><?= ENTRY_STREET_ADDRESS ?></label>
+            <?= zen_draw_input_field('street_address', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_street_address', '40') . ' id="street-address" placeholder="' . ENTRY_STREET_ADDRESS_TEXT . '"'. ((int)zen_config('ENTRY_STREET_ADDRESS_MIN_LENGTH') > 0 ? ' required' : '')) ?>
+            <div class="p-2"></div>
+
+            <?= zen_draw_input_field($antiSpamFieldName, '', ' size="40" id="CAAS" style="visibility:hidden; display:none;" autocomplete="off"') ?>
+
+<?php
+if (zen_config('ACCOUNT_SUBURB') === 'true') {
+?>
+            <label class="inputLabel" for="suburb"><?= ENTRY_SUBURB ?></label>
+            <?= zen_draw_input_field('suburb', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_suburb', '40') . ' id="suburb" autocomplete="address-line2" placeholder="' . ENTRY_SUBURB_TEXT . '"') ?>
+            <div class="p-2"></div>
+<?php
+  }
+?>
+        </div>
+
+<?php } else { ?>
+
             <label class="inputLabel" for="firstname"><?= ENTRY_FIRST_NAME ?></label>
             <?= zen_draw_input_field('firstname', '', zen_set_field_length(TABLE_CUSTOMERS, 'customers_firstname', '40') . ' id="firstname" placeholder="' . ENTRY_FIRST_NAME_TEXT . '"' . ((int)zen_config('ENTRY_FIRST_NAME_MIN_LENGTH') > 0 ? ' required' : '')) ?>
             <div class="p-2"></div>
@@ -122,6 +197,7 @@ if (zen_config('ACCOUNT_STATE') === 'true') {
             <?= zen_draw_input_field('postcode', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_postcode', '40') . ' id="postcode" placeholder="' . ENTRY_POST_CODE_TEXT . '"' . ((int)zen_config('ENTRY_POSTCODE_MIN_LENGTH') > 0 ? ' required' : '')) ?>
             <div class="p-2"></div>
         </div>
+<?php } ?>
     </div>
 
     <div id="contactDetails-card" class="card mb-3">
@@ -192,7 +268,7 @@ if (zen_config('ACCOUNT_NEWSLETTER_STATUS') !== '0') {
 }
 ?>
             <div class="custom-control custom-radio custom-control-inline">
-                <?= zen_draw_radio_field('email_format', 'HTML', ($email_format === 'HTML'),'id="email-format-html"') . '<label class="custom-control-label" for="email-format-html">' . ENTRY_EMAIL_HTML_DISPLAY . '</label>' ?> 
+                <?= zen_draw_radio_field('email_format', 'HTML', ($email_format === 'HTML'),'id="email-format-html"') . '<label class="custom-control-label" for="email-format-html">' . ENTRY_EMAIL_HTML_DISPLAY . '</label>' ?>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
                 <?= zen_draw_radio_field('email_format', 'TEXT', ($email_format === 'TEXT'), 'id="email-format-text"') . '<label class="custom-control-label" for="email-format-text">' . ENTRY_EMAIL_TEXT_DISPLAY . '</label>' ?>

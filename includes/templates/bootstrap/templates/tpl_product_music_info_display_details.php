@@ -18,7 +18,7 @@ if ($display_product_model || $display_product_weight || $display_product_quanti
             <ul id="<?= $html_id_prefix ?>-productDetailsList" class="productDetailsList list-group mb-3">
                 <?= (($display_product_model === true) ? '<li class="list-group-item">' . TEXT_PRODUCT_MODEL . $products_model . '</li>' : '') . "\n" ?>
                 <?= (($display_product_weight === true) ? '<li class="list-group-item">' . TEXT_PRODUCT_WEIGHT .  $products_weight . TEXT_PRODUCT_WEIGHT_UNIT . '</li>'  : '') . "\n" ?>
-                <?= (($display_product_quantity === true) ? '<li class="list-group-item">' . $products_quantity . TEXT_PRODUCT_QUANTITY . '</li>'  : '') . "\n" ?>
+                <?= (($display_product_quantity === true) ? (($_SESSION['language'] === 'japanese') ? '<li class="list-group-item">' . TEXT_PRODUCT_QUANTITY . $products_quantity . '</li>' : '<li class="list-group-item">' . $products_quantity . TEXT_PRODUCT_QUANTITY . '</li>')  : '') . "\n" ?>
                 <?= (($display_product_manufacturer === true) ? '<li class="list-group-item">' . TEXT_PRODUCT_MANUFACTURER . $manufacturers_name . '</li>' : '') . "\n" ?>
                 <?= (($display_product_music_artist === true) ? '<li class="list-group-item">' . TEXT_PRODUCT_ARTIST . $products_artist_name . '</li>' : '') . "\n" ?>
                 <?= (($display_product_music_genre === true) ? '<li class="list-group-item">' . TEXT_PRODUCT_MUSIC_GENRE . $products_music_genre_name . '</li>' : '') . "\n" ?>

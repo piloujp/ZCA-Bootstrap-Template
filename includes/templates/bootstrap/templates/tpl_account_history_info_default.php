@@ -1,7 +1,7 @@
 <?php
 /**
  * Page Template
- * 
+ *
  * BOOTSTRAP v3.8.0
  *
  * Loaded automatically by index.php?main_page=account_edit.
@@ -185,7 +185,7 @@ if (!empty($statusArray)) {
                                 <th scope="col" id="orderHistoryStatusTableDisplay-commentsHeading"><?= TABLE_HEADING_STATUS_COMMENTS ?></th>
                             </tr>
 <?php
-    $protected = true; 
+    $protected = true;
     foreach ($statusArray as $statuses) {
 ?>
                             <tr>
@@ -204,12 +204,12 @@ if (!empty($statusArray)) {
         }
 ?>
                                 <td class="commentsCell">
-<?php 
+<?php
         if (!empty($statuses['comments'])) {
             echo nl2br(zen_output_string($statuses['comments'], false, $protected), false);
         }
 ?>
-                                </td> 
+                                </td>
                             </tr>
 <?php
         $protected = false;
@@ -242,7 +242,7 @@ if (!empty($order->info['shipping_method'])) {
                         <div id="shippingMethod-card" class="card">
                             <h4 id="shippingMethod-card-header" class="card-header"><?= HEADING_SHIPPING_METHOD ?></h4>
                             <div id="shippingMethod-card-body" class="card-body">
-                                <div><?= $order->info['shipping_method'] ?></div>
+                                <div><?= $order->info['shipping_method'] . (!empty($order->delivery['timespec']) ? '<br>' . TEXT_TIME_SPECIFY . $order->delivery['timespec'] : '') ?></div>
                             </div>
                         </div>
 <?php

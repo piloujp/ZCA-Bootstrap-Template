@@ -1,7 +1,7 @@
 <?php
 /**
  * Page Template
- * 
+ *
  * BOOTSTRAP v3.7.0
  *
  * Loaded automatically by index.php?main_page=checkout_shipping.<br>
@@ -33,7 +33,7 @@ if ($messageStack->size('checkout_shipping') > 0) {
             <div class="card-body p-3">
                 <div class="row">
                     <div class="shipToAddress col-sm-5">
-                        <address><?php echo zen_address_label($_SESSION['customer_id'], $_SESSION['sendto'], true, ' ', '<br>'); ?></address>      
+                        <address><?php echo zen_address_label($_SESSION['customer_id'], $_SESSION['sendto'], true, ' ', '<br>'); ?></address>
                     </div>
                     <div class="col-sm-7">
                         <?php echo TEXT_CHOOSE_SHIPPING_DESTINATION; ?>
@@ -60,7 +60,7 @@ if (zen_count_shipping_modules() > 0) {
     if (count($quotes) > 1 && count($quotes[0]) > 1) {
 ?>
                 <div id="shippingMethod-content" class="content"><?php echo TEXT_CHOOSE_SHIPPING_METHOD; ?></div>
- 
+
 <?php
     } elseif ($free_shipping === false) {
 ?>
@@ -121,6 +121,7 @@ if (zen_count_shipping_modules() > 0) {
                             <?php echo zen_draw_radio_field('shipping', $quotes[$i]['id'] . '_' . $quotes[$i]['methods'][$j]['id'], $checked, 'id="ship-'.$quotes[$i]['id'] . '-' . str_replace(' ', '-', $quotes[$i]['methods'][$j]['id']) .'"'); ?>
 
                             <label for="ship-<?php echo $quotes[$i]['id'] . '-' . str_replace(' ', '-', $quotes[$i]['methods'][$j]['id']); ?>" class="custom-control-label checkboxLabel"><?php echo $quotes[$i]['methods'][$j]['title']; ?></label>
+                            <?= $quotes[$i]['methods'][$j]['option'] ?? '' ?>
                         </div>
                         <div class="p-1"></div>
 <?php
