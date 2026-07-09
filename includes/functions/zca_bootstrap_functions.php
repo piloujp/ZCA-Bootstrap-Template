@@ -36,7 +36,7 @@ function zca_js_zone_list(string $varname = 'c2z'): string
         $c2z[$current_country_id] = [];
 
         $andRegex = (zen_get_zcversion() < '2.0.0') ? " AND  (zone_name REGEXP '^[一-龠]') " : '';
-        $japanCountryCode = (zen_get_zcversion() >= '2.0.0' && function_existszen_country_iso_to_id('')) ? zen_country_iso_to_id('JP') : 107;
+        $japanCountryCode = (zen_get_zcversion() >= '2.0.0' && function_exists('zen_country_iso_to_id')) ? zen_country_iso_to_id('JP') : 107;
         $zoneOrder = ($_SESSION['language'] === 'japanese' && (int)$country_id === $japanCountryCode) ? 'zone_id' : 'zone_name';
         $zoneData = (zen_get_zcversion() >= '2.0.0' && $_SESSION['language'] === "japanese" && (int)$country_id === $japanCountryCode) ? 'zone_code' : 'zone_name';
         $states = $db->Execute(
