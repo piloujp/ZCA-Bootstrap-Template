@@ -103,17 +103,30 @@ if (zen_config('ACCOUNT_SUBURB') === 'true') {
 <?php
 if (zen_config('ACCOUNT_STATE') === 'true') {
     if ($flag_show_pulldown_states === true) {
+        if (!empty(zen_get_country_zones($selected_country))) {
 ?>
             <label class="inputLabel" for="stateZone" id="zoneLabel"><?= ENTRY_STATE ?></label><span class="alert"><?= ((!empty(ENTRY_STATE_TEXT) && (int)zen_config('ENTRY_STATE_MIN_LENGTH') > 0) ? ENTRY_STATE_TEXT : '') ?></span>
             <?= zen_draw_pull_down_menu('zone_id', zen_prepare_country_zones_pull_down($selected_country), $zone_id, 'id="stateZone"') ?>
             <div class="clearfix"></div>
+            <label class="inputLabel" for="state" id="stateLabel" style="display: none;"><?= ENTRY_STATE ?></label>
+            <?= zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state" class="form-control" style="display: none;"' . ((int)zen_config('ENTRY_STATE_MIN_LENGTH') > 0 ? ' placeholder="' . ENTRY_STATE_TEXT . '"' : '')) ?>
 <?php
-    }
+        } else {
+?>
+            <label class="inputLabel" for="stateZone" id="zoneLabel" style="display: none;"><?= ENTRY_STATE ?></label><span class="alert" style="display: none;"><?= ((!empty(ENTRY_STATE_TEXT) && (int)zen_config('ENTRY_STATE_MIN_LENGTH') > 0) ? ENTRY_STATE_TEXT : '') ?></span>
+            <?= zen_draw_pull_down_menu('zone_id', zen_prepare_country_zones_pull_down($selected_country), $zone_id, 'id="stateZone" style="display: none;"') ?>
+            <div class="clearfix"></div>
+            <label class="inputLabel" for="state" id="stateLabel"><?= ENTRY_STATE ?></label>
+            <?= zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state" class="form-control"' . ((int)zen_config('ENTRY_STATE_MIN_LENGTH') > 0 ? ' placeholder="' . ENTRY_STATE_TEXT . '"' : '')) ?>
+<?php
+        }
+    } else {
 ?>
             <label class="inputLabel" for="state" id="stateLabel"><?= $state_field_label ?></label>
             <?= zen_draw_input_field('state', '', zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state" class="form-control"' . ((int)zen_config('ENTRY_STATE_MIN_LENGTH') > 0 ? ' placeholder="' . ENTRY_STATE_TEXT . '"' : '')) ?>
-            <?= ($flag_show_pulldown_states === false) ? zen_draw_hidden_field('zone_id', $zone_name, ' ') : '' ?>
+            <?= zen_draw_hidden_field('zone_id', $zone_name, ' ') ?>
 <?php
+    }
 }
 ?>
             <div class="p-2"></div>

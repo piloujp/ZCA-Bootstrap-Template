@@ -69,15 +69,30 @@ if (zen_is_logged_in() && !zen_in_guest_checkout()) {
             <div class="p-2"></div>
 <?php
     if ($flag_show_pulldown_states === true) {
+        if (!empty(zen_get_country_zones($selected_country))) {
 ?>
             <label class="inputLabel" for="stateZone" id="zoneLabel"><?= ENTRY_STATE ?></label>
             <?= zen_draw_pull_down_menu('zone_id', zen_prepare_country_zones_pull_down($selected_country), $state_zone_id, 'id="stateZone"') ?>
-            <div class="p-2" id="stBreak"></div>
+            <div class="clearfix"></div>
+            <label class="inputLabel" for="state" id="stateLabel" style="display: none;"><?= ENTRY_STATE ?></label>
 <?php
-    }
+            echo zen_draw_input_field('state', $selectedState, zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state" style="display: none;"');
+        } else {
+?>
+            <label class="inputLabel" for="stateZone" id="zoneLabel" style="display: none;"><?= ENTRY_STATE ?></label>
+            <?= zen_draw_pull_down_menu('zone_id', zen_prepare_country_zones_pull_down($selected_country), $state_zone_id, 'id="stateZone" style="display: none;"') ?>
+            <div class="clearfix"></div>
+            <label class="inputLabel" for="state" id="stateLabel"><?= ENTRY_STATE ?></label>
+<?php
+            echo zen_draw_input_field('state', $selectedState, zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state"');
+        }
+    } else {
 ?>
             <label class="inputLabel" for="state" id="stateLabel"><?= $state_field_label ?? '' ?></label>
-            <?= zen_draw_input_field('state', $selectedState, zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state"') ?>
+<?php
+            echo zen_draw_input_field('state', $selectedState, zen_set_field_length(TABLE_ADDRESS_BOOK, 'entry_state', '40') . ' id="state"');
+    }
+?>
             <div class="p-2"></div>
 <?php
     if (CART_SHIPPING_METHOD_ZIP_REQUIRED === 'true') {
